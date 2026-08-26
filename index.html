@@ -214,6 +214,7 @@
     .btn-row { display: flex; gap: 6px; }
     .result-pill-box { background: var(--bg-card); border: 1px solid var(--border-light); padding: 10px 12px; border-radius: 12px; font-size: 0.84rem; color: var(--coral-primary); font-weight: 700; margin-top: 8px; display: flex; align-items: center; justify-content: space-between; }
     .card-footer-link { display: flex; align-items: center; justify-content: space-between; text-decoration: none; color: var(--coral-primary); font-weight: 800; font-size: 0.9rem; padding-top: 8px; border-top: 1px solid var(--border-light); }
+    .preview-canvas-box img { max-width: 100%; border-radius: 8px; margin-top: 8px; }
 
     /* FAQ & Reviews */
     .faq-section { padding: 60px 0 50px; border-top: 1px solid var(--border-light); }
@@ -224,30 +225,6 @@
     .faq-answer { display: none; padding-top: 12px; font-size: 0.95rem; color: var(--text-muted); }
     .faq-item.open .faq-answer { display: block; }
     .faq-item.open .faq-plus { transform: rotate(45deg); }
-
-    .reviews-section { background: var(--bg-card); border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); padding: 60px 0; margin-top: 40px; }
-    body.dark-theme .reviews-section { background: #0E1822; }
-    .reviews-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--badge-yellow-bg); color: var(--badge-yellow-text); font-size: 0.78rem; font-weight: 800; padding: 5px 14px; border-radius: 9999px; margin-bottom: 12px; }
-    .reviews-title { font-size: 2.2rem; color: var(--text-dark); margin-bottom: 8px; }
-    .reviews-sub { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 30px; }
-    .rating-stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; background: var(--bg-card-subtle); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 24px; margin-bottom: 30px; }
-    .stat-cell { text-align: center; }
-    .stat-number { font-size: 2rem; font-weight: 900; color: var(--text-dark); line-height: 1; }
-    .stat-label { font-size: 0.78rem; font-weight: 700; color: var(--text-sub); margin-top: 6px; }
-    .review-cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
-    .review-bubble { background: var(--bg-card-subtle); border: 1px solid var(--border-light); border-radius: 20px; padding: 22px; display: flex; flex-direction: column; justify-content: space-between; gap: 14px; }
-    .reviewer-header { display: flex; align-items: center; justify-content: space-between; }
-    .reviewer-info { display: flex; align-items: center; gap: 12px; }
-    .reviewer-avatar { width: 38px; height: 38px; border-radius: 12px; background: linear-gradient(135deg, #F97316, #E15B44); color: #FFFFFF; font-weight: 900; display: flex; align-items: center; justify-content: center; }
-    .reviewer-name { font-weight: 800; font-size: 0.92rem; color: var(--text-dark); }
-    .reviewer-role { font-size: 0.72rem; color: var(--text-muted); font-weight: 600; }
-    .verified-chip { background: #DCFCE7; color: #15803D; font-size: 0.68rem; font-weight: 800; padding: 3px 8px; border-radius: 9999px; }
-    body.dark-theme .verified-chip { background: #143522; color: #4ADE80; }
-    .review-stars { color: #F59E0B; font-size: 0.9rem; }
-    .review-body { font-size: 0.88rem; color: var(--text-dark); line-height: 1.55; }
-    .review-meta-bar { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border-light); padding-top: 10px; font-size: 0.74rem; color: var(--text-muted); }
-    .btn-helpful { background: var(--bg-card); border: 1px solid var(--border-light); color: var(--text-muted); padding: 4px 10px; border-radius: 8px; font-size: 0.72rem; font-weight: 700; cursor: pointer; }
-    .submit-review-card { background: var(--bg-card-subtle); border: 1px solid var(--border-light); border-radius: 24px; padding: 28px; margin-top: 36px; }
 
     /* Footer */
     .site-footer { background: var(--footer-bg); color: var(--footer-text); padding: 56px 0 28px; font-size: 0.88rem; }
@@ -429,7 +406,7 @@
     </div>
 
     <div class="tools-grid" id="toolsGrid">
-      <!-- Tool 1: Image Resizer (Popular + Batch Processing) -->
+      <!-- Tool 1: Image Resizer -->
       <div class="tool-card image" id="t-resizer" data-name="image resizer resize batch সাইজ পরিবর্তন">
         <div>
           <div class="card-top">
@@ -439,7 +416,7 @@
           <h3 class="tool-heading">Image Resizer</h3>
           <p class="tool-summary">Resize single or batch multiple images by exact pixels, presets or percentage scale.</p>
           <div class="tool-widget-box">
-            <input type="file" id="resFile" accept="image/*" multiple class="input-clean" onchange="onResizerFilesSelected(this)">
+            <input type="file" id="resFile" accept="image/*" multiple class="input-clean">
             <div class="btn-row" style="margin-bottom:8px;">
               <input type="number" id="resWidth" placeholder="Width (px)" class="input-clean">
               <input type="number" id="resHeight" placeholder="Height (px)" class="input-clean">
@@ -690,6 +667,7 @@
       </div>
     </div>
   </footer>
+
   <script>
     // Language Dictionary
     const DICT = {
@@ -876,7 +854,7 @@
       });
     }
 
-    // 1. Tool Logic: AI Background Remover (Anti-Halo Matting Pro)
+    // 1. Tool Logic: AI Background Remover
     function executeBgRemoval() {
       const file = document.getElementById('bgFileInput').files[0];
       if (!file) return alert(activeLang === 'en' ? 'Please select an image file!' : 'দয়া করে একটি ছবি বাছাই করুন!');
@@ -900,7 +878,6 @@
           const data = imgData.data;
           const totalPixels = width * height;
 
-          // 1. Multi-point Perimeter Background Sampling
           const borderSamples = [];
           const stepX = Math.max(1, Math.floor(width / 40));
           const stepY = Math.max(1, Math.floor(height / 40));
@@ -927,7 +904,6 @@
             return Math.sqrt(0.299 * dr * dr + 0.587 * dg * dg + 0.114 * db * db);
           }
 
-          // 2. Connected Flood Fill from outer edges
           const isBackground = new Uint8Array(totalPixels);
           const queue = new Int32Array(totalPixels);
           let qHead = 0, qTail = 0;
@@ -972,7 +948,6 @@
             }
           }
 
-          // 3. Compute Soft Alpha Mask & Defringing
           const alphaMap = new Float32Array(totalPixels);
           for (let i = 0; i < totalPixels; i++) {
             const p = i * 4;
@@ -987,7 +962,6 @@
             } else alphaMap[i] = 1;
           }
 
-          // 4. Color Decontamination (Anti-Halo)
           const outData = new Uint8ClampedArray(data.length);
           for (let y = 0; y < height; y++) {
             for (let x = 0; x < width; x++) {
@@ -1006,7 +980,6 @@
             }
           }
 
-          // 5. Output Canvas
           const outCvs = document.createElement('canvas');
           outCvs.width = width; outCvs.height = height;
           const outCtx = outCvs.getContext('2d');
@@ -1079,4 +1052,165 @@
             const url = URL.createObjectURL(blob);
             document.getElementById('enhPreviewBox').innerHTML = '<img src="' + url + '">';
             const a = document.createElement('a'); a.href = url; a.download = `livetool-4k-enhanced-${scale}x.jpg`; a.click();
-            btn.
+            btn.disabled = false;
+            btn.textContent = origBtnText;
+          }, 'image/jpeg', 0.95);
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // 3. Tool Logic: Image Resizer
+    function executeBatchResizer() {
+      const files = document.getElementById('resFile').files;
+      const w = parseInt(document.getElementById('resWidth').value);
+      const h = parseInt(document.getElementById('resHeight').value);
+      if (!files.length) return alert(activeLang === 'en' ? 'Please select image(s)!' : 'ছবি নির্বাচন করুন!');
+      if (!w && !h) return alert(activeLang === 'en' ? 'Please enter width or height!' : 'অনুগ্রহ করে উইডথ বা হাইট দিন!');
+
+      Array.from(files).forEach((file, index) => {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const img = new Image();
+          img.onload = function() {
+            let targetW = w || Math.round(img.width * (h / img.height));
+            let targetH = h || Math.round(img.height * (w / img.width));
+            const cvs = document.createElement('canvas');
+            cvs.width = targetW; cvs.height = targetH;
+            const ctx = cvs.getContext('2d');
+            ctx.drawImage(img, 0, 0, targetW, targetH);
+            cvs.toBlob(blob => {
+              const url = URL.createObjectURL(blob);
+              const a = document.createElement('a');
+              a.href = url;
+              a.download = `resized-${index + 1}-${targetW}x${targetH}.jpg`;
+              a.click();
+            }, 'image/jpeg', 0.9);
+          };
+          img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+
+    // 4. Tool Logic: Image Compressor
+    function executeBatchCompressor() {
+      const file = document.getElementById('cmpFile').files[0];
+      const quality = parseInt(document.getElementById('cmpQuality').value) / 100;
+      if (!file) return alert(activeLang === 'en' ? 'Please select an image!' : 'একটি ছবি নির্বাচন করুন!');
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+          const cvs = document.createElement('canvas');
+          cvs.width = img.width; cvs.height = img.height;
+          const ctx = cvs.getContext('2d');
+          ctx.drawImage(img, 0, 0);
+          cvs.toBlob(blob => {
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `compressed-${file.name}`;
+            a.click();
+          }, 'image/jpeg', quality);
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // 5. Tool Logic: Format Converter
+    function executeBatchConverter() {
+      const file = document.getElementById('fmtFile').files[0];
+      const format = document.getElementById('fmtSelect').value;
+      if (!file) return alert(activeLang === 'en' ? 'Please select an image!' : 'একটি ছবি নির্বাচন করুন!');
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+          const cvs = document.createElement('canvas');
+          cvs.width = img.width; cvs.height = img.height;
+          const ctx = cvs.getContext('2d');
+          ctx.drawImage(img, 0, 0);
+          const mimeType = format === 'png' ? 'image/png' : format === 'webp' ? 'image/webp' : 'image/jpeg';
+          cvs.toBlob(blob => {
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `converted-${Date.now()}.${format}`;
+            a.click();
+          }, mimeType, 0.95);
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // 6. Tool Logic: VAT & Tax Calculator
+    function executeVatCalc() {
+      const amount = parseFloat(document.getElementById('vatAmount').value) || 0;
+      const rate = parseFloat(document.getElementById('vatRate').value) || 0;
+      const mode = document.getElementById('vatMode').value;
+      let vat = 0, total = 0;
+
+      if (mode === 'add') {
+        vat = (amount * rate) / 100;
+        total = amount + vat;
+      } else {
+        vat = amount - (amount * (100 / (100 + rate)));
+        total = amount - vat;
+      }
+
+      document.getElementById('vatResTxt').textContent = `VAT: ${vat.toFixed(2)} | Total: ${total.toFixed(2)}`;
+    }
+
+    // 7. Tool Logic: Unit Converter
+    function executeUnitCalc() {
+      const val = parseFloat(document.getElementById('uValInput').value) || 0;
+      const from = document.getElementById('uFromSelect').value;
+      const to = document.getElementById('uToSelect').value;
+      
+      // Basic meter base conversion
+      const toMeters = { m: 1, ft: 0.3048, in: 0.0254, km: 1000 };
+      const fromMeters = { m: 1, ft: 3.28084, in: 39.3701, km: 0.001 };
+
+      const meters = val * (toMeters[from] || 1);
+      const result = meters * (fromMeters[to] || 1);
+
+      document.getElementById('uResTxt').textContent = `${val} ${from} = ${result.toFixed(4)} ${to}`;
+    }
+
+    // 8. Tool Logic: JSON Formatter
+    function formatJson(spaces) {
+      const txt = document.getElementById('jsonInputText').value;
+      try {
+        const obj = JSON.parse(txt);
+        document.getElementById('jsonInputText').value = JSON.stringify(obj, null, spaces);
+      } catch (e) {
+        alert(activeLang === 'en' ? 'Invalid JSON syntax!' : 'ভুল JSON সিনট্যাক্স!');
+      }
+    }
+
+    function minifyJson() {
+      const txt = document.getElementById('jsonInputText').value;
+      try {
+        const obj = JSON.parse(txt);
+        document.getElementById('jsonInputText').value = JSON.stringify(obj);
+      } catch (e) {
+        alert(activeLang === 'en' ? 'Invalid JSON syntax!' : 'ভুল JSON সিনট্যাক্স!');
+      }
+    }
+
+    // 9. Tool Logic: Word Counter
+    function calculateWords() {
+      const text = document.getElementById('wordInputText').value;
+      const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+      const chars = text.length;
+      document.getElementById('wordResTxt').textContent = `Words: ${words} | Characters: ${chars}`;
+    }
+  </script>
+</body>
+</html>
