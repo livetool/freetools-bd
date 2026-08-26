@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact & Support — LiveTool</title>
+  <meta name="description" content="Contact LiveTool Support Desk. Direct Email: Lifetooloffice@gmail.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg-dark: #090d16; --bg-card: #0f172a; --border-dark: rgba(255,255,255,0.1); --text-main: #f8fafc; --text-muted: #94a3b8; --primary: #6366f1; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Plus Jakarta Sans', 'Hind Siliguri', sans-serif; background: var(--bg-dark); color: var(--text-main); line-height: 1.7; padding: 20px 16px; }
+    .container { max-width: 800px; margin: 0 auto; }
+    .header-nav { display: flex; justify-content: space-between; align-items: center; padding-bottom: 24px; border-bottom: 1px solid var(--border-dark); margin-bottom: 30px; }
+    .brand { display: flex; align-items: center; gap: 8px; text-decoration: none; color: #fff; font-weight: 800; font-size: 1.2rem; }
+    .btn-back { background: rgba(255,255,255,0.08); color: #fff; text-decoration: none; padding: 8px 16px; border-radius: 9999px; font-size: 0.85rem; font-weight: 600; }
+    .card { background: var(--bg-card); border: 1px solid var(--border-dark); border-radius: 20px; padding: 30px; }
+    h1 { font-size: 1.8rem; margin-bottom: 8px; color: #fff; }
+    .badge { display: inline-block; background: rgba(99,102,241,0.15); color: #a5b4fc; border: 1px solid rgba(99,102,241,0.3); font-size: 0.75rem; font-weight: 700; padding: 4px 12px; border-radius: 9999px; margin-bottom: 16px; }
+    .form-group { margin-bottom: 16px; }
+    label { display: block; font-size: 0.82rem; font-weight: 700; color: #cbd5e1; margin-bottom: 6px; }
+    input, textarea, select { width: 100%; padding: 12px 14px; background: #1e293b; border: 1px solid var(--border-dark); border-radius: 12px; color: #fff; font-family: inherit; font-size: 0.9rem; outline: none; }
+    input:focus, textarea:focus { border-color: var(--primary); }
+    .btn-submit { width: 100%; padding: 14px; background: linear-gradient(135deg, #6366f1, #4f46e5); color: #fff; border: none; border-radius: 12px; font-weight: 800; font-size: 0.95rem; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header-nav">
+      <a href="index.html" class="brand">✨ LiveTool</a>
+      <a href="index.html" class="btn-back">← ব্যাক টু হোম (Home)</a>
+    </div>
+    <div class="card">
+      <div class="badge">📨 অফিসিয়াল সাপোর্ট ও ফিডব্যাক ডেস্ক</div>
+      <h1>যোগাযোগ ও সাপোর্ট (Contact Us)</h1>
+      <p style="color:var(--text-muted); margin-bottom: 24px;">সরাসরি অফিসিয়াল ইমেইল: <strong>Lifetooloffice@gmail.com</strong></p>
+
+      <form onsubmit="sendContact(event)">
+        <div class="form-group">
+          <label>আপনার নাম (Your Name)</label>
+          <input type="text" id="name" placeholder="যেমন: সাজিদ রহমান" required>
+        </div>
+        <div class="form-group">
+          <label>আপনার ইমেইল (Your Email)</label>
+          <input type="email" id="email" placeholder="example@mail.com" required>
+        </div>
+        <div class="form-group">
+          <label>বিষয় / ক্যাটাগরি (Subject)</label>
+          <select id="topic">
+            <option value="Tool Issue">টুলসের সমস্যা রিপোর্ট / Bug Report</option>
+            <option value="New Feature">নতুন টুলের পরামর্শ / Suggestion</option>
+            <option value="General Support">সাধারণ তথ্য / General Support</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>আপনার বার্তা (Message)</label>
+          <textarea id="msg" rows="4" placeholder="আপনার সমস্যা বা পরামর্শ বিস্তারিত লিখুন..." required></textarea>
+        </div>
+        <button type="submit" class="btn-submit">ইমেইল পাঠান (Send Email)</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function sendContact(e) {
+      e.preventDefault();
+      const n = document.getElementById('name').value;
+      const em = document.getElementById('email').value;
+      const t = document.getElementById('topic').value;
+      const m = document.getElementById('msg').value;
+      const sub = encodeURIComponent('[' + t + '] LiveTool Inquiry from ' + n);
+      const body = encodeURIComponent('Name: ' + n + '\nEmail: ' + em + '\nCategory: ' + t + '\n\nMessage:\n' + m);
+      window.location.href = 'mailto:Lifetooloffice@gmail.com?subject=' + sub + '&body=' + body;
+    }
+  </script>
+</body>
+</html>
