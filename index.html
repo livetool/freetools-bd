@@ -289,15 +289,16 @@
               <span id="mNavEnhancer">4K AI Enhancer</span>
             </a>
             <div class="menu-dropdown-divider"></div>
-            <a href="public/privacy.html" class="menu-dropdown-item">
+            <!-- এখানে পাথ ঠিক করে দেওয়া হয়েছে -->
+            <a href="privacy.html" class="menu-dropdown-item">
               <span>🔒</span>
               <span id="mNavPrivacy">Privacy Policy</span>
             </a>
-            <a href="public/terms.html" class="menu-dropdown-item">
+            <a href="terms.html" class="menu-dropdown-item">
               <span>📜</span>
               <span id="mNavTerms">Terms of Service</span>
             </a>
-            <a href="public/contact.html" class="menu-dropdown-item">
+            <a href="contact.html" class="menu-dropdown-item">
               <span>✉️</span>
               <span id="mNavContact">Contact Support</span>
             </a>
@@ -426,7 +427,7 @@
             </button>
           </div>
         </div>
-        <a href="public/image-resizer.html" class="card-footer-link"><span>Open Full Tool Page</span><span>→</span></a>
+        <a href="image-resizer.html" class="card-footer-link"><span>Open Full Tool Page</span><span>→</span></a>
       </div>
 
       <!-- Tool 2: AI Background Remover -->
@@ -451,7 +452,7 @@
             <div class="preview-canvas-box" id="bgPreviewBox" style="display:flex;"></div>
           </div>
         </div>
-        <a href="public/ai-background-remover.html" class="card-footer-link"><span>Open Full Tool Page</span><span>→</span></a>
+        <a href="ai-background-remover.html" class="card-footer-link"><span>Open Full Tool Page</span><span>→</span></a>
       </div>
 
       <!-- Tool 3: 4K Image Enhancer -->
@@ -475,7 +476,7 @@
             <div class="preview-canvas-box" id="enhPreviewBox" style="display:flex;"></div>
           </div>
         </div>
-        <a href="public/ai-image-enhancer.html" class="card-footer-link"><span>Open Full Tool Page</span><span>→</span></a>
+        <a href="ai-image-enhancer.html" class="card-footer-link"><span>Open Full Tool Page</span><span>→</span></a>
       </div>
 
       <!-- Tool 4: Image Compressor -->
@@ -495,7 +496,7 @@
             </button>
           </div>
         </div>
-        <a href="public/image-compressor.html" class="card-footer-link"><span>Open Full Tool Page</span><span>→</span></a>
+        <a href="image-compressor.html" class="card-footer-link"><span>Open Full Tool Page</span><span>→</span></a>
       </div>
 
       <!-- Tool 5: Image Format Converter -->
@@ -519,7 +520,7 @@
             </button>
           </div>
         </div>
-        <a href="public/image-format-converter.html" class="card-footer-link"><span>Open Full Tool Page</span><span>→</span></a>
+        <a href="image-format-converter.html" class="card-footer-link"><span>Open Full Tool Page</span><span>→</span></a>
       </div>
 
       <!-- Tool 6: VAT & Tax Calculator -->
@@ -544,7 +545,7 @@
             <div class="result-pill-box" id="vatRes"><span id="vatResTxt">Result will appear here</span></div>
           </div>
         </div>
-        <a href="public/vat-tax-calculator.html" class="card-footer-link"><span>Open Full Tool Page</span><span>→</span></a>
+        <a href="vat-tax-calculator.html" class="card-footer-link"><span>Open Full Tool Page</span><span>→</span></a>
       </div>
 
       <!-- Tool 7: Unit Converter -->
@@ -575,7 +576,7 @@
             <div class="result-pill-box" id="uRes"><span id="uResTxt">10 meter = 32.8084 foot</span></div>
           </div>
         </div>
-        <a href="public/unit-converter.html" class="card-footer-link"><span>Open Full Tool Page</span><span>→</span></a>
+        <a href="unit-converter.html" class="card-footer-link"><span>Open Full Tool Page</span><span>→</span></a>
       </div>
 
       <!-- Tool 8: JSON Formatter -->
@@ -595,7 +596,7 @@
             </div>
           </div>
         </div>
-        <a href="public/json-formatter.html" class="card-footer-link"><span>Open Full Tool Page</span><span>→</span></a>
+        <a href="json-formatter.html" class="card-footer-link"><span>Open Full Tool Page</span><span>→</span></a>
       </div>
 
       <!-- Tool 9: Word Counter -->
@@ -612,7 +613,7 @@
             <div class="result-pill-box" id="wordRes"><span id="wordResTxt">Words: 0 | Characters: 0</span></div>
           </div>
         </div>
-        <a href="public/word-counter.html" class="card-footer-link"><span>Open Full Tool Page</span><span>→</span></a>
+        <a href="word-counter.html" class="card-footer-link"><span>Open Full Tool Page</span><span>→</span></a>
       </div>
     </div>
   </main>
@@ -653,9 +654,10 @@
         </div>
 
         <nav class="footer-nav">
-          <a href="public/privacy.html" id="fNavPrivacy">Privacy</a>
-          <a href="public/terms.html" id="fNavTerms">Terms</a>
-          <a href="public/contact.html" id="fNavContact">Contact</a>
+          <!-- ফুটারের লিংকগুলোর পাথও ঠিক করে দেওয়া হয়েছে -->
+          <a href="privacy.html" id="fNavPrivacy">Privacy</a>
+          <a href="terms.html" id="fNavTerms">Terms</a>
+          <a href="contact.html" id="fNavContact">Contact</a>
         </nav>
       </div>
 
@@ -1173,7 +1175,6 @@
       const from = document.getElementById('uFromSelect').value;
       const to = document.getElementById('uToSelect').value;
       
-      // Basic meter base conversion
       const toMeters = { m: 1, ft: 0.3048, in: 0.0254, km: 1000 };
       const fromMeters = { m: 1, ft: 3.28084, in: 39.3701, km: 0.001 };
 
@@ -1206,7 +1207,7 @@
 
     // 9. Tool Logic: Word Counter
     function calculateWords() {
-      const text = document.getElementById('wordInputText').value;
+      const text = document.getElementById('wordInputText.value') || document.getElementById('wordInputText').value;
       const words = text.trim() ? text.trim().split(/\s+/).length : 0;
       const chars = text.length;
       document.getElementById('wordResTxt').textContent = `Words: ${words} | Characters: ${chars}`;
