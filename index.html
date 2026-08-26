@@ -1,0 +1,1542 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>LiveTool — বিশ্বমানের এআই টুলস ও ইউটিলিটি প্ল্যাটফর্ম</title>
+  <meta name="description" content="বিশ্বজুড়ে এআই। সবাই কানেক্টেড। পেইড এআই টুলের মতো ২০+ পাওয়ারফুল অনলাইন ইউটিলিটি — ১০০% প্রাইভেট ও ব্রাউজার প্রসেসিং।">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --primary-hover: #4338ca;
+      --bg-dark: #060913;
+      --bg-card: #0d1527;
+      --bg-card-hover: #131f38;
+      --border-dark: rgba(255, 255, 255, 0.1);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent-cyan: #06b6d4;
+      --accent-glow: rgba(79, 70, 229, 0.35);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', 'Hind Siliguri', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    .wrap { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+
+    /* Header */
+    .header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(6, 9, 19, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-dark);
+      height: 72px; display: flex; align-items: center;
+    }
+    .nav-wrap { display: flex; align-items: center; justify-content: space-between; width: 100%; }
+    .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-size: 1.3rem; font-weight: 900; color: #fff; }
+    .logo-box { width: 40px; height: 40px; border-radius: 12px; background: linear-gradient(135deg, #6366f1, #06b6d4); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; box-shadow: 0 0 20px var(--accent-glow); }
+    .brand-sub { font-size: 0.72rem; color: var(--text-muted); font-weight: 500; }
+    
+    .nav-links { display: flex; align-items: center; gap: 18px; }
+    .nav-link { color: var(--text-muted); text-decoration: none; font-size: 0.85rem; font-weight: 600; transition: color 0.2s; }
+    .nav-link:hover { color: #fff; }
+    
+    .nav-actions { display: flex; align-items: center; gap: 12px; }
+    .lang-btn {
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+      color: #fff; padding: 7px 16px; border-radius: 9999px; font-weight: 700;
+      font-size: 0.82rem; cursor: pointer; display: flex; align-items: center; gap: 6px;
+      transition: all 0.2s;
+    }
+    .lang-btn:hover { background: rgba(255,255,255,0.15); border-color: #818cf8; }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+    }
+
+    /* Hero Banner */
+    .hero { padding: 36px 0 24px; text-align: center; }
+    .hero-card {
+      background: radial-gradient(circle at top center, #171c3d 0%, #0c1224 70%, #060913 100%);
+      border: 1px solid rgba(99, 102, 241, 0.35); border-radius: 28px;
+      padding: 40px 20px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.7);
+      position: relative; overflow: hidden;
+    }
+    .pill {
+      display: inline-flex; align-items: center; gap: 8px; background: rgba(99, 102, 241, 0.15);
+      border: 1px solid rgba(99, 102, 241, 0.4); color: #a5b4fc; font-size: 0.78rem;
+      font-weight: 800; padding: 6px 16px; border-radius: 9999px; margin-bottom: 20px;
+    }
+    .hero h1 { font-size: 2.4rem; font-weight: 900; line-height: 1.25; margin-bottom: 16px; color: #fff; }
+    .hero p { font-size: 0.95rem; color: #94a3b8; max-width: 680px; margin: 0 auto 24px; }
+    
+    .hero-tags { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 26px; }
+    .tag { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); padding: 7px 14px; border-radius: 9999px; font-size: 0.78rem; color: #e2e8f0; font-weight: 600; }
+    
+    .btn-main {
+      background: linear-gradient(135deg, #6366f1, #4f46e5); color: #fff;
+      font-size: 0.95rem; font-weight: 800; padding: 14px 32px; border-radius: 14px;
+      border: none; cursor: pointer; text-decoration: none; display: inline-flex;
+      align-items: center; gap: 10px; box-shadow: 0 10px 25px rgba(79, 70, 229, 0.45);
+      transition: all 0.2s;
+    }
+    .btn-main:hover { transform: translateY(-2px); box-shadow: 0 15px 30px rgba(79, 70, 229, 0.6); }
+
+    /* Quick Links Bar */
+    .quick-bar {
+      display: flex; justify-content: center; gap: 12px; margin-top: 20px; flex-wrap: wrap;
+    }
+    .quick-link-btn {
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      color: #94a3b8; text-decoration: none; font-size: 0.8rem; font-weight: 700;
+      padding: 6px 14px; border-radius: 9999px; transition: all 0.2s;
+    }
+    .quick-link-btn:hover { background: rgba(99,102,241,0.2); color: #fff; border-color: #6366f1; }
+
+    /* Tools Catalog */
+    .tools-section { padding: 40px 0; }
+    .section-title-wrap { margin-bottom: 24px; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 12px; }
+    .section-title { font-size: 1.6rem; font-weight: 900; }
+    .section-sub { font-size: 0.85rem; color: var(--text-muted); }
+
+    .search-box {
+      width: 100%; padding: 15px 20px; background: #0d1527;
+      border: 1px solid rgba(255,255,255,0.15); border-radius: 16px;
+      color: #fff; font-size: 0.95rem; margin-bottom: 24px; outline: none;
+      transition: border-color 0.2s;
+    }
+    .search-box:focus { border-color: #6366f1; box-shadow: 0 0 15px var(--accent-glow); }
+
+    .filter-chips { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 12px; margin-bottom: 28px; }
+    .chip {
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+      color: var(--text-muted); padding: 8px 16px; border-radius: 9999px; font-size: 0.8rem;
+      font-weight: 700; cursor: pointer; white-space: nowrap; transition: all 0.2s;
+    }
+    .chip.active, .chip:hover { background: #6366f1; color: #fff; border-color: #6366f1; }
+
+    /* Tools Grid */
+    .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
+    .tool-card {
+      background: var(--bg-card); border: 1px solid var(--border-dark);
+      border-radius: 22px; padding: 22px; display: flex; flex-direction: column;
+      justify-content: space-between; gap: 16px; transition: all 0.2s ease;
+    }
+    .tool-card:hover { transform: translateY(-3px); border-color: rgba(99, 102, 241, 0.6); box-shadow: 0 12px 30px rgba(0,0,0,0.5); }
+    .tool-top { display: flex; gap: 14px; align-items: center; }
+    .tool-icon {
+      width: 48px; height: 48px; background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1); border-radius: 14px;
+      display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0;
+    }
+    .tool-top h3 { font-size: 1.05rem; font-weight: 800; color: #fff; }
+    .tool-top p { font-size: 0.78rem; color: var(--text-muted); }
+    
+    .input-field, .select-field, .textarea-field {
+      width: 100%; padding: 11px 14px; background: #162038;
+      border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;
+      color: #fff; font-size: 0.85rem; outline: none; margin-bottom: 10px;
+      font-family: inherit;
+    }
+    .input-field:focus, .select-field:focus, .textarea-field:focus { border-color: #6366f1; }
+    .textarea-field { height: 75px; resize: vertical; }
+
+    .btn-action {
+      width: 100%; padding: 12px; background: #4f46e5; color: #fff;
+      border: none; border-radius: 12px; font-weight: 800; font-size: 0.88rem; cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-action:hover { background: #4338ca; }
+    .btn-group { display: flex; gap: 8px; }
+
+    .result-box {
+      background: #131c31; border: 1px solid rgba(255,255,255,0.1);
+      padding: 12px; border-radius: 12px; font-size: 0.85rem; color: #38bdf8;
+      font-weight: 700; text-align: center; word-break: break-all; margin-top: 6px;
+    }
+    .preview-box {
+      max-height: 150px; display: flex; align-items: center; justify-content: center;
+      background: #111827; border-radius: 12px; overflow: hidden; margin-top: 10px;
+      border: 1px dashed rgba(255,255,255,0.15);
+    }
+    .preview-box img, .preview-box canvas { max-width: 100%; max-height: 150px; object-fit: contain; }
+
+    /* Reviews Section */
+    .reviews-section {
+      background: #090e1d; border-top: 1px solid var(--border-dark);
+      border-bottom: 1px solid var(--border-dark); padding: 50px 0; margin-top: 50px;
+    }
+    .review-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin-top: 24px; }
+    .review-card {
+      background: #0d1527; border: 1px solid var(--border-dark); border-radius: 18px;
+      padding: 20px; display: flex; flex-direction: column; gap: 10px;
+    }
+    .review-author { display: flex; align-items: center; gap: 10px; }
+    .avatar { width: 36px; height: 36px; border-radius: 50%; background: #6366f1; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.85rem; }
+    .stars { color: #facc15; font-size: 0.85rem; }
+
+    /* Review Input Form */
+    .review-form {
+      background: #0d1527; border: 1px solid rgba(99, 102, 241, 0.3);
+      border-radius: 20px; padding: 24px; margin-top: 30px;
+    }
+
+    /* Footer */
+    .footer {
+      background: #04060d; padding: 50px 0 24px; border-top: 1px solid var(--border-dark);
+      color: var(--text-muted); font-size: 0.85rem;
+    }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 30px; margin-bottom: 30px; }
+    @media (max-width: 768px) {
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+    .footer-col h4 { color: #fff; font-size: 0.95rem; font-weight: 800; margin-bottom: 14px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-links a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: #818cf8; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 20px; text-align: center; font-size: 0.78rem; }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="wrap nav-wrap">
+      <a href="index.html" class="brand">
+        <div class="logo-box">✨</div>
+        <div>
+          <div>Live<span style="color:#6366f1">Tool</span></div>
+          <div class="brand-sub" id="brandSub">বিশ্বমানের ফ্রি এআই ও ইউটিলিটি প্ল্যাটফর্ম</div>
+        </div>
+      </a>
+      
+      <!-- Desktop Navigation Links -->
+      <nav class="nav-links">
+        <a href="#tools" class="nav-link" id="navTools">সকল টুলস</a>
+        <a href="contact.html" class="nav-link" id="navContact">যোগাযোগ</a>
+        <a href="privacy.html" class="nav-link" id="navPrivacy">প্রাইভেসি</a>
+        <a href="terms.html" class="nav-link" id="navTerms">শর্তাবলী</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="lang-btn" onclick="toggleLang()">
+          🌐 <span id="langText">EN</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero wrap">
+    <div class="hero-card">
+      <div class="pill" id="heroPill">🌐 বিশ্বজুড়ে এআই • বাংলাদেশ থেকে বিশ্বমঞ্চে</div>
+      <h1 id="heroTitle">বিশ্বজুড়ে এআই।<br>সবাই কানেক্টেড।</h1>
+      <p id="heroDesc">The Global Platform for AI Tools. Connected from Bangladesh to the World. পেইড এআই টুলসের মতো ২০+ পাওয়ারফুল অনলাইন ইউটিলিটি — ১০০% প্রাইভেট ও ব্রাউজার প্রসেসিং।</p>
+      
+      <div class="hero-tags">
+        <div class="tag" id="tag1">🪄 এআই ব্যাকগ্রাউন্ড রিমুভার</div>
+        <div class="tag" id="tag2">⚡ ৪K কোয়ালিটি এনহ্যান্সার</div>
+        <div class="tag" id="tag3">🔒 ০% Server Upload</div>
+        <div class="tag" id="tag4">⚡ আনলিমিটেড ফ্রি অ্যাক্সেস</div>
+      </div>
+
+      <a href="#tools" class="btn-main" id="heroBtn">সকল ২০+ টুলস এক্সপ্লোর করুন →</a>
+
+      <!-- Quick Links for Direct Access -->
+      <div class="quick-bar">
+        <a href="contact.html" class="quick-link-btn" id="qlContact">📨 কন্টাক্ট ও সাপোর্ট পেজ</a>
+        <a href="privacy.html" class="quick-link-btn" id="qlPrivacy">🔒 প্রাইভেসি পলিসি পেজ</a>
+        <a href="terms.html" class="quick-link-btn" id="qlTerms">📜 ব্যবহারের শর্তাবলী পেজ</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Tools Catalog -->
+  <main class="wrap tools-section" id="tools">
+    <div class="section-title-wrap">
+      <div>
+        <h2 class="section-title" id="secTitle">প্রোডাকশন ইউটিলিটি ও এআই টুলস</h2>
+        <p class="section-sub" id="secSub">কোনো সার্ভার আপলোড ছাড়া ব্রাউজারে সরাসরি কাজ করুন</p>
+      </div>
+    </div>
+
+    <!-- Search Bar -->
+    <input type="text" class="search-box" id="toolSearch" placeholder="🔍 সার্চ করুন (যেমন: ব্যাকগ্রাউন্ড, ইমেজ, রিসাইজ, বয়স, বিএমআই, লোন, জেএসন, কিউআর, পাসওয়ার্ড)..." oninput="searchTools()">
+
+    <!-- Categories -->
+    <div class="filter-chips">
+      <button class="chip active" onclick="filterCat('all', this)" id="catAll">সকল টুলস (২০+)</button>
+      <button class="chip" onclick="filterCat('image', this)" id="catImg">✨ এআই ও ইমেজ স্টুডিও</button>
+      <button class="chip" onclick="filterCat('calc', this)" id="catCalc">🧮 ক্যালকুলেটর</button>
+      <button class="chip" onclick="filterCat('conv', this)" id="catConv">📏 কনভার্টার</button>
+      <button class="chip" onclick="filterCat('text', this)" id="catText">📝 টেক্সট ইউটিলিটি</button>
+      <button class="chip" onclick="filterCat('dev', this)" id="catDev">⚡ ডেভেলপার টুলস</button>
+    </div>
+
+    <!-- 20+ Production Tools Grid -->
+    <div class="tools-grid" id="toolsGrid">
+      
+      <!-- Tool 1: AI Background Remover Studio -->
+      <div class="tool-card image" data-name="background remover ai কাটুন transparent png এআই ব্যাকগ্রাউন্ড রিমুভার">
+        <div class="tool-top">
+          <div class="tool-icon">🪄</div>
+          <div>
+            <h3 id="t1_name">এআই ব্যাকগ্রাউন্ড রিমুভার</h3>
+            <p id="t1_sub">স্বচ্ছ পিএনজি ও হেয়ার-লেভেল প্রিসিশন কাটআউট।</p>
+          </div>
+        </div>
+        <div>
+          <input type="file" id="bgFile" accept="image/*" class="input-field">
+          <select id="bgMode" class="select-field">
+            <option value="transparent" id="bgOpt1">স্বচ্ছ ব্যাকগ্রাউন্ড (Transparent PNG)</option>
+            <option value="white" id="bgOpt2">সাদা ব্যাকগ্রাউন্ড (Solid White)</option>
+            <option value="black" id="bgOpt3">কালো ব্যাকগ্রাউন্ড (Solid Black)</option>
+          </select>
+          <button class="btn-action" onclick="runBgRemover()" id="t1_btn">ব্যাকগ্রাউন্ড রিমুভ করুন</button>
+          <div id="bgPrev" class="preview-box"></div>
+        </div>
+      </div>
+
+      <!-- Tool 2: AI 4K Image Enhancer -->
+      <div class="tool-card image" data-name="image enhancer 4k hd শার্পনেস বড় এআই ইমেজ এনহ্যান্সার">
+        <div class="tool-top">
+          <div class="tool-icon">⚡</div>
+          <div>
+            <h3 id="t2_name">এআই ইমেজ এনহ্যান্সার (৪K)</h3>
+            <p id="t2_sub">ঝাপসা ছবিকে সুপার-রেজোলিউশন ও আল্ট্রা এইচডি করুন।</p>
+          </div>
+        </div>
+        <div>
+          <input type="file" id="enhFile" accept="image/*" class="input-field">
+          <select id="enhScale" class="select-field">
+            <option value="2" id="enhOpt1">২X সুপার-রেজোলিউশন (HD)</option>
+            <option value="4" id="enhOpt2">৪X সুপার-রেজোলিউশন (4K Ultra)</option>
+          </select>
+          <button class="btn-action" onclick="runEnhancer()" id="t2_btn">৪K এনহ্যান্স করুন</button>
+          <div id="enhPrev" class="preview-box"></div>
+        </div>
+      </div>
+
+      <!-- Tool 3: HD Image Resizer -->
+      <div class="tool-card image" data-name="image resizer resize সাইজ পরিবর্তন রেজোলিউশন">
+        <div class="tool-top">
+          <div class="tool-icon">🖼️</div>
+          <div>
+            <h3 id="t3_name">এইচডি ইমেজ রিসাইজার</h3>
+            <p id="t3_sub">কোয়ালিটি নষ্ট না করে পিক্সেল ও সাইজ পরিবর্তন।</p>
+          </div>
+        </div>
+        <div>
+          <input type="file" id="resizeFile" accept="image/*" class="input-field">
+          <div style="display:flex; gap:8px;">
+            <input type="number" id="resW" placeholder="প্রস্থ (Width)" class="input-field">
+            <input type="number" id="resH" placeholder="উচ্চতা (Height)" class="input-field">
+          </div>
+          <button class="btn-action" onclick="runResizer()" id="t3_btn">রিসাইজ ও ডাউনলোড</button>
+        </div>
+      </div>
+
+      <!-- Tool 4: Smart Image Compressor -->
+      <div class="tool-card image" data-name="image compressor compress ছোট সাইজ কেবি">
+        <div class="tool-top">
+          <div class="tool-icon">📦</div>
+          <div>
+            <h3 id="t4_name">স্মার্ট ইমেজ কম্প্রেসর</h3>
+            <p id="t4_sub">ছবির মেগাবাইট কমিয়ে নিখুঁত অপ্টিমাইজেশন।</p>
+          </div>
+        </div>
+        <div>
+          <input type="file" id="compFile" accept="image/*" class="input-field">
+          <select id="compQual" class="select-field">
+            <option value="0.8" id="compOpt1">৮০% কোয়ালিটি (বেস্ট কম্প্রেশন)</option>
+            <option value="0.6" id="compOpt2">৬০% কোয়ালিটি (ওয়েব ফ্রেন্ডলি)</option>
+            <option value="0.4" id="compOpt3">৪০% কোয়ালিটি (স্মলেস্ট ফাইল সাইজ)</option>
+          </select>
+          <button class="btn-action" onclick="runCompressor()" id="t4_btn">কম্প্রেস ও ডাউনলোড</button>
+        </div>
+      </div>
+
+      <!-- Tool 5: Image Format Converter -->
+      <div class="tool-card image" data-name="format converter jpg png webp কনভার্ট ফরম্যাট">
+        <div class="tool-top">
+          <div class="tool-icon">🔄</div>
+          <div>
+            <h3 id="t5_name">ফরম্যাট কনভার্টার (JPG/PNG/WebP)</h3>
+            <p id="t5_sub">যেকোনো ছবিকে ভিন্ন ফরম্যাটে রূপান্তর করুন।</p>
+          </div>
+        </div>
+        <div>
+          <input type="file" id="convFile" accept="image/*" class="input-field">
+          <select id="convFmt" class="select-field">
+            <option value="png" id="convOpt1">PNG ফরম্যাট (ট্রান্সপারেন্ট)</option>
+            <option value="jpeg" id="convOpt2">JPG / JPEG ফরম্যাট</option>
+            <option value="webp" id="convOpt3">WebP ফরম্যাট (সুপার ফাস্ট)</option>
+          </select>
+          <button class="btn-action" onclick="runFormatConverter()" id="t5_btn">কনভার্ট ও সেভ</button>
+        </div>
+      </div>
+
+      <!-- Tool 6: Image Cropper -->
+      <div class="tool-card image" data-name="image crop cropper কাটা ছাঁটাই">
+        <div class="tool-top">
+          <div class="tool-icon">✂️</div>
+          <div>
+            <h3 id="t6_name">প্রিসিশন ইমেজ ক্রপার</h3>
+            <p id="t6_sub">ছবির নির্দিষ্ট অংশ মাপমতো নিখুঁতভাবে কাটুন।</p>
+          </div>
+        </div>
+        <div>
+          <input type="file" id="cropFile" accept="image/*" class="input-field">
+          <div style="display:flex; gap:8px;">
+            <input type="number" id="cropW" placeholder="ক্রপ প্রস্থ (px)" class="input-field">
+            <input type="number" id="cropH" placeholder="ক্রপ উচ্চতা (px)" class="input-field">
+          </div>
+          <button class="btn-action" onclick="runCropper()" id="t6_btn">ক্রপ ও ডাউনলোড</button>
+        </div>
+      </div>
+
+      <!-- Tool 7: Multi-Unit Converter -->
+      <div class="tool-card conv" data-name="unit converter রূপান্তর দৈর্ঘ্য ওজন গতি তাপমাত্রা">
+        <div class="tool-top">
+          <div class="tool-icon">📏</div>
+          <div>
+            <h3 id="t7_name">ইউনিভার্সাল ইউনিট কনভার্টার</h3>
+            <p id="t7_sub">দৈর্ঘ্য, ওজন, স্টোরেজ ও গতি রূপান্তর।</p>
+          </div>
+        </div>
+        <div>
+          <select id="uCat" class="select-field" onchange="initUnitOpts()">
+            <option value="length" id="uCatOpt1">দৈর্ঘ্য (মিটার, ফুট, কিমি, ইঞ্চি)</option>
+            <option value="weight" id="uCatOpt2">ওজন (কেজি, গ্রাম, পাউন্ড)</option>
+            <option value="storage" id="uCatOpt3">ডিজিটাল ডেটা (MB, GB, TB)</option>
+          </select>
+          <div style="display:flex; gap:8px;">
+            <input type="number" id="uVal" value="10" class="input-field" oninput="runUnitConv()">
+            <select id="uFrom" class="select-field" onchange="runUnitConv()"></select>
+          </div>
+          <select id="uTo" class="select-field" onchange="runUnitConv()"></select>
+          <div class="result-box" id="uRes">ফলাফল এখানে আসবে</div>
+        </div>
+      </div>
+
+      <!-- Tool 8: Age Calculator -->
+      <div class="tool-card calc" data-name="age calculator বয়স জন্মদিন হিসাব">
+        <div class="tool-top">
+          <div class="tool-icon">🎂</div>
+          <div>
+            <h3 id="t8_name">সঠিক বয়স ও জীবন পরিসংখ্যান</h3>
+            <p id="t8_sub">বছর, মাস, দিন ও পরবর্তী জন্মদিন।</p>
+          </div>
+        </div>
+        <div>
+          <input type="date" id="birthDate" class="input-field">
+          <button class="btn-action" onclick="calcAge()" id="t8_btn">বয়স হিসাব করুন</button>
+          <div class="result-box" id="ageRes">জন্ম তারিখ নির্বাচন করুন</div>
+        </div>
+      </div>
+
+      <!-- Tool 9: BMI Calculator -->
+      <div class="tool-card calc" data-name="bmi calculator বিএমআই স্বাস্থ্য ওজন">
+        <div class="tool-top">
+          <div class="tool-icon">🏃</div>
+          <div>
+            <h3 id="t9_name">স্মার্ট BMI ও স্বাস্থ্য ট্র্যাকার</h3>
+            <p id="t9_sub">উচ্চতা ও ওজনের সঠিক অনুপাত (BMI)।</p>
+          </div>
+        </div>
+        <div>
+          <div style="display:flex; gap:8px;">
+            <input type="number" id="bmiW" placeholder="ওজন (kg)" class="input-field">
+            <input type="number" id="bmiH" placeholder="উচ্চতা (cm)" class="input-field">
+          </div>
+          <button class="btn-action" onclick="calcBMI()" id="t9_btn">BMI হিসাব করুন</button>
+          <div class="result-box" id="bmiRes">উচ্চতা ও ওজন দিন</div>
+        </div>
+      </div>
+
+      <!-- Tool 10: Loan EMI & Finance Calculator -->
+      <div class="tool-card calc" data-name="loan emi calculator লোন কিস্তি সুদ">
+        <div class="tool-top">
+          <div class="tool-icon">💰</div>
+          <div>
+            <h3 id="t10_name">লোন EMI ও ফাইন্যান্স ক্যালকুলেটর</h3>
+            <p id="t10_sub">মাসিক কিস্তি ও মোট সুদের হিসাব।</p>
+          </div>
+        </div>
+        <div>
+          <input type="number" id="loanP" placeholder="লোন বা মূল টাকা ($/৳)" class="input-field">
+          <div style="display:flex; gap:8px;">
+            <input type="number" id="loanR" placeholder="সুদের হার (%)" class="input-field">
+            <input type="number" id="loanM" placeholder="মেয়াদ (মাস)" class="input-field">
+          </div>
+          <button class="btn-action" onclick="calcLoan()" id="t10_btn">কিস্তি হিসাব করুন</button>
+          <div class="result-box" id="loanRes">টাকার পরিমাণ ও সুদ দিন</div>
+        </div>
+      </div>
+
+      <!-- Tool 11: Color Palette Studio -->
+      <div class="tool-card dev" data-name="color palette কালার প্যালেট হেক্স কোড">
+        <div class="tool-top">
+          <div class="tool-icon">🎨</div>
+          <div>
+            <h3 id="t11_name">কালার প্যালেট স্টুডিও</h3>
+            <p id="t11_sub">ডিজাইনারদের জন্য পারফেক্ট HEX কালার প্যালেট।</p>
+          </div>
+        </div>
+        <div>
+          <button class="btn-action" onclick="genPalette()" id="t11_btn">র‍্যান্ডম প্যালেট তৈরি করুন</button>
+          <div id="paletteBox" style="display:flex; height:40px; border-radius:10px; overflow:hidden; margin-top:10px;"></div>
+        </div>
+      </div>
+
+      <!-- Tool 12: JSON Formatter & Minifier -->
+      <div class="tool-card dev" data-name="json formatter validator beautify জেএসন ফরম্যাটার">
+        <div class="tool-top">
+          <div class="tool-icon">🧑‍💻</div>
+          <div>
+            <h3 id="t12_name">JSON ভ্যালিডেটর ও ফরম্যাটার</h3>
+            <p id="t12_sub">জেএসন কোড সাজান অথবা মিনিফাই করুন।</p>
+          </div>
+        </div>
+        <div>
+          <textarea id="jsonTxt" class="textarea-field" placeholder='{"name":"LiveTool"}'></textarea>
+          <div class="btn-group">
+            <button class="btn-action" onclick="fmtJson(2)">Beautify</button>
+            <button class="btn-action" style="background:#334155;" onclick="minJson()">Minify</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tool 13: Live Word Counter -->
+      <div class="tool-card text" data-name="word counter শব্দ বর্ণ গণক টেক্সট">
+        <div class="tool-top">
+          <div class="tool-icon">📝</div>
+          <div>
+            <h3 id="t13_name">লাইভ ওয়ার্ড ও ক্যারেক্টার গণক</h3>
+            <p id="t13_sub">মোট শব্দ, বর্ণ ও পড়ার সময় মাপুন।</p>
+          </div>
+        </div>
+        <div>
+          <textarea id="wordTxt" class="textarea-field" placeholder="এখানে টেক্সট লিখুন..." oninput="countWord()"></textarea>
+          <div class="result-box" id="wordRes">শব্দ: ০ | বর্ণ: ০ | পড়ার সময়: ০s</div>
+        </div>
+      </div>
+
+      <!-- Tool 14: Smart Case Converter -->
+      <div class="tool-card text" data-name="case converter upper lower বড় হাতের ছোট হাতের">
+        <div class="tool-top">
+          <div class="tool-icon">🔤</div>
+          <div>
+            <h3 id="t14_name">স্মার্ট কেস কনভার্টার</h3>
+            <p id="t14_sub">UPPERCASE, lowercase ও Title Case করুন।</p>
+          </div>
+        </div>
+        <div>
+          <textarea id="caseTxt" class="textarea-field" placeholder="এখানে টেক্সট পেস্ট করুন..."></textarea>
+          <div class="btn-group">
+            <button class="btn-action" style="font-size:0.75rem;" onclick="convCase('upper')">UPPER</button>
+            <button class="btn-action" style="font-size:0.75rem;" onclick="convCase('lower')">lower</button>
+            <button class="btn-action" style="font-size:0.75rem;" onclick="convCase('title')">Title</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tool 15: Duplicate Line Remover -->
+      <div class="tool-card text" data-name="duplicate remover ডুপ্লিকেট লাইন মুছুন ক্লিন">
+        <div class="tool-top">
+          <div class="tool-icon">🧹</div>
+          <div>
+            <h3 id="t15_name">ডুপ্লিকেট লাইন রিমুভার</h3>
+            <p id="t15_sub">তালিকা থেকে ডুপ্লিকেট লেখা নিমেষে সরান।</p>
+          </div>
+        </div>
+        <div>
+          <textarea id="dupeTxt" class="textarea-field" placeholder="লাইন বাই লাইন টেক্সট দিন..."></textarea>
+          <button class="btn-action" onclick="remDupe()" id="t15_btn">ডুপ্লিকেট মুছুন</button>
+        </div>
+      </div>
+
+      <!-- Tool 16: Number & Email Extractor -->
+      <div class="tool-card text" data-name="extractor নাম্বার ইমেইল আলাদা স্ক্র্যাপার">
+        <div class="tool-top">
+          <div class="tool-icon">🔢</div>
+          <div>
+            <h3 id="t16_name">নাম্বার ও ইমেইল এক্সট্রাক্টর</h3>
+            <p id="t16_sub">বড় লেখা থেকে ফোন নম্বর ও ইমেইল আলাদা করুন।</p>
+          </div>
+        </div>
+        <div>
+          <textarea id="extTxt" class="textarea-field" placeholder="লেখা পেস্ট করুন..."></textarea>
+          <div class="btn-group">
+            <button class="btn-action" onclick="extNums()" id="btnExtNum">নাম্বার</button>
+            <button class="btn-action" style="background:#0284c7;" onclick="extEmails()" id="btnExtMail">ইমেইল</button>
+          </div>
+          <div class="result-box" id="extRes">—</div>
+        </div>
+      </div>
+
+      <!-- Tool 17: HD QR Code Generator -->
+      <div class="tool-card dev" data-name="qr code generator কিউআর কোড লিংক">
+        <div class="tool-top">
+          <div class="tool-icon">📱</div>
+          <div>
+            <h3 id="t17_name">এইচডি কিউআর কোড জেনারেটর</h3>
+            <p id="t17_sub">ওয়েবসাইট লিংক বা টেক্সটের জন্য QR তৈরি করুন।</p>
+          </div>
+        </div>
+        <div>
+          <input type="text" id="qrVal" placeholder="লিংক দিন (যেমন: https://google.com)" class="input-field">
+          <button class="btn-action" onclick="genQR()" id="t17_btn">QR তৈরি করুন</button>
+          <div id="qrBox" class="preview-box"></div>
+        </div>
+      </div>
+
+      <!-- Tool 18: Cryptographic Password Generator -->
+      <div class="tool-card dev" data-name="password generator সিকিউর পাসওয়ার্ড তৈরি">
+        <div class="tool-top">
+          <div class="tool-icon">🔒</div>
+          <div>
+            <h3 id="t18_name">সিকিউর পাসওয়ার্ড জেনারেটর</h3>
+            <p id="t18_sub">শক্তিশালী ও হ্যাক-প্রুফ পাসওয়ার্ড তৈরি করুন।</p>
+          </div>
+        </div>
+        <div>
+          <input type="number" id="passLength" value="16" min="8" max="32" class="input-field">
+          <button class="btn-action" onclick="genPass()" id="t18_btn">পাসওয়ার্ড তৈরি করুন</button>
+          <div class="result-box" id="passRes">Generate বাটনে ক্লিক করুন</div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Community Reviews Section -->
+  <section class="reviews-section">
+    <div class="wrap">
+      <h2 style="font-size:1.6rem; font-weight:800; text-align:center;" id="revTitle">কমিউনিটি রিভিউ ও ব্যবহারকারীদের মতামত</h2>
+      <p style="text-align:center; color:var(--text-muted); font-size:0.85rem;" id="revSub">সরাসরি ব্রাউজারে ব্যবহার করে আপনার মতামত দিন</p>
+
+      <div class="review-grid" id="reviewGrid">
+        <div class="review-card">
+          <div class="review-author">
+            <div class="avatar">র</div>
+            <div>
+              <div style="font-weight:700;" id="revAuthor1">রাকিব হাসান</div>
+              <div class="stars">★★★★★</div>
+            </div>
+          </div>
+          <p style="font-size:0.82rem; color:var(--text-muted);" id="revText1">"এআই ব্যাকগ্রাউন্ড রিমুভারের রেজাল্ট একদম পেইড সফটওয়্যারের মতো নিখুঁত। কোনো সাইন-আপ ছাড়া এত ফাস্ট কাজ করে ভাবিনি!"</p>
+        </div>
+
+        <div class="review-card">
+          <div class="review-author">
+            <div class="avatar" style="background:#06b6d4;">ত</div>
+            <div>
+              <div style="font-weight:700;" id="revAuthor2">তানভীর আহমেদ</div>
+              <div class="stars">★★★★★</div>
+            </div>
+          </div>
+          <p style="font-size:0.82rem; color:var(--text-muted);" id="revText2">"৪K এনহ্যান্সার দিয়ে পুরোনো পারিবারিক ছবি স্পষ্ট করেছি। আর ব্রাউজারে থাকায় কোনো ডেটা চুরির ভয় নেই।"</p>
+        </div>
+
+        <div class="review-card">
+          <div class="review-author">
+            <div class="avatar" style="background:#ec4899;">ম</div>
+            <div>
+              <div style="font-weight:700;" id="revAuthor3">মারিয়া সুলতানা</div>
+              <div class="stars">★★★★★</div>
+            </div>
+          </div>
+          <p style="font-size:0.82rem; color:var(--text-muted);" id="revText3">"লোন ক্যালকুলেটর ও ইমেজ রিসাইজার নিয়মিত ব্যবহার করছি। বাংলাদেশের জন্য অসাধারণ উদ্যোগ।"</p>
+        </div>
+      </div>
+
+      <!-- Add Review Form -->
+      <div class="review-form">
+        <h3 style="font-size:1.1rem; font-weight:700; margin-bottom:12px;" id="addRevTitle">আপনার মূল্যবান রিভিউ লিখুন</h3>
+        <input type="text" id="revName" placeholder="আপনার নাম" class="input-field">
+        <textarea id="revMsg" placeholder="আপনার অভিজ্ঞতা বা পরামর্শ লিখুন..." class="textarea-field"></textarea>
+        <button class="btn-action" onclick="addReview()" id="subRevBtn">রিভিউ সাবমিট করুন</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer with Legal & Support Links -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <!-- Col 1: Brand Info -->
+        <div class="footer-col">
+          <div class="brand">✨ Live<span style="color:#6366f1">Tool</span></div>
+          <p style="font-size:0.82rem; margin-top:8px; line-height:1.6; color:var(--text-muted);" id="fDesc">বিশ্বজুড়ে এআই। সবার জন্য ১০০% ফ্রি ও নিরাপদ ক্লায়েন্ট-ফার্স্ট ব্রাউজার ইউটিলিটি পোর্টাল। কোনো ডেটা সার্ভারে সংরক্ষণ হয় না।</p>
+        </div>
+
+        <!-- Col 2: Navigation Links -->
+        <div class="footer-col">
+          <h4 id="fCol1Title">গুরুত্বপূর্ণ পেইজসমূহ</h4>
+          <ul class="footer-links">
+            <li><a href="#tools" id="fLinkTools">সকল টুলস (All Tools)</a></li>
+            <li><a href="contact.html" id="fLinkContact">যোগাযোগ ও সাপোর্ট (Contact)</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Legal Links -->
+        <div class="footer-col">
+          <h4 id="fCol2Title">আইনি ও প্রাইভেসি</h4>
+          <ul class="footer-links">
+            <li><a href="privacy.html" id="fLinkPrivacy">প্রাইভেসি পলিসি (Privacy Policy)</a></li>
+            <li><a href="terms.html" id="fLinkTerms">ব্যবহারের শর্তাবলী (Terms & Conditions)</a></li>
+            <li><a href="mailto:Lifetooloffice@gmail.com" id="fLinkEmail">সরাসরি ইমেইল সাপোর্ট</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p id="fCopy">© 2026 LiveTool. All rights reserved. | Powered by High-Performance Client-Side Processing</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // 100% Comprehensive Translations Dictionary
+    const T = {
+      bn: {
+        langBtn: "EN",
+        brandSub: "বিশ্বমানের ফ্রি এআই ও ইউটিলিটি প্ল্যাটফর্ম",
+        navTools: "সকল টুলস",
+        navContact: "যোগাযোগ",
+        navPrivacy: "প্রাইভেসি",
+        navTerms: "শর্তাবলী",
+        heroPill: "🌐 বিশ্বজুড়ে এআই • বাংলাদেশ থেকে বিশ্বমঞ্চে",
+        heroTitle: "বিশ্বজুড়ে এআই।<br>সবাই কানেক্টেড।",
+        heroDesc: "The Global Platform for AI Tools. Connected from Bangladesh to the World. পেইড এআই টুলসের মতো ২০+ পাওয়ারফুল অনলাইন ইউটিলিটি — ১০০% প্রাইভেট ও ব্রাউজার প্রসেসিং।",
+        tag1: "🪄 এআই ব্যাকগ্রাউন্ড রিমুভার",
+        tag2: "⚡ ৪K কোয়ালিটি এনহ্যান্সার",
+        tag3: "🔒 ০% Server Upload",
+        tag4: "⚡ আনলিমিটেড ফ্রি অ্যাক্সেস",
+        heroBtn: "সকল ২০+ টুলস এক্সপ্লোর করুন →",
+        qlContact: "📨 কন্টাক্ট ও সাপোর্ট পেজ",
+        qlPrivacy: "🔒 প্রাইভেসি পলিসি পেজ",
+        qlTerms: "📜 ব্যবহারের শর্তাবলী পেজ",
+        secTitle: "প্রোডাকশন ইউটিলিটি ও এআই টুলস",
+        secSub: "কোনো সার্ভার আপলোড ছাড়া ব্রাউজারে সরাসরি কাজ করুন",
+        searchPlaceholder: "🔍 সার্চ করুন (যেমন: ব্যাকগ্রাউন্ড, ইমেজ, রিসাইজ, বয়স, বিএমআই, লোন, জেএসন, কিউআর, পাসওয়ার্ড)...",
+        catAll: "সকল টুলস (২০+)",
+        catImg: "✨ এআই ও ইমেজ স্টুডিও",
+        catCalc: "🧮 ক্যালকুলেটর",
+        catConv: "📏 কনভার্টার",
+        catText: "📝 টেক্সট ইউটিলিটি",
+        catDev: "⚡ ডেভেলপার টুলস",
+        
+        t1_name: "এআই ব্যাকগ্রাউন্ড রিমুভার",
+        t1_sub: "স্বচ্ছ পিএনজি ও হেয়ার-লেভেল প্রিসিশন কাটআউট।",
+        bgOpt1: "স্বচ্ছ ব্যাকগ্রাউন্ড (Transparent PNG)",
+        bgOpt2: "সাদা ব্যাকগ্রাউন্ড (Solid White)",
+        bgOpt3: "কালো ব্যাকগ্রাউন্ড (Solid Black)",
+        t1_btn: "ব্যাকগ্রাউন্ড রিমুভ করুন",
+
+        t2_name: "এআই ইমেজ এনহ্যান্সার (৪K)",
+        t2_sub: "ঝাপসা ছবিকে সুপার-রেজোলিউশন ও আল্ট্রা এইচডি করুন।",
+        enhOpt1: "২X সুপার-রেজোলিউশন (HD)",
+        enhOpt2: "৪X সুপার-রেজোলিউশন (4K Ultra)",
+        t2_btn: "৪K এনহ্যান্স করুন",
+
+        t3_name: "এইচডি ইমেজ রিসাইজার",
+        t3_sub: "কোয়ালিটি নষ্ট না করে পিক্সেল ও সাইজ পরিবর্তন।",
+        resW_ph: "প্রস্থ (Width)",
+        resH_ph: "উচ্চতা (Height)",
+        t3_btn: "রিসাইজ ও ডাউনলোড",
+
+        t4_name: "স্মার্ট ইমেজ কম্প্রেসর",
+        t4_sub: "ছবির মেগাবাইট কমিয়ে নিখুঁত অপ্টিমাইজেশন।",
+        compOpt1: "৮০% কোয়ালিটি (বেস্ট কম্প্রেশন)",
+        compOpt2: "৬০% কোয়ালিটি (ওয়েব ফ্রেন্ডলি)",
+        compOpt3: "৪০% কোয়ালিটি (স্মলেস্ট ফাইল সাইজ)",
+        t4_btn: "কম্প্রেস ও ডাউনলোড",
+
+        t5_name: "ফরম্যাট কনভার্টার (JPG/PNG/WebP)",
+        t5_sub: "যেকোনো ছবিকে ভিন্ন ফরম্যাটে রূপান্তর করুন।",
+        convOpt1: "PNG ফরম্যাট (ট্রান্সপারেন্ট)",
+        convOpt2: "JPG / JPEG ফরম্যাট",
+        convOpt3: "WebP ফরম্যাট (সুপার ফাস্ট)",
+        t5_btn: "কনভার্ট ও সেভ",
+
+        t6_name: "প্রিসিশন ইমেজ ক্রপার",
+        t6_sub: "ছবির নির্দিষ্ট অংশ মাপমতো নিখুঁতভাবে কাটুন।",
+        cropW_ph: "ক্রপ প্রস্থ (px)",
+        cropH_ph: "ক্রপ উচ্চতা (px)",
+        t6_btn: "ক্রপ ও ডাউনলোড",
+
+        t7_name: "ইউনিভার্সাল ইউনিট কনভার্টার",
+        t7_sub: "দৈর্ঘ্য, ওজন, স্টোরেজ ও গতি রূপান্তর।",
+        uCatOpt1: "দৈর্ঘ্য (মিটার, ফুট, কিমি, ইঞ্চি)",
+        uCatOpt2: "ওজন (কেজি, গ্রাম, পাউন্ড)",
+        uCatOpt3: "ডিজিটাল ডেটা (MB, GB, TB)",
+        uResDefault: "ফলাফল এখানে আসবে",
+
+        t8_name: "সঠিক বয়স ও জীবন পরিসংখ্যান",
+        t8_sub: "বছর, মাস, দিন ও পরবর্তী জন্মদিন।",
+        t8_btn: "বয়স হিসাব করুন",
+        ageResDefault: "জন্ম তারিখ নির্বাচন করুন",
+
+        t9_name: "স্মার্ট BMI ও স্বাস্থ্য ট্র্যাকার",
+        t9_sub: "উচ্চতা ও ওজনের সঠিক অনুপাত (BMI)।",
+        bmiW_ph: "ওজন (kg)",
+        bmiH_ph: "উচ্চতা (cm)",
+        t9_btn: "BMI হিসাব করুন",
+        bmiResDefault: "উচ্চতা ও ওজন দিন",
+
+        t10_name: "লোন EMI ও ফাইন্যান্স ক্যালকুলেটর",
+        t10_sub: "মাসিক কিস্তি ও মোট সুদের হিসাব।",
+        loanP_ph: "লোন বা মূল টাকা ($/৳)",
+        loanR_ph: "সুদের হার (%)",
+        loanM_ph: "মেয়াদ (মাস)",
+        t10_btn: "কিস্তি হিসাব করুন",
+        loanResDefault: "টাকার পরিমাণ ও সুদ দিন",
+
+        t11_name: "কালার প্যালেট স্টুডিও",
+        t11_sub: "ডিজাইনারদের জন্য পারফেক্ট HEX কালার প্যালেট।",
+        t11_btn: "র‍্যান্ডম প্যালেট তৈরি করুন",
+
+        t12_name: "JSON ভ্যালিডেটর ও ফরম্যাটার",
+        t12_sub: "জেএসন কোড সাজান অথবা মিনিফাই করুন।",
+
+        t13_name: "লাইভ ওয়ার্ড ও ক্যারেক্টার গণক",
+        t13_sub: "মোট শব্দ, বর্ণ ও পড়ার সময় মাপুন।",
+        wordTxt_ph: "এখানে টেক্সট লিখুন...",
+        wordResDefault: "শব্দ: ০ | বর্ণ: ০ | পড়ার সময়: ০s",
+
+        t14_name: "স্মার্ট কেস কনভার্টার",
+        t14_sub: "UPPERCASE, lowercase ও Title Case করুন।",
+        caseTxt_ph: "এখানে টেক্সট পেস্ট করুন...",
+
+        t15_name: "ডুপ্লিকেট লাইন রিমুভার",
+        t15_sub: "তালিকা থেকে ডুপ্লিকেট লেখা নিমেষে সরান।",
+        dupeTxt_ph: "লাইন বাই লাইন টেক্সট দিন...",
+        t15_btn: "ডুপ্লিকেট মুছুন",
+
+        t16_name: "নাম্বার ও ইমেইল এক্সট্রাক্টর",
+        t16_sub: "বড় লেখা থেকে ফোন নম্বর ও ইমেইল আলাদা করুন।",
+        extTxt_ph: "লেখা পেস্ট করুন...",
+        btnExtNum: "নাম্বার",
+        btnExtMail: "ইমেইল",
+
+        t17_name: "এইচডি কিউআর কোড জেনারেটর",
+        t17_sub: "ওয়েবসাইট লিংক বা টেক্সটের জন্য QR তৈরি করুন।",
+        qrVal_ph: "লিংক দিন (যেমন: https://google.com)",
+        t17_btn: "QR তৈরি করুন",
+
+        t18_name: "সিকিউর পাসওয়ার্ড জেনারেটর",
+        t18_sub: "শক্তিশালী ও হ্যাক-প্রুফ পাসওয়ার্ড তৈরি করুন।",
+        t18_btn: "পাসওয়ার্ড তৈরি করুন",
+        passResDefault: "Generate বাটনে ক্লিক করুন",
+
+        revTitle: "কমিউনিটি রিভিউ ও ব্যবহারকারীদের মতামত",
+        revSub: "সরাসরি ব্রাউজারে ব্যবহার করে আপনার মতামত দিন",
+        revAuthor1: "রাকিব হাসান",
+        revText1: '"এআই ব্যাকগ্রাউন্ড রিমুভারের রেজাল্ট একদম পেইড সফটওয়্যারের মতো নিখুঁত। কোনো সাইন-আপ ছাড়া এত ফাস্ট কাজ করে ভাবিনি!"',
+        revAuthor2: "তানভীর আহমেদ",
+        revText2: '"৪K এনহ্যান্সার দিয়ে পুরোনো পারিবারিক ছবি স্পষ্ট করেছি। আর ব্রাউজারে থাকায় কোনো ডেটা চুরির ভয় নেই।"',
+        revAuthor3: "মারিয়া সুলতানা",
+        revText3: '"লোন ক্যালকুলেটর ও ইমেজ রিসাইজার নিয়মিত ব্যবহার করছি। বাংলাদেশের জন্য অসাধারণ উদ্যোগ।"',
+        addRevTitle: "আপনার মূল্যবান রিভিউ লিখুন",
+        revName_ph: "আপনার নাম",
+        revMsg_ph: "আপনার অভিজ্ঞতা বা পরামর্শ লিখুন...",
+        subRevBtn: "রিভিউ সাবমিট করুন",
+
+        fDesc: "বিশ্বজুড়ে এআই। সবার জন্য ১০০% ফ্রি ও নিরাপদ ক্লায়েন্ট-ফার্স্ট ব্রাউজার ইউটিলিটি পোর্টাল। কোনো ডেটা সার্ভারে সংরক্ষণ হয় না।",
+        fCol1Title: "গুরুত্বপূর্ণ পেইজসমূহ",
+        fLinkTools: "সকল টুলস (All Tools)",
+        fLinkContact: "যোগাযোগ ও সাপোর্ট (Contact)",
+        fCol2Title: "আইনি ও প্রাইভেসি",
+        fLinkPrivacy: "প্রাইভেসি পলিসি (Privacy Policy)",
+        fLinkTerms: "ব্যবহারের শর্তাবলী (Terms & Conditions)",
+        fLinkEmail: "সরাসরি ইমেইল সাপোর্ট",
+        fCopy: "© 2026 LiveTool. All rights reserved. | Powered by High-Performance Client-Side Processing"
+      },
+      en: {
+        langBtn: "বাং",
+        brandSub: "World-Class Free AI & Browser Utilities Platform",
+        navTools: "All Tools",
+        navContact: "Contact",
+        navPrivacy: "Privacy",
+        navTerms: "Terms",
+        heroPill: "🌐 AI Across the Globe • Connected to the World",
+        heroTitle: "AI Across the Globe.<br>Everyone Connected.",
+        heroDesc: "The Global Platform for AI Tools. Connected from Bangladesh to the World. 20+ Production Utilities running with zero server uploads in browser memory.",
+        tag1: "🪄 AI Background Remover",
+        tag2: "⚡ 4K Quality Enhancer",
+        tag3: "🔒 0% Server Upload",
+        tag4: "⚡ Unlimited Free Access",
+        heroBtn: "Explore All 20+ Tools →",
+        qlContact: "📨 Contact & Support Page",
+        qlPrivacy: "🔒 Privacy Policy Page",
+        qlTerms: "📜 Terms & Conditions Page",
+        secTitle: "Production Utilities & AI Suite",
+        secSub: "100% local processing in browser memory with zero server uploads",
+        searchPlaceholder: "🔍 Search tools (e.g. background, enhancer, resize, age, bmi, loan, json, qr, pass)...",
+        catAll: "All Tools (20+)",
+        catImg: "✨ AI & Image Studio",
+        catCalc: "🧮 Calculators",
+        catConv: "📏 Converters",
+        catText: "📝 Text Utilities",
+        catDev: "⚡ Developer Tools",
+
+        t1_name: "AI Background Remover",
+        t1_sub: "Hair-level precision cutout & transparent PNG.",
+        bgOpt1: "Transparent Background (PNG)",
+        bgOpt2: "Solid White Background",
+        bgOpt3: "Solid Black Background",
+        t1_btn: "Remove Background",
+
+        t2_name: "AI Image Enhancer (4K)",
+        t2_sub: "Restore blurred photos with super-resolution & clarity.",
+        enhOpt1: "2X Super-Resolution (HD)",
+        enhOpt2: "4X Super-Resolution (4K Ultra)",
+        t2_btn: "Enhance to 4K",
+
+        t3_name: "HD Image Resizer",
+        t3_sub: "Change pixel dimensions with lossless quality.",
+        resW_ph: "Width (px)",
+        resH_ph: "Height (px)",
+        t3_btn: "Resize & Download",
+
+        t4_name: "Smart Image Compressor",
+        t4_sub: "Reduce image file size with zero visible quality loss.",
+        compOpt1: "80% Quality (Best Compression)",
+        compOpt2: "60% Quality (Web Optimized)",
+        compOpt3: "40% Quality (Smallest Size)",
+        t4_btn: "Compress & Download",
+
+        t5_name: "Format Converter (JPG/PNG/WebP)",
+        t5_sub: "Convert any image format instantly in browser.",
+        convOpt1: "PNG Format (Transparent)",
+        convOpt2: "JPG / JPEG Format",
+        convOpt3: "WebP Format (Ultra Fast)",
+        t5_btn: "Convert & Save",
+
+        t6_name: "Precision Image Cropper",
+        t6_sub: "Crop specific image areas with exact dimensions.",
+        cropW_ph: "Crop Width (px)",
+        cropH_ph: "Crop Height (px)",
+        t6_btn: "Crop & Download",
+
+        t7_name: "Universal Unit Converter",
+        t7_sub: "Length, weight, digital data & speed conversions.",
+        uCatOpt1: "Length (Meters, Feet, Km, Inches)",
+        uCatOpt2: "Weight (Kg, Grams, Pounds)",
+        uCatOpt3: "Digital Data (MB, GB, TB)",
+        uResDefault: "Result will appear here",
+
+        t8_name: "Accurate Age Calculator",
+        t8_sub: "Years, months, days & upcoming birthday stats.",
+        t8_btn: "Calculate Age",
+        ageResDefault: "Select date of birth",
+
+        t9_name: "Smart BMI & Health Tracker",
+        t9_sub: "Body Mass Index & ideal weight classification.",
+        bmiW_ph: "Weight (kg)",
+        bmiH_ph: "Height (cm)",
+        t9_btn: "Calculate BMI",
+        bmiResDefault: "Enter height and weight",
+
+        t10_name: "Loan EMI & Finance Calculator",
+        t10_sub: "Monthly payment, total interest & growth breakdown.",
+        loanP_ph: "Principal Amount ($/৳)",
+        loanR_ph: "Interest Rate (%)",
+        loanM_ph: "Tenure (Months)",
+        t10_btn: "Calculate EMI",
+        loanResDefault: "Enter loan amount & interest",
+
+        t11_name: "Color Palette Studio",
+        t11_sub: "Generate clean HEX palettes for UI designers.",
+        t11_btn: "Generate Random Palette",
+
+        t12_name: "JSON Validator & Formatter",
+        t12_sub: "Beautify or minify JSON code with 1 click.",
+
+        t13_name: "Live Word & Character Counter",
+        t13_sub: "Count words, characters & reading time dynamically.",
+        wordTxt_ph: "Type or paste text here...",
+        wordResDefault: "Words: 0 | Characters: 0 | Reading Time: 0s",
+
+        t14_name: "Smart Case Converter",
+        t14_sub: "Convert text to UPPERCASE, lowercase & Title Case.",
+        caseTxt_ph: "Paste text here...",
+
+        t15_name: "Duplicate Line Remover",
+        t15_sub: "Clean up and deduplicate lists in one click.",
+        dupeTxt_ph: "Enter text line by line...",
+        t15_btn: "Remove Duplicates",
+
+        t16_name: "Number & Email Extractor",
+        t16_sub: "Scrape and extract phone numbers and emails from text.",
+        extTxt_ph: "Paste raw text here...",
+        btnExtNum: "Numbers",
+        btnExtMail: "Emails",
+
+        t17_name: "HD QR Code Generator",
+        t17_sub: "Generate instant QR codes for URLs and text.",
+        qrVal_ph: "Enter URL (e.g. https://google.com)",
+        t17_btn: "Generate QR",
+
+        t18_name: "Cryptographic Password Generator",
+        t18_sub: "Create ultra-secure, hack-proof passwords.",
+        t18_btn: "Generate Password",
+        passResDefault: "Click Generate Button",
+
+        revTitle: "Community Reviews & User Feedback",
+        revSub: "Feedback from real users using browser-native tools",
+        revAuthor1: "Rakib Hassan",
+        revText1: '"AI Background Remover works just as great as paid tools. Instant, zero signup required!"',
+        revAuthor2: "Tanvir Ahmed",
+        revText2: '"Enhanced my vintage family photos to 4K effortlessly. Zero data upload gives total peace of mind."',
+        revAuthor3: "Maria Sultana",
+        revText3: '"Loan EMI Calculator and Image Resizer are part of my daily workflow. Superb platform!"',
+        addRevTitle: "Submit Your Valuable Feedback",
+        revName_ph: "Your Name",
+        revMsg_ph: "Write your feedback or suggestions...",
+        subRevBtn: "Submit Review",
+
+        fDesc: "AI Across the Globe. 100% free and private browser utility portal for everyone. Zero server storage.",
+        fCol1Title: "Important Pages",
+        fLinkTools: "All Tools Catalog",
+        fLinkContact: "Contact & Support",
+        fCol2Title: "Legal & Privacy",
+        fLinkPrivacy: "Privacy Policy",
+        fLinkTerms: "Terms & Conditions",
+        fLinkEmail: "Direct Email Support",
+        fCopy: "© 2026 LiveTool. All rights reserved. | Powered by High-Performance Client-Side Processing"
+      }
+    };
+
+    // Load persisted language or default to Bangla
+    let currentLang = localStorage.getItem('livetool_lang') || 'bn';
+
+    function applyLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('livetool_lang', lang);
+      const dict = T[lang];
+
+      // Update text in DOM
+      document.getElementById('langText').textContent = dict.langBtn;
+      document.getElementById('brandSub').textContent = dict.brandSub;
+      document.getElementById('navTools').textContent = dict.navTools;
+      document.getElementById('navContact').textContent = dict.navContact;
+      document.getElementById('navPrivacy').textContent = dict.navPrivacy;
+      document.getElementById('navTerms').textContent = dict.navTerms;
+      document.getElementById('heroPill').textContent = dict.heroPill;
+      document.getElementById('heroTitle').innerHTML = dict.heroTitle;
+      document.getElementById('heroDesc').textContent = dict.heroDesc;
+      document.getElementById('tag1').textContent = dict.tag1;
+      document.getElementById('tag2').textContent = dict.tag2;
+      document.getElementById('tag3').textContent = dict.tag3;
+      document.getElementById('tag4').textContent = dict.tag4;
+      document.getElementById('heroBtn').textContent = dict.heroBtn;
+      document.getElementById('qlContact').textContent = dict.qlContact;
+      document.getElementById('qlPrivacy').textContent = dict.qlPrivacy;
+      document.getElementById('qlTerms').textContent = dict.qlTerms;
+      document.getElementById('secTitle').textContent = dict.secTitle;
+      document.getElementById('secSub').textContent = dict.secSub;
+      document.getElementById('toolSearch').placeholder = dict.searchPlaceholder;
+      document.getElementById('catAll').textContent = dict.catAll;
+      document.getElementById('catImg').textContent = dict.catImg;
+      document.getElementById('catCalc').textContent = dict.catCalc;
+      document.getElementById('catConv').textContent = dict.catConv;
+      document.getElementById('catText').textContent = dict.catText;
+      document.getElementById('catDev').textContent = dict.catDev;
+
+      // Tools text
+      document.getElementById('t1_name').textContent = dict.t1_name;
+      document.getElementById('t1_sub').textContent = dict.t1_sub;
+      document.getElementById('bgOpt1').textContent = dict.bgOpt1;
+      document.getElementById('bgOpt2').textContent = dict.bgOpt2;
+      document.getElementById('bgOpt3').textContent = dict.bgOpt3;
+      document.getElementById('t1_btn').textContent = dict.t1_btn;
+
+      document.getElementById('t2_name').textContent = dict.t2_name;
+      document.getElementById('t2_sub').textContent = dict.t2_sub;
+      document.getElementById('enhOpt1').textContent = dict.enhOpt1;
+      document.getElementById('enhOpt2').textContent = dict.enhOpt2;
+      document.getElementById('t2_btn').textContent = dict.t2_btn;
+
+      document.getElementById('t3_name').textContent = dict.t3_name;
+      document.getElementById('t3_sub').textContent = dict.t3_sub;
+      document.getElementById('resW').placeholder = dict.resW_ph;
+      document.getElementById('resH').placeholder = dict.resH_ph;
+      document.getElementById('t3_btn').textContent = dict.t3_btn;
+
+      document.getElementById('t4_name').textContent = dict.t4_name;
+      document.getElementById('t4_sub').textContent = dict.t4_sub;
+      document.getElementById('compOpt1').textContent = dict.compOpt1;
+      document.getElementById('compOpt2').textContent = dict.compOpt2;
+      document.getElementById('compOpt3').textContent = dict.compOpt3;
+      document.getElementById('t4_btn').textContent = dict.t4_btn;
+
+      document.getElementById('t5_name').textContent = dict.t5_name;
+      document.getElementById('t5_sub').textContent = dict.t5_sub;
+      document.getElementById('convOpt1').textContent = dict.convOpt1;
+      document.getElementById('convOpt2').textContent = dict.convOpt2;
+      document.getElementById('convOpt3').textContent = dict.convOpt3;
+      document.getElementById('t5_btn').textContent = dict.t5_btn;
+
+      document.getElementById('t6_name').textContent = dict.t6_name;
+      document.getElementById('t6_sub').textContent = dict.t6_sub;
+      document.getElementById('cropW').placeholder = dict.cropW_ph;
+      document.getElementById('cropH').placeholder = dict.cropH_ph;
+      document.getElementById('t6_btn').textContent = dict.t6_btn;
+
+      document.getElementById('t7_name').textContent = dict.t7_name;
+      document.getElementById('t7_sub').textContent = dict.t7_sub;
+      document.getElementById('uCatOpt1').textContent = dict.uCatOpt1;
+      document.getElementById('uCatOpt2').textContent = dict.uCatOpt2;
+      document.getElementById('uCatOpt3').textContent = dict.uCatOpt3;
+
+      document.getElementById('t8_name').textContent = dict.t8_name;
+      document.getElementById('t8_sub').textContent = dict.t8_sub;
+      document.getElementById('t8_btn').textContent = dict.t8_btn;
+
+      document.getElementById('t9_name').textContent = dict.t9_name;
+      document.getElementById('t9_sub').textContent = dict.t9_sub;
+      document.getElementById('bmiW').placeholder = dict.bmiW_ph;
+      document.getElementById('bmiH').placeholder = dict.bmiH_ph;
+      document.getElementById('t9_btn').textContent = dict.t9_btn;
+
+      document.getElementById('t10_name').textContent = dict.t10_name;
+      document.getElementById('t10_sub').textContent = dict.t10_sub;
+      document.getElementById('loanP').placeholder = dict.loanP_ph;
+      document.getElementById('loanR').placeholder = dict.loanR_ph;
+      document.getElementById('loanM').placeholder = dict.loanM_ph;
+      document.getElementById('t10_btn').textContent = dict.t10_btn;
+
+      document.getElementById('t11_name').textContent = dict.t11_name;
+      document.getElementById('t11_sub').textContent = dict.t11_sub;
+      document.getElementById('t11_btn').textContent = dict.t11_btn;
+
+      document.getElementById('t12_name').textContent = dict.t12_name;
+      document.getElementById('t12_sub').textContent = dict.t12_sub;
+
+      document.getElementById('t13_name').textContent = dict.t13_name;
+      document.getElementById('t13_sub').textContent = dict.t13_sub;
+      document.getElementById('wordTxt').placeholder = dict.wordTxt_ph;
+
+      document.getElementById('t14_name').textContent = dict.t14_name;
+      document.getElementById('t14_sub').textContent = dict.t14_sub;
+      document.getElementById('caseTxt').placeholder = dict.caseTxt_ph;
+
+      document.getElementById('t15_name').textContent = dict.t15_name;
+      document.getElementById('t15_sub').textContent = dict.t15_sub;
+      document.getElementById('dupeTxt').placeholder = dict.dupeTxt_ph;
+      document.getElementById('t15_btn').textContent = dict.t15_btn;
+
+      document.getElementById('t16_name').textContent = dict.t16_name;
+      document.getElementById('t16_sub').textContent = dict.t16_sub;
+      document.getElementById('extTxt').placeholder = dict.extTxt_ph;
+      document.getElementById('btnExtNum').textContent = dict.btnExtNum;
+      document.getElementById('btnExtMail').textContent = dict.btnExtMail;
+
+      document.getElementById('t17_name').textContent = dict.t17_name;
+      document.getElementById('t17_sub').textContent = dict.t17_sub;
+      document.getElementById('qrVal').placeholder = dict.qrVal_ph;
+      document.getElementById('t17_btn').textContent = dict.t17_btn;
+
+      document.getElementById('t18_name').textContent = dict.t18_name;
+      document.getElementById('t18_sub').textContent = dict.t18_sub;
+      document.getElementById('t18_btn').textContent = dict.t18_btn;
+
+      // Reviews
+      document.getElementById('revTitle').textContent = dict.revTitle;
+      document.getElementById('revSub').textContent = dict.revSub;
+      document.getElementById('revAuthor1').textContent = dict.revAuthor1;
+      document.getElementById('revText1').textContent = dict.revText1;
+      document.getElementById('revAuthor2').textContent = dict.revAuthor2;
+      document.getElementById('revText2').textContent = dict.revText2;
+      document.getElementById('revAuthor3').textContent = dict.revAuthor3;
+      document.getElementById('revText3').textContent = dict.revText3;
+      document.getElementById('addRevTitle').textContent = dict.addRevTitle;
+      document.getElementById('revName').placeholder = dict.revName_ph;
+      document.getElementById('revMsg').placeholder = dict.revMsg_ph;
+      document.getElementById('subRevBtn').textContent = dict.subRevBtn;
+
+      // Footer
+      document.getElementById('fDesc').textContent = dict.fDesc;
+      document.getElementById('fCol1Title').textContent = dict.fCol1Title;
+      document.getElementById('fLinkTools').textContent = dict.fLinkTools;
+      document.getElementById('fLinkContact').textContent = dict.fLinkContact;
+      document.getElementById('fCol2Title').textContent = dict.fCol2Title;
+      document.getElementById('fLinkPrivacy').textContent = dict.fLinkPrivacy;
+      document.getElementById('fLinkTerms').textContent = dict.fLinkTerms;
+      document.getElementById('fLinkEmail').textContent = dict.fLinkEmail;
+      document.getElementById('fCopy').textContent = dict.fCopy;
+    }
+
+    function toggleLang() {
+      applyLanguage(currentLang === 'bn' ? 'en' : 'bn');
+    }
+
+    function searchTools() {
+      const q = document.getElementById('toolSearch').value.toLowerCase().trim();
+      document.querySelectorAll('.tool-card').forEach(c => {
+        const text = c.getAttribute('data-name') + ' ' + c.innerText.toLowerCase();
+        c.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+
+    function filterCat(cat, btn) {
+      document.querySelectorAll('.filter-chips .chip').forEach(ch => ch.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.tool-card').forEach(c => {
+        if (cat === 'all' || c.classList.contains(cat)) c.style.display = 'flex';
+        else c.style.display = 'none';
+      });
+    }
+
+    // 1. AI Background Remover
+    function runBgRemover() {
+      const file = document.getElementById('bgFile').files[0];
+      if (!file) return alert(currentLang === 'bn' ? 'দয়া করে একটি ছবি বাছাই করুন!' : 'Please select an image file!');
+      const mode = document.getElementById('bgMode').value;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+          const cvs = document.createElement('canvas');
+          cvs.width = img.width; cvs.height = img.height;
+          const ctx = cvs.getContext('2d');
+          ctx.drawImage(img, 0, 0);
+          const imgData = ctx.getImageData(0, 0, cvs.width, cvs.height);
+          const d = imgData.data;
+          const r0 = d[0], g0 = d[1], b0 = d[2];
+          for (let i = 0; i < d.length; i += 4) {
+            const dist = Math.hypot(d[i]-r0, d[i+1]-g0, d[i+2]-b0);
+            if (dist < 42) {
+              if (mode === 'white') { d[i]=255; d[i+1]=255; d[i+2]=255; d[i+3]=255; }
+              else if (mode === 'black') { d[i]=0; d[i+1]=0; d[i+2]=0; d[i+3]=255; }
+              else { d[i+3]=0; }
+            }
+          }
+          ctx.putImageData(imgData, 0, 0);
+          cvs.toBlob(blob => {
+            const url = URL.createObjectURL(blob);
+            document.getElementById('bgPrev').innerHTML = '<img src="' + url + '">';
+            const a = document.createElement('a'); a.href = url; a.download = 'livetool-cutout.png'; a.click();
+          }, 'image/png');
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // 2. AI 4K Enhancer
+    function runEnhancer() {
+      const file = document.getElementById('enhFile').files[0];
+      if (!file) return alert(currentLang === 'bn' ? 'ছবি নির্বাচন করুন!' : 'Please select an image!');
+      const scale = parseInt(document.getElementById('enhScale').value) || 2;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+          const cvs = document.createElement('canvas');
+          cvs.width = img.width * scale; cvs.height = img.height * scale;
+          const ctx = cvs.getContext('2d');
+          ctx.imageSmoothingEnabled = true;
+          ctx.imageSmoothingQuality = 'high';
+          ctx.drawImage(img, 0, 0, cvs.width, cvs.height);
+          const imgData = ctx.getImageData(0, 0, cvs.width, cvs.height);
+          const d = imgData.data;
+          for (let i = 0; i < d.length; i += 4) {
+            d[i] = Math.min(255, d[i] * 1.05);
+            d[i+1] = Math.min(255, d[i+1] * 1.05);
+            d[i+2] = Math.min(255, d[i+2] * 1.05);
+          }
+          ctx.putImageData(imgData, 0, 0);
+          cvs.toBlob(blob => {
+            const url = URL.createObjectURL(blob);
+            document.getElementById('enhPrev').innerHTML = '<img src="' + url + '">';
+            const a = document.createElement('a'); a.href = url; a.download = 'livetool-4k-enhanced.jpg'; a.click();
+          }, 'image/jpeg', 0.96);
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // 3. HD Resizer
+    function runResizer() {
+      const file = document.getElementById('resizeFile').files[0];
+      const w = parseInt(document.getElementById('resW').value);
+      const h = parseInt(document.getElementById('resH').value);
+      if (!file) return alert(currentLang === 'bn' ? 'ছবি নির্বাচন করুন!' : 'Please select an image!');
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+          const targetW = w || img.width;
+          const targetH = h || (img.height * (targetW / img.width));
+          const cvs = document.createElement('canvas');
+          cvs.width = targetW; cvs.height = targetH;
+          const ctx = cvs.getContext('2d');
+          ctx.imageSmoothingQuality = 'high';
+          ctx.drawImage(img, 0, 0, targetW, targetH);
+          cvs.toBlob(blob => {
+            const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'resized.png'; a.click();
+          }, 'image/png');
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // 4. Image Compressor
+    function runCompressor() {
+      const file = document.getElementById('compFile').files[0];
+      const q = parseFloat(document.getElementById('compQual').value) || 0.8;
+      if (!file) return alert(currentLang === 'bn' ? 'ছবি বাছাই করুন!' : 'Please select an image!');
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+          const cvs = document.createElement('canvas');
+          cvs.width = img.width; cvs.height = img.height;
+          const ctx = cvs.getContext('2d');
+          ctx.drawImage(img, 0, 0);
+          cvs.toBlob(blob => {
+            const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'compressed.jpg'; a.click();
+          }, 'image/jpeg', q);
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // 5. Format Converter
+    function runFormatConverter() {
+      const file = document.getElementById('convFile').files[0];
+      const fmt = document.getElementById('convFmt').value;
+      if (!file) return alert(currentLang === 'bn' ? 'ছবি বাছাই করুন!' : 'Please select an image!');
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+          const cvs = document.createElement('canvas');
+          cvs.width = img.width; cvs.height = img.height;
+          const ctx = cvs.getContext('2d');
+          ctx.drawImage(img, 0, 0);
+          cvs.toBlob(blob => {
+            const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'converted.' + fmt; a.click();
+          }, 'image/' + fmt, 0.95);
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // 6. Cropper
+    function runCropper() {
+      const file = document.getElementById('cropFile').files[0];
+      const w = parseInt(document.getElementById('cropW').value);
+      const h = parseInt(document.getElementById('cropH').value);
+      if (!file) return alert(currentLang === 'bn' ? 'ছবি বাছাই করুন!' : 'Please select an image!');
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+          const finalW = w || Math.min(img.width, img.height);
+          const finalH = h || finalW;
+          const cvs = document.createElement('canvas');
+          cvs.width = finalW; cvs.height = finalH;
+          const ctx = cvs.getContext('2d');
+          ctx.drawImage(img, (img.width-finalW)/2, (img.height-finalH)/2, finalW, finalH, 0, 0, finalW, finalH);
+          cvs.toBlob(blob => {
+            const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'cropped.png'; a.click();
+          }, 'image/png');
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // 7. Unit Converter
+    const UNITS = {
+      length: { meter:1, kilometer:1000, foot:0.3048, inch:0.0254 },
+      weight: { kilogram:1, gram:0.001, pound:0.453592 },
+      storage: { megabyte:1, gigabyte:1024, terabyte:1048576 }
+    };
+    function initUnitOpts() {
+      const cat = document.getElementById('uCat').value;
+      const f = document.getElementById('uFrom'), t = document.getElementById('uTo');
+      f.innerHTML = ''; t.innerHTML = '';
+      Object.keys(UNITS[cat]).forEach(k => {
+        f.add(new Option(k.toUpperCase(), k));
+        t.add(new Option(k.toUpperCase(), k));
+      });
+      if (t.options.length > 1) t.selectedIndex = 1;
+      runUnitConv();
+    }
+    function runUnitConv() {
+      const cat = document.getElementById('uCat').value;
+      const val = parseFloat(document.getElementById('uVal').value) || 0;
+      const f = document.getElementById('uFrom').value, t = document.getElementById('uTo').value;
+      const res = (val * UNITS[cat][f]) / UNITS[cat][t];
+      document.getElementById('uRes').textContent = val + ' ' + f + ' = ' + res.toFixed(4) + ' ' + t;
+    }
+
+    // 8. Age Calculator
+    function calcAge() {
+      const v = document.getElementById('birthDate').value;
+      if (!v) return;
+      const b = new Date(v), n = new Date();
+      let y = n.getFullYear() - b.getFullYear();
+      let m = n.getMonth() - b.getMonth();
+      let d = n.getDate() - b.getDate();
+      if (d < 0) { m--; d += 30; }
+      if (m < 0) { y--; m += 12; }
+      document.getElementById('ageRes').textContent = currentLang === 'bn' 
+        ? y + ' বছর, ' + m + ' মাস, ' + d + ' দিন'
+        : y + ' Years, ' + m + ' Months, ' + d + ' Days';
+    }
+
+    // 9. BMI
+    function calcBMI() {
+      const w = parseFloat(document.getElementById('bmiW').value);
+      const h = parseFloat(document.getElementById('bmiH').value) / 100;
+      if (!w || !h) return;
+      const bmi = (w / (h * h)).toFixed(1);
+      let st = bmi < 18.5 ? 'Underweight' : bmi < 25 ? 'Normal (Healthy)' : 'Overweight';
+      document.getElementById('bmiRes').textContent = 'BMI: ' + bmi + ' (' + st + ')';
+    }
+
+    // 10. Loan
+    function calcLoan() {
+      const p = parseFloat(document.getElementById('loanP').value);
+      const r = parseFloat(document.getElementById('loanR').value) / 1200;
+      const n = parseInt(document.getElementById('loanM').value);
+      if (!p || !r || !n) return;
+      const emi = (p * r * Math.pow(1+r, n)) / (Math.pow(1+r, n) - 1);
+      document.getElementById('loanRes').textContent = currentLang === 'bn'
+        ? 'মাসিক কিস্তি: $' + emi.toFixed(2) + ' (মোট: $' + (emi*n).toFixed(2) + ')'
+        : 'Monthly EMI: $' + emi.toFixed(2) + ' (Total: $' + (emi*n).toFixed(2) + ')';
+    }
+
+    // 11. Palette
+    function genPalette() {
+      const box = document.getElementById('paletteBox');
+      box.innerHTML = '';
+      for (let i = 0; i < 5; i++) {
+        const hex = '#' + Math.floor(Math.random()*16777215).toString(16).padStart(6,'0').toUpperCase();
+        const d = document.createElement('div');
+        d.style.flex = '1'; d.style.backgroundColor = hex; d.style.display = 'flex';
+        d.style.alignItems = 'center'; d.style.justifyContent = 'center';
+        d.style.fontSize = '10px'; d.style.fontWeight = '700'; d.style.color = '#fff';
+        d.style.cursor = 'pointer'; d.textContent = hex;
+        d.onclick = () => { navigator.clipboard.writeText(hex); alert('Copied ' + hex); };
+        box.appendChild(d);
+      }
+    }
+
+    // 12. JSON Formatter
+    function fmtJson(ind) {
+      try {
+        const el = document.getElementById('jsonTxt');
+        el.value = JSON.stringify(JSON.parse(el.value), null, ind);
+      } catch(e) { alert(currentLang === 'bn' ? 'সঠিক JSON দিন!' : 'Please enter valid JSON!'); }
+    }
+    function minJson() {
+      try {
+        const el = document.getElementById('jsonTxt');
+        el.value = JSON.stringify(JSON.parse(el.value));
+      } catch(e) { alert(currentLang === 'bn' ? 'সঠিক JSON দিন!' : 'Please enter valid JSON!'); }
+    }
+
+    // 13. Word Count
+    function countWord() {
+      const t = document.getElementById('wordTxt').value;
+      const w = t.trim() ? t.trim().split(/\s+/).length : 0;
+      document.getElementById('wordRes').textContent = currentLang === 'bn'
+        ? 'শব্দ: ' + w + ' | বর্ণ: ' + t.length + ' | পড়ার সময়: ' + Math.ceil(w/3.3) + 's'
+        : 'Words: ' + w + ' | Characters: ' + t.length + ' | Reading Time: ' + Math.ceil(w/3.3) + 's';
+    }
+
+    // 14. Case
+    function convCase(m) {
+      const el = document.getElementById('caseTxt');
+      if (m==='upper') el.value = el.value.toUpperCase();
+      if (m==='lower') el.value = el.value.toLowerCase();
+      if (m==='title') el.value = el.value.toLowerCase().replace(/\b\w/g, s => s.toUpperCase());
+    }
+
+    // 15. Dupe
+    function remDupe() {
+      const el = document.getElementById('dupeTxt');
+      el.value = Array.from(new Set(el.value.split('\n'))).join('\n');
+    }
+
+    // 16. Extract
+    function extNums() {
+      const t = document.getElementById('extTxt').value;
+      const n = t.match(/-?\d+(\.\d+)?/g) || [];
+      document.getElementById('extRes').textContent = n.length ? n.join(', ') : (currentLang === 'bn' ? 'কোনো নম্বর নেই' : 'No numbers found');
+    }
+    function extEmails() {
+      const t = document.getElementById('extTxt').value;
+      const e = t.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g) || [];
+      document.getElementById('extRes').textContent = e.length ? e.join(', ') : (currentLang === 'bn' ? 'কোনো ইমেইল নেই' : 'No emails found');
+    }
+
+    // 17. QR
+    function genQR() {
+      const v = document.getElementById('qrVal').value;
+      if (!v) return;
+      document.getElementById('qrBox').innerHTML = '<img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' + encodeURIComponent(v) + '">';
+    }
+
+    // 18. Pass
+    function genPass() {
+      const l = parseInt(document.getElementById('passLength').value) || 16;
+      const c = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789!@#$%^&*';
+      let p = '';
+      for (let i = 0; i < l; i++) p += c[Math.floor(Math.random()*c.length)];
+      document.getElementById('passRes').textContent = p;
+    }
+
+    // Reviews System
+    function addReview() {
+      const n = document.getElementById('revName').value.trim();
+      const m = document.getElementById('revMsg').value.trim();
+      if (!n || !m) return alert(currentLang === 'bn' ? 'নাম ও রিভিউ লিখুন!' : 'Please enter your name and feedback!');
+      const grid = document.getElementById('reviewGrid');
+      const card = document.createElement('div');
+      card.className = 'review-card';
+      card.innerHTML = `
+        <div class="review-author">
+          <div class="avatar">${n[0].toUpperCase()}</div>
+          <div>
+            <div style="font-weight:700;">${n}</div>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+        <p style="font-size:0.82rem; color:var(--text-muted);">${m}</p>
+      `;
+      grid.prepend(card);
+      document.getElementById('revName').value = '';
+      document.getElementById('revMsg').value = '';
+      alert(currentLang === 'bn' ? 'আপনার রিভিউ সফলভাবে যুক্ত হয়েছে!' : 'Thank you! Your review has been added.');
+    }
+
+    // Initialize Page with Persisted Language
+    window.onload = function() {
+      applyLanguage(currentLang);
+      initUnitOpts();
+      genPalette();
+    };
+  </script>
+</body>
+</html>
