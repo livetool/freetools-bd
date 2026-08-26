@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Privacy Policy — LiveTool</title>
+  <meta name="description" content="Read the privacy policy of LiveTool. Learn how we ensure 100% private browser processing with no server uploads.">
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-warm: #FAF7F2;
+      --bg-card: #FFFFFF;
+      --bg-card-subtle: #F5F1EA;
+      --border-light: #EBE5DC;
+      --text-dark: #191B1F;
+      --text-muted: #64748B;
+      --text-sub: #857B70;
+      --coral-primary: #E15B44;
+      --coral-hover: #CC4A34;
+      --footer-bg: #0F172A;
+      --footer-text: #94A3B8;
+      --footer-border: #1E293B;
+      --radius-xl: 32px;
+      --shadow-card: 0 4px 20px -2px rgba(25, 27, 31, 0.05);
+    }
+
+    body.dark-theme {
+      --bg-warm: #0B131B;
+      --bg-card: #121E2A;
+      --bg-card-subtle: #162634;
+      --border-light: #1E3142;
+      --text-dark: #F8FAFC;
+      --text-muted: #94A3B8;
+      --text-sub: #94A3B8;
+      --coral-primary: #FF7A63;
+      --footer-bg: #070D14;
+      --footer-text: #94A3B8;
+      --footer-border: #15222E;
+      --shadow-card: 0 4px 24px -2px rgba(0, 0, 0, 0.4);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', 'Hind Siliguri', sans-serif;
+      background-color: var(--bg-warm);
+      color: var(--text-dark);
+      line-height: 1.7;
+      transition: background-color 0.25s ease, color 0.25s ease;
+    }
+    .wrap { width: 100%; max-width: 900px; margin: 0 auto; padding: 0 28px; }
+    .font-serif { font-family: 'Lora', Georgia, serif; font-weight: 700; letter-spacing: -0.02em; }
+
+    /* Header */
+    .header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(250, 247, 242, 0.94);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(235, 229, 220, 0.8);
+      height: 74px; display: flex; align-items: center;
+    }
+    body.dark-theme .header {
+      background: rgba(11, 19, 27, 0.92);
+      border-bottom: 1px solid rgba(30, 49, 66, 0.8);
+    }
+    .nav-wrap { display: flex; align-items: center; justify-content: space-between; width: 100%; }
+    .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-size: 1.4rem; font-weight: 900; color: var(--text-dark); }
+    .logo-badge { width: 38px; height: 38px; border-radius: 12px; background: linear-gradient(135deg, #F97316, #E15B44); display: flex; align-items: center; justify-content: center; color: #FFFFFF; font-size: 1.2rem; }
+    .brand-tool { color: var(--coral-primary); }
+    
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+    .btn-icon-header { width: 38px; height: 38px; background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--text-dark); font-size: 0.95rem; cursor: pointer; text-decoration: none; }
+
+    /* Content Styling */
+    .content-section { padding: 50px 0 80px; }
+    .policy-card { background: var(--bg-card); border: 1px solid var(--border-light); border-radius: var(--radius-xl); padding: 48px; box-shadow: var(--shadow-card); }
+    
+    h1.page-title { font-size: 2.6rem; margin-bottom: 12px; color: var(--text-dark); }
+    .last-updated { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 32px; display: block; }
+    
+    h2 { font-size: 1.4rem; color: var(--text-dark); margin-top: 32px; margin-bottom: 12px; font-family: 'Plus Jakarta Sans', sans-serif; }
+    p, li { font-size: 1rem; color: var(--text-muted); margin-bottom: 16px; }
+    ul { padding-left: 20px; margin-bottom: 16px; }
+    li { margin-bottom: 8px; }
+
+    /* Footer */
+    .site-footer { background: var(--footer-bg); color: var(--footer-text); padding: 40px 0 24px; font-size: 0.88rem; }
+    .footer-bottom-bar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer-nav { display: flex; gap: 20px; }
+    .footer-nav a { color: #CBD5E1; text-decoration: none; font-weight: 700; }
+    .footer-nav a:hover { color: var(--coral-primary); }
+
+    @media (max-width: 768px) {
+      .policy-card { padding: 24px; }
+      h1.page-title { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="wrap nav-wrap">
+      <a href="index.html" class="brand">
+        <div class="logo-badge">⚡</div>
+        <div>
+          <span style="color:var(--text-dark)">Live</span><span class="brand-tool">Tool</span>
+        </div>
+      </a>
+
+      <div class="nav-actions">
+        <button class="btn-icon-header" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
+          <span id="themeIcon">🌙</span>
+        </button>
+        <a href="index.html" class="btn-icon-header" title="Home">
+          <span>🏠</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="wrap content-section">
+    <div class="policy-card">
+      <h1 class="page-title font-serif">Privacy Policy</h1>
+      <span class="last-updated">Last updated: January 2026</span>
+
+      <p>At <strong>LiveTool</strong>, accessible from livetool.com, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by LiveTool and how we use it.</p>
+
+      <h2>1. Local Browser Processing (No Data Uploads)</h2>
+      <p>Most of our tools (such as Image Resizer, Background Remover, 4K Enhancer, and Format Converters) operate entirely within your web browser using HTML5 Canvas and client-side JavaScript. This means:</p>
+      <ul>
+        <li>Your files, photos, and text data <strong>never leave your device</strong>.</li>
+        <li>We do not upload, store, or view your private documents or images on any remote server.</li>
+      </ul>
+
+      <h2>2. Log Files & Analytics</h2>
+      <p>Like many standard websites, LiveTool follows a standard procedure of using log files. These files log visitors when they visit websites. The information collected includes internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date and time stamp, referring/exit pages, and possibly the number of clicks. These are not linked to any information that is personally identifiable.</p>
+
+      <h2>3. Cookies and Web Beacons</h2>
+      <p>LiveTool uses 'cookies' to store information including visitors' preferences, and the pages on the website that the visitor accessed or visited. This information is used to optimize the users' experience by customizing our web page content based on visitors' browser type and/or other information.</p>
+
+      <h2>4. Third Party Privacy Policies</h2>
+      <p>LiveTool's Privacy Policy does not apply to other advertisers or websites. Thus, we are advising you to consult the respective Privacy Policies of these third-party ad servers for more detailed information. It may include their practices and instructions about how to opt-out of certain options.</p>
+
+      <h2>5. Consent</h2>
+      <p>By using our website, you hereby consent to our Privacy Policy and agree to its terms.</p>
+
+      <h2>6. Contact Us</h2>
+      <p>If you have any questions or suggestions about our Privacy Policy, do not hesitate to contact us at <strong>livetooloffice@gmail.com</strong>.</p>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="wrap footer-bottom-bar">
+      <p>© 2026 LiveTool · Built to be useful, not noisy.</p>
+      <nav class="footer-nav">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      const isDark = document.body.classList.toggle('dark-theme');
+      document.getElementById('themeIcon').textContent = isDark ? '☀️' : '🌙';
+      localStorage.setItem('livetool_theme', isDark ? 'dark' : 'light');
+    }
+
+    // Load saved theme
+    if (localStorage.getItem('livetool_theme') === 'dark') {
+      document.body.classList.add('dark-theme');
+      document.getElementById('themeIcon').textContent = '☀️';
+    }
+  </script>
+</body>
+</html>
