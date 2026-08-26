@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LiveTool — Free, Fast & Private Online 22+ Utilities</title>
-  <meta name="description" content="LiveTool provides 100% free, browser-based AI image tools, unit converters, health & financial calculators, text utilities, and developer tools. 0% server upload, instant processing.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>LiveTool — 22+ Free Online Browser Utilities</title>
+  <meta name="description" content="100% Free, Private AI Image Tools, Converters, Health & Financial Calculators, and Dev Utilities running directly in your browser.">
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Hind+Siliguri:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
   <!-- Header -->
@@ -18,14 +18,28 @@
         <span class="logo-box">✨</span>
         <span class="brand-text"><span>Live</span>Tool</span>
       </a>
-      <button class="mobile-toggle" id="menuToggle" aria-label="Toggle Menu">☰</button>
+      
+      <div class="header-right">
+        <!-- Language Switcher Button -->
+        <button class="lang-toggle-btn" id="langToggleBtn" onclick="toggleLanguage()" title="Change Language / ভাষা পরিবর্তন">
+          <span class="lang-icon">🌐</span>
+          <span id="langLabel">বাংলা</span>
+        </button>
+
+        <button class="mobile-toggle" id="menuToggle" aria-label="Toggle Navigation Menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+
       <nav class="nav-links" id="navLinks">
-        <a href="#tools" class="nav-link active">Tools (22+)</a>
-        <a href="#about" class="nav-link">About</a>
-        <a href="#faq" class="nav-link">FAQ</a>
-        <a href="privacy.html" class="nav-link">Privacy</a>
-        <a href="terms.html" class="nav-link">Terms</a>
-        <a href="contact.html" class="nav-link btn-contact">Contact & Support</a>
+        <a href="#tools" class="nav-link active" data-i18n="nav_tools" onclick="closeMobileMenu()">Tools (22+)</a>
+        <a href="#about" class="nav-link" data-i18n="nav_about" onclick="closeMobileMenu()">About</a>
+        <a href="#faq" class="nav-link" data-i18n="nav_faq" onclick="closeMobileMenu()">FAQ</a>
+        <a href="privacy.html" class="nav-link" data-i18n="nav_privacy" onclick="closeMobileMenu()">Privacy</a>
+        <a href="terms.html" class="nav-link" data-i18n="nav_terms" onclick="closeMobileMenu()">Terms</a>
+        <a href="contact.html" class="nav-link btn-contact" data-i18n="nav_contact" onclick="closeMobileMenu()">Contact & Support</a>
       </nav>
     </div>
   </header>
@@ -33,12 +47,12 @@
   <!-- Hero Section -->
   <section class="hero">
     <div class="wrap hero-wrap">
-      <div class="pill-badge">✨ 100% CLIENT-FIRST PRIVACY • NO REGISTRATION • 22+ PRO UTILITIES</div>
-      <h1>Essential Online Tools for Everyday Productivity.</h1>
-      <p>AI Background Isolation, 4K Super-Resolution Upscaling, Lossless Resizing, Multi-Unit Converters, Financial Calculators, and Developer Utilities — running 100% inside your browser memory.</p>
+      <div class="pill-badge" data-i18n="hero_pill">✨ 100% CLIENT-FIRST PRIVACY • NO REGISTRATION • 22+ PRO UTILITIES</div>
+      <h1 data-i18n="hero_title">Essential Online Tools for Everyday Productivity.</h1>
+      <p data-i18n="hero_desc">AI Background Isolation, 4K Super-Resolution Upscaling, Lossless Resizing, Multi-Unit Converters, Financial Calculators, and Developer Utilities — running 100% inside your browser memory.</p>
       <div class="hero-actions">
-        <a href="#tools" class="btn btn-primary">Explore All 22+ Tools</a>
-        <a href="contact.html" class="btn btn-secondary">Report an Issue / Suggest</a>
+        <a href="#tools" class="btn btn-primary" data-i18n="hero_btn_explore">Explore All 22+ Tools</a>
+        <a href="contact.html" class="btn btn-secondary" data-i18n="hero_btn_suggest">Report an Issue / Suggest</a>
       </div>
     </div>
   </section>
@@ -47,171 +61,170 @@
   <main class="wrap main-section" id="tools">
     <div class="section-head">
       <div>
-        <h2>Free Browser Utilities</h2>
-        <p class="subtext">Select a category or search for tools instantly</p>
+        <h2 data-i18n="catalog_title">Free Browser Utilities</h2>
+        <p class="subtext" data-i18n="catalog_subtitle">Select a category or search for tools instantly</p>
       </div>
-      <div class="tool-count-badge">22+ Production Tools</div>
+      <div class="tool-count-badge" data-i18n="catalog_badge">22+ Production Tools</div>
     </div>
 
     <!-- Search & Filter Chips -->
     <div class="search-bar-wrap">
-      <input type="text" id="toolSearch" class="search-input" placeholder="🔍 Search 22+ tools (e.g. background, enhance, resize, compress, unit, age, json)..." oninput="filterTools()">
+      <input type="text" id="toolSearch" class="search-input" placeholder="🔍 Search 22+ tools (e.g. background, enhance, resize, compress, unit, age, json)..." oninput="filterTools()" data-i18n-placeholder="search_placeholder">
     </div>
 
     <div class="filter-chips">
-      <button class="chip active" onclick="filterCategory('all', this)">All Utilities (22+)</button>
-      <button class="chip" onclick="filterCategory('image', this)">✨ AI & Image Suite</button>
-      <button class="chip" onclick="filterCategory('calc', this)">🧮 Calculators</button>
-      <button class="chip" onclick="filterCategory('converter', this)">📏 Converters</button>
-      <button class="chip" onclick="filterCategory('text', this)">📝 Text Utilities</button>
-      <button class="chip" onclick="filterCategory('dev', this)">⚡ Dev & Security</button>
+      <button class="chip active" onclick="filterCategory('all', this)" data-i18n="cat_all">All Utilities (22+)</button>
+      <button class="chip" onclick="filterCategory('image', this)" data-i18n="cat_image">✨ AI & Image Suite</button>
+      <button class="chip" onclick="filterCategory('calc', this)" data-i18n="cat_calc">🧮 Calculators</button>
+      <button class="chip" onclick="filterCategory('converter', this)" data-i18n="cat_converter">📏 Converters</button>
+      <button class="chip" onclick="filterCategory('text', this)" data-i18n="cat_text">📝 Text Utilities</button>
+      <button class="chip" onclick="filterCategory('dev', this)" data-i18n="cat_dev">⚡ Dev & Security</button>
     </div>
 
     <!-- Tools Grid -->
     <div class="tools-grid" id="toolsGrid">
 
       <!-- Tool 1: AI Background Remover -->
-      <article class="tool-card image" data-name="ai background remover transparent png cutout remove bg clean zero shadow">
+      <article class="tool-card image" data-name="ai background remover transparent png cutout remove bg clean zero shadow ব্যাকগ্রাউন্ড মুছুন">
         <div class="card-top">
           <span class="card-icon">🪄</span>
           <div>
-            <h3>AI Background Remover</h3>
-            <p>Clean subject isolation & true transparent PNG.</p>
+            <h3 data-i18n="t1_title">AI Background Remover</h3>
+            <p data-i18n="t1_desc">Clean subject isolation & true transparent PNG.</p>
           </div>
         </div>
         <div class="card-body">
           <input type="file" id="bgRemoverFile" accept="image/*" class="file-input">
           <div class="range-wrap">
-            <label>Sensitivity Tolerance: <strong id="bgTolLabel">35</strong></label>
+            <label><span data-i18n="lbl_tolerance">Sensitivity Tolerance</span>: <strong id="bgTolLabel">35</strong></label>
             <input type="range" id="bgTolerance" min="10" max="70" value="35" oninput="document.getElementById('bgTolLabel').textContent=this.value">
           </div>
           <div class="input-row">
             <select id="bgOutputFormat" class="select-input">
-              <option value="transparent">Transparent PNG (No Background)</option>
-              <option value="white">Solid White Background</option>
-              <option value="black">Solid Black Background</option>
+              <option value="transparent" data-i18n="opt_trans">Transparent PNG (No Background)</option>
+              <option value="white" data-i18n="opt_white">Solid White Background</option>
+              <option value="black" data-i18n="opt_black">Solid Black Background</option>
             </select>
           </div>
-          <button class="btn btn-tool" onclick="runBgRemover()">Remove Background</button>
+          <button class="btn btn-tool" onclick="runBgRemover()" data-i18n="btn_remove_bg">Remove Background</button>
           <div id="bgRemoverPreview" class="preview-box"></div>
         </div>
       </article>
 
       <!-- Tool 2: AI Image Enhancer -->
-      <article class="tool-card image" data-name="ai image enhancer 4k upscale quality clarity sharpness super resolution">
+      <article class="tool-card image" data-name="ai image enhancer 4k upscale quality clarity sharpness super resolution ছবি এইচডি করুন">
         <div class="card-top">
           <span class="card-icon">⚡</span>
           <div>
-            <h3>AI Image Enhancer (4K HD)</h3>
-            <p>Super-resolution upscale & unsharp mask clarity.</p>
+            <h3 data-i18n="t2_title">AI Image Enhancer (4K HD)</h3>
+            <p data-i18n="t2_desc">Super-resolution upscale & unsharp mask clarity.</p>
           </div>
         </div>
         <div class="card-body">
           <input type="file" id="enhancerFile" accept="image/*" class="file-input">
           <div class="input-row">
             <select id="enhanceScale" class="select-input">
-              <option value="2">2X Super-Resolution (HD)</option>
-              <option value="4">4X Super-Resolution (4K Ultra)</option>
+              <option value="2" data-i18n="opt_scale_2">2X Super-Resolution (HD)</option>
+              <option value="4" data-i18n="opt_scale_4">4X Super-Resolution (4K Ultra)</option>
             </select>
           </div>
-          <button class="btn btn-tool" onclick="runEnhancer()">Enhance & Upscale</button>
+          <button class="btn btn-tool" onclick="runEnhancer()" data-i18n="btn_enhance">Enhance & Upscale</button>
           <div id="enhancerPreview" class="preview-box"></div>
         </div>
       </article>
 
       <!-- Tool 3: HD Image Resizer -->
-      <article class="tool-card image" data-name="image resizer resize dimensions scale hd width height">
+      <article class="tool-card image" data-name="image resizer resize dimensions scale hd width height ছবির সাইজ পরিবর্তন">
         <div class="card-top">
           <span class="card-icon">🖼️</span>
           <div>
-            <h3>HD Image Resizer</h3>
-            <p>Resize images without losing clarity.</p>
+            <h3 data-i18n="t3_title">HD Image Resizer</h3>
+            <p data-i18n="t3_desc">Resize images without losing clarity.</p>
           </div>
         </div>
         <div class="card-body">
           <input type="file" id="resizerFile" accept="image/*" class="file-input">
           <div class="input-row">
-            <input type="number" id="resizerWidth" placeholder="Width (px)">
-            <input type="number" id="resizerHeight" placeholder="Height (px)">
+            <input type="number" id="resizerWidth" placeholder="Width (px)" data-i18n-placeholder="ph_width">
+            <input type="number" id="resizerHeight" placeholder="Height (px)" data-i18n-placeholder="ph_height">
           </div>
-          <button class="btn btn-tool" onclick="runResizer()">Resize & Download</button>
+          <button class="btn btn-tool" onclick="runResizer()" data-i18n="btn_resize">Resize & Download</button>
         </div>
       </article>
 
       <!-- Tool 4: Image Compressor -->
-      <article class="tool-card image" data-name="image compressor compress reduce mb kb size optimizer">
+      <article class="tool-card image" data-name="image compressor compress reduce mb kb size optimizer ছবি ছোট করুন">
         <div class="card-top">
           <span class="card-icon">📦</span>
           <div>
-            <h3>Smart Image Compressor</h3>
-            <p>Reduce file size with lossless optimization.</p>
+            <h3 data-i18n="t4_title">Smart Image Compressor</h3>
+            <p data-i18n="t4_desc">Reduce file size with lossless optimization.</p>
           </div>
         </div>
         <div class="card-body">
           <input type="file" id="compressorFile" accept="image/*" class="file-input">
           <div class="range-wrap">
-            <label>Quality: <strong id="qualityLabel">75%</strong></label>
+            <label><span data-i18n="lbl_quality">Quality</span>: <strong id="qualityLabel">75%</strong></label>
             <input type="range" id="compressorQuality" min="15" max="95" value="75" oninput="document.getElementById('qualityLabel').textContent=this.value+'%'">
           </div>
-          <button class="btn btn-tool" onclick="runCompressor()">Compress & Download</button>
+          <button class="btn btn-tool" onclick="runCompressor()" data-i18n="btn_compress">Compress & Download</button>
         </div>
       </article>
 
       <!-- Tool 5: Format Converter -->
-      <article class="tool-card image" data-name="format converter jpg png webp convert export">
+      <article class="tool-card image" data-name="format converter jpg png webp convert export ফরম্যাট পরিবর্তন">
         <div class="card-top">
           <span class="card-icon">🔄</span>
           <div>
-            <h3>Image Format Converter</h3>
-            <p>Convert JPG ↔ PNG ↔ WebP in high fidelity.</p>
+            <h3 data-i18n="t5_title">Image Format Converter</h3>
+            <p data-i18n="t5_desc">Convert JPG ↔ PNG ↔ WebP in high fidelity.</p>
           </div>
         </div>
         <div class="card-body">
           <input type="file" id="converterFile" accept="image/*" class="file-input">
           <select id="targetFormat" class="select-input">
-            <option value="png">Output as PNG (Transparency)</option>
-            <option value="jpeg">Output as JPG / JPEG</option>
-            <option value="webp">Output as WebP (Ultra Fast)</option>
+            <option value="png" data-i18n="opt_fmt_png">Output as PNG (Transparency)</option>
+            <option value="jpeg" data-i18n="opt_fmt_jpg">Output as JPG / JPEG</option>
+            <option value="webp" data-i18n="opt_fmt_webp">Output as WebP (Ultra Fast)</option>
           </select>
-          <button class="btn btn-tool" onclick="runConverter()">Convert & Save</button>
+          <button class="btn btn-tool" onclick="runConverter()" data-i18n="btn_convert_img">Convert & Save</button>
         </div>
       </article>
 
       <!-- Tool 6: Image Cropper -->
-      <article class="tool-card image" data-name="image crop cropper cut center aspect dimension">
+      <article class="tool-card image" data-name="image crop cropper cut center aspect dimension ছবি কাটুন">
         <div class="card-top">
           <span class="card-icon">✂️</span>
           <div>
-            <h3>Precision Image Cropper</h3>
-            <p>Crop images from center with custom dimensions.</p>
+            <h3 data-i18n="t6_title">Precision Image Cropper</h3>
+            <p data-i18n="t6_desc">Crop images from center with custom dimensions.</p>
           </div>
         </div>
         <div class="card-body">
           <input type="file" id="cropperFile" accept="image/*" class="file-input">
           <div class="input-row">
-            <input type="number" id="cropWidth" placeholder="Crop Width (px)">
-            <input type="number" id="cropHeight" placeholder="Crop Height (px)">
+            <input type="number" id="cropWidth" placeholder="Crop Width (px)" data-i18n-placeholder="ph_crop_w">
+            <input type="number" id="cropHeight" placeholder="Crop Height (px)" data-i18n-placeholder="ph_crop_h">
           </div>
-          <button class="btn btn-tool" onclick="runCropper()">Crop & Download</button>
+          <button class="btn btn-tool" onclick="runCropper()" data-i18n="btn_crop">Crop & Download</button>
         </div>
       </article>
 
       <!-- Tool 7: Multi-Unit Converter -->
-      <article class="tool-card converter" data-name="unit converter length weight temperature area volume storage data speed">
+      <article class="tool-card converter" data-name="unit converter length weight temperature area volume storage data speed একক রূপান্তর">
         <div class="card-top">
           <span class="card-icon">📏</span>
           <div>
-            <h3>Universal Unit Converter</h3>
-            <p>Length, Weight, Temp, Storage, Speed & Time.</p>
+            <h3 data-i18n="t7_title">Universal Unit Converter</h3>
+            <p data-i18n="t7_desc">Length, Weight, Temp, Storage, Speed & Time.</p>
           </div>
         </div>
         <div class="card-body">
           <select id="unitCategory" class="select-input" onchange="updateUnitOptions()">
-            <option value="length">Length (Meters, Feet, Inches, KM)</option>
-            <option value="weight">Weight (KG, Grams, Pounds, Oz)</option>
-            <option value="temp">Temperature (Celsius, Fahrenheit, K)</option>
-            <option value="storage">Digital Data (MB, GB, TB, KB)</option>
-            <option value="speed">Speed (KM/h, MPH, M/s)</option>
+            <option value="length" data-i18n="opt_len">Length (Meters, Feet, Inches, KM)</option>
+            <option value="weight" data-i18n="opt_wgt">Weight (KG, Grams, Pounds, Oz)</option>
+            <option value="storage" data-i18n="opt_str">Digital Data (MB, GB, TB, KB)</option>
+            <option value="speed" data-i18n="opt_spd">Speed (KM/h, MPH, M/s)</option>
           </select>
           <div class="input-row">
             <input type="number" id="unitVal" value="10" placeholder="Value" oninput="runUnitConvert()">
@@ -220,128 +233,128 @@
           <div class="input-row">
             <select id="unitTo" class="select-input" onchange="runUnitConvert()"></select>
           </div>
-          <div class="result-box" id="unitResult">Result will appear here</div>
+          <div class="result-box" id="unitResult" data-i18n="res_unit_init">Result will appear here</div>
         </div>
       </article>
 
       <!-- Tool 8: Age Calculator -->
-      <article class="tool-card calc" data-name="age calculator birthday life stats years months days">
+      <article class="tool-card calc" data-name="age calculator birthday life stats years months days বয়স গণক">
         <div class="card-top">
           <span class="card-icon">🎂</span>
           <div>
-            <h3>Precision Age & Life Stats</h3>
-            <p>Exact years, months, days & next birthday.</p>
+            <h3 data-i18n="t8_title">Precision Age & Life Stats</h3>
+            <p data-i18n="t8_desc">Exact years, months, days & next birthday.</p>
           </div>
         </div>
         <div class="card-body">
           <input type="date" id="birthDate" class="date-input">
-          <button class="btn btn-tool" onclick="calculateAge()">Calculate Age</button>
-          <div class="result-box" id="ageResult">Select birthdate above</div>
+          <button class="btn btn-tool" onclick="calculateAge()" data-i18n="btn_calc_age">Calculate Age</button>
+          <div class="result-box" id="ageResult" data-i18n="res_age_init">Select birthdate above</div>
         </div>
       </article>
 
       <!-- Tool 9: BMI Calculator -->
-      <article class="tool-card calc" data-name="bmi calculator body mass index health weight height fitness">
+      <article class="tool-card calc" data-name="bmi calculator body mass index health weight height fitness বিএমআই">
         <div class="card-top">
           <span class="card-icon">🏃</span>
           <div>
-            <h3>Smart BMI & Health Tracker</h3>
-            <p>Calculate Body Mass Index & ideal weight.</p>
+            <h3 data-i18n="t9_title">Smart BMI & Health Tracker</h3>
+            <p data-i18n="t9_desc">Calculate Body Mass Index & ideal weight.</p>
           </div>
         </div>
         <div class="card-body">
           <div class="input-row">
-            <input type="number" id="bmiWeight" placeholder="Weight (kg)">
-            <input type="number" id="bmiHeight" placeholder="Height (cm)">
+            <input type="number" id="bmiWeight" placeholder="Weight (kg)" data-i18n-placeholder="ph_bmi_w">
+            <input type="number" id="bmiHeight" placeholder="Height (cm)" data-i18n-placeholder="ph_bmi_h">
           </div>
-          <button class="btn btn-tool" onclick="calculateBMI()">Calculate BMI</button>
-          <div class="result-box" id="bmiResult">Enter height and weight</div>
+          <button class="btn btn-tool" onclick="calculateBMI()" data-i18n="btn_calc_bmi">Calculate BMI</button>
+          <div class="result-box" id="bmiResult" data-i18n="res_bmi_init">Enter height and weight</div>
         </div>
       </article>
 
       <!-- Tool 10: Financial & Loan EMI Calculator -->
-      <article class="tool-card calc" data-name="loan emi calculator interest finance compound discount vat tax principal">
+      <article class="tool-card calc" data-name="loan emi calculator interest finance compound discount vat tax principal লোন কিস্তি">
         <div class="card-top">
           <span class="card-icon">💰</span>
           <div>
-            <h3>Loan EMI & Finance Calculator</h3>
-            <p>Monthly installment & total interest growth.</p>
+            <h3 data-i18n="t10_title">Loan EMI & Finance Calculator</h3>
+            <p data-i18n="t10_desc">Monthly installment & total interest growth.</p>
           </div>
         </div>
         <div class="card-body">
-          <input type="number" id="loanAmount" placeholder="Loan / Principal Amount ($)">
+          <input type="number" id="loanAmount" placeholder="Loan / Principal Amount ($)" data-i18n-placeholder="ph_loan_p">
           <div class="input-row">
-            <input type="number" id="loanRate" placeholder="Annual Rate (%)">
-            <input type="number" id="loanMonths" placeholder="Tenure (Months)">
+            <input type="number" id="loanRate" placeholder="Annual Rate (%)" data-i18n-placeholder="ph_loan_r">
+            <input type="number" id="loanMonths" placeholder="Tenure (Months)" data-i18n-placeholder="ph_loan_m">
           </div>
-          <button class="btn btn-tool" onclick="calculateLoan()">Calculate EMI</button>
-          <div class="result-box" id="loanResult">Enter principal and rate</div>
+          <button class="btn btn-tool" onclick="calculateLoan()" data-i18n="btn_calc_loan">Calculate EMI</button>
+          <div class="result-box" id="loanResult" data-i18n="res_loan_init">Enter principal and rate</div>
         </div>
       </article>
 
       <!-- Tool 11: Color Palette Studio -->
-      <article class="tool-card dev" data-name="color palette generator hex rgb shade designer theme">
+      <article class="tool-card dev" data-name="color palette generator hex rgb shade designer theme কালার প্যালেট">
         <div class="card-top">
           <span class="card-icon">🎨</span>
           <div>
-            <h3>Color Palette Studio</h3>
-            <p>Harmonic HEX palettes & shade generator.</p>
+            <h3 data-i18n="t11_title">Color Palette Studio</h3>
+            <p data-i18n="t11_desc">Harmonic HEX palettes & shade generator.</p>
           </div>
         </div>
         <div class="card-body">
-          <button class="btn btn-tool" onclick="generatePalette()">Generate Random Palette</button>
+          <button class="btn btn-tool" onclick="generatePalette()" data-i18n="btn_gen_palette">Generate Random Palette</button>
           <div id="paletteDisplay" class="palette-bar"></div>
         </div>
       </article>
 
       <!-- Tool 12: JSON Formatter & Validator -->
-      <article class="tool-card dev" data-name="json formatter validator beautify minify lint format syntax">
+      <article class="tool-card dev" data-name="json formatter validator beautify minify lint format syntax জেএসন">
         <div class="card-top">
           <span class="card-icon">🧑‍💻</span>
           <div>
-            <h3>JSON Validator & Formatter</h3>
-            <p>Format, minify & validate JSON syntax.</p>
+            <h3 data-i18n="t12_title">JSON Validator & Formatter</h3>
+            <p data-i18n="t12_desc">Format, minify & validate JSON syntax.</p>
           </div>
         </div>
         <div class="card-body">
           <textarea id="jsonInput" class="text-area" placeholder='{"name":"LiveTool"}'></textarea>
           <div class="btn-group">
-            <button class="btn btn-small" onclick="formatJson(2)">Beautify</button>
-            <button class="btn btn-small" onclick="minifyJson()">Minify</button>
+            <button class="btn btn-small" onclick="formatJson(2)" data-i18n="btn_beautify">Beautify</button>
+            <button class="btn btn-small" onclick="minifyJson()" data-i18n="btn_minify">Minify</button>
           </div>
         </div>
       </article>
 
       <!-- Tool 13: Live Word Counter -->
-      <article class="tool-card text" data-name="word counter character counter reading time paragraphs letters">
+      <article class="tool-card text" data-name="word counter character counter reading time paragraphs letters শব্দ গণক">
         <div class="card-top">
           <span class="card-icon">📝</span>
           <div>
-            <h3>Live Word & Character Counter</h3>
-            <p>Real-time analytics and reading time.</p>
+            <h3 data-i18n="t13_title">Live Word & Character Counter</h3>
+            <p data-i18n="t13_desc">Real-time analytics and reading time.</p>
           </div>
         </div>
         <div class="card-body">
-          <textarea id="wordText" class="text-area" placeholder="Type or paste your text here..." oninput="countWords()"></textarea>
+          <textarea id="wordText" class="text-area" placeholder="Type or paste your text here..." oninput="countWords()" data-i18n-placeholder="ph_word_txt"></textarea>
           <div class="stats-row">
-            <span>Words: <strong id="wordCount">0</strong></span>
-            <span>Chars: <strong id="charCount">0</strong></span>
-            <span>Reading: <strong id="readTime">0s</strong></span>
+            <span><span data-i18n="lbl_words">Words</span>: <strong id="wordCount">0</strong></span>
+            <span><span data-i18n="lbl_chars">Chars</span>: <strong id="charCount">0</strong></span>
+            <span><span data-i18n="lbl_reading">Reading</span>: <strong id="readTime">0s</strong></span>
           </div>
         </div>
       </article>
 
       <!-- Tool 14: Case Converter -->
-      <article class="tool-card text" data-name="case converter upper lower title sentence capitalize words">
+      <article class="tool-card text" data-name="case converter upper lower title sentence capitalize words কেস রূপান্তর">
         <div class="card-top">
           <span class="card-icon">🔤</span>
           <div>
-            <h3>Smart Case Converter</h3>
-            <p>Convert text to UPPER, lower, Title or Sentence case.</p>
+            <h3 data-i18n="t14_title">Smart Case Converter</h3>
+            <p data-i18n="t14_desc">Convert text to UPPER, lower, Title or Sentence case.</p>
           </div>
         </div>
         <div class="card-body">
-          <textarea id="caseText" class="text-area" placeholder="Type or paste text here..."></textarea>
+          <textarea id="caseText" class="text-area" placeholder="Type or paste text here..." data-i18n-placeholder="ph_case_txt"></textarea>
           <div class="btn-group">
             <button class="btn btn-small" onclick="convertCase('upper')">UPPERCASE</button>
             <button class="btn btn-small" onclick="convertCase('lower')">lowercase</button>
@@ -351,135 +364,15 @@
       </article>
 
       <!-- Tool 15: Duplicate Lines Remover -->
-      <article class="tool-card text" data-name="duplicate lines remove cleaner sort lines unique">
+      <article class="tool-card text" data-name="duplicate lines remove cleaner sort lines unique ডুপ্লিকেট মুছুন">
         <div class="card-top">
           <span class="card-icon">🧹</span>
           <div>
-            <h3>Duplicate Lines Remover</h3>
-            <p>Remove duplicate lines and clean lists.</p>
+            <h3 data-i18n="t15_title">Duplicate Lines Remover</h3>
+            <p data-i18n="t15_desc">Remove duplicate lines and clean lists.</p>
           </div>
         </div>
         <div class="card-body">
-          <textarea id="dupeText" class="text-area" placeholder="Paste lines of text..."></textarea>
+          <textarea id="dupeText" class="text-area" placeholder="Paste lines of text..." data-i18n-placeholder="ph_dupe_txt"></textarea>
           <div class="btn-group">
-            <button class="btn btn-tool" onclick="removeDuplicates()">Remove Dupes</button>
-            <button class="btn btn-secondary" onclick="sortLines(false)">Sort A–Z</button>
-          </div>
-        </div>
-      </article>
-
-      <!-- Tool 16: Number & Email Extractor -->
-      <article class="tool-card text" data-name="number extractor extract emails filter regex scrape">
-        <div class="card-top">
-          <span class="card-icon">🔢</span>
-          <div>
-            <h3>Number & Email Extractor</h3>
-            <p>Pull out numbers and emails from raw text.</p>
-          </div>
-        </div>
-        <div class="card-body">
-          <textarea id="extractText" class="text-area" placeholder="Paste text containing numbers or emails..."></textarea>
-          <div class="btn-group">
-            <button class="btn btn-small" onclick="extractNumbers()">Extract Numbers</button>
-            <button class="btn btn-small" onclick="extractEmails()">Extract Emails</button>
-          </div>
-          <div class="result-box" id="extractResult">—</div>
-        </div>
-      </article>
-
-      <!-- Tool 17: QR Code Generator -->
-      <article class="tool-card dev" data-name="qr code generator qr link url wifi download barcode">
-        <div class="card-top">
-          <span class="card-icon">📱</span>
-          <div>
-            <h3>HD QR Code Generator</h3>
-            <p>Generate scannable QR codes for websites & text.</p>
-          </div>
-        </div>
-        <div class="card-body">
-          <input type="text" id="qrText" placeholder="Enter URL or text (e.g. https://google.com)">
-          <button class="btn btn-tool" onclick="generateQR()">Generate QR</button>
-          <div id="qrResult" class="preview-box"></div>
-        </div>
-      </article>
-
-      <!-- Tool 18: Secure Password Generator -->
-      <article class="tool-card dev" data-name="password generator secure random strong crypto generator">
-        <div class="card-top">
-          <span class="card-icon">🔒</span>
-          <div>
-            <h3>Secure Password Generator</h3>
-            <p>Generate cryptographically strong passwords.</p>
-          </div>
-        </div>
-        <div class="card-body">
-          <input type="number" id="passLength" value="16" min="6" max="64" placeholder="Length (e.g. 16)">
-          <button class="btn btn-tool" onclick="generatePassword()">Generate Password</button>
-          <div class="result-box font-mono" id="passwordResult">Click generate above</div>
-        </div>
-      </article>
-
-    </div>
-  </main>
-
-  <!-- About Section -->
-  <section class="section-band" id="about">
-    <div class="wrap">
-      <h2>About LiveTool</h2>
-      <p>LiveTool is a modern, privacy-first suite of web utilities designed to make digital work faster and effortless. All 22+ tools process your files directly inside your browser memory (RAM), ensuring that your photos, documents, and personal details are never uploaded or stored on any external server.</p>
-    </div>
-  </section>
-
-  <!-- FAQ Section -->
-  <section class="wrap faq-section" id="faq">
-    <h2>Frequently Asked Questions</h2>
-    <div class="faq-accordion">
-      <details class="faq-item">
-        <summary>Are these 22+ utilities really 100% free?</summary>
-        <p>Yes, absolutely. All utilities on LiveTool are completely free with no daily limits, hidden subscriptions, or account requirements.</p>
-      </details>
-      <details class="faq-item">
-        <summary>Are my images or documents uploaded to a remote server?</summary>
-        <p>No. LiveTool processes images, calculations, and conversions entirely inside your local browser using HTML5 Canvas and WebAssembly. Your files never leave your device.</p>
-      </details>
-      <details class="faq-item">
-        <summary>How can I request a new tool or report an issue?</summary>
-        <p>You can visit our <a href="contact.html">Contact & Support page</a> or email us directly at <strong>Lifetooloffice@gmail.com</strong>.</p>
-      </details>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="wrap footer-wrap">
-      <div class="footer-brand">
-        <div class="brand">
-          <span class="logo-box">✨</span>
-          <span class="brand-text"><span>Live</span>Tool</span>
-        </div>
-        <p>Fast, privacy-first online utilities crafted for creators, developers, and everyday productivity.</p>
-      </div>
-      <div class="footer-nav">
-        <div class="footer-col">
-          <strong>Navigation</strong>
-          <a href="#tools">All Tools (22+)</a>
-          <a href="#about">About</a>
-          <a href="#faq">FAQ</a>
-        </div>
-        <div class="footer-col">
-          <strong>Legal & Support</strong>
-          <a href="privacy.html">Privacy Policy</a>
-          <a href="terms.html">Terms & Conditions</a>
-          <a href="contact.html">Contact Us</a>
-        </div>
-      </div>
-    </div>
-    <div class="wrap footer-bottom">
-      <p>© 2026 LiveTool. All rights reserved.</p>
-      <p>Official Contact: <a href="mailto:Lifetooloffice@gmail.com">Lifetooloffice@gmail.com</a></p>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
-</html>
+            <button class="btn btn-tool" onclick="removeDuplicates()" data-i18n="btn_remove_dupe">Remove Dupes</bu
