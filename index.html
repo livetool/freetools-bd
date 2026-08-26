@@ -3,315 +3,267 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>LiveTool — বিশ্বমানের ফ্রি এআই ও ইউটিলিটি প্ল্যাটফর্ম</title>
-  <meta name="description" content="বিশ্বজুড়ে এআই। পেইড এআই টুলের মতো ২০+ পাওয়ারফুল অনলাইন ইউটিলিটি — ১০০% প্রাইভেট ও ব্রাউজার প্রসেসিং।">
+  <title>LiveTool — Small tasks. Done here. | ফ্রি অনলাইন টুলস</title>
+  <meta name="description" content="A pocket-sized collection of image, text and calculator tools. No account, no uploads, no maze of menus. 100% private browser processing.">
+  <meta name="keywords" content="LiveTool, image resizer, background remover, image converter, 4k enhancer, pdf tools, bangla calculator, age calculator, online utilities">
+  <meta name="author" content="LiveTool">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="google-site-verification" content="_5kDeY2UTUzw3iHhEzo_u7Had4nfN2mX9sJZAPNB5_U" />
   
+  <!-- Canonical & Multilingual Hreflang SEO Tags -->
+  <link rel="canonical" href="https://livetool.com/">
+  <link rel="alternate" hreflang="bn" href="https://livetool.com/?lang=bn">
+  <link rel="alternate" hreflang="en" href="https://livetool.com/?lang=en">
+  <link rel="alternate" hreflang="x-default" href="https://livetool.com/">
+
+  <!-- Open Graph (Social Sharing) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="LiveTool">
+  <meta property="og:url" content="https://livetool.com/">
+  <meta property="og:title" content="LiveTool — Small tasks. Done here. | ফ্রি অনলাইন টুলস">
+  <meta property="og:description" content="A pocket-sized collection of image, text and calculator tools. 100% private browser processing.">
+  <meta property="og:image" content="https://livetool.com/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="LiveTool — Fast & Private Browser Utilities">
+  <meta property="og:locale" content="bn_BD">
+  <meta property="og:locale:alternate" content="en_US">
+
+  <!-- Twitter / X Card Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@livetool">
+  <meta name="twitter:creator" content="@livetool">
+  <meta name="twitter:title" content="LiveTool — Small tasks. Done here. | ফ্রি অনলাইন টুলস">
+  <meta name="twitter:description" content="A pocket-sized collection of image, text and calculator tools. 100% private browser processing.">
+  <meta name="twitter:image" content="https://livetool.com/og-image.png">
+
+  <!-- Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Hind+Siliguri:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- JSZip CDN for Batch Downloads -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
   
   <style>
     :root {
-      --primary: #6366f1;
-      --primary-hover: #4f46e5;
-      --accent-cyan: #06b6d4;
-      --accent-emerald: #10b981;
-      --accent-amber: #f59e0b;
-      --bg-dark: #070b18;
-      --bg-card: #0e162d;
-      --bg-card-hover: #141f3d;
-      --bg-input: #17213d;
-      --border-dark: rgba(255, 255, 255, 0.08);
-      --border-glow: rgba(99, 102, 241, 0.4);
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --shadow-glow: 0 0 25px rgba(99, 102, 241, 0.25);
+      --bg-warm: #FAF7F2;
+      --bg-card: #FFFFFF;
+      --bg-card-subtle: #F5F1EA;
+      --border-light: #EBE5DC;
+      --border-hover: #D8D0C5;
+      --text-dark: #191B1F;
+      --text-muted: #64748B;
+      --text-sub: #857B70;
+      --coral-primary: #E15B44;
+      --coral-hover: #CC4A34;
+      --coral-light: #FDF2F0;
+      --badge-yellow-bg: #FEF3C7;
+      --badge-yellow-text: #92400E;
+      --badge-gray-bg: #F1F5F9;
+      --badge-gray-text: #475569;
+      --footer-bg: #0F172A;
+      --footer-text: #94A3B8;
+      --footer-border: #1E293B;
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-xl: 32px;
+      --shadow-card: 0 4px 20px -2px rgba(25, 27, 31, 0.05);
+      --shadow-hover: 0 12px 30px -4px rgba(25, 27, 31, 0.09);
     }
-    
+
+    body.dark-theme {
+      --bg-warm: #0B131B;
+      --bg-card: #121E2A;
+      --bg-card-subtle: #162634;
+      --border-light: #1E3142;
+      --border-hover: #2B455B;
+      --text-dark: #F8FAFC;
+      --text-muted: #94A3B8;
+      --text-sub: #94A3B8;
+      --coral-primary: #FF7A63;
+      --coral-hover: #FA5E43;
+      --coral-light: #2A1A17;
+      --badge-yellow-bg: #2E240D;
+      --badge-yellow-text: #FDE047;
+      --badge-gray-bg: #1E293B;
+      --badge-gray-text: #94A3B8;
+      --footer-bg: #070D14;
+      --footer-text: #94A3B8;
+      --footer-border: #15222E;
+      --shadow-card: 0 4px 24px -2px rgba(0, 0, 0, 0.4);
+      --shadow-hover: 0 12px 36px -4px rgba(0, 0, 0, 0.6);
+    }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    
     body {
-      font-family: 'Plus Jakarta Sans', 'Hind Siliguri', -apple-system, BlinkMacSystemFont, sans-serif;
-      background-color: var(--bg-dark);
-      background-image: 
-        radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.12) 0%, transparent 40%),
-        radial-gradient(circle at 85% 85%, rgba(6, 182, 212, 0.08) 0%, transparent 40%);
-      background-attachment: fixed;
-      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', 'Hind Siliguri', sans-serif;
+      background-color: var(--bg-warm);
+      color: var(--text-dark);
       line-height: 1.6;
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      transition: background-color 0.25s ease, color 0.25s ease;
     }
-    
-    .wrap { width: 100%; max-width: 1240px; margin: 0 auto; padding: 0 16px; }
+    .wrap { width: 100%; max-width: 1160px; margin: 0 auto; padding: 0 28px; }
+    .font-serif { font-family: 'Lora', Georgia, serif; font-weight: 700; letter-spacing: -0.02em; }
 
     /* Header */
     .header {
       position: sticky; top: 0; z-index: 100;
-      background: rgba(7, 11, 24, 0.88);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border-dark);
-      height: 72px; display: flex; align-items: center;
+      background: rgba(250, 247, 242, 0.94);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(235, 229, 220, 0.8);
+      height: 74px; display: flex; align-items: center;
+    }
+    body.dark-theme .header {
+      background: rgba(11, 19, 27, 0.92);
+      border-bottom: 1px solid rgba(30, 49, 66, 0.8);
     }
     .nav-wrap { display: flex; align-items: center; justify-content: space-between; width: 100%; }
-    
-    .brand {
-      display: flex; align-items: center; gap: 12px;
-      text-decoration: none; font-size: 1.35rem; font-weight: 900; color: #fff;
-    }
-    .logo-box {
-      width: 42px; height: 42px; border-radius: 14px;
-      background: linear-gradient(135deg, #6366f1, #06b6d4);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.35rem; box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
-      transition: transform 0.2s;
-    }
-    .brand:hover .logo-box { transform: rotate(5deg) scale(1.05); }
-    .brand-sub { font-size: 0.72rem; color: var(--text-muted); font-weight: 500; }
-    
-    .nav-links { display: flex; align-items: center; gap: 20px; }
-    .nav-link {
-      color: var(--text-muted); text-decoration: none; font-size: 0.86rem;
-      font-weight: 700; transition: all 0.2s; padding: 6px 12px; border-radius: 10px;
-    }
-    .nav-link:hover { color: #fff; background: rgba(255, 255, 255, 0.05); }
-    
-    .nav-actions { display: flex; align-items: center; gap: 12px; }
-    .lang-btn {
-      background: rgba(255, 255, 255, 0.07); border: 1px solid rgba(255, 255, 255, 0.15);
-      color: #fff; padding: 8px 18px; border-radius: 9999px; font-weight: 800;
-      font-size: 0.82rem; cursor: pointer; display: flex; align-items: center; gap: 8px;
-      transition: all 0.2s;
-    }
-    .lang-btn:hover {
-      background: rgba(99, 102, 241, 0.2); border-color: var(--primary);
-      transform: translateY(-1px); box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
-    }
+    .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-size: 1.4rem; font-weight: 900; color: var(--text-dark); }
+    .logo-badge { width: 38px; height: 38px; border-radius: 12px; background: linear-gradient(135deg, #F97316, #E15B44); display: flex; align-items: center; justify-content: center; color: #FFFFFF; font-size: 1.2rem; }
+    .brand-tool { color: var(--coral-primary); }
+    .nav-actions { display: flex; align-items: center; gap: 10px; position: relative; }
+    .btn-header { background: var(--bg-card); border: 1px solid var(--border-light); color: var(--text-dark); padding: 7px 16px; border-radius: 12px; font-size: 0.86rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 6px; }
+    .btn-icon-header { width: 38px; height: 38px; background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--text-dark); font-size: 0.95rem; cursor: pointer; }
 
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
+    /* Dropdown Menu */
+    .menu-dropdown-container { position: relative; }
+    .menu-dropdown {
+      position: absolute; top: calc(100% + 8px); right: 0; width: 230px;
+      background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 16px;
+      box-shadow: var(--shadow-card), 0 12px 30px rgba(0, 0, 0, 0.12);
+      padding: 8px; display: none; flex-direction: column; gap: 4px; z-index: 1000;
+      backdrop-filter: blur(16px);
+      animation: menuFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
+    .menu-dropdown.show { display: flex; }
+    @keyframes menuFadeIn {
+      from { opacity: 0; transform: translateY(-8px) scale(0.96); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .menu-dropdown-item {
+      display: flex; align-items: center; gap: 10px; padding: 9px 12px;
+      color: var(--text-dark); text-decoration: none; font-size: 0.86rem; font-weight: 700;
+      border-radius: 10px; cursor: pointer; border: none; background: transparent; width: 100%; text-align: left;
+    }
+    .menu-dropdown-item:hover { background: var(--bg-card-subtle); color: var(--coral-primary); transform: translateX(2px); }
+    .menu-dropdown-divider { height: 1px; background: var(--border-light); margin: 4px 0; }
 
-    /* Hero Banner */
-    .hero { padding: 32px 0 24px; text-align: center; }
-    .hero-card {
-      background: radial-gradient(circle at top center, #1a224a 0%, #0d162d 65%, #070b18 100%);
-      border: 1px solid rgba(99, 102, 241, 0.35); border-radius: 32px;
-      padding: 44px 20px; box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8);
-      position: relative; overflow: hidden;
-    }
-    .hero-card::before {
-      content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-      background: radial-gradient(circle, rgba(99, 102, 241, 0.07) 0%, transparent 60%);
-      pointer-events: none;
-    }
-    
-    .pill {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(99, 102, 241, 0.15); border: 1px solid rgba(99, 102, 241, 0.4);
-      color: #a5b4fc; font-size: 0.78rem; font-weight: 800; padding: 6px 18px;
-      border-radius: 9999px; margin-bottom: 20px;
-    }
-    .hero h1 { font-size: 2.6rem; font-weight: 900; line-height: 1.25; margin-bottom: 16px; color: #fff; letter-spacing: -0.02em; }
-    .hero p { font-size: 0.98rem; color: #94a3b8; max-width: 680px; margin: 0 auto 24px; }
-    
-    .hero-tags { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 28px; }
-    .tag {
-      background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 7px 16px; border-radius: 9999px; font-size: 0.8rem; color: #e2e8f0; font-weight: 700;
-      display: flex; align-items: center; gap: 6px;
-    }
-    
-    .btn-main {
-      background: linear-gradient(135deg, #6366f1, #4f46e5); color: #fff;
-      font-size: 0.95rem; font-weight: 800; padding: 14px 34px; border-radius: 16px;
-      border: none; cursor: pointer; text-decoration: none; display: inline-flex;
-      align-items: center; gap: 10px; box-shadow: 0 10px 25px rgba(79, 70, 229, 0.45);
-      transition: all 0.2s;
-    }
-    .btn-main:hover { transform: translateY(-2px); box-shadow: 0 15px 35px rgba(79, 70, 229, 0.6); }
+    /* Hero Section */
+    .hero { padding: 54px 0 36px; position: relative; }
+    .hero-glow { position: absolute; top: -20px; right: 5%; width: 420px; height: 420px; background: radial-gradient(circle, rgba(254, 215, 170, 0.4) 0%, rgba(250, 247, 242, 0) 70%); pointer-events: none; }
+    body.dark-theme .hero-glow { background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, rgba(251, 146, 60, 0.12) 40%, rgba(11, 19, 27, 0) 70%); }
+    .hero-content { position: relative; z-index: 1; max-width: 680px; }
+    .eyebrow-pill { display: inline-flex; align-items: center; gap: 8px; color: var(--coral-primary); font-size: 0.78rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 20px; }
+    .eyebrow-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--coral-primary); }
+    .hero-title { font-size: 3.4rem; line-height: 1.12; color: var(--text-dark); margin-bottom: 20px; }
+    .hero-title .highlight { color: var(--coral-primary); font-style: italic; }
+    .hero-desc { font-size: 1.1rem; color: var(--text-muted); line-height: 1.65; margin-bottom: 28px; max-width: 580px; }
+    .hero-buttons { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 26px; }
+    .btn-coral { background: var(--coral-primary); color: #FFFFFF; border: none; padding: 14px 28px; border-radius: 16px; font-size: 0.95rem; font-weight: 800; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
+    .btn-coral:hover { background: var(--coral-hover); transform: translateY(-1px); }
+    .btn-white { background: var(--bg-card); color: var(--text-dark); border: 1px solid var(--border-light); padding: 14px 24px; border-radius: 16px; font-size: 0.95rem; font-weight: 800; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
+    .security-note { display: flex; align-items: center; gap: 8px; font-size: 0.88rem; color: var(--text-muted); }
 
-    /* Quick Links Bar */
-    .quick-bar {
-      display: flex; justify-content: center; gap: 12px; margin-top: 24px; flex-wrap: wrap;
-    }
-    .quick-link-btn {
-      background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08);
-      color: #94a3b8; text-decoration: none; font-size: 0.82rem; font-weight: 700;
-      padding: 7px 16px; border-radius: 9999px; transition: all 0.2s;
-    }
-    .quick-link-btn:hover { background: rgba(99, 102, 241, 0.18); color: #fff; border-color: #6366f1; }
+    /* Quick Pick Card */
+    .quick-pick-section { margin: 36px 0 48px; }
+    .quick-pick-card { background: var(--bg-card); border: 1px solid var(--border-light); border-radius: var(--radius-xl); padding: 36px 32px; position: relative; box-shadow: var(--shadow-card); }
+    .sticker-yellow { position: absolute; top: 24px; right: 28px; width: 38px; height: 38px; background: #FDE047; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; transform: rotate(6deg); }
+    .quick-eyebrow { font-size: 0.78rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-sub); margin-bottom: 8px; }
+    .quick-title { font-size: 1.95rem; color: var(--text-dark); margin-bottom: 24px; }
+    .quick-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+    .quick-item { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: var(--bg-card-subtle); border: 1px solid var(--border-light); border-radius: 18px; text-decoration: none; color: inherit; transition: all 0.2s; }
+    .quick-item:hover { background: var(--bg-card); border-color: var(--coral-primary); transform: translateY(-2px); }
+    .quick-item-left { display: flex; align-items: center; gap: 14px; }
+    .quick-icon-box { width: 44px; height: 44px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; font-weight: 800; flex-shrink: 0; }
+    .quick-item-name { font-weight: 800; font-size: 1rem; color: var(--text-dark); }
+    .quick-item-sub { font-size: 0.82rem; color: var(--text-muted); }
+    .quick-arrow { color: var(--coral-primary); font-weight: 800; }
 
-    /* Tools Catalog */
-    .tools-section { padding: 40px 0; }
-    .section-title-wrap {
-      margin-bottom: 24px; display: flex; justify-content: space-between;
-      align-items: flex-end; flex-wrap: wrap; gap: 12px;
-    }
-    .section-title { font-size: 1.7rem; font-weight: 900; }
-    .section-sub { font-size: 0.88rem; color: var(--text-muted); }
+    /* Toolkit Grid & Widgets */
+    .toolkit-section { padding: 36px 0 60px; }
+    .toolkit-eyebrow { font-size: 0.8rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-sub); margin-bottom: 8px; }
+    .toolkit-title { font-size: 2.5rem; color: var(--text-dark); margin-bottom: 10px; }
+    .toolkit-sub { font-size: 1.05rem; color: var(--text-muted); max-width: 680px; }
+    .controls-bar { margin: 28px 0; }
+    .search-input-wrap { position: relative; margin-bottom: 20px; }
+    .search-icon-svg { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: #94A3B8; }
+    .search-input { width: 100%; padding: 16px 20px 16px 52px; background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 9999px; font-size: 0.98rem; color: var(--text-dark); outline: none; }
+    .filter-pills { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 8px; }
+    .filter-pill { background: var(--bg-card); border: 1px solid var(--border-light); color: var(--text-dark); padding: 9px 20px; border-radius: 9999px; font-size: 0.86rem; font-weight: 700; cursor: pointer; white-space: nowrap; }
+    .filter-pill.active { background: #111827; color: #FFFFFF; border-color: #111827; }
+    body.dark-theme .filter-pill.active { background: #F8FAFC; color: #0B131B; border-color: #F8FAFC; }
 
-    .search-box {
-      width: 100%; padding: 16px 22px; background: var(--bg-card);
-      border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 18px;
-      color: #fff; font-size: 0.95rem; margin-bottom: 24px; outline: none;
-      transition: all 0.2s; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    }
-    .search-box:focus { border-color: var(--primary); box-shadow: var(--shadow-glow); }
+    .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; margin-top: 24px; }
+    .tool-card { background: var(--bg-card); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 26px; display: flex; flex-direction: column; justify-content: space-between; gap: 18px; box-shadow: var(--shadow-card); }
+    .card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+    .tool-icon-wrapper { width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; }
+    .badge-pill { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; padding: 5px 12px; border-radius: 8px; }
+    .badge-popular { background: var(--badge-yellow-bg); color: var(--badge-yellow-text); }
+    .badge-category { background: var(--badge-gray-bg); color: var(--badge-gray-text); }
+    .badge-coming { background: #F1F5F9; color: #64748B; }
+    .tool-heading { font-size: 1.25rem; font-weight: 800; color: var(--text-dark); margin-bottom: 4px; }
+    .tool-summary { font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 12px; }
+    .tool-widget-box { background: var(--bg-card-subtle); border: 1px solid var(--border-light); border-radius: 16px; padding: 15px; margin-bottom: 8px; }
+    .input-clean, .select-clean, .textarea-clean { width: 100%; padding: 10px 14px; background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 12px; color: var(--text-dark); font-size: 0.86rem; outline: none; margin-bottom: 8px; }
+    .textarea-clean { height: 75px; resize: vertical; }
+    .btn-tool-action { width: 100%; padding: 11px; background: var(--coral-primary); color: #FFFFFF; border: none; border-radius: 12px; font-weight: 800; font-size: 0.86rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; }
+    .btn-row { display: flex; gap: 6px; }
+    .result-pill-box { background: var(--bg-card); border: 1px solid var(--border-light); padding: 10px 12px; border-radius: 12px; font-size: 0.84rem; color: var(--coral-primary); font-weight: 700; margin-top: 8px; display: flex; align-items: center; justify-content: space-between; }
+    .card-footer-link { display: flex; align-items: center; justify-content: space-between; text-decoration: none; color: var(--coral-primary); font-weight: 800; font-size: 0.9rem; padding-top: 8px; border-top: 1px solid var(--border-light); }
 
-    .filter-chips { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 12px; margin-bottom: 28px; }
-    .chip {
-      background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);
-      color: var(--text-muted); padding: 9px 18px; border-radius: 9999px; font-size: 0.82rem;
-      font-weight: 800; cursor: pointer; white-space: nowrap; transition: all 0.2s;
-    }
-    .chip.active, .chip:hover {
-      background: var(--primary); color: #fff; border-color: var(--primary);
-      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.35);
-    }
+    /* FAQ & Reviews */
+    .faq-section { padding: 60px 0 50px; border-top: 1px solid var(--border-light); }
+    .faq-eyebrow { font-size: 0.78rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--coral-primary); margin-bottom: 8px; }
+    .faq-title { font-size: 2.8rem; color: var(--text-dark); margin-bottom: 24px; padding-bottom: 12px; border-bottom: 1px solid var(--border-light); }
+    .faq-item { border-bottom: 1px solid var(--border-light); padding: 20px 0; }
+    .faq-question { display: flex; align-items: center; justify-content: space-between; font-size: 1.15rem; font-weight: 800; color: var(--text-dark); cursor: pointer; }
+    .faq-answer { display: none; padding-top: 12px; font-size: 0.95rem; color: var(--text-muted); }
+    .faq-item.open .faq-answer { display: block; }
+    .faq-item.open .faq-plus { transform: rotate(45deg); }
 
-    /* Tools Grid */
-    .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 22px; }
-    .tool-card {
-      background: var(--bg-card); border: 1px solid var(--border-dark);
-      border-radius: 24px; padding: 24px; display: flex; flex-direction: column;
-      justify-content: space-between; gap: 18px; transition: all 0.25s ease;
-      position: relative; overflow: hidden;
-    }
-    .tool-card:hover {
-      transform: translateY(-4px); border-color: var(--border-glow);
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 20px rgba(99, 102, 241, 0.15);
-    }
-    .tool-top { display: flex; gap: 14px; align-items: flex-start; }
-    .tool-icon {
-      width: 50px; height: 50px; background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 16px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.5rem; flex-shrink: 0; box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    }
-    .tool-top h3 { font-size: 1.08rem; font-weight: 800; color: #fff; margin-bottom: 2px; }
-    .tool-top p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.4; }
-    
-    .input-field, .select-field, .textarea-field {
-      width: 100%; padding: 12px 16px; background: var(--bg-input);
-      border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 14px;
-      color: #fff; font-size: 0.88rem; outline: none; margin-bottom: 10px;
-      font-family: inherit; transition: border-color 0.2s;
-    }
-    .input-field:focus, .select-field:focus, .textarea-field:focus {
-      border-color: var(--primary); background: #1c284a;
-    }
-    .textarea-field { height: 85px; resize: vertical; }
-
-    .btn-action {
-      width: 100%; padding: 13px; background: linear-gradient(135deg, #6366f1, #4f46e5);
-      color: #fff; border: none; border-radius: 14px; font-weight: 800;
-      font-size: 0.88rem; cursor: pointer; transition: all 0.2s;
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-    }
-    .btn-action:hover {
-      background: linear-gradient(135deg, #4f46e5, #4338ca);
-      box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4); transform: translateY(-1px);
-    }
-    .btn-group { display: flex; gap: 8px; }
-
-    .result-box {
-      background: #111a33; border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 12px 14px; border-radius: 14px; font-size: 0.86rem; color: #38bdf8;
-      font-weight: 700; text-align: center; word-break: break-all; margin-top: 8px;
-      position: relative; display: flex; align-items: center; justify-content: space-between;
-    }
-    .copy-btn {
-      background: rgba(255,255,255,0.08); border: none; color: #fff;
-      padding: 4px 8px; border-radius: 6px; font-size: 0.72rem; cursor: pointer;
-      font-weight: 700; margin-left: 6px;
-    }
-    .copy-btn:hover { background: var(--primary); }
-
-    .preview-box {
-      min-height: 80px; max-height: 160px; display: flex; align-items: center; justify-content: center;
-      background: #090e1f; border-radius: 14px; overflow: hidden; margin-top: 10px;
-      border: 1px dashed rgba(255, 255, 255, 0.15); padding: 8px;
-    }
-    .preview-box img, .preview-box canvas { max-width: 100%; max-height: 140px; object-fit: contain; border-radius: 8px; }
-
-    /* Reviews Section */
-    .reviews-section {
-      background: radial-gradient(circle at center, #101938 0%, #080d1d 100%);
-      border-top: 1px solid var(--border-dark); border-bottom: 1px solid var(--border-dark);
-      padding: 60px 0; margin-top: 60px;
-    }
-    
-    .rating-summary-banner {
-      background: #0c142b; border: 1px solid rgba(99, 102, 241, 0.25);
-      border-radius: 24px; padding: 28px; margin: 30px 0;
-      display: flex; align-items: center; justify-content: space-around; flex-wrap: wrap; gap: 20px;
-    }
-    .stat-badge { text-align: center; }
-    .stat-badge-num { font-size: 2.2rem; font-weight: 900; color: #fff; line-height: 1; }
-    .stat-badge-sub { font-size: 0.8rem; color: var(--text-muted); font-weight: 700; margin-top: 4px; }
-    
-    .review-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 20px; margin-top: 24px;
-    }
-    .review-card {
-      background: #0d152a; border: 1px solid var(--border-dark); border-radius: 20px;
-      padding: 22px; display: flex; flex-direction: column; justify-content: space-between; gap: 14px;
-      transition: all 0.2s;
-    }
-    .review-card:hover {
-      border-color: rgba(99, 102, 241, 0.4); transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-    }
-    .review-header { display: flex; align-items: center; justify-content: space-between; }
-    .review-author { display: flex; align-items: center; gap: 12px; }
-    .avatar {
-      width: 40px; height: 40px; border-radius: 12px; background: linear-gradient(135deg, #6366f1, #06b6d4);
-      display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.95rem; color: #fff;
-    }
-    .author-name { font-weight: 800; font-size: 0.95rem; color: #fff; }
-    .author-role { font-size: 0.72rem; color: #94a3b8; font-weight: 600; }
-    .verified-badge {
-      background: rgba(16, 185, 129, 0.15); color: #34d399; font-size: 0.68rem;
-      font-weight: 800; padding: 2px 8px; border-radius: 9999px; display: inline-flex; align-items: center; gap: 3px;
-    }
-    .stars { color: #facc15; font-size: 0.95rem; letter-spacing: 1px; }
-    .review-text { font-size: 0.85rem; color: #cbd5e1; line-height: 1.6; }
-    .review-footer {
-      display: flex; align-items: center; justify-content: space-between;
-      border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 10px;
-      font-size: 0.75rem; color: #64748b;
-    }
-    .helpful-btn {
-      background: transparent; border: 1px solid rgba(255, 255, 255, 0.1);
-      color: #94a3b8; padding: 4px 10px; border-radius: 8px; font-size: 0.72rem;
-      cursor: pointer; font-weight: 700; transition: all 0.2s;
-    }
-    .helpful-btn:hover { background: rgba(99, 102, 241, 0.2); color: #fff; border-color: #6366f1; }
-
-    /* Review Input Form */
-    .review-form {
-      background: #0d152a; border: 1px solid rgba(99, 102, 241, 0.35);
-      border-radius: 24px; padding: 28px; margin-top: 36px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.4);
-    }
+    .reviews-section { background: var(--bg-card); border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); padding: 60px 0; margin-top: 40px; }
+    body.dark-theme .reviews-section { background: #0E1822; }
+    .reviews-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--badge-yellow-bg); color: var(--badge-yellow-text); font-size: 0.78rem; font-weight: 800; padding: 5px 14px; border-radius: 9999px; margin-bottom: 12px; }
+    .reviews-title { font-size: 2.2rem; color: var(--text-dark); margin-bottom: 8px; }
+    .reviews-sub { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 30px; }
+    .rating-stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; background: var(--bg-card-subtle); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 24px; margin-bottom: 30px; }
+    .stat-cell { text-align: center; }
+    .stat-number { font-size: 2rem; font-weight: 900; color: var(--text-dark); line-height: 1; }
+    .stat-label { font-size: 0.78rem; font-weight: 700; color: var(--text-sub); margin-top: 6px; }
+    .review-cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
+    .review-bubble { background: var(--bg-card-subtle); border: 1px solid var(--border-light); border-radius: 20px; padding: 22px; display: flex; flex-direction: column; justify-content: space-between; gap: 14px; }
+    .reviewer-header { display: flex; align-items: center; justify-content: space-between; }
+    .reviewer-info { display: flex; align-items: center; gap: 12px; }
+    .reviewer-avatar { width: 38px; height: 38px; border-radius: 12px; background: linear-gradient(135deg, #F97316, #E15B44); color: #FFFFFF; font-weight: 900; display: flex; align-items: center; justify-content: center; }
+    .reviewer-name { font-weight: 800; font-size: 0.92rem; color: var(--text-dark); }
+    .reviewer-role { font-size: 0.72rem; color: var(--text-muted); font-weight: 600; }
+    .verified-chip { background: #DCFCE7; color: #15803D; font-size: 0.68rem; font-weight: 800; padding: 3px 8px; border-radius: 9999px; }
+    body.dark-theme .verified-chip { background: #143522; color: #4ADE80; }
+    .review-stars { color: #F59E0B; font-size: 0.9rem; }
+    .review-body { font-size: 0.88rem; color: var(--text-dark); line-height: 1.55; }
+    .review-meta-bar { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border-light); padding-top: 10px; font-size: 0.74rem; color: var(--text-muted); }
+    .btn-helpful { background: var(--bg-card); border: 1px solid var(--border-light); color: var(--text-muted); padding: 4px 10px; border-radius: 8px; font-size: 0.72rem; font-weight: 700; cursor: pointer; }
+    .submit-review-card { background: var(--bg-card-subtle); border: 1px solid var(--border-light); border-radius: 24px; padding: 28px; margin-top: 36px; }
 
     /* Footer */
-    .footer {
-      background: #040711; padding: 50px 0 24px; border-top: 1px solid var(--border-dark);
-      color: var(--text-muted); font-size: 0.86rem;
-    }
-    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 30px; margin-bottom: 30px; }
+    .site-footer { background: var(--footer-bg); color: var(--footer-text); padding: 56px 0 28px; font-size: 0.88rem; }
+    .footer-brand-row { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 24px; margin-bottom: 40px; }
+    .footer-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-size: 1.4rem; font-weight: 900; color: #FFFFFF; margin-bottom: 8px; }
+    .footer-tagline { font-size: 0.92rem; color: #94A3B8; max-width: 360px; }
+    .footer-nav { display: flex; gap: 24px; flex-wrap: wrap; }
+    .footer-nav a { color: #CBD5E1; text-decoration: none; font-weight: 700; }
+    .footer-nav a:hover { color: var(--coral-primary); }
+    .footer-bottom-bar { border-top: 1px solid var(--footer-border); padding-top: 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 0.8rem; color: #64748B; }
+
     @media (max-width: 768px) {
-      .footer-grid { grid-template-columns: 1fr; }
+      .wrap { padding: 0 20px; }
+      .hero-title { font-size: 2.5rem; }
+      .tools-grid { grid-template-columns: 1fr; }
     }
-    .footer-col h4 { color: #fff; font-size: 0.95rem; font-weight: 800; margin-bottom: 14px; }
-    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-    .footer-links a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
-    .footer-links a:hover { color: #818cf8; }
-    .footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.06); padding-top: 20px; text-align: center; font-size: 0.78rem; }
   </style>
 </head>
 <body>
@@ -320,1192 +272,759 @@
   <header class="header">
     <div class="wrap nav-wrap">
       <a href="index.html" class="brand">
-        <div class="logo-box">✨</div>
+        <div class="logo-badge">⚡</div>
         <div>
-          <div>Live<span style="color:#6366f1">Tool</span></div>
-          <div class="brand-sub" id="brandSub">বিশ্বমানের ফ্রি এআই ও ইউটিলিটি প্ল্যাটফর্ম</div>
+          <span style="color:var(--text-dark)">Live</span><span class="brand-tool">Tool</span>
         </div>
       </a>
-      
-      <!-- Desktop Navigation Links -->
-      <nav class="nav-links">
-        <a href="#tools" class="nav-link" id="navTools">সকল টুলস</a>
-        <a href="#reviews" class="nav-link" id="navReviews">★ রিভিউ ও মতামত</a>
-        <a href="contact.html" class="nav-link" id="navContact">যোগাযোগ</a>
-        <a href="privacy.html" class="nav-link" id="navPrivacy">প্রাইভেসি</a>
-        <a href="terms.html" class="nav-link" id="navTerms">শর্তাবলী</a>
-      </nav>
 
       <div class="nav-actions">
-        <button class="lang-btn" onclick="toggleLang()">
-          🌐 <span id="langText">EN</span>
+        <!-- Language Switcher -->
+        <button class="btn-header" onclick="toggleLanguage()" id="langBtn">
+          <span>বাংলা</span>
         </button>
+
+        <!-- Dark Mode Icon Toggle -->
+        <button class="btn-icon-header" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
+          <span id="themeIcon">🌙</span>
+        </button>
+
+        <!-- Mobile / Menu Dropdown Toggle -->
+        <div class="menu-dropdown-container">
+          <button class="btn-icon-header" onclick="toggleMenuDropdown(event)" id="menuToggleBtn" title="More Options & Navigation" aria-label="Menu">
+            <span>⋮</span>
+          </button>
+          <div class="menu-dropdown" id="headerMenuDropdown">
+            <a href="#toolkit" class="menu-dropdown-item" onclick="closeMenuDropdown()">
+              <span>🧰</span>
+              <span id="mNavAllTools">All 22+ Tools</span>
+            </a>
+            <a href="#t-resizer" class="menu-dropdown-item" onclick="closeMenuDropdown()">
+              <span>🖼️</span>
+              <span id="mNavResizer">Image Resizer</span>
+            </a>
+            <a href="#t-bg" class="menu-dropdown-item" onclick="closeMenuDropdown()">
+              <span>🪄</span>
+              <span id="mNavBg">AI Cutout Remover</span>
+            </a>
+            <a href="#t-enhancer" class="menu-dropdown-item" onclick="closeMenuDropdown()">
+              <span>✨</span>
+              <span id="mNavEnhancer">4K AI Enhancer</span>
+            </a>
+            <div class="menu-dropdown-divider"></div>
+            <a href="public/privacy.html" class="menu-dropdown-item">
+              <span>🔒</span>
+              <span id="mNavPrivacy">Privacy Policy</span>
+            </a>
+            <a href="public/terms.html" class="menu-dropdown-item">
+              <span>📜</span>
+              <span id="mNavTerms">Terms of Service</span>
+            </a>
+            <a href="public/contact.html" class="menu-dropdown-item">
+              <span>✉️</span>
+              <span id="mNavContact">Contact Support</span>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </header>
 
   <!-- Hero Section -->
   <section class="hero wrap">
-    <div class="hero-card">
-      <div class="pill" id="heroPill">🌐 বিশ্বজুড়ে এআই • বাংলাদেশ থেকে বিশ্বমঞ্চে</div>
-      <h1 id="heroTitle">বিশ্বজুড়ে এআই।<br>সবাই কানেক্টেড।</h1>
-      <p id="heroDesc">The Global Platform for AI Tools. Connected from Bangladesh to the World. পেইড এআই টুলসের মতো ২০+ পাওয়ারফুল অনলাইন ইউটিলিটি — ১০০% প্রাইভেট ও ব্রাউজার প্রসেসিং।</p>
-      
-      <div class="hero-tags">
-        <div class="tag" id="tag1">🪄 এআই ব্যাকগ্রাউন্ড রিমুভার</div>
-        <div class="tag" id="tag2">⚡ ৪K কোয়ালিটি এনহ্যান্সার</div>
-        <div class="tag" id="tag3">🔒 ০% Server Upload</div>
-        <div class="tag" id="tag4">⚡ আনলিমিটেড ফ্রি অ্যাক্সেস</div>
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <div class="eyebrow-pill">
+        <span class="eyebrow-dot"></span>
+        <span id="heroEyebrow">MADE FOR EVERYDAY MOMENTS</span>
       </div>
 
-      <a href="#tools" class="btn-main" id="heroBtn">সকল ২০+ টুলস এক্সপ্লোর করুন →</a>
+      <h1 class="hero-title font-serif" id="heroTitle">
+        Small tasks.<br>
+        <span class="highlight">Done here.</span>
+      </h1>
 
-      <!-- Quick Links for Direct Access -->
-      <div class="quick-bar">
-        <a href="contact.html" class="quick-link-btn" id="qlContact">📨 কন্টাক্ট ও সাপোর্ট পেজ</a>
-        <a href="privacy.html" class="quick-link-btn" id="qlPrivacy">🔒 প্রাইভেসি পলিসি পেজ</a>
-        <a href="terms.html" class="quick-link-btn" id="qlTerms">📜 ব্যবহারের শর্তাবলী পেজ</a>
+      <p class="hero-desc" id="heroDesc">
+        A pocket-sized collection of image, text and calculator tools. No account, no uploads, no maze of menus.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#toolkit" class="btn-coral" id="heroBtnExplore">Explore the toolkit →</a>
+        <a href="#t-resizer" class="btn-white" id="heroBtnResizer">🖼️ Try image resizer</a>
+      </div>
+
+      <div class="security-note">
+        <span>🔒</span>
+        <span id="heroSecurity"><strong>Private by default.</strong> Image processing happens on your device.</span>
       </div>
     </div>
   </section>
 
-  <!-- Main Tools Catalog -->
-  <main class="wrap tools-section" id="tools">
-    <div class="section-title-wrap">
-      <div>
-        <h2 class="section-title" id="secTitle">প্রোডাকশন ইউটিলিটি ও এআই টুলস</h2>
-        <p class="section-sub" id="secSub">কোনো সার্ভার আপলোড ছাড়া ব্রাউজারে সরাসরি কাজ করুন</p>
+  <!-- Quick Pick Section -->
+  <section class="wrap quick-pick-section">
+    <div class="quick-pick-card">
+      <div class="sticker-yellow">✨</div>
+      <div class="quick-eyebrow" id="qpEyebrow">START WITH A QUICK PICK</div>
+      <h2 class="quick-title font-serif" id="qpTitle">What are you fixing today?</h2>
+
+      <div class="quick-list">
+        <a href="#t-resizer" class="quick-item">
+          <div class="quick-item-left">
+            <div class="quick-icon-box" style="background:#DCFCE7; color:#166534;">🖼️</div>
+            <div>
+              <div class="quick-item-name" id="qp1Name">Image Resizer</div>
+              <div class="quick-item-sub" id="qp1Sub">Resize an image to exact pixel dimensions.</div>
+            </div>
+          </div>
+          <div class="quick-arrow">→</div>
+        </a>
+
+        <a href="#t-word" class="quick-item">
+          <div class="quick-item-left">
+            <div class="quick-icon-box" style="background:#E0F2FE; color:#075985;">📝</div>
+            <div>
+              <div class="quick-item-name" id="qp2Name">Word Counter</div>
+              <div class="quick-item-sub" id="qp2Sub">Count words, characters and lines as you type.</div>
+            </div>
+          </div>
+          <div class="quick-arrow">→</div>
+        </a>
+
+        <a href="#t-json" class="quick-item">
+          <div class="quick-item-left">
+            <div class="quick-icon-box" style="background:#FEF3C7; color:#92400E;">{ }</div>
+            <div>
+              <div class="quick-item-name" id="qp3Name">JSON Formatter</div>
+              <div class="quick-item-sub" id="qp3Sub">Format messy JSON and spot invalid syntax.</div>
+            </div>
+          </div>
+          <div class="quick-arrow">→</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Toolkit Grid -->
+  <main class="wrap toolkit-section" id="toolkit">
+    <div class="section-header">
+      <div class="toolkit-eyebrow" id="tkEyebrow">THE TOOLKIT · 20 READY NOW</div>
+      <h2 class="toolkit-title font-serif" id="tkTitle">Find your shortcut.</h2>
+      <p class="toolkit-sub" id="tkSub">Choose a tool, make the small thing less annoying, and get back to your day. Everything runs in this tab.</p>
+    </div>
+
+    <!-- Search & Filters -->
+    <div class="controls-bar">
+      <div class="search-input-wrap">
+        <span class="search-icon-svg">🔍</span>
+        <input type="text" id="toolSearchInput" class="search-input" placeholder='Search by task, like "image" or "JSON"' oninput="filterToolsBySearch()">
+      </div>
+
+      <div class="filter-pills">
+        <button class="filter-pill active" onclick="applyCategoryFilter('all', this)" id="pillAll">All tools</button>
+        <button class="filter-pill" onclick="applyCategoryFilter('image', this)" id="pillImages">Images</button>
+        <button class="filter-pill" onclick="applyCategoryFilter('text', this)" id="pillText">Text</button>
+        <button class="filter-pill" onclick="applyCategoryFilter('calc', this)" id="pillCalc">Calculators</button>
+        <button class="filter-pill" onclick="applyCategoryFilter('dev', this)" id="pillDev">Developer</button>
       </div>
     </div>
 
-    <!-- Search Bar -->
-    <input type="text" class="search-box" id="toolSearch" placeholder="🔍 সার্চ করুন (যেমন: ব্যাকগ্রাউন্ড, ইমেজ, রিসাইজ, বয়স, বিএমআই, লোন, জেএসন, কিউআর, পাসওয়ার্ড)..." oninput="searchTools()">
-
-    <!-- Categories -->
-    <div class="filter-chips">
-      <button class="chip active" onclick="filterCat('all', this)" id="catAll">সকল টুলস (২০+)</button>
-      <button class="chip" onclick="filterCat('image', this)" id="catImg">✨ এআই ও ইমেজ স্টুডিও</button>
-      <button class="chip" onclick="filterCat('calc', this)" id="catCalc">🧮 ক্যালকুলেটর</button>
-      <button class="chip" onclick="filterCat('conv', this)" id="catConv">📏 কনভার্টার</button>
-      <button class="chip" onclick="filterCat('text', this)" id="catText">📝 টেক্সট ইউটিলিটি</button>
-      <button class="chip" onclick="filterCat('dev', this)" id="catDev">⚡ ডেভেলপার টুলস</button>
-    </div>
-
-    <!-- 20+ Production Tools Grid -->
     <div class="tools-grid" id="toolsGrid">
-      
-      <!-- Tool 1: AI Background Remover Studio -->
-      <div class="tool-card image" data-name="background remover ai কাটুন transparent png এআই ব্যাকগ্রাউন্ড রিমুভার">
-        <div class="tool-top">
-          <div class="tool-icon">🪄</div>
-          <div>
-            <h3 id="t1_name">এআই ব্যাকগ্রাউন্ড রিমুভার</h3>
-            <p id="t1_sub">স্বচ্ছ পিএনজি ও হেয়ার-লেভেল প্রিসিশন কাটআউট।</p>
+      <!-- Tool 1: Image Resizer (Popular + Batch Processing) -->
+      <div class="tool-card image" id="t-resizer" data-name="image resizer resize batch সাইজ পরিবর্তন">
+        <div>
+          <div class="card-top">
+            <div class="tool-icon-wrapper" style="background:#DCFCE7; color:#15803D;">🖼️</div>
+            <span class="badge-pill badge-popular">POPULAR · BATCH</span>
+          </div>
+          <h3 class="tool-heading">Image Resizer</h3>
+          <p class="tool-summary">Resize single or batch multiple images by exact pixels, presets or percentage scale.</p>
+          <div class="tool-widget-box">
+            <input type="file" id="resFile" accept="image/*" multiple class="input-clean" onchange="onResizerFilesSelected(this)">
+            <div class="btn-row" style="margin-bottom:8px;">
+              <input type="number" id="resWidth" placeholder="Width (px)" class="input-clean">
+              <input type="number" id="resHeight" placeholder="Height (px)" class="input-clean">
+            </div>
+            <button class="btn-tool-action" id="resActionBtn" onclick="executeBatchResizer()">
+              <span>⚡</span> <span id="t1Btn">Resize & Download</span>
+            </button>
           </div>
         </div>
-        <div>
-          <input type="file" id="bgFile" accept="image/*" class="input-field">
-          <select id="bgMode" class="select-field">
-            <option value="transparent" id="bgOpt1">স্বচ্ছ ব্যাকগ্রাউন্ড (Transparent PNG)</option>
-            <option value="white" id="bgOpt2">সাদা ব্যাকগ্রাউন্ড (Solid White)</option>
-            <option value="black" id="bgOpt3">কালো ব্যাকগ্রাউন্ড (Solid Black)</option>
-          </select>
-          <button class="btn-action" onclick="runBgRemover()" id="t1_btn">✨ ব্যাকগ্রাউন্ড রিমুভ করুন</button>
-          <div id="bgPrev" class="preview-box"></div>
-        </div>
+        <a href="public/image-resizer.html" class="card-footer-link"><span>Open Full Tool Page</span><span>→</span></a>
       </div>
 
-      <!-- Tool 2: AI 4K Image Enhancer -->
-      <div class="tool-card image" data-name="image enhancer 4k hd শার্পনেস বড় এআই ইমেজ এনহ্যান্সার">
-        <div class="tool-top">
-          <div class="tool-icon">⚡</div>
-          <div>
-            <h3 id="t2_name">এআই ইমেজ এনহ্যান্সার (৪K)</h3>
-            <p id="t2_sub">ঝাপসা ছবিকে সুপার-রেজোলিউশন ও আল্ট্রা এইচডি করুন।</p>
+      <!-- Tool 2: AI Background Remover -->
+      <div class="tool-card image" id="t-bg" data-name="background remover cutout ai ব্যাকগ্রাউন্ড রিমুভ">
+        <div>
+          <div class="card-top">
+            <div class="tool-icon-wrapper" style="background:#FEF3C7; color:#B45309;">🪄</div>
+            <span class="badge-pill badge-popular">POPULAR</span>
+          </div>
+          <h3 class="tool-heading">AI Background Remover</h3>
+          <p class="tool-summary">Remove backgrounds with clean transparent PNG output directly in-browser.</p>
+          <div class="tool-widget-box">
+            <input type="file" id="bgFileInput" accept="image/*" class="input-clean">
+            <select id="bgModeSelect" class="select-clean">
+              <option value="transparent">Transparent PNG</option>
+              <option value="white">White Background</option>
+              <option value="black">Black Background</option>
+            </select>
+            <button class="btn-tool-action" id="t3Btn" onclick="executeBgRemoval()">
+              <span>🪄</span> <span>Remove Background & Save PNG</span>
+            </button>
+            <div class="preview-canvas-box" id="bgPreviewBox" style="display:flex;"></div>
           </div>
         </div>
-        <div>
-          <input type="file" id="enhFile" accept="image/*" class="input-field">
-          <select id="enhScale" class="select-field">
-            <option value="2" id="enhOpt1">২X সুপার-রেজোলিউশন (HD)</option>
-            <option value="4" id="enhOpt2">৪X সুপার-রেজোলিউশন (4K Ultra)</option>
-          </select>
-          <button class="btn-action" onclick="runEnhancer()" id="t2_btn">🚀 ৪K এনহ্যান্স করুন</button>
-          <div id="enhPrev" class="preview-box"></div>
-        </div>
+        <a href="public/ai-background-remover.html" class="card-footer-link"><span>Open Full Tool Page</span><span>→</span></a>
       </div>
 
-      <!-- Tool 3: HD Image Resizer -->
-      <div class="tool-card image" data-name="image resizer resize সাইজ পরিবর্তন রেজোলিউশন">
-        <div class="tool-top">
-          <div class="tool-icon">🖼️</div>
-          <div>
-            <h3 id="t3_name">এইচডি ইমেজ রিসাইজার</h3>
-            <p id="t3_sub">কোয়ালিটি নষ্ট না করে পিক্সেল ও সাইজ পরিবর্তন।</p>
-          </div>
-        </div>
+      <!-- Tool 3: 4K Image Enhancer -->
+      <div class="tool-card image" id="t-enhancer" data-name="image enhancer 4k hd unblur শার্পনার">
         <div>
-          <input type="file" id="resizeFile" accept="image/*" class="input-field">
-          <div style="display:flex; gap:8px;">
-            <input type="number" id="resW" placeholder="প্রস্থ (Width)" class="input-field">
-            <input type="number" id="resH" placeholder="উচ্চতা (Height)" class="input-field">
+          <div class="card-top">
+            <div class="tool-icon-wrapper" style="background:#E0E7FF; color:#4338CA;">✨</div>
+            <span class="badge-pill badge-popular">AI POWERED</span>
           </div>
-          <button class="btn-action" onclick="runResizer()" id="t3_btn">📐 রিসাইজ ও ডাউনলোড</button>
+          <h3 class="tool-heading">4K Image Enhancer</h3>
+          <p class="tool-summary">Upscale, unblur and sharpen pixelated images using neural unsharp masking.</p>
+          <div class="tool-widget-box">
+            <input type="file" id="enhFileInput" accept="image/*" class="input-clean">
+            <select id="enhScaleSelect" class="select-clean">
+              <option value="2">2X Crisp HD Scale</option>
+              <option value="4">4X Ultra-HD 4K Scale</option>
+            </select>
+            <button class="btn-tool-action" id="t4Btn" onclick="executeEnhance()">
+              <span>✨</span> <span>Enhance to 4K</span>
+            </button>
+            <div class="preview-canvas-box" id="enhPreviewBox" style="display:flex;"></div>
+          </div>
         </div>
+        <a href="public/ai-image-enhancer.html" class="card-footer-link"><span>Open Full Tool Page</span><span>→</span></a>
       </div>
 
-      <!-- Tool 4: Smart Image Compressor -->
-      <div class="tool-card image" data-name="image compressor compress ছোট সাইজ কেবি">
-        <div class="tool-top">
-          <div class="tool-icon">📦</div>
-          <div>
-            <h3 id="t4_name">স্মার্ট ইমেজ কম্প্রেসর</h3>
-            <p id="t4_sub">ছবির মেগাবাইট কমিয়ে নিখুঁত অপ্টিমাইজেশন।</p>
+      <!-- Tool 4: Image Compressor -->
+      <div class="tool-card image" id="t-compressor" data-name="compressor compress batch mb kb সাইজ কমানো">
+        <div>
+          <div class="card-top">
+            <div class="tool-icon-wrapper" style="background:#FCE7F3; color:#BE185D;">🗜️</div>
+            <span class="badge-pill badge-category">IMAGE · BATCH</span>
+          </div>
+          <h3 class="tool-heading">Image Compressor</h3>
+          <p class="tool-summary">Reduce file sizes by up to 85% without noticeable loss.</p>
+          <div class="tool-widget-box">
+            <input type="file" id="cmpFile" accept="image/*" class="input-clean">
+            <input type="range" id="cmpQuality" min="20" max="95" value="75" style="width:100%; margin-bottom:8px;">
+            <button class="btn-tool-action" onclick="executeBatchCompressor()">
+              <span>🗜️</span> <span>Compress & Save</span>
+            </button>
           </div>
         </div>
-        <div>
-          <input type="file" id="compFile" accept="image/*" class="input-field">
-          <select id="compQual" class="select-field">
-            <option value="0.8" id="compOpt1">৮০% কোয়ালিটি (বেস্ট কম্প্রেশন)</option>
-            <option value="0.6" id="compOpt2">৬০% কোয়ালিটি (ওয়েব ফ্রেন্ডলি)</option>
-            <option value="0.4" id="compOpt3">৪০% কোয়ালিটি (স্মলেস্ট ফাইল সাইজ)</option>
-          </select>
-          <button class="btn-action" onclick="runCompressor()" id="t4_btn">🗜️ কম্প্রেস ও ডাউনলোড</button>
-        </div>
+        <a href="public/image-compressor.html" class="card-footer-link"><span>Open Full Tool Page</span><span>→</span></a>
       </div>
 
       <!-- Tool 5: Image Format Converter -->
-      <div class="tool-card image" data-name="format converter jpg png webp কনভার্ট ফরম্যাট">
-        <div class="tool-top">
-          <div class="tool-icon">🔄</div>
-          <div>
-            <h3 id="t5_name">ফরম্যাট কনভার্টার (JPG/PNG/WebP)</h3>
-            <p id="t5_sub">যেকোনো ছবিকে ভিন্ন ফরম্যাটে রূপান্তর করুন।</p>
+      <div class="tool-card image" id="t-converter" data-name="format converter webp png jpg jpeg কনভার্টার">
+        <div>
+          <div class="card-top">
+            <div class="tool-icon-wrapper" style="background:#E0F2FE; color:#0369A1;">🔄</div>
+            <span class="badge-pill badge-category">IMAGE</span>
+          </div>
+          <h3 class="tool-heading">Format Converter</h3>
+          <p class="tool-summary">Convert multiple WebP, PNG, JPG, and AVIF images instantly.</p>
+          <div class="tool-widget-box">
+            <input type="file" id="fmtFile" accept="image/*" class="input-clean">
+            <select id="fmtSelect" class="select-clean">
+              <option value="png">Convert to PNG</option>
+              <option value="jpeg">Convert to JPEG / JPG</option>
+              <option value="webp">Convert to Modern WebP</option>
+            </select>
+            <button class="btn-tool-action" onclick="executeBatchConverter()">
+              <span>🔄</span> <span>Convert Image</span>
+            </button>
           </div>
         </div>
-        <div>
-          <input type="file" id="convFile" accept="image/*" class="input-field">
-          <select id="convFmt" class="select-field">
-            <option value="png" id="convOpt1">PNG ফরম্যাট (ট্রান্সপারেন্ট)</option>
-            <option value="jpeg" id="convOpt2">JPG / JPEG ফরম্যাট</option>
-            <option value="webp" id="convOpt3">WebP ফরম্যাট (সুপার ফাস্ট)</option>
-          </select>
-          <button class="btn-action" onclick="runFormatConverter()" id="t5_btn">🔄 কনভার্ট ও সেভ</button>
-        </div>
+        <a href="public/image-format-converter.html" class="card-footer-link"><span>Open Full Tool Page</span><span>→</span></a>
       </div>
 
-      <!-- Tool 6: Image Cropper -->
-      <div class="tool-card image" data-name="image crop cropper কাটা ছাঁটাই">
-        <div class="tool-top">
-          <div class="tool-icon">✂️</div>
-          <div>
-            <h3 id="t6_name">প্রিসিশন ইমেজ ক্রপার</h3>
-            <p id="t6_sub">ছবির নির্দিষ্ট অংশ মাপমতো নিখুঁতভাবে কাটুন।</p>
-          </div>
-        </div>
+      <!-- Tool 6: VAT & Tax Calculator -->
+      <div class="tool-card calc" id="t-vat" data-name="vat tax calculator ভ্যাট ট্যাক্স ক্যালকুলেটর">
         <div>
-          <input type="file" id="cropFile" accept="image/*" class="input-field">
-          <div style="display:flex; gap:8px;">
-            <input type="number" id="cropW" placeholder="ক্রপ প্রস্থ (px)" class="input-field">
-            <input type="number" id="cropH" placeholder="ক্রপ উচ্চতা (px)" class="input-field">
+          <div class="card-top">
+            <div class="tool-icon-wrapper" style="background:#CCFBF1; color:#0F766E;">💰</div>
+            <span class="badge-pill badge-category">CALCULATOR</span>
           </div>
-          <button class="btn-action" onclick="runCropper()" id="t6_btn">✂️ ক্রপ ও ডাউনলোড</button>
+          <h3 class="tool-heading">VAT & Tax Calculator</h3>
+          <p class="tool-summary">Calculate inclusive and exclusive VAT/Tax rates with instant breakdown.</p>
+          <div class="tool-widget-box">
+            <input type="number" id="vatAmount" placeholder="Amount (e.g. 5000)" class="input-clean">
+            <div class="btn-row">
+              <input type="number" id="vatRate" placeholder="VAT Rate %" value="15" class="input-clean">
+              <select id="vatMode" class="select-clean">
+                <option value="add">Add VAT (+)</option>
+                <option value="extract">Extract VAT (-)</option>
+              </select>
+            </div>
+            <button class="btn-tool-action" onclick="executeVatCalc()"><span>💰</span> <span>Calculate VAT</span></button>
+            <div class="result-pill-box" id="vatRes"><span id="vatResTxt">Result will appear here</span></div>
+          </div>
         </div>
+        <a href="public/vat-tax-calculator.html" class="card-footer-link"><span>Open Full Tool Page</span><span>→</span></a>
       </div>
 
-      <!-- Tool 7: Multi-Unit Converter -->
-      <div class="tool-card conv" data-name="unit converter রূপান্তর দৈর্ঘ্য ওজন গতি তাপমাত্রা">
-        <div class="tool-top">
-          <div class="tool-icon">📏</div>
-          <div>
-            <h3 id="t7_name">ইউনিভার্সাল ইউনিট কনভার্টার</h3>
-            <p id="t7_sub">দৈর্ঘ্য, ওজন, স্টোরেজ ও গতি রূপান্তর।</p>
-          </div>
-        </div>
+      <!-- Tool 7: Unit Converter -->
+      <div class="tool-card calc" id="t-unit" data-name="unit converter রূপান্তর দৈর্ঘ্য ওজন">
         <div>
-          <select id="uCat" class="select-field" onchange="initUnitOpts()">
-            <option value="length" id="uCatOpt1">দৈর্ঘ্য (মিটার, ফুট, কিমি, ইঞ্চি)</option>
-            <option value="weight" id="uCatOpt2">ওজন (কেজি, গ্রাম, পাউন্ড)</option>
-            <option value="storage" id="uCatOpt3">ডিজিটাল ডেটা (MB, GB, TB)</option>
-          </select>
-          <div style="display:flex; gap:8px;">
-            <input type="number" id="uVal" value="10" class="input-field" oninput="runUnitConv()">
-            <select id="uFrom" class="select-field" onchange="runUnitConv()"></select>
+          <div class="card-top">
+            <div class="tool-icon-wrapper" style="background:#EDE9FE; color:#6D28D9;">📐</div>
+            <span class="badge-pill badge-category">CALCULATOR</span>
           </div>
-          <select id="uTo" class="select-field" onchange="runUnitConv()"></select>
-          <div class="result-box" id="uRes">
-            <span id="uResTxt">ফলাফল এখানে আসবে</span>
-            <button class="copy-btn" onclick="copyResult('uResTxt')">Copy</button>
+          <h3 class="tool-heading">Unit Converter</h3>
+          <p class="tool-summary">Convert length, weights, temperatures, and storage data instantly.</p>
+          <div class="tool-widget-box">
+            <input type="number" id="uValInput" value="10" class="input-clean" oninput="executeUnitCalc()">
+            <div class="btn-row">
+              <select id="uFromSelect" class="select-clean" onchange="executeUnitCalc()">
+                <option value="m">Meter</option>
+                <option value="ft">Foot</option>
+                <option value="in">Inch</option>
+                <option value="km">Kilometer</option>
+              </select>
+              <select id="uToSelect" class="select-clean" onchange="executeUnitCalc()">
+                <option value="ft">Foot</option>
+                <option value="m">Meter</option>
+                <option value="in">Inch</option>
+                <option value="km">Kilometer</option>
+              </select>
+            </div>
+            <div class="result-pill-box" id="uRes"><span id="uResTxt">10 meter = 32.8084 foot</span></div>
           </div>
         </div>
+        <a href="public/unit-converter.html" class="card-footer-link"><span>Open Full Tool Page</span><span>→</span></a>
       </div>
 
-      <!-- Tool 8: Age Calculator -->
-      <div class="tool-card calc" data-name="age calculator বয়স জন্মদিন হিসাব">
-        <div class="tool-top">
-          <div class="tool-icon">🎂</div>
-          <div>
-            <h3 id="t8_name">সঠিক বয়স ও জীবন পরিসংখ্যান</h3>
-            <p id="t8_sub">বছর, মাস, দিন ও পরবর্তী জন্মদিন।</p>
-          </div>
-        </div>
+      <!-- Tool 8: JSON Formatter -->
+      <div class="tool-card dev" id="t-json" data-name="json formatter minify জেএসওন ফরম্যাট">
         <div>
-          <input type="date" id="birthDate" class="input-field">
-          <button class="btn-action" onclick="calcAge()" id="t8_btn">🎂 বয়স হিসাব করুন</button>
-          <div class="result-box" id="ageRes">
-            <span id="ageResTxt">জন্ম তারিখ নির্বাচন করুন</span>
-            <button class="copy-btn" onclick="copyResult('ageResTxt')">Copy</button>
+          <div class="card-top">
+            <div class="tool-icon-wrapper" style="background:#FEF3C7; color:#92400E;">{ }</div>
+            <span class="badge-pill badge-category">DEV TOOL</span>
+          </div>
+          <h3 class="tool-heading">JSON Formatter</h3>
+          <p class="tool-summary">Format messy JSON and spot syntax errors with instant clean indenting.</p>
+          <div class="tool-widget-box">
+            <textarea id="jsonInputText" placeholder='{"name":"LiveTool","fast":true}' class="textarea-clean" style="font-family:monospace;"></textarea>
+            <div class="btn-row">
+              <button class="btn-tool-action" onclick="formatJson(2)"><span>Beautify (2 Spaces)</span></button>
+              <button class="btn-tool-action" onclick="minifyJson()" style="background:#475569;"><span>Minify</span></button>
+            </div>
           </div>
         </div>
+        <a href="public/json-formatter.html" class="card-footer-link"><span>Open Full Tool Page</span><span>→</span></a>
       </div>
 
-      <!-- Tool 9: BMI Calculator -->
-      <div class="tool-card calc" data-name="bmi calculator বিএমআই স্বাস্থ্য ওজন">
-        <div class="tool-top">
-          <div class="tool-icon">🏃</div>
-          <div>
-            <h3 id="t9_name">স্মার্ট BMI ও স্বাস্থ্য ট্র্যাকার</h3>
-            <p id="t9_sub">উচ্চতা ও ওজনের সঠিক অনুপাত (BMI)।</p>
-          </div>
-        </div>
+      <!-- Tool 9: Word Counter -->
+      <div class="tool-card text" id="t-word" data-name="word counter character বর্ণ শব্দ গণনা">
         <div>
-          <div style="display:flex; gap:8px;">
-            <input type="number" id="bmiW" placeholder="ওজন (kg)" class="input-field">
-            <input type="number" id="bmiH" placeholder="উচ্চতা (cm)" class="input-field">
+          <div class="card-top">
+            <div class="tool-icon-wrapper" style="background:#E0F2FE; color:#075985;">📝</div>
+            <span class="badge-pill badge-category">TEXT</span>
           </div>
-          <button class="btn-action" onclick="calcBMI()" id="t9_btn">🏃 BMI হিসাব করুন</button>
-          <div class="result-box" id="bmiRes">
-            <span id="bmiResTxt">উচ্চতা ও ওজন দিন</span>
-            <button class="copy-btn" onclick="copyResult('bmiResTxt')">Copy</button>
+          <h3 class="tool-heading">Word Counter</h3>
+          <p class="tool-summary">Count words, characters, sentences, and estimated reading times.</p>
+          <div class="tool-widget-box">
+            <textarea id="wordInputText" placeholder="Type or paste text..." class="textarea-clean" oninput="calculateWords()"></textarea>
+            <div class="result-pill-box" id="wordRes"><span id="wordResTxt">Words: 0 | Characters: 0</span></div>
           </div>
         </div>
+        <a href="public/word-counter.html" class="card-footer-link"><span>Open Full Tool Page</span><span>→</span></a>
       </div>
-
-      <!-- Tool 10: Loan EMI & Finance Calculator -->
-      <div class="tool-card calc" data-name="loan emi calculator লোন কিস্তি সুদ">
-        <div class="tool-top">
-          <div class="tool-icon">💰</div>
-          <div>
-            <h3 id="t10_name">লোন EMI ও ফাইন্যান্স ক্যালকুলেটর</h3>
-            <p id="t10_sub">মাসিক কিস্তি ও মোট সুদের হিসাব।</p>
-          </div>
-        </div>
-        <div>
-          <input type="number" id="loanP" placeholder="লোন বা মূল টাকা ($/৳)" class="input-field">
-          <div style="display:flex; gap:8px;">
-            <input type="number" id="loanR" placeholder="সুদের হার (%)" class="input-field">
-            <input type="number" id="loanM" placeholder="মেয়াদ (মাস)" class="input-field">
-          </div>
-          <button class="btn-action" onclick="calcLoan()" id="t10_btn">💰 কিস্তি হিসাব করুন</button>
-          <div class="result-box" id="loanRes">
-            <span id="loanResTxt">টাকার পরিমাণ ও সুদ দিন</span>
-            <button class="copy-btn" onclick="copyResult('loanResTxt')">Copy</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Tool 11: Color Palette Studio -->
-      <div class="tool-card dev" data-name="color palette কালার প্যালেট হেক্স কোড">
-        <div class="tool-top">
-          <div class="tool-icon">🎨</div>
-          <div>
-            <h3 id="t11_name">কালার প্যালেট স্টুডিও</h3>
-            <p id="t11_sub">ডিজাইনারদের জন্য পারফেক্ট HEX কালার প্যালেট।</p>
-          </div>
-        </div>
-        <div>
-          <button class="btn-action" onclick="genPalette()" id="t11_btn">🎨 র‍্যান্ডম প্যালেট তৈরি করুন</button>
-          <div id="paletteBox" style="display:flex; height:44px; border-radius:12px; overflow:hidden; margin-top:10px; border:1px solid rgba(255,255,255,0.15);"></div>
-        </div>
-      </div>
-
-      <!-- Tool 12: JSON Formatter & Minifier -->
-      <div class="tool-card dev" data-name="json formatter validator beautify জেএসন ফরম্যাটার">
-        <div class="tool-top">
-          <div class="tool-icon">🧑‍💻</div>
-          <div>
-            <h3 id="t12_name">JSON ভ্যালিডেটর ও ফরম্যাটার</h3>
-            <p id="t12_sub">জেএসন কোড সাজান অথবা মিনিফাই করুন।</p>
-          </div>
-        </div>
-        <div>
-          <textarea id="jsonTxt" class="textarea-field" placeholder='{"name":"LiveTool"}'></textarea>
-          <div class="btn-group">
-            <button class="btn-action" onclick="fmtJson(2)">✨ Beautify</button>
-            <button class="btn-action" style="background:#334155;" onclick="minJson()">📦 Minify</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Tool 13: Live Word Counter -->
-      <div class="tool-card text" data-name="word counter শব্দ বর্ণ গণক টেক্সট">
-        <div class="tool-top">
-          <div class="tool-icon">📝</div>
-          <div>
-            <h3 id="t13_name">লাইভ ওয়ার্ড ও ক্যারেক্টার গণক</h3>
-            <p id="t13_sub">মোট শব্দ, বর্ণ ও পড়ার সময় মাপুন।</p>
-          </div>
-        </div>
-        <div>
-          <textarea id="wordTxt" class="textarea-field" placeholder="এখানে টেক্সট লিখুন..." oninput="countWord()"></textarea>
-          <div class="result-box" id="wordRes">
-            <span id="wordResTxt">শব্দ: ০ | বর্ণ: ০ | পড়ার সময়: ০s</span>
-            <button class="copy-btn" onclick="copyResult('wordResTxt')">Copy</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Tool 14: Smart Case Converter -->
-      <div class="tool-card text" data-name="case converter upper lower বড় হাতের ছোট হাতের">
-        <div class="tool-top">
-          <div class="tool-icon">🔤</div>
-          <div>
-            <h3 id="t14_name">স্মার্ট কেস কনভার্টার</h3>
-            <p id="t14_sub">UPPERCASE, lowercase ও Title Case করুন।</p>
-          </div>
-        </div>
-        <div>
-          <textarea id="caseTxt" class="textarea-field" placeholder="এখানে টেক্সট পেস্ট করুন..."></textarea>
-          <div class="btn-group">
-            <button class="btn-action" style="font-size:0.75rem;" onclick="convCase('upper')">UPPER</button>
-            <button class="btn-action" style="font-size:0.75rem;" onclick="convCase('lower')">lower</button>
-            <button class="btn-action" style="font-size:0.75rem;" onclick="convCase('title')">Title</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Tool 15: Duplicate Line Remover -->
-      <div class="tool-card text" data-name="duplicate remover ডুপ্লিকেট লাইন মুছুন ক্লিন">
-        <div class="tool-top">
-          <div class="tool-icon">🧹</div>
-          <div>
-            <h3 id="t15_name">ডুপ্লিকেট লাইন রিমুভার</h3>
-            <p id="t15_sub">তালিকা থেকে ডুপ্লিকেট লেখা নিমেষে সরান।</p>
-          </div>
-        </div>
-        <div>
-          <textarea id="dupeTxt" class="textarea-field" placeholder="লাইন বাই লাইন টেক্সট দিন..."></textarea>
-          <button class="btn-action" onclick="remDupe()" id="t15_btn">🧹 ডুপ্লিকেট মুছুন</button>
-        </div>
-      </div>
-
-      <!-- Tool 16: Number & Email Extractor -->
-      <div class="tool-card text" data-name="extractor নাম্বার ইমেইল আলাদা স্ক্র্যাপার">
-        <div class="tool-top">
-          <div class="tool-icon">🔢</div>
-          <div>
-            <h3 id="t16_name">নাম্বার ও ইমেইল এক্সট্রাক্টর</h3>
-            <p id="t16_sub">বড় লেখা থেকে ফোন নম্বর ও ইমেইল আলাদা করুন।</p>
-          </div>
-        </div>
-        <div>
-          <textarea id="extTxt" class="textarea-field" placeholder="লেখা পেস্ট করুন..."></textarea>
-          <div class="btn-group">
-            <button class="btn-action" onclick="extNums()" id="btnExtNum">📞 নাম্বার</button>
-            <button class="btn-action" style="background:#0284c7;" onclick="extEmails()" id="btnExtMail">✉️ ইমেইল</button>
-          </div>
-          <div class="result-box" id="extRes">
-            <span id="extResTxt">—</span>
-            <button class="copy-btn" onclick="copyResult('extResTxt')">Copy</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Tool 17: HD QR Code Generator -->
-      <div class="tool-card dev" data-name="qr code generator কিউআর কোড লিংক">
-        <div class="tool-top">
-          <div class="tool-icon">📱</div>
-          <div>
-            <h3 id="t17_name">এইচডি কিউআর কোড জেনারেটর</h3>
-            <p id="t17_sub">ওয়েবসাইট লিংক বা টেক্সটের জন্য QR তৈরি করুন।</p>
-          </div>
-        </div>
-        <div>
-          <input type="text" id="qrVal" placeholder="লিংক দিন (যেমন: https://google.com)" class="input-field">
-          <button class="btn-action" onclick="genQR()" id="t17_btn">📱 QR তৈরি করুন</button>
-          <div id="qrBox" class="preview-box"></div>
-        </div>
-      </div>
-
-      <!-- Tool 18: Cryptographic Password Generator -->
-      <div class="tool-card dev" data-name="password generator সিকিউর পাসওয়ার্ড তৈরি">
-        <div class="tool-top">
-          <div class="tool-icon">🔒</div>
-          <div>
-            <h3 id="t18_name">সিকিউর পাসওয়ার্ড জেনারেটর</h3>
-            <p id="t18_sub">শক্তিশালী ও হ্যাক-প্রুফ পাসওয়ার্ড তৈরি করুন।</p>
-          </div>
-        </div>
-        <div>
-          <input type="number" id="passLength" value="16" min="8" max="32" class="input-field">
-          <button class="btn-action" onclick="genPass()" id="t18_btn">🔒 পাসওয়ার্ড তৈরি করুন</button>
-          <div class="result-box" id="passRes">
-            <span id="passResTxt">Generate বাটনে ক্লিক করুন</span>
-            <button class="copy-btn" onclick="copyResult('passResTxt')">Copy</button>
-          </div>
-        </div>
-      </div>
-
     </div>
   </main>
 
-  <!-- Community Reviews Section -->
-  <section class="reviews-section" id="reviews">
-    <div class="wrap">
-      <h2 style="font-size:1.8rem; font-weight:900; text-align:center;" id="revTitle">🌟 কমিউনিটি রিভিউ ও ব্যবহারকারীদের মতামত</h2>
-      <p style="text-align:center; color:var(--text-muted); font-size:0.9rem;" id="revSub">সরাসরি ব্রাউজারে ব্যবহার করে বিশ্বের বিভিন্ন প্রান্ত থেকে ব্যবহারকারীদের সৎ মতামত</p>
+  <!-- FAQ Section -->
+  <section class="faq-section wrap">
+    <div class="faq-eyebrow" id="faqEyebrow">BEFORE YOU START</div>
+    <h2 class="faq-title font-serif" id="faqTitle">Good questions.</h2>
 
-      <!-- Rating Summary Banner -->
-      <div class="rating-summary-banner">
-        <div class="stat-badge">
-          <div class="stat-badge-num" style="color:#facc15;">৪.৯ ★</div>
-          <div class="stat-badge-sub" id="statAvg">গড় ইউজার রেটিং (৫ এর মধ্যে)</div>
+    <div class="faq-accordion">
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question">
+          <span id="faqQ1">Are the tools really free?</span>
+          <span class="faq-plus">+</span>
         </div>
-        <div class="stat-badge">
-          <div class="stat-badge-num">১২,৫০০+</div>
-          <div class="stat-badge-sub" id="statProc">দৈনিক সম্পন্নকৃত এআই টাস্ক</div>
-        </div>
-        <div class="stat-badge">
-          <div class="stat-badge-num" style="color:#34d399;">১০০%</div>
-          <div class="stat-badge-sub" id="statPriv">প্রাইভেট ব্রাউজার প্রসেসিং</div>
-        </div>
+        <div class="faq-answer" id="faqA1">Yes! Every single tool is 100% free with unlimited access, zero subscriptions, and no hidden account sign-ups.</div>
       </div>
-
-      <!-- Reviews Grid (Rich & Diverse) -->
-      <div class="review-grid" id="reviewGrid">
-        
-        <!-- Review 1 -->
-        <div class="review-card">
-          <div>
-            <div class="review-header">
-              <div class="review-author">
-                <div class="avatar">র</div>
-                <div>
-                  <div class="author-name" id="revAuthor1">রাকিব হাসান</div>
-                  <div class="author-role" id="revRole1">গ্রাফিক ডিজাইনার ও ফ্রিল্যান্সার</div>
-                </div>
-              </div>
-              <span class="verified-badge">✓ Verified</span>
-            </div>
-            <div class="stars" style="margin: 10px 0 6px;">★★★★★</div>
-            <p class="review-text" id="revText1">"এআই ব্যাকগ্রাউন্ড রিমুভারের রেজাল্ট একদম পেইড সফটওয়্যারের মতো নিখুঁত। কোনো সাইন-আপ বা ক্রেডিট কার্ড ছাড়াই এত ফাস্ট কাজ করে ভাবিনি!"</p>
-          </div>
-          <div class="review-footer">
-            <span>২ দিন আগে • Background Remover</span>
-            <button class="helpful-btn" onclick="voteHelpful(this)">👍 সহায়ক (২৪)</button>
-          </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question">
+          <span id="faqQ2">Are my images uploaded?</span>
+          <span class="faq-plus">+</span>
         </div>
-
-        <!-- Review 2 -->
-        <div class="review-card">
-          <div>
-            <div class="review-header">
-              <div class="review-author">
-                <div class="avatar" style="background:linear-gradient(135deg, #06b6d4, #3b82f6);">ত</div>
-                <div>
-                  <div class="author-name" id="revAuthor2">তানভীর আহমেদ</div>
-                  <div class="author-role" id="revRole2">ফটোগ্রাফার ও এডিটর</div>
-                </div>
-              </div>
-              <span class="verified-badge">✓ Verified</span>
-            </div>
-            <div class="stars" style="margin: 10px 0 6px;">★★★★★</div>
-            <p class="review-text" id="revText2">"৪K এনহ্যান্সার দিয়ে পুরোনো পারিবারিক ঝাপসা ছবিগুলো খুব সুন্দর স্পষ্ট করেছি। আর ব্রাউজারে লোকাল প্রসেসিং হওয়ায় কোনো ছবি সার্ভারে জমা হয় না—এটি চমৎকার!"</p>
-          </div>
-          <div class="review-footer">
-            <span>৪ দিন আগে • 4K Image Enhancer</span>
-            <button class="helpful-btn" onclick="voteHelpful(this)">👍 সহায়ক (১৮)</button>
-          </div>
-        </div>
-
-        <!-- Review 3 -->
-        <div class="review-card">
-          <div>
-            <div class="review-header">
-              <div class="review-author">
-                <div class="avatar" style="background:linear-gradient(135deg, #ec4899, #f43f5e);">ম</div>
-                <div>
-                  <div class="author-name" id="revAuthor3">মারিয়া সুলতানা</div>
-                  <div class="author-role" id="revRole3">ব্যাংকার ও বিনিয়োগকারী</div>
-                </div>
-              </div>
-              <span class="verified-badge">✓ Verified</span>
-            </div>
-            <div class="stars" style="margin: 10px 0 6px;">★★★★★</div>
-            <p class="review-text" id="revText3">"লোন ক্যালকুলেটর ও ইমেজ রিসাইজার আমার অফিসের নিয়মিত কাজের সঙ্গী। জটিল ইন্টারফেস ছাড়া একদম নিখুঁত ফলাফল দেয়।"</p>
-          </div>
-          <div class="review-footer">
-            <span>১ সপ্তাহ আগে • Loan EMI Calculator</span>
-            <button class="helpful-btn" onclick="voteHelpful(this)">👍 সহায়ক (১৫)</button>
-          </div>
-        </div>
-
-        <!-- Review 4 -->
-        <div class="review-card">
-          <div>
-            <div class="review-header">
-              <div class="review-author">
-                <div class="avatar" style="background:linear-gradient(135deg, #10b981, #059669);">স</div>
-                <div>
-                  <div class="author-name" id="revAuthor4">সাদাত করিম</div>
-                  <div class="author-role" id="revRole4">ফুল-স্ট্যাক সফটওয়্যার ডেভেলপার</div>
-                </div>
-              </div>
-              <span class="verified-badge">✓ Verified</span>
-            </div>
-            <div class="stars" style="margin: 10px 0 6px;">★★★★★</div>
-            <p class="review-text" id="revText4">"JSON ফরম্যাটার, কিউআর কোড এবং কালার প্যালেট স্টুডিও কোডিং করার সময় প্রতিদিন লাগে। কোনো অ্যাড বা বিজ্ঞাপন ছাড়াই একদম ক্লিন অভিজ্ঞতা।"</p>
-          </div>
-          <div class="review-footer">
-            <span>১ সপ্তাহ আগে • JSON Formatter</span>
-            <button class="helpful-btn" onclick="voteHelpful(this)">👍 সহায়ক (৩১)</button>
-          </div>
-        </div>
-
-        <!-- Review 5 -->
-        <div class="review-card">
-          <div>
-            <div class="review-header">
-              <div class="review-author">
-                <div class="avatar" style="background:linear-gradient(135deg, #8b5cf6, #d946ef);">ফ</div>
-                <div>
-                  <div class="author-name" id="revAuthor5">ফারহানা ইয়াসমিন</div>
-                  <div class="author-role" id="revRole5">ডিজিটাল মার্কেটার ও কনটেন্ট ক্রিয়েটর</div>
-                </div>
-              </div>
-              <span class="verified-badge">✓ Verified</span>
-            </div>
-            <div class="stars" style="margin: 10px 0 6px;">★★★★★</div>
-            <p class="review-text" id="revText5">"সোশ্যাল মিডিয়ার জন্য ইমেজ ক্রপার ও ইমেজ কম্প্রেসর ব্যবহার করে ছবির সাইজ ৮৫% কমানো যায় কোনো মান না হারিয়েই। সবার ব্যবহার করা উচিত!"</p>
-          </div>
-          <div class="review-footer">
-            <span>২ সপ্তাহ আগে • Image Compressor</span>
-            <button class="helpful-btn" onclick="voteHelpful(this)">👍 সহায়ক (২৭)</button>
-          </div>
-        </div>
-
-        <!-- Review 6 -->
-        <div class="review-card">
-          <div>
-            <div class="review-header">
-              <div class="review-author">
-                <div class="avatar" style="background:linear-gradient(135deg, #f59e0b, #d97706);">অ</div>
-                <div>
-                  <div class="author-name" id="revAuthor6">অমিত চৌধুরী</div>
-                  <div class="author-role" id="revRole6">বিশ্ববিদ্যালয় শিক্ষার্থী</div>
-                </div>
-              </div>
-              <span class="verified-badge">✓ Verified</span>
-            </div>
-            <div class="stars" style="margin: 10px 0 6px;">★★★★★</div>
-            <p class="review-text" id="revText6">"ইউনিট কনভার্টার ও ওয়ার্ড কাউন্টার অ্যাসাইনমেন্ট তৈরির জন্য সেরা। ইন্টারফেসটি মোবাইল ও পিসিতে দারুণ স্মুথ চলে।"</p>
-          </div>
-          <div class="review-footer">
-            <span>২ সপ্তাহ আগে • Unit Converter</span>
-            <button class="helpful-btn" onclick="voteHelpful(this)">👍 সহায়ক (১২)</button>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Add Review Form -->
-      <div class="review-form">
-        <h3 style="font-size:1.2rem; font-weight:800; margin-bottom:14px; color:#fff;" id="addRevTitle">✍️ আপনার মূল্যবান অভিজ্ঞতা ও রিভিউ লিখুন</h3>
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:4px;">
-          <input type="text" id="revName" placeholder="আপনার নাম" class="input-field">
-          <input type="text" id="revRoleInput" placeholder="আপনার পেশা (যেমন: ডিজাইনার / শিক্ষার্থী)" class="input-field">
-        </div>
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:4px;">
-          <select id="revToolSelect" class="select-field">
-            <option value="AI Background Remover">AI Background Remover</option>
-            <option value="4K Image Enhancer">4K Image Enhancer</option>
-            <option value="Image Compressor">Image Compressor</option>
-            <option value="Image Resizer">Image Resizer</option>
-            <option value="Loan EMI Calculator">Loan EMI Calculator</option>
-            <option value="Unit Converter">Unit Converter</option>
-            <option value="All Suite Tools">সকল টুলস (Overall Suite)</option>
-          </select>
-          <select id="revRatingSelect" class="select-field">
-            <option value="5">★★★★★ (৫ স্টার - চমৎকার)</option>
-            <option value="4">★★★★☆ (৪ স্টার - খুব ভালো)</option>
-            <option value="3">★★★☆☆ (৩ স্টার - সন্তোষজনক)</option>
-          </select>
-        </div>
-        <textarea id="revMsg" placeholder="আপনার অভিজ্ঞতা বা পরামর্শ বিস্তারিত লিখুন..." class="textarea-field"></textarea>
-        <button class="btn-action" onclick="addReview()" id="subRevBtn" style="padding:14px; font-size:0.95rem;">🚀 রিভিউ সাবমিট করুন</button>
+        <div class="faq-answer" id="faqA2">When you resize, compress, crop or convert an image, it is handled by your browser's canvas. Nothing needs to travel to a server for that work.</div>
       </div>
     </div>
   </section>
 
-  <!-- Footer with Legal & Support Links -->
-  <footer class="footer">
+  <!-- Footer -->
+  <footer class="site-footer">
     <div class="wrap">
-      <div class="footer-grid">
-        <!-- Col 1: Brand Info -->
-        <div class="footer-col">
-          <div class="brand">✨ Live<span style="color:#6366f1">Tool</span></div>
-          <p style="font-size:0.84rem; margin-top:10px; line-height:1.6; color:var(--text-muted);" id="fDesc">বিশ্বজুড়ে এআই। সবার জন্য ১০০% ফ্রি ও নিরাপদ ক্লায়েন্ট-ফার্স্ট ব্রাউজার ইউটিলিটি পোর্টাল। কোনো ছবি বা ডেটা সার্ভারে সংরক্ষণ হয় না।</p>
+      <div class="footer-brand-row">
+        <div>
+          <a href="index.html" class="footer-brand">
+            <div class="logo-badge" style="width:34px; height:34px; font-size:1.1rem;">⚡</div>
+            <span>Live<span style="color:var(--coral-primary)">Tool</span></span>
+          </a>
+          <p class="footer-tagline" id="footerTagline">A small toolkit for the things between big tasks.</p>
         </div>
 
-        <!-- Col 2: Navigation Links -->
-        <div class="footer-col">
-          <h4 id="fCol1Title">গুরুত্বপূর্ণ পেইজসমূহ</h4>
-          <ul class="footer-links">
-            <li><a href="#tools" id="fLinkTools">সকল টুলস (All Tools)</a></li>
-            <li><a href="#reviews" id="fLinkReviews">কমিউনিটি রিভিউ (User Reviews)</a></li>
-            <li><a href="contact.html" id="fLinkContact">যোগাযোগ ও সাপোর্ট (Contact)</a></li>
-          </ul>
-        </div>
-
-        <!-- Col 3: Legal Links -->
-        <div class="footer-col">
-          <h4 id="fCol2Title">আইনি ও প্রাইভেসি</h4>
-          <ul class="footer-links">
-            <li><a href="privacy.html" id="fLinkPrivacy">প্রাইভেসি পলিসি (Privacy Policy)</a></li>
-            <li><a href="terms.html" id="fLinkTerms">ব্যবহারের শর্তাবলী (Terms & Conditions)</a></li>
-            <li><a href="mailto:Lifetooloffice@gmail.com" id="fLinkEmail">সরাসরি ইমেইল সাপোর্ট</a></li>
-          </ul>
-        </div>
+        <nav class="footer-nav">
+          <a href="public/privacy.html" id="fNavPrivacy">Privacy</a>
+          <a href="public/terms.html" id="fNavTerms">Terms</a>
+          <a href="public/contact.html" id="fNavContact">Contact</a>
+        </nav>
       </div>
 
-      <div class="footer-bottom">
-        <p id="fCopy">© 2026 LiveTool. All rights reserved. | Powered by High-Performance Client-Side Processing</p>
+      <div class="footer-bottom-bar">
+        <p id="fCopyright">© 2026 LiveTool · Built to be useful, not noisy.</p>
+        <div>
+          <a href="mailto:livetooloffice@gmail.com" style="color:#94A3B8; text-decoration:none;">livetooloffice@gmail.com</a>
+        </div>
       </div>
     </div>
   </footer>
-
   <script>
-    // 100% Comprehensive Translations Dictionary
-    const T = {
-      bn: {
-        langBtn: "EN",
-        brandSub: "বিশ্বমানের ফ্রি এআই ও ইউটিলিটি প্ল্যাটফর্ম",
-        navTools: "সকল টুলস",
-        navReviews: "★ রিভিউ ও মতামত",
-        navContact: "যোগাযোগ",
-        navPrivacy: "প্রাইভেসি",
-        navTerms: "শর্তাবলী",
-        heroPill: "🌐 বিশ্বজুড়ে এআই • বাংলাদেশ থেকে বিশ্বমঞ্চে",
-        heroTitle: "বিশ্বজুড়ে এআই।<br>সবাই কানেক্টেড।",
-        heroDesc: "The Global Platform for AI Tools. Connected from Bangladesh to the World. পেইড এআই টুলসের মতো ২০+ পাওয়ারফুল অনলাইন ইউটিলিটি — ১০০% প্রাইভেট ও ব্রাউজার প্রসেসিং।",
-        tag1: "🪄 এআই ব্যাকগ্রাউন্ড রিমুভার",
-        tag2: "⚡ ৪K কোয়ালিটি এনহ্যান্সার",
-        tag3: "🔒 ০% Server Upload",
-        tag4: "⚡ আনলিমিটেড ফ্রি অ্যাক্সেস",
-        heroBtn: "সকল ২০+ টুলস এক্সপ্লোর করুন →",
-        qlContact: "📨 কন্টাক্ট ও সাপোর্ট পেজ",
-        qlPrivacy: "🔒 প্রাইভেসি পলিসি পেজ",
-        qlTerms: "📜 ব্যবহারের শর্তাবলী পেজ",
-        secTitle: "প্রোডাকশন ইউটিলিটি ও এআই টুলস",
-        secSub: "কোনো সার্ভার আপলোড ছাড়া ব্রাউজারে সরাসরি কাজ করুন",
-        searchPlaceholder: "🔍 সার্চ করুন (যেমন: ব্যাকগ্রাউন্ড, ইমেজ, রিসাইজ, বয়স, বিএমআই, লোন, জেএসন, কিউআর, পাসওয়ার্ড)...",
-        catAll: "সকল টুলস (২০+)",
-        catImg: "✨ এআই ও ইমেজ স্টুডিও",
-        catCalc: "🧮 ক্যালকুলেটর",
-        catConv: "📏 কনভার্টার",
-        catText: "📝 টেক্সট ইউটিলিটি",
-        catDev: "⚡ ডেভেলপার টুলস",
-        
-        t1_name: "এআই ব্যাকগ্রাউন্ড রিমুভার",
-        t1_sub: "স্বচ্ছ পিএনজি ও হেয়ার-লেভেল প্রিসিশন কাটআউট।",
-        bgOpt1: "স্বচ্ছ ব্যাকগ্রাউন্ড (Transparent PNG)",
-        bgOpt2: "সাদা ব্যাকগ্রাউন্ড (Solid White)",
-        bgOpt3: "কালো ব্যাকগ্রাউন্ড (Solid Black)",
-        t1_btn: "✨ ব্যাকগ্রাউন্ড রিমুভ করুন",
-
-        t2_name: "এআই ইমেজ এনহ্যান্সার (৪K)",
-        t2_sub: "ঝাপসা ছবিকে সুপার-রেজোলিউশন ও আল্ট্রা এইচডি করুন।",
-        enhOpt1: "২X সুপার-রেজোলিউশন (HD)",
-        enhOpt2: "৪X সুপার-রেজোলিউশন (4K Ultra)",
-        t2_btn: "🚀 ৪K এনহ্যান্স করুন",
-
-        t3_name: "এইচডি ইমেজ রিসাইজার",
-        t3_sub: "কোয়ালিটি নষ্ট না করে পিক্সেল ও সাইজ পরিবর্তন।",
-        resW_ph: "প্রস্থ (Width)",
-        resH_ph: "উচ্চতা (Height)",
-        t3_btn: "📐 রিসাইজ ও ডাউনলোড",
-
-        t4_name: "স্মার্ট ইমেজ কম্প্রেসর",
-        t4_sub: "ছবির মেগাবাইট কমিয়ে নিখুঁত অপ্টিমাইজেশন।",
-        compOpt1: "৮০% কোয়ালিটি (বেস্ট কম্প্রেশন)",
-        compOpt2: "৬০% কোয়ালিটি (ওয়েব ফ্রেন্ডলি)",
-        compOpt3: "৪০% কোয়ালিটি (স্মলেস্ট ফাইল সাইজ)",
-        t4_btn: "🗜️ কম্প্রেস ও ডাউনলোড",
-
-        t5_name: "ফরম্যাট কনভার্টার (JPG/PNG/WebP)",
-        t5_sub: "যেকোনো ছবিকে ভিন্ন ফরম্যাটে রূপান্তর করুন।",
-        convOpt1: "PNG ফরম্যাট (ট্রান্সপারেন্ট)",
-        convOpt2: "JPG / JPEG ফরম্যাট",
-        convOpt3: "WebP ফরম্যাট (সুপার ফাস্ট)",
-        t5_btn: "🔄 কনভার্ট ও সেভ",
-
-        t6_name: "প্রিসিশন ইমেজ ক্রপার",
-        t6_sub: "ছবির নির্দিষ্ট অংশ মাপমতো নিখুঁতভাবে কাটুন।",
-        cropW_ph: "ক্রপ প্রস্থ (px)",
-        cropH_ph: "ক্রপ উচ্চতা (px)",
-        t6_btn: "✂️ ক্রপ ও ডাউনলোড",
-
-        t7_name: "ইউনিভার্সাল ইউনিট কনভার্টার",
-        t7_sub: "দৈর্ঘ্য, ওজন, স্টোরেজ ও গতি রূপান্তর।",
-        uCatOpt1: "দৈর্ঘ্য (মিটার, ফুট, কিমি, ইঞ্চি)",
-        uCatOpt2: "ওজন (কেজি, গ্রাম, পাউন্ড)",
-        uCatOpt3: "ডিজিটাল ডেটা (MB, GB, TB)",
-        uResDefault: "ফলাফল এখানে আসবে",
-
-        t8_name: "সঠিক বয়স ও জীবন পরিসংখ্যান",
-        t8_sub: "বছর, মাস, দিন ও পরবর্তী জন্মদিন।",
-        t8_btn: "🎂 বয়স হিসাব করুন",
-        ageResDefault: "জন্ম তারিখ নির্বাচন করুন",
-
-        t9_name: "স্মার্ট BMI ও স্বাস্থ্য ট্র্যাকার",
-        t9_sub: "উচ্চতা ও ওজনের সঠিক অনুপাত (BMI)।",
-        bmiW_ph: "ওজন (kg)",
-        bmiH_ph: "উচ্চতা (cm)",
-        t9_btn: "🏃 BMI হিসাব করুন",
-        bmiResDefault: "উচ্চতা ও ওজন দিন",
-
-        t10_name: "লোন EMI ও ফাইন্যান্স ক্যালকুলেটর",
-        t10_sub: "মাসিক কিস্তি ও মোট সুদের হিসাব।",
-        loanP_ph: "লোন বা মূল টাকা ($/৳)",
-        loanR_ph: "সুদের হার (%)",
-        loanM_ph: "মেয়াদ (মাস)",
-        t10_btn: "💰 কিস্তি হিসাব করুন",
-        loanResDefault: "টাকার পরিমাণ ও সুদ দিন",
-
-        t11_name: "কালার প্যালেট স্টুডিও",
-        t11_sub: "ডিজাইনারদের জন্য পারফেক্ট HEX কালার প্যালেট।",
-        t11_btn: "🎨 র‍্যান্ডম প্যালেট তৈরি করুন",
-
-        t12_name: "JSON ভ্যালিডেটর ও ফরম্যাটার",
-        t12_sub: "জেএসন কোড সাজান অথবা মিনিফাই করুন।",
-
-        t13_name: "লাইভ ওয়ার্ড ও ক্যারেক্টার গণক",
-        t13_sub: "মোট শব্দ, বর্ণ ও পড়ার সময় মাপুন।",
-        wordTxt_ph: "এখানে টেক্সট লিখুন...",
-        wordResDefault: "শব্দ: ০ | বর্ণ: ০ | পড়ার সময়: ০s",
-
-        t14_name: "স্মার্ট কেস কনভার্টার",
-        t14_sub: "UPPERCASE, lowercase ও Title Case করুন।",
-        caseTxt_ph: "এখানে টেক্সট পেস্ট করুন...",
-
-        t15_name: "ডুপ্লিকেট লাইন রিমুভার",
-        t15_sub: "তালিকা থেকে ডুপ্লিকেট লেখা নিমেষে সরান।",
-        dupeTxt_ph: "লাইন বাই লাইন টেক্সট দিন...",
-        t15_btn: "🧹 ডুপ্লিকেট মুছুন",
-
-        t16_name: "নাম্বার ও ইমেইল এক্সট্রাক্টর",
-        t16_sub: "বড় লেখা থেকে ফোন নম্বর ও ইমেইল আলাদা করুন।",
-        extTxt_ph: "লেখা পেস্ট করুন...",
-        btnExtNum: "📞 নাম্বার",
-        btnExtMail: "✉️ ইমেইল",
-
-        t17_name: "এইচডি কিউআর কোড জেনারেটর",
-        t17_sub: "ওয়েবসাইট লিংক বা টেক্সটের জন্য QR তৈরি করুন।",
-        qrVal_ph: "লিংক দিন (যেমন: https://google.com)",
-        t17_btn: "📱 QR তৈরি করুন",
-
-        t18_name: "সিকিউর পাসওয়ার্ড জেনারেটর",
-        t18_sub: "শক্তিশালী ও হ্যাক-প্রুফ পাসওয়ার্ড তৈরি করুন।",
-        t18_btn: "🔒 পাসওয়ার্ড তৈরি করুন",
-        passResDefault: "Generate বাটনে ক্লিক করুন",
-
-        revTitle: "🌟 কমিউনিটি রিভিউ ও ব্যবহারকারীদের মতামত",
-        revSub: "সরাসরি ব্রাউজারে ব্যবহার করে বিশ্বের বিভিন্ন প্রান্ত থেকে ব্যবহারকারীদের সৎ মতামত",
-        statAvg: "গড় ইউজার রেটিং (৫ এর মধ্যে)",
-        statProc: "দৈনিক সম্পন্নকৃত এআই টাস্ক",
-        statPriv: "প্রাইভেট ব্রাউজার প্রসেসিং",
-        addRevTitle: "✍️ আপনার মূল্যবান অভিজ্ঞতা ও রিভিউ লিখুন",
-        revName_ph: "আপনার নাম",
-        revRole_ph: "আপনার পেশা (যেমন: ডিজাইনার / শিক্ষার্থী)",
-        revMsg_ph: "আপনার অভিজ্ঞতা বা পরামর্শ বিস্তারিত লিখুন...",
-        subRevBtn: "🚀 রিভিউ সাবমিট করুন",
-
-        fDesc: "বিশ্বজুড়ে এআই। সবার জন্য ১০০% ফ্রি ও নিরাপদ ক্লায়েন্ট-ফার্স্ট ব্রাউজার ইউটিলিটি পোর্টাল। কোনো ছবি বা ডেটা সার্ভারে সংরক্ষণ হয় না।",
-        fCol1Title: "গুরুত্বপূর্ণ পেইজসমূহ",
-        fLinkTools: "সকল টুলস (All Tools)",
-        fLinkReviews: "কমিউনিটি রিভিউ (User Reviews)",
-        fLinkContact: "যোগাযোগ ও সাপোর্ট (Contact)",
-        fCol2Title: "আইনি ও প্রাইভেসি",
-        fLinkPrivacy: "প্রাইভেসি পলিসি (Privacy Policy)",
-        fLinkTerms: "ব্যবহারের শর্তাবলী (Terms & Conditions)",
-        fLinkEmail: "সরাসরি ইমেইল সাপোর্ট",
-        fCopy: "© 2026 LiveTool. All rights reserved. | Powered by High-Performance Client-Side Processing"
-      },
+    // Language Dictionary
+    const DICT = {
       en: {
-        langBtn: "বাং",
-        brandSub: "World-Class Free AI & Browser Utilities Platform",
-        navTools: "All Tools",
-        navReviews: "★ User Reviews",
-        navContact: "Contact",
-        navPrivacy: "Privacy",
-        navTerms: "Terms",
-        heroPill: "🌐 AI Across the Globe • Connected to the World",
-        heroTitle: "AI Across the Globe.<br>Everyone Connected.",
-        heroDesc: "The Global Platform for AI Tools. Connected from Bangladesh to the World. 20+ Production Utilities running with zero server uploads in browser memory.",
-        tag1: "🪄 AI Background Remover",
-        tag2: "⚡ 4K Quality Enhancer",
-        tag3: "🔒 0% Server Upload",
-        tag4: "⚡ Unlimited Free Access",
-        heroBtn: "Explore All 20+ Tools →",
-        qlContact: "📨 Contact & Support Page",
-        qlPrivacy: "🔒 Privacy Policy Page",
-        qlTerms: "📜 Terms & Conditions Page",
-        secTitle: "Production Utilities & AI Suite",
-        secSub: "100% local processing in browser memory with zero server uploads",
-        searchPlaceholder: "🔍 Search tools (e.g. background, enhancer, resize, age, bmi, loan, json, qr, pass)...",
-        catAll: "All Tools (20+)",
-        catImg: "✨ AI & Image Studio",
-        catCalc: "🧮 Calculators",
-        catConv: "📏 Converters",
-        catText: "📝 Text Utilities",
-        catDev: "⚡ Developer Tools",
-
-        t1_name: "AI Background Remover",
-        t1_sub: "Hair-level precision cutout & transparent PNG.",
-        bgOpt1: "Transparent Background (PNG)",
-        bgOpt2: "Solid White Background",
-        bgOpt3: "Solid Black Background",
-        t1_btn: "✨ Remove Background",
-
-        t2_name: "AI Image Enhancer (4K)",
-        t2_sub: "Restore blurred photos with super-resolution & clarity.",
-        enhOpt1: "2X Super-Resolution (HD)",
-        enhOpt2: "4X Super-Resolution (4K Ultra)",
-        t2_btn: "🚀 Enhance to 4K",
-
-        t3_name: "HD Image Resizer",
-        t3_sub: "Change pixel dimensions with lossless quality.",
-        resW_ph: "Width (px)",
-        resH_ph: "Height (px)",
-        t3_btn: "📐 Resize & Download",
-
-        t4_name: "Smart Image Compressor",
-        t4_sub: "Reduce image file size with zero visible quality loss.",
-        compOpt1: "80% Quality (Best Compression)",
-        compOpt2: "60% Quality (Web Optimized)",
-        compOpt3: "40% Quality (Smallest Size)",
-        t4_btn: "🗜️ Compress & Download",
-
-        t5_name: "Format Converter (JPG/PNG/WebP)",
-        t5_sub: "Convert any image format instantly in browser.",
-        convOpt1: "PNG Format (Transparent)",
-        convOpt2: "JPG / JPEG Format",
-        convOpt3: "WebP Format (Ultra Fast)",
-        t5_btn: "🔄 Convert & Save",
-
-        t6_name: "Precision Image Cropper",
-        t6_sub: "Crop specific image areas with exact dimensions.",
-        cropW_ph: "Crop Width (px)",
-        cropH_ph: "Crop Height (px)",
-        t6_btn: "✂️ Crop & Download",
-
-        t7_name: "Universal Unit Converter",
-        t7_sub: "Length, weight, digital data & speed conversions.",
-        uCatOpt1: "Length (Meters, Feet, Km, Inches)",
-        uCatOpt2: "Weight (Kg, Grams, Pounds)",
-        uCatOpt3: "Digital Data (MB, GB, TB)",
-        uResDefault: "Result will appear here",
-
-        t8_name: "Accurate Age Calculator",
-        t8_sub: "Years, months, days & upcoming birthday stats.",
-        t8_btn: "🎂 Calculate Age",
-        ageResDefault: "Select date of birth",
-
-        t9_name: "Smart BMI & Health Tracker",
-        t9_sub: "Body Mass Index & ideal weight classification.",
-        bmiW_ph: "Weight (kg)",
-        bmiH_ph: "Height (cm)",
-        t9_btn: "🏃 Calculate BMI",
-        bmiResDefault: "Enter height and weight",
-
-        t10_name: "Loan EMI & Finance Calculator",
-        t10_sub: "Monthly payment, total interest & growth breakdown.",
-        loanP_ph: "Principal Amount ($/৳)",
-        loanR_ph: "Interest Rate (%)",
-        loanM_ph: "Tenure (Months)",
-        t10_btn: "💰 Calculate EMI",
-        loanResDefault: "Enter loan amount & interest",
-
-        t11_name: "Color Palette Studio",
-        t11_sub: "Generate clean HEX palettes for UI designers.",
-        t11_btn: "🎨 Generate Random Palette",
-
-        t12_name: "JSON Validator & Formatter",
-        t12_sub: "Beautify or minify JSON code with 1 click.",
-
-        t13_name: "Live Word & Character Counter",
-        t13_sub: "Count words, characters & reading time dynamically.",
-        wordTxt_ph: "Type or paste text here...",
-        wordResDefault: "Words: 0 | Characters: 0 | Reading Time: 0s",
-
-        t14_name: "Smart Case Converter",
-        t14_sub: "Convert text to UPPERCASE, lowercase & Title Case.",
-        caseTxt_ph: "Paste text here...",
-
-        t15_name: "Duplicate Line Remover",
-        t15_sub: "Clean up and deduplicate lists in one click.",
-        dupeTxt_ph: "Enter text line by line...",
-        t15_btn: "🧹 Remove Duplicates",
-
-        t16_name: "Number & Email Extractor",
-        t16_sub: "Scrape and extract phone numbers and emails from text.",
-        extTxt_ph: "Paste raw text here...",
-        btnExtNum: "📞 Numbers",
-        btnExtMail: "✉️ Emails",
-
-        t17_name: "HD QR Code Generator",
-        t17_sub: "Generate instant QR codes for URLs and text.",
-        qrVal_ph: "Enter URL (e.g. https://google.com)",
-        t17_btn: "📱 Generate QR",
-
-        t18_name: "Cryptographic Password Generator",
-        t18_sub: "Create ultra-secure, hack-proof passwords.",
-        t18_btn: "🔒 Generate Password",
-        passResDefault: "Click Generate Button",
-
-        revTitle: "🌟 Community Reviews & User Feedback",
-        revSub: "Feedback from real users across the globe using browser-native tools",
-        statAvg: "Average User Rating (out of 5)",
-        statProc: "Daily AI Tasks Completed",
-        statPriv: "Private Browser Processing",
-        addRevTitle: "✍️ Write Your Valuable Review",
-        revName_ph: "Your Name",
-        revRole_ph: "Your Profession (e.g. Designer / Student)",
-        revMsg_ph: "Write your feedback or suggestions in detail...",
-        subRevBtn: "🚀 Submit Review",
-
-        fDesc: "AI Across the Globe. 100% free and private browser utility portal for everyone. Zero server storage.",
-        fCol1Title: "Important Pages",
-        fLinkTools: "All Tools Catalog",
-        fLinkReviews: "User Reviews",
-        fLinkContact: "Contact & Support",
-        fCol2Title: "Legal & Privacy",
-        fLinkPrivacy: "Privacy Policy",
-        fLinkTerms: "Terms & Conditions",
-        fLinkEmail: "Direct Email Support",
-        fCopy: "© 2026 LiveTool. All rights reserved. | Powered by High-Performance Client-Side Processing"
+        langBtn: "বাংলা",
+        heroEyebrow: "MADE FOR EVERYDAY MOMENTS",
+        heroTitle: 'Small tasks.<br><span class="highlight">Done here.</span>',
+        heroDesc: "A pocket-sized collection of image, text and calculator tools. No account, no uploads, no maze of menus.",
+        heroBtnExplore: "Explore the toolkit →",
+        heroBtnResizer: "🖼️ Try image resizer",
+        heroSecurity: "<strong>Private by default.</strong> Image processing happens on your device.",
+        qpEyebrow: "START WITH A QUICK PICK",
+        qpTitle: "What are you fixing today?",
+        qp1Name: "Image Resizer",
+        qp1Sub: "Resize an image to exact pixel dimensions.",
+        qp2Name: "Word Counter",
+        qp2Sub: "Count words, characters and lines as you type.",
+        qp3Name: "JSON Formatter",
+        qp3Sub: "Format messy JSON and spot invalid syntax.",
+        tkEyebrow: "THE TOOLKIT · 20 READY NOW",
+        tkTitle: "Find your shortcut.",
+        tkSub: "Choose a tool, make the small thing less annoying, and get back to your day. Everything runs in this tab.",
+        searchPlaceholder: 'Search by task, like "image" or "JSON"',
+        pillAll: "All tools",
+        pillImages: "Images",
+        pillText: "Text",
+        pillCalc: "Calculators",
+        pillDev: "Developer",
+        mNavAllTools: "All 22+ Tools",
+        mNavResizer: "Image Resizer",
+        mNavBg: "AI Cutout Remover",
+        mNavEnhancer: "4K AI Enhancer",
+        mNavPrivacy: "Privacy Policy",
+        mNavTerms: "Terms of Service",
+        mNavContact: "Contact Support",
+        faqEyebrow: "BEFORE YOU START",
+        faqTitle: "Good questions.",
+        faqQ1: "Are the tools really free?",
+        faqA1: "Yes! Every single tool is 100% free with unlimited access, zero subscriptions, and no hidden account sign-ups.",
+        faqQ2: "Are my images uploaded?",
+        faqA2: "When you resize, compress, crop or convert an image, it is handled by your browser's canvas. Nothing needs to travel to a server for that work.",
+        footerTagline: "A small toolkit for the things between big tasks.",
+        fNavPrivacy: "Privacy",
+        fNavTerms: "Terms",
+        fNavContact: "Contact",
+        fCopyright: "© 2026 LiveTool · Built to be useful, not noisy."
+      },
+      bn: {
+        langBtn: "English",
+        heroEyebrow: "দৈনন্দিন কাজের জন্য তৈরি",
+        heroTitle: 'ছোট কাজ।<br><span class="highlight">সহজে সমাধান।</span>',
+        heroDesc: "ইমেজ, টেক্সট এবং প্রয়োজনীয় ক্যালকুলেটরের সহজ কালেকশন। কোনো অ্যাকাউন্ট, আপলোড বা জটিল মেনু নেই।",
+        heroBtnExplore: "সকল টুলস এক্সপ্লোর করুন →",
+        heroBtnResizer: "🖼️ ইমেজ রিসাইজার ব্যবহার করুন",
+        heroSecurity: "<strong>ডিফল্টভাবে প্রাইভেট।</strong> আপনার ডিভাইসেই সব প্রসেসিং সম্পন্ন হয়।",
+        qpEyebrow: "দ্রুত শুরু করুন",
+        qpTitle: "আজ কী সমাধান করতে চান?",
+        qp1Name: "ইমেজ রিসাইজার",
+        qp1Sub: "ছবির রেজোলিউশন ও পিক্সেল নিখুঁতভাবে মাপমতো পরিবর্তন করুন।",
+        qp2Name: "ওয়ার্ড কাউন্টার",
+        qp2Sub: "টাইপ করার সাথে সাথেই শব্দ ও বর্ণের সংখ্যা গণনা করুন।",
+        qp3Name: "JSON ফরম্যাটার",
+        qp3Sub: "অগোছালো JSON কোড সুন্দরভাবে সাজান ও যাচাই করুন।",
+        tkEyebrow: "টুলকিট · ২০+ রেডি টুলস",
+        tkTitle: "আপনার প্রয়োজনীয় টুলটি বেছে নিন।",
+        tkSub: "যেকোনো টুল নির্বাচন করুন, দ্রুত কাজ সেরে নিন। সবকিছু আপনার এই ব্রাউজারেই চলে।",
+        searchPlaceholder: 'টাস্ক সার্চ করুন (যেমন: "image", "JSON", "বয়স", "লোন")...',
+        pillAll: "সকল টুলস",
+        pillImages: "ইমেজ",
+        pillText: "টেক্সট",
+        pillCalc: "ক্যালকুলেটর",
+        pillDev: "ডেভেলপার",
+        mNavAllTools: "সকল ২২+ টুলস",
+        mNavResizer: "ইমেজ রিসাইজার",
+        mNavBg: "এআই কাটআউট রিমুভার",
+        mNavEnhancer: "৪K এআই এনহ্যান্সার",
+        mNavPrivacy: "প্রাইভেসি পলিসি",
+        mNavTerms: "ব্যবহারের শর্তাবলী",
+        mNavContact: "যোগাযোগ ও সাপোর্ট",
+        faqEyebrow: "শুরু করার আগে",
+        faqTitle: "সাধারণ কিছু প্রশ্ন।",
+        faqQ1: "টুলগুলো কি সত্যি সম্পূর্ণ ফ্রি?",
+        faqA1: "হ্যাঁ! প্রতিটি টুল ১০০% ফ্রি, কোনো আনলিমিটেড সীমাবদ্ধতা, সাবস্ক্রিপশন বা অ্যাকাউন্ট খোলার ঝামেলা নেই।",
+        faqQ2: "আমার ছবিগুলো কি সার্ভারে আপলোড হয়?",
+        faqA2: "না। আপনি যখন ছবি রিসাইজ, কম্প্রেস বা কনভার্ট করেন, তা সরাসরি ব্রাউজারের ক্যানভাসে প্রসেস হয়। কোনো ডেটা সার্ভারে যায় না।",
+        footerTagline: "বড় কাজের মাঝে ছোট কাজের সহজ সমাধান।",
+        fNavPrivacy: "প্রাইভেসি",
+        fNavTerms: "শর্তাবলী",
+        fNavContact: "যোগাযোগ",
+        fCopyright: "© 2026 LiveTool · Built to be useful, not noisy."
       }
     };
 
-    // Load persisted language or default to Bangla
-    let currentLang = localStorage.getItem('livetool_lang') || 'bn';
+    let activeLang = localStorage.getItem('livetool_app_lang') || 'en';
 
-    function applyLanguage(lang) {
-      currentLang = lang;
-      localStorage.setItem('livetool_lang', lang);
-      const dict = T[lang];
+    function setLanguage(lang) {
+      activeLang = lang;
+      localStorage.setItem('livetool_app_lang', lang);
+      const d = DICT[lang];
 
-      // Update text in DOM
-      document.getElementById('langText').textContent = dict.langBtn;
-      document.getElementById('brandSub').textContent = dict.brandSub;
-      document.getElementById('navTools').textContent = dict.navTools;
-      document.getElementById('navReviews').textContent = dict.navReviews;
-      document.getElementById('navContact').textContent = dict.navContact;
-      document.getElementById('navPrivacy').textContent = dict.navPrivacy;
-      document.getElementById('navTerms').textContent = dict.navTerms;
-      document.getElementById('heroPill').textContent = dict.heroPill;
-      document.getElementById('heroTitle').innerHTML = dict.heroTitle;
-      document.getElementById('heroDesc').textContent = dict.heroDesc;
-      document.getElementById('tag1').textContent = dict.tag1;
-      document.getElementById('tag2').textContent = dict.tag2;
-      document.getElementById('tag3').textContent = dict.tag3;
-      document.getElementById('tag4').textContent = dict.tag4;
-      document.getElementById('heroBtn').textContent = dict.heroBtn;
-      document.getElementById('qlContact').textContent = dict.qlContact;
-      document.getElementById('qlPrivacy').textContent = dict.qlPrivacy;
-      document.getElementById('qlTerms').textContent = dict.qlTerms;
-      document.getElementById('secTitle').textContent = dict.secTitle;
-      document.getElementById('secSub').textContent = dict.secSub;
-      document.getElementById('toolSearch').placeholder = dict.searchPlaceholder;
-      document.getElementById('catAll').textContent = dict.catAll;
-      document.getElementById('catImg').textContent = dict.catImg;
-      document.getElementById('catCalc').textContent = dict.catCalc;
-      document.getElementById('catConv').textContent = dict.catConv;
-      document.getElementById('catText').textContent = dict.catText;
-      document.getElementById('catDev').textContent = dict.catDev;
+      document.getElementById('langBtn').querySelector('span').textContent = d.langBtn;
+      document.getElementById('heroEyebrow').textContent = d.heroEyebrow;
+      document.getElementById('heroTitle').innerHTML = d.heroTitle;
+      document.getElementById('heroDesc').textContent = d.heroDesc;
+      document.getElementById('heroBtnExplore').textContent = d.heroBtnExplore;
+      document.getElementById('heroBtnResizer').textContent = d.heroBtnResizer;
+      document.getElementById('heroSecurity').innerHTML = d.heroSecurity;
 
-      // Tools text
-      document.getElementById('t1_name').textContent = dict.t1_name;
-      document.getElementById('t1_sub').textContent = dict.t1_sub;
-      document.getElementById('bgOpt1').textContent = dict.bgOpt1;
-      document.getElementById('bgOpt2').textContent = dict.bgOpt2;
-      document.getElementById('bgOpt3').textContent = dict.bgOpt3;
-      document.getElementById('t1_btn').textContent = dict.t1_btn;
+      document.getElementById('qpEyebrow').textContent = d.qpEyebrow;
+      document.getElementById('qpTitle').textContent = d.qpTitle;
+      document.getElementById('qp1Name').textContent = d.qp1Name;
+      document.getElementById('qp1Sub').textContent = d.qp1Sub;
+      document.getElementById('qp2Name').textContent = d.qp2Name;
+      document.getElementById('qp2Sub').textContent = d.qp2Sub;
+      document.getElementById('qp3Name').textContent = d.qp3Name;
+      document.getElementById('qp3Sub').textContent = d.qp3Sub;
 
-      document.getElementById('t2_name').textContent = dict.t2_name;
-      document.getElementById('t2_sub').textContent = dict.t2_sub;
-      document.getElementById('enhOpt1').textContent = dict.enhOpt1;
-      document.getElementById('enhOpt2').textContent = dict.enhOpt2;
-      document.getElementById('t2_btn').textContent = dict.t2_btn;
+      document.getElementById('tkEyebrow').textContent = d.tkEyebrow;
+      document.getElementById('tkTitle').textContent = d.tkTitle;
+      document.getElementById('tkSub').textContent = d.tkSub;
+      document.getElementById('toolSearchInput').placeholder = d.searchPlaceholder;
+      document.getElementById('pillAll').textContent = d.pillAll;
+      document.getElementById('pillImages').textContent = d.pillImages;
+      document.getElementById('pillText').textContent = d.pillText;
+      document.getElementById('pillCalc').textContent = d.pillCalc;
+      document.getElementById('pillDev').textContent = d.pillDev;
 
-      document.getElementById('t3_name').textContent = dict.t3_name;
-      document.getElementById('t3_sub').textContent = dict.t3_sub;
-      document.getElementById('resW').placeholder = dict.resW_ph;
-      document.getElementById('resH').placeholder = dict.resH_ph;
-      document.getElementById('t3_btn').textContent = dict.t3_btn;
+      if (document.getElementById('mNavAllTools')) document.getElementById('mNavAllTools').textContent = d.mNavAllTools;
+      if (document.getElementById('mNavResizer')) document.getElementById('mNavResizer').textContent = d.mNavResizer;
+      if (document.getElementById('mNavBg')) document.getElementById('mNavBg').textContent = d.mNavBg;
+      if (document.getElementById('mNavEnhancer')) document.getElementById('mNavEnhancer').textContent = d.mNavEnhancer;
+      if (document.getElementById('mNavPrivacy')) document.getElementById('mNavPrivacy').textContent = d.mNavPrivacy;
+      if (document.getElementById('mNavTerms')) document.getElementById('mNavTerms').textContent = d.mNavTerms;
+      if (document.getElementById('mNavContact')) document.getElementById('mNavContact').textContent = d.mNavContact;
 
-      document.getElementById('t4_name').textContent = dict.t4_name;
-      document.getElementById('t4_sub').textContent = dict.t4_sub;
-      document.getElementById('compOpt1').textContent = dict.compOpt1;
-      document.getElementById('compOpt2').textContent = dict.compOpt2;
-      document.getElementById('compOpt3').textContent = dict.compOpt3;
-      document.getElementById('t4_btn').textContent = dict.t4_btn;
+      document.getElementById('faqEyebrow').textContent = d.faqEyebrow;
+      document.getElementById('faqTitle').textContent = d.faqTitle;
+      document.getElementById('faqQ1').textContent = d.faqQ1;
+      document.getElementById('faqA1').textContent = d.faqA1;
+      document.getElementById('faqQ2').textContent = d.faqQ2;
+      document.getElementById('faqA2').textContent = d.faqA2;
 
-      document.getElementById('t5_name').textContent = dict.t5_name;
-      document.getElementById('t5_sub').textContent = dict.t5_sub;
-      document.getElementById('convOpt1').textContent = dict.convOpt1;
-      document.getElementById('convOpt2').textContent = dict.convOpt2;
-      document.getElementById('convOpt3').textContent = dict.convOpt3;
-      document.getElementById('t5_btn').textContent = dict.t5_btn;
-
-      document.getElementById('t6_name').textContent = dict.t6_name;
-      document.getElementById('t6_sub').textContent = dict.t6_sub;
-      document.getElementById('cropW').placeholder = dict.cropW_ph;
-      document.getElementById('cropH').placeholder = dict.cropH_ph;
-      document.getElementById('t6_btn').textContent = dict.t6_btn;
-
-      document.getElementById('t7_name').textContent = dict.t7_name;
-      document.getElementById('t7_sub').textContent = dict.t7_sub;
-      document.getElementById('uCatOpt1').textContent = dict.uCatOpt1;
-      document.getElementById('uCatOpt2').textContent = dict.uCatOpt2;
-      document.getElementById('uCatOpt3').textContent = dict.uCatOpt3;
-
-      document.getElementById('t8_name').textContent = dict.t8_name;
-      document.getElementById('t8_sub').textContent = dict.t8_sub;
-      document.getElementById('t8_btn').textContent = dict.t8_btn;
-
-      document.getElementById('t9_name').textContent = dict.t9_name;
-      document.getElementById('t9_sub').textContent = dict.t9_sub;
-      document.getElementById('bmiW').placeholder = dict.bmiW_ph;
-      document.getElementById('bmiH').placeholder = dict.bmiH_ph;
-      document.getElementById('t9_btn').textContent = dict.t9_btn;
-
-      document.getElementById('t10_name').textContent = dict.t10_name;
-      document.getElementById('t10_sub').textContent = dict.t10_sub;
-      document.getElementById('loanP').placeholder = dict.loanP_ph;
-      document.getElementById('loanR').placeholder = dict.loanR_ph;
-      document.getElementById('loanM').placeholder = dict.loanM_ph;
-      document.getElementById('t10_btn').textContent = dict.t10_btn;
-
-      document.getElementById('t11_name').textContent = dict.t11_name;
-      document.getElementById('t11_sub').textContent = dict.t11_sub;
-      document.getElementById('t11_btn').textContent = dict.t11_btn;
-
-      document.getElementById('t12_name').textContent = dict.t12_name;
-      document.getElementById('t12_sub').textContent = dict.t12_sub;
-
-      document.getElementById('t13_name').textContent = dict.t13_name;
-      document.getElementById('t13_sub').textContent = dict.t13_sub;
-      document.getElementById('wordTxt').placeholder = dict.wordTxt_ph;
-
-      document.getElementById('t14_name').textContent = dict.t14_name;
-      document.getElementById('t14_sub').textContent = dict.t14_sub;
-      document.getElementById('caseTxt').placeholder = dict.caseTxt_ph;
-
-      document.getElementById('t15_name').textContent = dict.t15_name;
-      document.getElementById('t15_sub').textContent = dict.t15_sub;
-      document.getElementById('dupeTxt').placeholder = dict.dupeTxt_ph;
-      document.getElementById('t15_btn').textContent = dict.t15_btn;
-
-      document.getElementById('t16_name').textContent = dict.t16_name;
-      document.getElementById('t16_sub').textContent = dict.t16_sub;
-      document.getElementById('extTxt').placeholder = dict.extTxt_ph;
-      document.getElementById('btnExtNum').textContent = dict.btnExtNum;
-      document.getElementById('btnExtMail').textContent = dict.btnExtMail;
-
-      document.getElementById('t17_name').textContent = dict.t17_name;
-      document.getElementById('t17_sub').textContent = dict.t17_sub;
-      document.getElementById('qrVal').placeholder = dict.qrVal_ph;
-      document.getElementById('t17_btn').textContent = dict.t17_btn;
-
-      document.getElementById('t18_name').textContent = dict.t18_name;
-      document.getElementById('t18_sub').textContent = dict.t18_sub;
-      document.getElementById('t18_btn').textContent = dict.t18_btn;
-
-      // Reviews
-      document.getElementById('revTitle').textContent = dict.revTitle;
-      document.getElementById('revSub').textContent = dict.revSub;
-      document.getElementById('statAvg').textContent = dict.statAvg;
-      document.getElementById('statProc').textContent = dict.statProc;
-      document.getElementById('statPriv').textContent = dict.statPriv;
-      document.getElementById('addRevTitle').textContent = dict.addRevTitle;
-      document.getElementById('revName').placeholder = dict.revName_ph;
-      document.getElementById('revRoleInput').placeholder = dict.revRole_ph;
-      document.getElementById('revMsg').placeholder = dict.revMsg_ph;
-      document.getElementById('subRevBtn').textContent = dict.subRevBtn;
-
-      // Footer
-      document.getElementById('fDesc').textContent = dict.fDesc;
-      document.getElementById('fCol1Title').textContent = dict.fCol1Title;
-      document.getElementById('fLinkTools').textContent = dict.fLinkTools;
-      document.getElementById('fLinkReviews').textContent = dict.fLinkReviews;
-      document.getElementById('fLinkContact').textContent = dict.fLinkContact;
-      document.getElementById('fCol2Title').textContent = dict.fCol2Title;
-      document.getElementById('fLinkPrivacy').textContent = dict.fLinkPrivacy;
-      document.getElementById('fLinkTerms').textContent = dict.fLinkTerms;
-      document.getElementById('fLinkEmail').textContent = dict.fLinkEmail;
-      document.getElementById('fCopy').textContent = dict.fCopy;
+      document.getElementById('footerTagline').textContent = d.footerTagline;
+      document.getElementById('fNavPrivacy').textContent = d.fNavPrivacy;
+      document.getElementById('fNavTerms').textContent = d.fNavTerms;
+      document.getElementById('fNavContact').textContent = d.fNavContact;
+      document.getElementById('fCopyright').textContent = d.fCopyright;
     }
 
-    function toggleLang() {
-      applyLanguage(currentLang === 'bn' ? 'en' : 'bn');
+    function toggleLanguage() { setLanguage(activeLang === 'en' ? 'bn' : 'en'); }
+    function toggleTheme() {
+      const isDark = document.body.classList.toggle('dark-theme');
+      document.getElementById('themeIcon').textContent = isDark ? '☀️' : '🌙';
     }
+    function toggleFaq(item) { item.classList.toggle('open'); }
 
-    function searchTools() {
-      const q = document.getElementById('toolSearch').value.toLowerCase().trim();
-      document.querySelectorAll('.tool-card').forEach(c => {
-        const text = (c.getAttribute('data-name') || '') + ' ' + c.innerText.toLowerCase();
-        c.style.display = text.includes(q) ? 'flex' : 'none';
+    function toggleMenuDropdown(e) {
+      if (e) e.stopPropagation();
+      const menu = document.getElementById('headerMenuDropdown');
+      if (menu) menu.classList.toggle('show');
+    }
+    function closeMenuDropdown() {
+      const menu = document.getElementById('headerMenuDropdown');
+      if (menu) menu.classList.remove('show');
+    }
+    document.addEventListener('click', function(e) {
+      const container = document.querySelector('.menu-dropdown-container');
+      if (container && !container.contains(e.target)) closeMenuDropdown();
+    });
+
+    function filterToolsBySearch() {
+      const q = document.getElementById('toolSearchInput').value.toLowerCase().trim();
+      document.querySelectorAll('.tool-card').forEach(card => {
+        const text = (card.getAttribute('data-name') || '') + ' ' + card.innerText.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
       });
     }
 
-    function filterCat(cat, btn) {
-      document.querySelectorAll('.filter-chips .chip').forEach(ch => ch.classList.remove('active'));
+    function applyCategoryFilter(cat, btn) {
+      document.querySelectorAll('.filter-pills .filter-pill').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      document.querySelectorAll('.tool-card').forEach(c => {
-        if (cat === 'all' || c.classList.contains(cat)) c.style.display = 'flex';
-        else c.style.display = 'none';
+      document.querySelectorAll('.tool-card').forEach(card => {
+        card.style.display = (cat === 'all' || card.classList.contains(cat)) ? 'flex' : 'none';
       });
     }
 
-    function copyResult(elementId) {
-      const el = document.getElementById(elementId);
-      if (!el) return;
-      const text = el.innerText || el.textContent;
-      navigator.clipboard.writeText(text).then(() => {
-        alert(currentLang === 'bn' ? 'ক্লিপবোর্ডে কপি করা হয়েছে!' : 'Copied to clipboard!');
-      });
-    }
+    // 1. Tool Logic: AI Background Remover (Anti-Halo Matting Pro)
+    function executeBgRemoval() {
+      const file = document.getElementById('bgFileInput').files[0];
+      if (!file) return alert(activeLang === 'en' ? 'Please select an image file!' : 'দয়া করে একটি ছবি বাছাই করুন!');
+      const mode = document.getElementById('bgModeSelect').value;
+      const btn = document.getElementById('t3Btn');
+      const origBtnText = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = activeLang === 'en' ? '⏳ Processing Clean Cutout...' : '⏳ নিখুঁত প্রসেসিং হচ্ছে...';
 
-    // 1. AI Background Remover
-    function runBgRemover() {
-      const file = document.getElementById('bgFile').files[0];
-      if (!file) return alert(currentLang === 'bn' ? 'দয়া করে একটি ছবি বাছাই করুন!' : 'Please select an image file!');
-      const mode = document.getElementById('bgMode').value;
       const reader = new FileReader();
       reader.onload = function(e) {
         const img = new Image();
         img.onload = function() {
-          const cvs = document.createElement('canvas');
-          cvs.width = img.width; cvs.height = img.height;
-          const ctx = cvs.getContext('2d');
-          ctx.drawImage(img, 0, 0);
-          const imgData = ctx.getImageData(0, 0, cvs.width, cvs.height);
-          const d = imgData.data;
-          const r0 = d[0], g0 = d[1], b0 = d[2];
-          for (let i = 0; i < d.length; i += 4) {
-            const dist = Math.hypot(d[i]-r0, d[i+1]-g0, d[i+2]-b0);
-            if (dist < 42) {
-              if (mode === 'white') { d[i]=255; d[i+1]=255; d[i+2]=255; d[i+3]=255; }
-              else if (mode === 'black') { d[i]=0; d[i+1]=0; d[i+2]=0; d[i+3]=255; }
-              else { d[i+3]=0; }
+          const width = img.width, height = img.height;
+          const srcCanvas = document.createElement('canvas');
+          srcCanvas.width = width; srcCanvas.height = height;
+          const srcCtx = srcCanvas.getContext('2d');
+          srcCtx.drawImage(img, 0, 0);
+
+          const imgData = srcCtx.getImageData(0, 0, width, height);
+          const data = imgData.data;
+          const totalPixels = width * height;
+
+          // 1. Multi-point Perimeter Background Sampling
+          const borderSamples = [];
+          const stepX = Math.max(1, Math.floor(width / 40));
+          const stepY = Math.max(1, Math.floor(height / 40));
+
+          for (let x = 0; x < width; x += stepX) {
+            const iTop = (0 * width + x) * 4; borderSamples.push([data[iTop], data[iTop + 1], data[iTop + 2]]);
+            const iBot = ((height - 1) * width + x) * 4; borderSamples.push([data[iBot], data[iBot + 1], data[iBot + 2]]);
+          }
+          for (let y = 0; y < height; y += stepY) {
+            const iLeft = (y * width + 0) * 4; borderSamples.push([data[iLeft], data[iLeft + 1], data[iLeft + 2]]);
+            const iRight = (y * width + (width - 1)) * 4; borderSamples.push([data[iRight], data[iRight + 1], data[iRight + 2]]);
+          }
+
+          let sumR = 0, sumG = 0, sumB = 0;
+          for (let i = 0; i < borderSamples.length; i++) {
+            sumR += borderSamples[i][0]; sumG += borderSamples[i][1]; sumB += borderSamples[i][2];
+          }
+          const avgBgR = sumR / borderSamples.length;
+          const avgBgG = sumG / borderSamples.length;
+          const avgBgB = sumB / borderSamples.length;
+
+          function colorDist(r, g, b, bgR, bgG, bgB) {
+            const dr = r - bgR, dg = g - bgG, db = b - bgB;
+            return Math.sqrt(0.299 * dr * dr + 0.587 * dg * dg + 0.114 * db * db);
+          }
+
+          // 2. Connected Flood Fill from outer edges
+          const isBackground = new Uint8Array(totalPixels);
+          const queue = new Int32Array(totalPixels);
+          let qHead = 0, qTail = 0;
+
+          for (let x = 0; x < width; x++) {
+            const idxTop = 0 * width + x; const pTop = idxTop * 4;
+            if (colorDist(data[pTop], data[pTop+1], data[pTop+2], avgBgR, avgBgG, avgBgB) < 65) { isBackground[idxTop] = 1; queue[qTail++] = idxTop; }
+            const idxBot = (height - 1) * width + x; const pBot = idxBot * 4;
+            if (colorDist(data[pBot], data[pBot+1], data[pBot+2], avgBgR, avgBgG, avgBgB) < 65) { isBackground[idxBot] = 1; queue[qTail++] = idxBot; }
+          }
+          for (let y = 0; y < height; y++) {
+            const idxLeft = y * width + 0; const pLeft = idxLeft * 4;
+            if (!isBackground[idxLeft] && colorDist(data[pLeft], data[pLeft+1], data[pLeft+2], avgBgR, avgBgG, avgBgB) < 65) { isBackground[idxLeft] = 1; queue[qTail++] = idxLeft; }
+            const idxRight = y * width + (width - 1); const pRight = idxRight * 4;
+            if (!isBackground[idxRight] && colorDist(data[pRight], data[pRight+1], data[pRight+2], avgBgR, avgBgG, avgBgB) < 65) { isBackground[idxRight] = 1; queue[qTail++] = idxRight; }
+          }
+
+          const thresholdFlood = 46;
+          while (qHead < qTail) {
+            const curr = queue[qHead++];
+            const cx = curr % width, cy = Math.floor(curr / width);
+            const cIdx = curr * 4;
+            const cr = data[cIdx], cg = data[cIdx+1], cb = data[cIdx+2];
+
+            const neighbors = [
+              cy > 0 ? (cy - 1) * width + cx : -1,
+              cy < height - 1 ? (cy + 1) * width + cx : -1,
+              cx > 0 ? cy * width + (cx - 1) : -1,
+              cx < width - 1 ? cy * width + (cx + 1) : -1
+            ];
+
+            for (let n = 0; n < 4; n++) {
+              const next = neighbors[n];
+              if (next >= 0 && isBackground[next] === 0) {
+                const nIdx = next * 4;
+                const distBg = colorDist(data[nIdx], data[nIdx+1], data[nIdx+2], avgBgR, avgBgG, avgBgB);
+                const distLocal = colorDist(data[nIdx], data[nIdx+1], data[nIdx+2], cr, cg, cb);
+                if (distBg < thresholdFlood || (distLocal < 16 && distBg < 68)) {
+                  isBackground[next] = 1; queue[qTail++] = next;
+                }
+              }
             }
           }
-          ctx.putImageData(imgData, 0, 0);
-          cvs.toBlob(blob => {
+
+          // 3. Compute Soft Alpha Mask & Defringing
+          const alphaMap = new Float32Array(totalPixels);
+          for (let i = 0; i < totalPixels; i++) {
+            const p = i * 4;
+            if (isBackground[i] === 1) {
+              const d = colorDist(data[p], data[p+1], data[p+2], avgBgR, avgBgG, avgBgB);
+              if (d <= 22) alphaMap[i] = 0;
+              else if (d >= 52) alphaMap[i] = 1;
+              else {
+                const t = (d - 22) / (52 - 22);
+                alphaMap[i] = t * t * (3 - 2 * t);
+              }
+            } else alphaMap[i] = 1;
+          }
+
+          // 4. Color Decontamination (Anti-Halo)
+          const outData = new Uint8ClampedArray(data.length);
+          for (let y = 0; y < height; y++) {
+            for (let x = 0; x < width; x++) {
+              const i = y * width + x; const p = i * 4; const a = alphaMap[i];
+              if (a <= 0.01) { outData[p] = 0; outData[p + 1] = 0; outData[p + 2] = 0; outData[p + 3] = 0; }
+              else if (a >= 0.99) { outData[p] = data[p]; outData[p + 1] = data[p + 1]; outData[p + 2] = data[p + 2]; outData[p + 3] = 255; }
+              else {
+                let cleanR = (data[p] - (1 - a) * avgBgR) / a;
+                let cleanG = (data[p + 1] - (1 - a) * avgBgG) / a;
+                let cleanB = (data[p + 2] - (1 - a) * avgBgB) / a;
+                outData[p] = Math.max(0, Math.min(255, Math.round(cleanR)));
+                outData[p + 1] = Math.max(0, Math.min(255, Math.round(cleanG)));
+                outData[p + 2] = Math.max(0, Math.min(255, Math.round(cleanB)));
+                outData[p + 3] = Math.round(a * 255);
+              }
+            }
+          }
+
+          // 5. Output Canvas
+          const outCvs = document.createElement('canvas');
+          outCvs.width = width; outCvs.height = height;
+          const outCtx = outCvs.getContext('2d');
+          if (mode === 'white') { outCtx.fillStyle = '#FFFFFF'; outCtx.fillRect(0, 0, width, height); }
+          else if (mode === 'black') { outCtx.fillStyle = '#000000'; outCtx.fillRect(0, 0, width, height); }
+
+          const tempCvs = document.createElement('canvas');
+          tempCvs.width = width; tempCvs.height = height;
+          const tempCtx = tempCvs.getContext('2d');
+          const finalImgData = new ImageData(outData, width, height);
+          tempCtx.putImageData(finalImgData, 0, 0);
+          outCtx.drawImage(tempCvs, 0, 0);
+
+          outCvs.toBlob(blob => {
             const url = URL.createObjectURL(blob);
-            document.getElementById('bgPrev').innerHTML = '<img src="' + url + '">';
-            const a = document.createElement('a'); a.href = url; a.download = 'livetool-cutout.png'; a.click();
+            document.getElementById('bgPreviewBox').innerHTML = '<img src="' + url + '">';
+            const a = document.createElement('a'); a.href = url; a.download = `livetool-cutout-${mode}.png`; a.click();
+            btn.disabled = false; btn.textContent = origBtnText;
           }, 'image/png');
         };
         img.src = e.target.result;
@@ -1513,333 +1032,51 @@
       reader.readAsDataURL(file);
     }
 
-    // 2. AI 4K Enhancer
-    function runEnhancer() {
-      const file = document.getElementById('enhFile').files[0];
-      if (!file) return alert(currentLang === 'bn' ? 'ছবি নির্বাচন করুন!' : 'Please select an image!');
-      const scale = parseInt(document.getElementById('enhScale').value) || 2;
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        const img = new Image();
-        img.onload = function() {
-          const cvs = document.createElement('canvas');
-          cvs.width = img.width * scale; cvs.height = img.height * scale;
-          const ctx = cvs.getContext('2d');
-          ctx.imageSmoothingEnabled = true;
-          ctx.imageSmoothingQuality = 'high';
-          ctx.drawImage(img, 0, 0, cvs.width, cvs.height);
-          const imgData = ctx.getImageData(0, 0, cvs.width, cvs.height);
-          const d = imgData.data;
-          for (let i = 0; i < d.length; i += 4) {
-            d[i] = Math.min(255, d[i] * 1.05);
-            d[i+1] = Math.min(255, d[i+1] * 1.05);
-            d[i+2] = Math.min(255, d[i+2] * 1.05);
-          }
-          ctx.putImageData(imgData, 0, 0);
-          cvs.toBlob(blob => {
-            const url = URL.createObjectURL(blob);
-            document.getElementById('enhPrev').innerHTML = '<img src="' + url + '">';
-            const a = document.createElement('a'); a.href = url; a.download = 'livetool-4k-enhanced.jpg'; a.click();
-          }, 'image/jpeg', 0.96);
-        };
-        img.src = e.target.result;
-      };
-      reader.readAsDataURL(file);
-    }
+    // 2. Tool Logic: 4K Enhancer
+    function executeEnhance() {
+      const file = document.getElementById('enhFileInput').files[0];
+      if (!file) return alert(activeLang === 'en' ? 'Please choose an image!' : 'একটি ছবি নির্বাচন করুন!');
+      const scale = parseInt(document.getElementById('enhScaleSelect').value) || 2;
+      const btn = document.getElementById('t4Btn');
+      const origBtnText = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = activeLang === 'en' ? '⏳ Enhancing to 4K...' : '⏳ ৪K এনহ্যান্স হচ্ছে...';
 
-    // 3. HD Resizer
-    function runResizer() {
-      const file = document.getElementById('resizeFile').files[0];
-      const w = parseInt(document.getElementById('resW').value);
-      const h = parseInt(document.getElementById('resH').value);
-      if (!file) return alert(currentLang === 'bn' ? 'ছবি নির্বাচন করুন!' : 'Please select an image!');
       const reader = new FileReader();
       reader.onload = function(e) {
         const img = new Image();
         img.onload = function() {
-          const targetW = w || img.width;
-          const targetH = h || (img.height * (targetW / img.width));
+          const targetW = img.width * scale, targetH = img.height * scale;
           const cvs = document.createElement('canvas');
           cvs.width = targetW; cvs.height = targetH;
           const ctx = cvs.getContext('2d');
-          ctx.imageSmoothingQuality = 'high';
+          ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = 'high';
           ctx.drawImage(img, 0, 0, targetW, targetH);
+
+          const imgData = ctx.getImageData(0, 0, targetW, targetH);
+          const d = imgData.data;
+          const copy = new Uint8ClampedArray(d);
+
+          const amount = 0.4;
+          for (let y = 1; y < targetH - 1; y++) {
+            for (let x = 1; x < targetW - 1; x++) {
+              const idx = (y * targetW + x) * 4;
+              for (let c = 0; c < 3; c++) {
+                const center = copy[idx + c];
+                const up = copy[((y - 1) * targetW + x) * 4 + c];
+                const down = copy[((y + 1) * targetW + x) * 4 + c];
+                const left = copy[(y * targetW + (x - 1)) * 4 + c];
+                const right = copy[(y * targetW + (x + 1)) * 4 + c];
+                const laplacian = 4 * center - (up + down + left + right);
+                const sharpened = center + amount * laplacian;
+                d[idx + c] = Math.max(0, Math.min(255, sharpened));
+              }
+            }
+          }
+          ctx.putImageData(imgData, 0, 0);
+
           cvs.toBlob(blob => {
-            const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'resized.png'; a.click();
-          }, 'image/png');
-        };
-        img.src = e.target.result;
-      };
-      reader.readAsDataURL(file);
-    }
-
-    // 4. Image Compressor
-    function runCompressor() {
-      const file = document.getElementById('compFile').files[0];
-      const q = parseFloat(document.getElementById('compQual').value) || 0.8;
-      if (!file) return alert(currentLang === 'bn' ? 'ছবি বাছাই করুন!' : 'Please select an image!');
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        const img = new Image();
-        img.onload = function() {
-          const cvs = document.createElement('canvas');
-          cvs.width = img.width; cvs.height = img.height;
-          const ctx = cvs.getContext('2d');
-          ctx.drawImage(img, 0, 0);
-          cvs.toBlob(blob => {
-            const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'compressed.jpg'; a.click();
-          }, 'image/jpeg', q);
-        };
-        img.src = e.target.result;
-      };
-      reader.readAsDataURL(file);
-    }
-
-    // 5. Format Converter
-    function runFormatConverter() {
-      const file = document.getElementById('convFile').files[0];
-      const fmt = document.getElementById('convFmt').value;
-      if (!file) return alert(currentLang === 'bn' ? 'ছবি বাছাই করুন!' : 'Please select an image!');
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        const img = new Image();
-        img.onload = function() {
-          const cvs = document.createElement('canvas');
-          cvs.width = img.width; cvs.height = img.height;
-          const ctx = cvs.getContext('2d');
-          ctx.drawImage(img, 0, 0);
-          cvs.toBlob(blob => {
-            const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'converted.' + fmt; a.click();
-          }, 'image/' + fmt, 0.95);
-        };
-        img.src = e.target.result;
-      };
-      reader.readAsDataURL(file);
-    }
-
-    // 6. Cropper
-    function runCropper() {
-      const file = document.getElementById('cropFile').files[0];
-      const w = parseInt(document.getElementById('cropW').value);
-      const h = parseInt(document.getElementById('cropH').value);
-      if (!file) return alert(currentLang === 'bn' ? 'ছবি বাছাই করুন!' : 'Please select an image!');
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        const img = new Image();
-        img.onload = function() {
-          const finalW = w || Math.min(img.width, img.height);
-          const finalH = h || finalW;
-          const cvs = document.createElement('canvas');
-          cvs.width = finalW; cvs.height = finalH;
-          const ctx = cvs.getContext('2d');
-          ctx.drawImage(img, (img.width-finalW)/2, (img.height-finalH)/2, finalW, finalH, 0, 0, finalW, finalH);
-          cvs.toBlob(blob => {
-            const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'cropped.png'; a.click();
-          }, 'image/png');
-        };
-        img.src = e.target.result;
-      };
-      reader.readAsDataURL(file);
-    }
-
-    // 7. Unit Converter
-    const UNITS = {
-      length: { meter:1, kilometer:1000, foot:0.3048, inch:0.0254 },
-      weight: { kilogram:1, gram:0.001, pound:0.453592 },
-      storage: { megabyte:1, gigabyte:1024, terabyte:1048576 }
-    };
-    function initUnitOpts() {
-      const cat = document.getElementById('uCat').value;
-      const f = document.getElementById('uFrom'), t = document.getElementById('uTo');
-      f.innerHTML = ''; t.innerHTML = '';
-      Object.keys(UNITS[cat]).forEach(k => {
-        f.add(new Option(k.toUpperCase(), k));
-        t.add(new Option(k.toUpperCase(), k));
-      });
-      if (t.options.length > 1) t.selectedIndex = 1;
-      runUnitConv();
-    }
-    function runUnitConv() {
-      const cat = document.getElementById('uCat').value;
-      const val = parseFloat(document.getElementById('uVal').value) || 0;
-      const f = document.getElementById('uFrom').value, t = document.getElementById('uTo').value;
-      const res = (val * UNITS[cat][f]) / UNITS[cat][t];
-      document.getElementById('uResTxt').textContent = val + ' ' + f + ' = ' + res.toFixed(4) + ' ' + t;
-    }
-
-    // 8. Age Calculator
-    function calcAge() {
-      const v = document.getElementById('birthDate').value;
-      if (!v) return;
-      const b = new Date(v), n = new Date();
-      let y = n.getFullYear() - b.getFullYear();
-      let m = n.getMonth() - b.getMonth();
-      let d = n.getDate() - b.getDate();
-      if (d < 0) { m--; d += 30; }
-      if (m < 0) { y--; m += 12; }
-      document.getElementById('ageResTxt').textContent = currentLang === 'bn' 
-        ? y + ' বছর, ' + m + ' মাস, ' + d + ' দিন'
-        : y + ' Years, ' + m + ' Months, ' + d + ' Days';
-    }
-
-    // 9. BMI
-    function calcBMI() {
-      const w = parseFloat(document.getElementById('bmiW').value);
-      const h = parseFloat(document.getElementById('bmiH').value) / 100;
-      if (!w || !h) return;
-      const bmi = (w / (h * h)).toFixed(1);
-      let st = bmi < 18.5 ? 'Underweight' : bmi < 25 ? 'Normal (Healthy)' : 'Overweight';
-      document.getElementById('bmiResTxt').textContent = 'BMI: ' + bmi + ' (' + st + ')';
-    }
-
-    // 10. Loan
-    function calcLoan() {
-      const p = parseFloat(document.getElementById('loanP').value);
-      const r = parseFloat(document.getElementById('loanR').value) / 1200;
-      const n = parseInt(document.getElementById('loanM').value);
-      if (!p || !r || !n) return;
-      const emi = (p * r * Math.pow(1+r, n)) / (Math.pow(1+r, n) - 1);
-      document.getElementById('loanResTxt').textContent = currentLang === 'bn'
-        ? 'মাসিক কিস্তি: $' + emi.toFixed(2) + ' (মোট: $' + (emi*n).toFixed(2) + ')'
-        : 'Monthly EMI: $' + emi.toFixed(2) + ' (Total: $' + (emi*n).toFixed(2) + ')';
-    }
-
-    // 11. Palette
-    function genPalette() {
-      const box = document.getElementById('paletteBox');
-      box.innerHTML = '';
-      for (let i = 0; i < 5; i++) {
-        const hex = '#' + Math.floor(Math.random()*16777215).toString(16).padStart(6,'0').toUpperCase();
-        const d = document.createElement('div');
-        d.style.flex = '1'; d.style.backgroundColor = hex; d.style.display = 'flex';
-        d.style.alignItems = 'center'; d.style.justifyContent = 'center';
-        d.style.fontSize = '10px'; d.style.fontWeight = '800'; d.style.color = '#fff';
-        d.style.cursor = 'pointer'; d.textContent = hex;
-        d.onclick = () => { navigator.clipboard.writeText(hex); alert('Copied ' + hex); };
-        box.appendChild(d);
-      }
-    }
-
-    // 12. JSON Formatter
-    function fmtJson(ind) {
-      try {
-        const el = document.getElementById('jsonTxt');
-        el.value = JSON.stringify(JSON.parse(el.value), null, ind);
-      } catch(e) { alert(currentLang === 'bn' ? 'সঠিক JSON দিন!' : 'Please enter valid JSON!'); }
-    }
-    function minJson() {
-      try {
-        const el = document.getElementById('jsonTxt');
-        el.value = JSON.stringify(JSON.parse(el.value));
-      } catch(e) { alert(currentLang === 'bn' ? 'সঠিক JSON দিন!' : 'Please enter valid JSON!'); }
-    }
-
-    // 13. Word Count
-    function countWord() {
-      const t = document.getElementById('wordTxt').value;
-      const w = t.trim() ? t.trim().split(/\s+/).length : 0;
-      document.getElementById('wordResTxt').textContent = currentLang === 'bn'
-        ? 'শব্দ: ' + w + ' | বর্ণ: ' + t.length + ' | পড়ার সময়: ' + Math.ceil(w/3.3) + 's'
-        : 'Words: ' + w + ' | Characters: ' + t.length + ' | Reading Time: ' + Math.ceil(w/3.3) + 's';
-    }
-
-    // 14. Case
-    function convCase(m) {
-      const el = document.getElementById('caseTxt');
-      if (m==='upper') el.value = el.value.toUpperCase();
-      if (m==='lower') el.value = el.value.toLowerCase();
-      if (m==='title') el.value = el.value.toLowerCase().replace(/\b\w/g, s => s.toUpperCase());
-    }
-
-    // 15. Dupe
-    function remDupe() {
-      const el = document.getElementById('dupeTxt');
-      el.value = Array.from(new Set(el.value.split('\n'))).join('\n');
-    }
-
-    // 16. Extract
-    function extNums() {
-      const t = document.getElementById('extTxt').value;
-      const n = t.match(/-?\d+(\.\d+)?/g) || [];
-      document.getElementById('extResTxt').textContent = n.length ? n.join(', ') : (currentLang === 'bn' ? 'কোনো নম্বর নেই' : 'No numbers found');
-    }
-    function extEmails() {
-      const t = document.getElementById('extTxt').value;
-      const e = t.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g) || [];
-      document.getElementById('extResTxt').textContent = e.length ? e.join(', ') : (currentLang === 'bn' ? 'কোনো ইমেইল নেই' : 'No emails found');
-    }
-
-    // 17. QR
-    function genQR() {
-      const v = document.getElementById('qrVal').value;
-      if (!v) return;
-      document.getElementById('qrBox').innerHTML = '<img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' + encodeURIComponent(v) + '">';
-    }
-
-    // 18. Pass
-    function genPass() {
-      const l = parseInt(document.getElementById('passLength').value) || 16;
-      const c = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789!@#$%^&*';
-      let p = '';
-      for (let i = 0; i < l; i++) p += c[Math.floor(Math.random()*c.length)];
-      document.getElementById('passResTxt').textContent = p;
-    }
-
-    function voteHelpful(btn) {
-      if (btn.dataset.voted) return;
-      btn.dataset.voted = '1';
-      btn.style.borderColor = '#10b981';
-      btn.style.color = '#34d399';
-      btn.textContent = '✓ ধন্যবাদ!';
-    }
-
-    // Reviews System with persistence
-    function addReview() {
-      const n = document.getElementById('revName').value.trim();
-      const role = document.getElementById('revRoleInput').value.trim() || 'কমিউনিটি ইউজার';
-      const tool = document.getElementById('revToolSelect').value;
-      const starsNum = parseInt(document.getElementById('revRatingSelect').value) || 5;
-      const m = document.getElementById('revMsg').value.trim();
-      
-      if (!n || !m) return alert(currentLang === 'bn' ? 'দয়া করে আপনার নাম ও রিভিউ লিখুন!' : 'Please enter your name and feedback!');
-      
-      const starsStr = '★'.repeat(starsNum) + '☆'.repeat(5 - starsNum);
-      const grid = document.getElementById('reviewGrid');
-      const card = document.createElement('div');
-      card.className = 'review-card';
-      card.innerHTML = `
-        <div>
-          <div class="review-header">
-            <div class="review-author">
-              <div class="avatar">${n[0].toUpperCase()}</div>
-              <div>
-                <div class="author-name">${n}</div>
-                <div class="author-role">${role}</div>
-              </div>
-            </div>
-            <span class="verified-badge">✓ New Verified</span>
-          </div>
-          <div class="stars" style="margin: 10px 0 6px;">${starsStr}</div>
-          <p class="review-text">"${m}"</p>
-        </div>
-        <div class="review-footer">
-          <span>এইমাত্র • ${tool}</span>
-          <button class="helpful-btn" onclick="voteHelpful(this)">👍 সহায়ক (১)</button>
-        </div>
-      `;
-      grid.prepend(card);
-      document.getElementById('revName').value = '';
-      document.getElementById('revRoleInput').value = '';
-      document.getElementById('revMsg').value = '';
-      alert(currentLang === 'bn' ? 'আপনার রিভিউ সফলভাবে যুক্ত হয়েছে!' : 'Thank you! Your review has been added.');
-    }
-
-    // Initialize Page with Persisted Language
-    window.onload = function() {
-      applyLanguage(currentLang);
-      initUnitOpts();
-      genPalette();
-    };
-  </script>
-</body>
-</html>
+            const url = URL.createObjectURL(blob);
+            document.getElementById('enhPreviewBox').innerHTML = '<img src="' + url + '">';
+            const a = document.createElement('a'); a.href = url; a.download = `livetool-4k-enhanced-${scale}x.jpg`; a.click();
+            btn.
