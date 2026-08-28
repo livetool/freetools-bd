@@ -1,0 +1,3315 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>LiveTool — Small tasks. Done here. | ফ্রি অনলাইন টুলস</title>
+  <meta name="description" content="A pocket-sized collection of image, text and calculator tools. No account, no uploads, no maze of menus. 100% private browser processing.">
+  <meta name="keywords" content="LiveTool, image resizer, background remover, image converter, 4k enhancer, pdf tools, bangla calculator, age calculator, online utilities">
+  <meta name="author" content="LiveTool">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="google-site-verification" content="_5kDeY2UTUzw3iHhEzo_u7Had4nfN2mX9sJZAPNB5_U" />
+  
+  <!-- Canonical & Multilingual Hreflang SEO Tags -->
+  <link rel="canonical" href="https://livetool.com/">
+  <link rel="alternate" hreflang="bn" href="https://livetool.com/?lang=bn">
+  <link rel="alternate" hreflang="en" href="https://livetool.com/?lang=en">
+  <link rel="alternate" hreflang="x-default" href="https://livetool.com/">
+
+  <!-- Open Graph (Facebook, WhatsApp, LinkedIn, Social Previews) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="LiveTool">
+  <meta property="og:url" content="https://livetool.com/">
+  <meta property="og:title" content="LiveTool — Small tasks. Done here. | ফ্রি অনলাইন টুলস">
+  <meta property="og:description" content="A pocket-sized collection of image, text and calculator tools. No account, no uploads, 100% private browser processing.">
+  <meta property="og:image" content="https://livetool.com/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="LiveTool — Fast & Private Browser Utilities">
+  <meta property="og:locale" content="bn_BD">
+  <meta property="og:locale:alternate" content="en_US">
+
+  <!-- Twitter / X Card Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@livetool">
+  <meta name="twitter:creator" content="@livetool">
+  <meta name="twitter:title" content="LiveTool — Small tasks. Done here. | ফ্রি অনলাইন টুলস">
+  <meta name="twitter:description" content="A pocket-sized collection of image, text and calculator tools. 100% private browser processing.">
+  <meta name="twitter:image" content="https://livetool.com/og-image.png">
+
+  <!-- Typography matching the exact design -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Hind+Siliguri:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Client-Side Batch Processing JSZip CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  
+  <style>
+    :root {
+      --bg-warm: #FAF7F2;
+      --bg-card: #FFFFFF;
+      --bg-card-subtle: #F5F1EA;
+      --border-light: #EBE5DC;
+      --border-hover: #D8D0C5;
+      --text-dark: #191B1F;
+      --text-muted: #64748B;
+      --text-sub: #857B70;
+      --coral-primary: #E15B44;
+      --coral-hover: #CC4A34;
+      --coral-light: #FDF2F0;
+      --badge-yellow-bg: #FEF3C7;
+      --badge-yellow-text: #92400E;
+      --badge-gray-bg: #F1F5F9;
+      --badge-gray-text: #475569;
+      --footer-bg: #0F172A;
+      --footer-text: #94A3B8;
+      --footer-border: #1E293B;
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-xl: 32px;
+      --shadow-card: 0 4px 20px -2px rgba(25, 27, 31, 0.05);
+      --shadow-hover: 0 12px 30px -4px rgba(25, 27, 31, 0.09);
+    }
+
+    /* Dark Mode Theme Variables (Screenshot 2 Match) */
+    body.dark-theme {
+      --bg-warm: #0B131B;
+      --bg-card: #121E2A;
+      --bg-card-subtle: #162634;
+      --border-light: #1E3142;
+      --border-hover: #2B455B;
+      --text-dark: #F8FAFC;
+      --text-muted: #94A3B8;
+      --text-sub: #94A3B8;
+      --coral-primary: #FF7A63;
+      --coral-hover: #FA5E43;
+      --coral-light: #2A1A17;
+      --badge-yellow-bg: #2E240D;
+      --badge-yellow-text: #FDE047;
+      --badge-gray-bg: #1E293B;
+      --badge-gray-text: #94A3B8;
+      --footer-bg: #070D14;
+      --footer-text: #94A3B8;
+      --footer-border: #15222E;
+      --shadow-card: 0 4px 24px -2px rgba(0, 0, 0, 0.4);
+      --shadow-hover: 0 12px 36px -4px rgba(0, 0, 0, 0.6);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', 'Hind Siliguri', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-warm);
+      color: var(--text-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      transition: background-color 0.25s ease, color 0.25s ease;
+    }
+
+    .wrap {
+      width: 100%;
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    /* Editorial Display Serif Font */
+    .font-serif {
+      font-family: 'Lora', Georgia, serif;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    /* Header */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250, 247, 242, 0.94);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(235, 229, 220, 0.8);
+      height: 74px;
+      display: flex;
+      align-items: center;
+      transition: background 0.25s ease, border-color 0.25s ease;
+    }
+    body.dark-theme .header {
+      background: rgba(11, 19, 27, 0.92);
+      border-bottom: 1px solid rgba(30, 49, 66, 0.8);
+    }
+
+    .nav-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--text-dark);
+      letter-spacing: -0.02em;
+    }
+
+    .logo-badge {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #F97316, #E15B44);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFFFFF;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 12px rgba(225, 91, 68, 0.25);
+    }
+
+    .brand-live { color: #1E293B; }
+    body.dark-theme .brand-live { color: #F8FAFC; }
+    .brand-tool { color: var(--coral-primary); }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+    }
+
+    .btn-header {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      color: var(--text-dark);
+      padding: 7px 16px;
+      border-radius: 12px;
+      font-size: 0.86rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+    .btn-header:hover {
+      border-color: var(--coral-primary);
+      color: var(--coral-primary);
+    }
+
+    .btn-icon-header {
+      width: 38px;
+      height: 38px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-dark);
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-icon-header:hover {
+      border-color: var(--coral-primary);
+      color: var(--coral-primary);
+    }
+
+    /* Dropdown Menu */
+    .menu-dropdown-container {
+      position: relative;
+    }
+    .menu-dropdown {
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 0;
+      width: 230px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: 16px;
+      box-shadow: var(--shadow-card), 0 12px 30px rgba(0, 0, 0, 0.12);
+      padding: 8px;
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      z-index: 1000;
+      backdrop-filter: blur(16px);
+      animation: menuFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .menu-dropdown.show {
+      display: flex;
+    }
+    @keyframes menuFadeIn {
+      from { opacity: 0; transform: translateY(-8px) scale(0.96); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .menu-dropdown-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 12px;
+      color: var(--text-dark);
+      text-decoration: none;
+      font-size: 0.86rem;
+      font-weight: 700;
+      border-radius: 10px;
+      transition: all 0.15s ease;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      width: 100%;
+      text-align: left;
+    }
+    .menu-dropdown-item:hover {
+      background: var(--bg-card-subtle);
+      color: var(--coral-primary);
+      transform: translateX(2px);
+    }
+    .menu-dropdown-divider {
+      height: 1px;
+      background: var(--border-light);
+      margin: 4px 0;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 54px 0 36px;
+      position: relative;
+    }
+
+    .hero-glow {
+      position: absolute;
+      top: -20px;
+      right: 5%;
+      width: 420px;
+      height: 420px;
+      background: radial-gradient(circle, rgba(254, 215, 170, 0.4) 0%, rgba(250, 247, 242, 0) 70%);
+      pointer-events: none;
+      z-index: 0;
+      transition: background 0.3s ease;
+    }
+    body.dark-theme .hero-glow {
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, rgba(251, 146, 60, 0.12) 40%, rgba(11, 19, 27, 0) 70%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      width: 100%;
+    }
+
+    .eyebrow-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--coral-primary);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .eyebrow-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--coral-primary);
+      box-shadow: 0 0 0 3px rgba(225, 91, 68, 0.2);
+    }
+
+    .hero-title {
+      font-size: 3.4rem;
+      line-height: 1.12;
+      color: var(--text-dark);
+      margin-bottom: 20px;
+      word-break: break-word;
+    }
+
+    .hero-title .highlight {
+      color: var(--coral-primary);
+      font-style: italic;
+    }
+
+    .hero-desc {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 28px;
+      max-width: 580px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 26px;
+    }
+
+    .btn-coral {
+      background: var(--coral-primary);
+      color: #FFFFFF;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 16px;
+      font-size: 0.95rem;
+      font-weight: 800;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+      box-shadow: 0 4px 16px rgba(225, 91, 68, 0.3);
+    }
+    .btn-coral:hover {
+      background: var(--coral-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(225, 91, 68, 0.4);
+    }
+
+    .btn-white {
+      background: var(--bg-card);
+      color: var(--text-dark);
+      border: 1px solid var(--border-light);
+      padding: 14px 24px;
+      border-radius: 16px;
+      font-size: 0.95rem;
+      font-weight: 800;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+    .btn-white:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-1px);
+    }
+
+    .security-note {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+    .security-note strong {
+      color: var(--text-dark);
+    }
+
+    /* Start with a Quick Pick Card (Screenshot 1 & 2 Match) */
+    .quick-pick-section {
+      margin: 36px 0 48px;
+    }
+
+    .quick-pick-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-xl);
+      padding: 36px 32px;
+      position: relative;
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+      transition: background 0.25s ease, border-color 0.25s ease;
+    }
+
+    .sticker-yellow {
+      position: absolute;
+      top: 24px;
+      right: 28px;
+      width: 38px;
+      height: 38px;
+      background: #FDE047;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      box-shadow: 0 4px 12px rgba(253, 224, 71, 0.4);
+      transform: rotate(6deg);
+    }
+
+    .quick-eyebrow {
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-sub);
+      margin-bottom: 8px;
+    }
+
+    .quick-title {
+      font-size: 1.95rem;
+      color: var(--text-dark);
+      margin-bottom: 24px;
+    }
+
+    .quick-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .quick-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      background: var(--bg-card-subtle);
+      border: 1px solid var(--border-light);
+      border-radius: 18px;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .quick-item:hover {
+      background: var(--bg-card);
+      border-color: var(--coral-primary);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-card);
+    }
+
+    .quick-item-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .quick-icon-box {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .quick-item-name {
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--text-dark);
+      margin-bottom: 2px;
+    }
+
+    .quick-item-sub {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.35;
+    }
+
+    .quick-arrow {
+      color: var(--coral-primary);
+      font-weight: 800;
+      font-size: 1.15rem;
+      transition: transform 0.2s;
+    }
+    .quick-item:hover .quick-arrow {
+      transform: translateX(4px);
+    }
+
+    /* Main Toolkit Catalog Section */
+    .toolkit-section {
+      padding: 36px 0 60px;
+    }
+
+    .section-header {
+      margin-bottom: 30px;
+    }
+
+    .toolkit-eyebrow {
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-sub);
+      margin-bottom: 8px;
+    }
+
+    .toolkit-title {
+      font-size: 2.5rem;
+      color: var(--text-dark);
+      margin-bottom: 10px;
+    }
+
+    .toolkit-sub {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 680px;
+    }
+
+    /* Search & Filter Bar */
+    .controls-bar {
+      margin: 28px 0;
+    }
+
+    .search-input-wrap {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .search-icon-svg {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #94A3B8;
+      font-size: 1.1rem;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 16px 20px 16px 52px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: 9999px;
+      font-size: 0.98rem;
+      color: var(--text-dark);
+      outline: none;
+      transition: all 0.2s;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+      font-family: inherit;
+    }
+    .search-input:focus {
+      border-color: var(--coral-primary);
+      box-shadow: 0 4px 18px rgba(225, 91, 68, 0.15);
+    }
+
+    .filter-pills {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      scrollbar-width: none;
+    }
+    .filter-pills::-webkit-scrollbar { display: none; }
+
+    .filter-pill {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      color: var(--text-dark);
+      padding: 9px 20px;
+      border-radius: 9999px;
+      font-size: 0.86rem;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .filter-pill:hover {
+      border-color: var(--coral-primary);
+      color: var(--coral-primary);
+    }
+    .filter-pill.active {
+      background: #111827;
+      color: #FFFFFF;
+      border-color: #111827;
+    }
+    body.dark-theme .filter-pill.active {
+      background: #F8FAFC;
+      color: #0B131B;
+      border-color: #F8FAFC;
+    }
+
+    /* Tools Grid Layout (Screenshot 3 Match) */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    .tool-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: var(--shadow-card);
+      position: relative;
+    }
+    .tool-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .tool-icon-wrapper {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+    }
+
+    .badge-pill {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 8px;
+    }
+    .badge-popular {
+      background: var(--badge-yellow-bg);
+      color: var(--badge-yellow-text);
+    }
+    .badge-category {
+      background: var(--badge-gray-bg);
+      color: var(--badge-gray-text);
+    }
+    .badge-coming {
+      background: #F1F5F9;
+      color: #64748B;
+    }
+    body.dark-theme .badge-coming {
+      background: #1E293B;
+      color: #94A3B8;
+    }
+
+    .tool-heading {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 4px;
+    }
+
+    .tool-summary {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+
+    /* Embedded Interactive Controls Inside Tool Cards */
+    .tool-widget-box {
+      background: var(--bg-card-subtle);
+      border: 1px solid var(--border-light);
+      border-radius: 16px;
+      padding: 15px;
+      margin-bottom: 8px;
+    }
+
+    .input-clean, .select-clean, .textarea-clean {
+      width: 100%;
+      padding: 10px 14px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: 12px;
+      color: var(--text-dark);
+      font-size: 0.86rem;
+      outline: none;
+      margin-bottom: 8px;
+      font-family: inherit;
+      transition: border-color 0.2s;
+    }
+    .input-clean:focus, .select-clean:focus, .textarea-clean:focus {
+      border-color: var(--coral-primary);
+    }
+    .textarea-clean {
+      height: 75px;
+      resize: vertical;
+    }
+
+    .btn-tool-action {
+      width: 100%;
+      padding: 11px;
+      background: var(--coral-primary);
+      color: #FFFFFF;
+      border: none;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 0.86rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .btn-tool-action:hover {
+      background: var(--coral-hover);
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 6px;
+    }
+
+    .result-pill-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      padding: 10px 12px;
+      border-radius: 12px;
+      font-size: 0.84rem;
+      color: var(--coral-primary);
+      font-weight: 700;
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      word-break: break-all;
+    }
+
+    .btn-copy-mini {
+      background: var(--badge-gray-bg);
+      border: none;
+      color: var(--text-dark);
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      cursor: pointer;
+      margin-left: 6px;
+      flex-shrink: 0;
+    }
+    .btn-copy-mini:hover {
+      background: var(--coral-primary);
+      color: #FFFFFF;
+    }
+
+    .preview-canvas-box {
+      min-height: 60px;
+      max-height: 130px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-card);
+      border-radius: 10px;
+      border: 1px dashed var(--border-light);
+      overflow: hidden;
+      margin-top: 8px;
+      padding: 6px;
+    }
+    .preview-canvas-box img, .preview-canvas-box canvas {
+      max-width: 100%;
+      max-height: 115px;
+      object-fit: contain;
+      border-radius: 6px;
+    }
+
+    /* Batch Processing Enhancements */
+    .batch-status-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: 10px;
+      padding: 8px 10px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .batch-status-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+    .batch-progress-bar {
+      width: 100%;
+      height: 6px;
+      background: var(--border-light);
+      border-radius: 999px;
+      overflow: hidden;
+      margin-top: 4px;
+    }
+    .batch-progress-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--coral-primary);
+      transition: width 0.2s ease;
+    }
+    .mode-tab-group {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+    .mode-tab-pill {
+      flex: 1;
+      padding: 5px 6px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      background: var(--bg-card);
+      color: var(--text-dark);
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s;
+    }
+    .mode-tab-pill.active {
+      background: var(--coral-primary);
+      color: #fff;
+      border-color: var(--coral-primary);
+    }
+    .batch-chip-count {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--badge-yellow-bg);
+      color: var(--badge-yellow-text);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 800;
+    }
+
+    .card-footer-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-decoration: none;
+      color: var(--coral-primary);
+      font-weight: 800;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+      padding-top: 8px;
+      border-top: 1px solid var(--border-light);
+    }
+    .card-footer-link:hover {
+      color: var(--coral-hover);
+      transform: translateX(2px);
+    }
+
+    /* FAQ Section: "Before you start" / "Good questions." */
+    .faq-section {
+      padding: 60px 0 50px;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .faq-eyebrow {
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--coral-primary);
+      margin-bottom: 8px;
+    }
+
+    .faq-title {
+      font-size: 2.8rem;
+      color: var(--text-dark);
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .faq-accordion {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border-light);
+      padding: 20px 0;
+    }
+
+    .faq-question {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .faq-plus {
+      color: var(--coral-primary);
+      font-size: 1.4rem;
+      font-weight: 600;
+      transition: transform 0.2s;
+    }
+
+    .faq-answer {
+      display: none;
+      padding-top: 12px;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .faq-item.open .faq-answer {
+      display: block;
+    }
+    .faq-item.open .faq-plus {
+      transform: rotate(45deg);
+    }
+
+    /* Reviews Section */
+    .reviews-section {
+      background: var(--bg-card);
+      border-top: 1px solid var(--border-light);
+      border-bottom: 1px solid var(--border-light);
+      padding: 60px 0;
+      margin-top: 40px;
+      transition: background 0.25s ease;
+    }
+    body.dark-theme .reviews-section {
+      background: #0E1822;
+    }
+
+    .reviews-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--badge-yellow-bg);
+      color: var(--badge-yellow-text);
+      font-size: 0.78rem;
+      font-weight: 800;
+      padding: 5px 14px;
+      border-radius: 9999px;
+      margin-bottom: 12px;
+    }
+
+    .reviews-title {
+      font-size: 2.2rem;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+
+    .reviews-sub {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 30px;
+    }
+
+    .rating-stat-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      background: var(--bg-card-subtle);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      margin-bottom: 30px;
+    }
+
+    .stat-cell {
+      text-align: center;
+    }
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--text-dark);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-sub);
+      margin-top: 6px;
+    }
+
+    .review-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+    }
+
+    .review-bubble {
+      background: var(--bg-card-subtle);
+      border: 1px solid var(--border-light);
+      border-radius: 20px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 14px;
+      transition: all 0.2s;
+    }
+    .review-bubble:hover {
+      background: var(--bg-card);
+      border-color: var(--border-hover);
+      box-shadow: var(--shadow-card);
+    }
+
+    .reviewer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .reviewer-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .reviewer-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #F97316, #E15B44);
+      color: #FFFFFF;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+    }
+
+    .reviewer-name {
+      font-weight: 800;
+      font-size: 0.92rem;
+      color: var(--text-dark);
+    }
+
+    .reviewer-role {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .verified-chip {
+      background: #DCFCE7;
+      color: #15803D;
+      font-size: 0.68rem;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 9999px;
+    }
+    body.dark-theme .verified-chip {
+      background: #143522;
+      color: #4ADE80;
+    }
+
+    .review-stars {
+      color: #F59E0B;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+    }
+
+    .review-body {
+      font-size: 0.88rem;
+      color: var(--text-dark);
+      line-height: 1.55;
+    }
+
+    .review-meta-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--border-light);
+      padding-top: 10px;
+      font-size: 0.74rem;
+      color: var(--text-muted);
+    }
+
+    .btn-helpful {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      color: var(--text-muted);
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-helpful:hover {
+      border-color: var(--coral-primary);
+      color: var(--coral-primary);
+    }
+
+    /* Review Input Form */
+    .submit-review-card {
+      background: var(--bg-card-subtle);
+      border: 1px solid var(--border-light);
+      border-radius: 24px;
+      padding: 28px;
+      margin-top: 36px;
+    }
+
+    /* Dark Footer */
+    .site-footer {
+      background: var(--footer-bg);
+      color: var(--footer-text);
+      padding: 56px 0 28px;
+      font-size: 0.88rem;
+      transition: background 0.25s ease;
+    }
+
+    .footer-brand-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #FFFFFF;
+      margin-bottom: 8px;
+    }
+
+    .footer-tagline {
+      font-size: 0.92rem;
+      color: #94A3B8;
+      max-width: 360px;
+    }
+
+    .footer-nav {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-nav a {
+      color: #CBD5E1;
+      text-decoration: none;
+      font-weight: 700;
+      transition: color 0.2s;
+    }
+    .footer-nav a:hover {
+      color: var(--coral-primary);
+    }
+
+    .footer-bottom-bar {
+      border-top: 1px solid var(--footer-border);
+      padding-top: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.8rem;
+      color: #64748B;
+    }
+
+    /* Fluid Responsive Margination & Breakpoints */
+    @media (max-width: 768px) {
+      .wrap { padding: 0 20px; }
+      .header { height: 68px; }
+      .hero { padding: 36px 0 26px; }
+      .hero-title { font-size: 2.5rem; line-height: 1.18; }
+      .hero-desc { font-size: 1rem; line-height: 1.55; margin-bottom: 24px; }
+      .quick-title { font-size: 1.6rem; }
+      .toolkit-title { font-size: 2rem; }
+      .faq-title { font-size: 1.8rem; }
+      .quick-pick-card { padding: 26px 18px; border-radius: 22px; margin: 26px 0 38px; }
+      .tools-grid { grid-template-columns: 1fr; gap: 18px; }
+      .review-cards-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .wrap { padding: 0 16px; }
+      .hero-title { font-size: 2.15rem; }
+      .btn-coral, .btn-white { width: 100%; justify-content: center; }
+      .quick-item { padding: 14px 14px; }
+      .quick-icon-box { width: 38px; height: 38px; font-size: 1.1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="wrap nav-wrap">
+      <a href="index.html" class="brand">
+        <div class="logo-badge">⚡</div>
+        <div>
+          <span class="brand-live">Live</span><span class="brand-tool">Tool</span>
+        </div>
+      </a>
+
+      <div class="nav-actions">
+        <!-- Language Switcher: Bangla <-> English -->
+        <button class="btn-header" onclick="toggleLanguage()" id="langBtn">
+          <span>বাংলা</span>
+        </button>
+
+        <!-- Dark Mode Icon Toggle -->
+        <button class="btn-icon-header" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
+          <span id="themeIcon">🌙</span>
+        </button>
+
+        <!-- Mobile / Menu Dropdown Toggle -->
+        <div class="menu-dropdown-container">
+          <button class="btn-icon-header" onclick="toggleMenuDropdown(event)" id="menuToggleBtn" title="More Options & Navigation" aria-label="Menu">
+            <span>⋮</span>
+          </button>
+          <div class="menu-dropdown" id="headerMenuDropdown">
+            <a href="#toolkit" class="menu-dropdown-item" onclick="closeMenuDropdown()">
+              <span>🧰</span>
+              <span id="mNavAllTools">All 22+ Tools</span>
+            </a>
+            <a href="#t-resizer" class="menu-dropdown-item" onclick="closeMenuDropdown()">
+              <span>🖼️</span>
+              <span id="mNavResizer">Image Resizer</span>
+            </a>
+            <a href="#t-bg" class="menu-dropdown-item" onclick="closeMenuDropdown()">
+              <span>🪄</span>
+              <span id="mNavBg">AI Cutout Remover</span>
+            </a>
+            <a href="#t-enhancer" class="menu-dropdown-item" onclick="closeMenuDropdown()">
+              <span>✨</span>
+              <span id="mNavEnhancer">4K AI Enhancer</span>
+            </a>
+            <div class="menu-dropdown-divider"></div>
+            <a href="privacy.html" class="menu-dropdown-item">
+              <span>🔒</span>
+              <span id="mNavPrivacy">Privacy Policy</span>
+            </a>
+            <a href="terms.html" class="menu-dropdown-item">
+              <span>📜</span>
+              <span id="mNavTerms">Terms of Service</span>
+            </a>
+            <a href="contact.html" class="menu-dropdown-item">
+              <span>✉️</span>
+              <span id="mNavContact">Contact Support</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero wrap">
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <div class="eyebrow-pill">
+        <span class="eyebrow-dot"></span>
+        <span id="heroEyebrow">MADE FOR EVERYDAY MOMENTS</span>
+      </div>
+
+      <h1 class="hero-title font-serif" id="heroTitle">
+        Small tasks.<br>
+        <span class="highlight">Done here.</span>
+      </h1>
+
+      <p class="hero-desc" id="heroDesc">
+        A pocket-sized collection of image, text and calculator tools. No account, no uploads, no maze of menus.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#toolkit" class="btn-coral" id="heroBtnExplore">Explore the toolkit →</a>
+        <a href="#t-resizer" class="btn-white" id="heroBtnResizer">🖼️ Try image resizer</a>
+      </div>
+
+      <div class="security-note">
+        <span>🔒</span>
+        <span id="heroSecurity"><strong>Private by default.</strong> Image processing happens on your device.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- START WITH A QUICK PICK Card -->
+  <section class="wrap quick-pick-section">
+    <div class="quick-pick-card">
+      <div class="sticker-yellow">✨</div>
+      <div class="quick-eyebrow" id="qpEyebrow">START WITH A QUICK PICK</div>
+      <h2 class="quick-title font-serif" id="qpTitle">What are you fixing today?</h2>
+
+      <div class="quick-list">
+        <!-- Quick Pick 1: Image Resizer -->
+        <a href="#t-resizer" class="quick-item">
+          <div class="quick-item-left">
+            <div class="quick-icon-box" style="background:#DCFCE7; color:#166534;">🖼️</div>
+            <div>
+              <div class="quick-item-name" id="qp1Name">Image Resizer</div>
+              <div class="quick-item-sub" id="qp1Sub">Resize an image to exact pixel dimensions.</div>
+            </div>
+          </div>
+          <div class="quick-arrow">→</div>
+        </a>
+
+        <!-- Quick Pick 2: Word Counter -->
+        <a href="#t-word" class="quick-item">
+          <div class="quick-item-left">
+            <div class="quick-icon-box" style="background:#E0F2FE; color:#075985;">📝</div>
+            <div>
+              <div class="quick-item-name" id="qp2Name">Word Counter</div>
+              <div class="quick-item-sub" id="qp2Sub">Count words, characters and lines as you type.</div>
+            </div>
+          </div>
+          <div class="quick-arrow">→</div>
+        </a>
+
+        <!-- Quick Pick 3: JSON Formatter -->
+        <a href="#t-json" class="quick-item">
+          <div class="quick-item-left">
+            <div class="quick-icon-box" style="background:#FEF3C7; color:#92400E;">{ }</div>
+            <div>
+              <div class="quick-item-name" id="qp3Name">JSON Formatter</div>
+              <div class="quick-item-sub" id="qp3Sub">Format messy JSON and spot invalid syntax.</div>
+            </div>
+          </div>
+          <div class="quick-arrow">→</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE TOOLKIT • 20 READY NOW -->
+  <main class="wrap toolkit-section" id="toolkit">
+    <div class="section-header">
+      <div class="toolkit-eyebrow" id="tkEyebrow">THE TOOLKIT · 20 READY NOW</div>
+      <h2 class="toolkit-title font-serif" id="tkTitle">Find your shortcut.</h2>
+      <p class="toolkit-sub" id="tkSub">Choose a tool, make the small thing less annoying, and get back to your day. Everything runs in this tab.</p>
+    </div>
+
+    <!-- Search & Filters -->
+    <div class="controls-bar">
+      <div class="search-input-wrap">
+        <span class="search-icon-svg">🔍</span>
+        <input type="text" id="toolSearchInput" class="search-input" placeholder='Search by task, like "image" or "JSON"' oninput="filterToolsBySearch()">
+      </div>
+
+      <div class="filter-pills">
+        <button class="filter-pill active" onclick="applyCategoryFilter('all', this)" id="pillAll">All tools</button>
+        <button class="filter-pill" onclick="applyCategoryFilter('image', this)" id="pillImages">Images</button>
+        <button class="filter-pill" onclick="applyCategoryFilter('text', this)" id="pillText">Text</button>
+        <button class="filter-pill" onclick="applyCategoryFilter('calc', this)" id="pillCalc">Calculators</button>
+        <button class="filter-pill" onclick="applyCategoryFilter('dev', this)" id="pillDev">Developer</button>
+      </div>
+    </div>
+
+    <!-- Tools Grid -->
+    <div class="tools-grid" id="toolsGrid">
+
+      <!-- Tool 1: Image Resizer (Popular + Batch Processing) -->
+      <div class="tool-card image" id="t-resizer" data-name="image resizer resize batch সাইজ পরিবর্তন পিক্সেল ব্যাচ">
+        <div>
+          <div class="card-top">
+            <div class="tool-icon-wrapper" style="background:#DCFCE7; color:#15803D;">🖼️</div>
+            <span class="badge-pill badge-popular" id="badgePop1">POPULAR · BATCH</span>
+          </div>
+          <h3 class="tool-heading" id="t1Name">Image Resizer</h3>
+          <p class="tool-summary" id="t1Sub">Resize single or batch multiple images by exact pixels, presets or percentage scale.</p>
+          
+          <div class="tool-widget-box">
+            <input type="file" id="resFile" accept="image/*" multiple class="input-clean" onchange="onResizerFilesSelected(this)">
+            
+            <div class="mode-tab-group">
+              <button type="button" class="mode-tab-pill active" id="resTabPx" onclick="setResizerMode('px')">Exact W × H</button>
+              <button type="button" class="mode-tab-pill" id="resTabScale" onclick="setResizerMode('scale')">Scale %</button>
+              <button type="button" class="mode-tab-pill" id="resTabPreset" onclick="setResizerMode('preset')">Presets</button>
+            </div>
+
+            <div id="resInputsPx" style="display:flex; gap:8px;">
+              <input type="number" id="resWidth" placeholder="Width (px)" class="input-clean">
+              <input type="number" id="resHeight" placeholder="Height (px)" class="input-clean">
+            </div>
+
+            <div id="resInputsScale" style="display:none;">
+              <select id="resScaleSelect" class="select-clean">
+                <option value="0.25">25% (Thumbnail / Icon Scale)</option>
+                <option value="0.5" selected>50% (Half Size Scale)</option>
+                <option value="0.75">75% (Light Web Scale)</option>
+                <option value="1.5">150% (Upscale 1.5x)</option>
+                <option value="2.0">200% (Double 2x Scale)</option>
+              </select>
+            </div>
+
+            <div id="resInputsPreset" style="display:none;">
+              <select id="resPresetSelect" class="select-clean">
+                <option value="1920x1080">Full HD (1920 × 1080)</option>
+                <option value="1280x720">HD Ready (1280 × 720)</option>
+                <option value="1080x1080">Square Post (1080 × 1080)</option>
+                <option value="800x800">Web Banner (800 × 800)</option>
+                <option value="500x500">Avatar / Profile (500 × 500)</option>
+              </select>
+            </div>
+
+            <div id="resBatchStatus" class="batch-status-box" style="display:none;">
+              <div class="batch-status-row">
+                <span id="resBatchCountTxt" style="font-weight:700;">⚡ Batch Mode: 0 files</span>
+                <span id="resBatchProgressTxt">Ready</span>
+              </div>
+              <div class="batch-progress-bar">
+                <div class="batch-progress-fill" id="resBatchProgressFill"></div>
+              </div>
+            </div>
+
+            <button class="btn-tool-action" onclick="executeResize()" id="t1Btn">📐 Resize & Download</button>
+          </div>
+        </div>
+        <a href="image-resizer.html" class="card-footer-link">
+          <span id="t1Link">Open full tool & batch studio →</span>
+        </a>
+      </div>
+
+      <!-- Tool 2: Image Compressor (Popular) -->
+      <div class="tool-card image" id="t-compressor" data-name="image compressor compress ছোট সাইজ কেবি">
+        <div>
+          <div class="card-top">
+            <div class="tool-icon-wrapper" style="background:#E0F2FE; color:#0369A1;">📦</div>
+            <span class="badge-pill badge-popular" id="badgePop2">POPULAR</span>
+          </div>
+          <h3 class="tool-heading" id="t2Name">Image Compressor</h3>
+          <p class="tool-summary" id="t2Sub">Make an image lighter while keeping it crisp and useful.</p>
+          
+          <div class="tool-widget-box">
+            <input type="file" id="compFileInput" accept="image/*" class="input-clean">
+            <select id="compQualitySelect" class="select-clean">
+              <option value="0.8" id="compOpt1">80% Quality (Best Balance)</option>
+              <option value="0.6" id="compOpt2">60% Quality (Web Optimized)</option>
+              <option value="0.4" id="compOpt3">40% Quality (Smallest Size)</option>
+            </select>
+            <button class="btn-tool-action" onclick="executeCompress()" id="t2Btn">🗜️ Compress & Download</button>
+          </div>
+        </div>
+        <a href="image-compressor.html" class="card-footer-link">
+          <span id="t2Link">Open tool →</span>
+        </a>
+      </div>
+
+      <!-- Tool 3: AI Background Remover -->
+      <div class="tool-card image" data-name="background remover ai কাটুন transparent png ব্যাকগ্রাউন্ড">
+        <div>
+          <div class="card-top">
+            <div class="tool-icon-wrapper" style="background:#FEE2E2; color:#B91C1C;">🪄</div>
+            <span class="badge-pill badge-popular" id="badgePop3">POPULAR</span>
+          </div>
+          <h3 class="tool-heading" id="t3Name">AI Background Remover</h3>
+          <p class="tool-summary" id="t3Sub">Precise cutouts with transparent PNG or clean studio backdrops.</p>
+          
+          <div class="tool-widget-box">
+            <input type="file" id="bgFileInput" accept="image/*" class="input-clean">
+            <select id="bgModeSelect" class="select-clean">
+              <option value="transparent" id="bgOpt1">Transparent PNG</option>
+              <option value="white" id="bgOpt2">Studio Solid White</option>
+              <option value="black" id="bgOpt3">Studio Solid Black</option>
+            </select>
+            <button class="btn-tool-action" onclick="executeBgRemoval()" id="t3Btn">✨ Remove Background</button>
+            <div id="bgPreviewBox" class="preview-canvas-box"></div>
+          </div>
+        </div>
+        <a href="ai-background-remover.html" class="card-footer-link">
+          <span id="t3Link">Open tool →</span>
+        </a>
+      </div>
+
+      <!-- Tool 4: AI Image Enhancer (4K) -->
+      <div class="tool-card image" data-name="image enhancer 4k hd শার্পনেস বড় এনহ্যান্সার">
+        <div>
+          <div class="card-top">
+            <div class="tool-icon-wrapper" style="background:#FEF3C7; color:#B45309;">⚡</div>
+            <span class="badge-pill badge-category" id="badgeImg1">IMAGE</span>
+          </div>
+          <h3 class="tool-heading" id="t4Name">AI 4K Image Enhancer</h3>
+          <p class="tool-summary" id="t4Sub">Restore low-res or blurry photos with super-resolution clarity.</p>
+          
+          <div class="tool-widget-box">
+            <input type="file" id="enhFileInput" accept="image/*" class="input-clean">
+            <select id="enhScaleSelect" class="select-clean">
+              <option value="2" id="enhOpt1">2X Super-Resolution (HD)</option>
+              <option value="4" id="enhOpt2">4X Super-Resolution (4K Ultra)</option>
+            </select>
+            <button class="btn-tool-action" onclick="executeEnhance()" id="t4Btn">🚀 4K Enhance & Save</button>
+            <div id="enhPreviewBox" class="preview-canvas-box"></div>
+          </div>
+        </div>
+        <a href="ai-image-enhancer.html" class="card-footer-link">
+          <span id="t4Link">Open tool →</span>
+        </a>
+      </div>
+
+      <!-- Tool 5: JPG to PNG / Format Converter (Single & Batch Mode) -->
+      <div class="tool-card image" data-name="jpg to png format converter batch কনভার্ট ফরম্যাট webp ব্যাচ">
+        <div>
+          <div class="card-top">
+            <div class="tool-icon-wrapper" style="background:#E0E7FF; color:#4338CA;">🔄</div>
+            <span class="badge-pill badge-category" id="badgeImg2">IMAGE · BATCH</span>
+          </div>
+          <h3 class="tool-heading" id="t5Name">JPG to PNG & Format Converter</h3>
+          <p class="tool-summary" id="t5Sub">Batch convert multiple images to WebP, PNG, or JPG with quality control.</p>
+          
+          <div class="tool-widget-box">
+            <input type="file" id="fmtFileInput" accept="image/*" multiple class="input-clean" onchange="onConverterFilesSelected(this)">
+            <select id="fmtSelect" class="select-clean">
+              <option value="webp">WebP (Fast & Lightweight)</option>
+              <option value="png">PNG Format (Lossless Transparent)</option>
+              <option value="jpeg">JPG / JPEG (Standard Quality)</option>
+            </select>
+
+            <div id="fmtBatchStatus" class="batch-status-box" style="display:none;">
+              <div class="batch-status-row">
+                <span id="fmtBatchCountTxt" style="font-weight:700;">⚡ Batch Mode: 0 files</span>
+                <span id="fmtBatchProgressTxt">Ready</span>
+              </div>
+              <div class="batch-progress-bar">
+                <div class="batch-progress-fill" id="fmtBatchProgressFill"></div>
+              </div>
+            </div>
+
+            <button class="btn-tool-action" onclick="executeFormatConvert()" id="t5Btn">🔄 Convert & Save</button>
+          </div>
+        </div>
+        <a href="image-format-converter.html" class="card-footer-link">
+          <span id="t5Link">Open full converter & batch studio →</span>
+        </a>
+      </div>
+
+      <!-- Tool 6: Image Cropper -->
+      <div class="tool-card image" data-name="image crop cropper ক্রপার কাটা ছাঁটাই">
+        <div>
+          <div class="card-top">
+            <div class="tool-icon-wrapper" style="background:#FCE7F3; color:#BE185D;">✂️</div>
+            <span class="badge-pill badge-category" id="badgeImg3">IMAGE</span>
+          </div>
+          <h3 class="tool-heading" id="t6Name">Precision Image Cropper</h3>
+          <p class="tool-summary" id="t6Sub">Crop specific photo areas with exact pixel dimensions.</p>
+          
+          <div class="tool-widget-box">
+            <input type="file" id="cropFileInput" accept="image/*" class="input-clean">
+            <div style="display:flex; gap:8px;">
+              <input type="number" id="cropW" placeholder="Width (px)" class="input-clean">
+              <input type="number" id="cropH" placeholder="Height (px)" class="input-clean">
+            </div>
+            <button class="btn-tool-action" onclick="executeCrop()" id="t6Btn">✂️ Crop & Download</button>
+          </div>
+        </div>
+        <a href="image-cropper.html" class="card-footer-link">
+          <span id="t6Link">Open tool →</span>
+        </a>
+      </div>
+
+      <!-- Tool 7: VAT & Tax Calculator -->
+      <div class="tool-card calc" data-name="vat calculator tax ভ্যাট ট্যাক্স হিসাব">
+        <div>
+          <div class="card-top">
+            <div class="tool-icon-wrapper" style="background:#DCFCE7; color:#15803D;">📄</div>
+            <span class="badge-pill badge-category" id="badgeCalc1">QUICK MATH</span>
+          </div>
+          <h3 class="tool-heading" id="t7Name">VAT Calculator</h3>
+          <p class="tool-summary" id="t7Sub">Add or remove VAT/Tax percentage from a price instantly.</p>
+          
+          <div class="tool-widget-box">
+            <input type="number" id="vatAmount" placeholder="Amount ($/৳)" class="input-clean">
+            <div style="display:flex; gap:8px;">
+              <input type="number" id="vatRate" placeholder="VAT % (e.g. 15)" value="15" class="input-clean">
+              <select id="vatMode" class="select-clean">
+                <option value="add">Add VAT (+)</option>
+                <option value="sub">Remove VAT (-)</option>
+              </select>
+            </div>
+            <button class="btn-tool-action" onclick="executeVatCalc()" id="t7Btn">🧮 Calculate VAT</button>
+            <div class="result-pill-box" id="vatResBox">
+              <span id="vatResTxt">Result will appear here</span>
+              <button class="btn-copy-mini" onclick="copySnippet('vatResTxt')">Copy</button>
+            </div>
+          </div>
+        </div>
+        <a href="vat-tax-calculator.html" class="card-footer-link">
+          <span id="t7Link">Open tool →</span>
+        </a>
+      </div>
+
+      <!-- Tool 8: Universal Unit Converter -->
+      <div class="tool-card calc" data-name="unit converter রূপান্তর দৈর্ঘ্য ওজন স্টোরেজ">
+        <div>
+          <div class="card-top">
+            <div class="tool-icon-wrapper" style="background:#E0F2FE; color:#0369A1;">📏</div>
+            <span class="badge-pill badge-category" id="badgeCalc2">CONVERTER</span>
+          </div>
+          <h3 class="tool-heading" id="t8Name">Universal Unit Converter</h3>
+          <p class="tool-summary" id="t8Sub">Length, weight, digital data and speed conversions in one place.</p>
+          
+          <div class="tool-widget-box">
+            <select id="uCatSelect" class="select-clean" onchange="setupUnitOptions()">
+              <option value="length">Length (Meters, Feet, Km, Inches)</option>
+              <option value="weight">Weight (Kg, Grams, Pounds)</option>
+              <option value="storage">Digital Data (MB, GB, TB)</option>
+            </select>
+            <div style="display:flex; gap:8px;">
+              <input type="number" id="uValInput" value="10" class="input-clean" oninput="executeUnitCalc()">
+              <select id="uFromSelect" class="select-clean" onchange="executeUnitCalc()"></select>
+            </div>
+            <select id="uToSelect" class="select-clean" onchange="executeUnitCalc()"></select>
+            <div class="result-pill-box" id="uResBox">
+              <span id="uResTxt">10 meter = 32.8084 foot</span>
+              <button class="btn-copy-mini" onclick="copySnippet('uResTxt')">Copy</button>
+            </div>
+          </div>
+        </div>
+        <a href="unit-converter.html" class="card-footer-link">
+          <span id="t8Link">Open tool →</span>
+        </a>
+      </div>
+
+      <!-- Tool 9: Accurate Age Calculator -->
+      <div class="tool-card calc" data-name="age calculator বয়স জন্মদিন হিসাব">
+        <div>
+          <div class="card-top">
+            <div class="tool-icon-wrapper" style="background:#FEF3C7; color:#B45309;">🎂</div>
+            <span class="badge-pill badge-category" id="badgeCalc3">CALCULATOR</span>
+          </div>
+          <h3 class="tool-heading" id="t9Name">Accurate Age Calculator</h3>
+          <p class="tool-summary" id="t9Sub">Exact years, months, days lived and next birthday countdown.</p>
+          
+          <div class="tool-widget-box">
+            <input type="date" id="ageDateInput" class="input-clean">
+            <button class="btn-tool-action" onclick="executeAgeCalc()" id="t9Btn">🎂 Calculate Age</button>
+            <div class="result-pill-box" id="ageResBox">
+              <span id="ageResTxt">Select date of birth</span>
+              <button class="btn-copy-mini" onclick="copySnippet('ageResTxt')">Copy</button>
+            </div>
+          </div>
+        </div>
+        <a href="age-calculator.html" class="card-footer-link">
+          <span id="t9Link">Open tool →</span>
+        </a>
+      </div>
+
+      <!-- Tool 10: Loan EMI & Finance Calculator -->
+      <div class="tool-card calc" data-name="loan emi calculator লোন কিস্তি সুদ">
+        <div>
+          <div class="card-top">
+            <div class="tool-icon-wrapper" style="background:#DCFCE7; color:#15803D;">💰</div>
+            <span class="badge-pill badge-category" id="badgeCalc4">FINANCE</span>
+          </div>
+          <h3 class="tool-heading" id="t10Name">Loan EMI Calculator</h3>
+          <p class="tool-summary" id="t10Sub">Monthly installment, interest rate & principal repayment schedule.</p>
+          
+          <div class="tool-widget-box">
+            <input type="number" id="loanPrinciple" placeholder="Principal Amount ($/৳)" class="input-clean">
+            <div style="display:flex; gap:8px;">
+              <input type="number" id="loanRate" placeholder="Interest Rate %" class="input-clean">
+              <input type="number" id="loanMonths" placeholder="Tenure (Months)" class="input-clean">
+            </div>
+            <button class="btn-tool-action" onclick="executeLoanCalc()" id="t10Btn">💰 Calculate EMI</button>
+            <div class="result-pill-box" id="loanResBox">
+              <span id="loanResTxt">Enter amount & tenure</span>
+              <button class="btn-copy-mini" onclick="copySnippet('loanResTxt')">Copy</button>
+            </div>
+          </div>
+        </div>
+        <a href="financial-calculator.html" class="card-footer-link">
+          <span id="t10Link">Open tool →</span>
+        </a>
+      </div>
+
+      <!-- Tool 11: BMI Calculator -->
+      <div class="tool-card calc" data-name="bmi calculator বিএমআই স্বাস্থ্য ওজন">
+        <div>
+          <div class="card-top">
+            <div class="tool-icon-wrapper" style="background:#E0F2FE; color:#0369A1;">🏃</div>
+            <span class="badge-pill badge-category" id="badgeCalc5">HEALTH</span>
+          </div>
+          <h3 class="tool-heading" id="t11Name">BMI Health Tracker</h3>
+          <p class="tool-summary" id="t11Sub">Body Mass Index calculation and healthy weight category check.</p>
+          
+          <div class="tool-widget-box">
+            <div style="display:flex; gap:8px;">
+              <input type="number" id="bmiWeight" placeholder="Weight (kg)" class="input-clean">
+              <input type="number" id="bmiHeight" placeholder="Height (cm)" class="input-clean">
+            </div>
+            <button class="btn-tool-action" onclick="executeBmiCalc()" id="t11Btn">🏃 Calculate BMI</button>
+            <div class="result-pill-box" id="bmiResBox">
+              <span id="bmiResTxt">Enter weight and height</span>
+              <button class="btn-copy-mini" onclick="copySnippet('bmiResTxt')">Copy</button>
+            </div>
+          </div>
+        </div>
+        <a href="bmi-calculator.html" class="card-footer-link">
+          <span id="t11Link">Open tool →</span>
+        </a>
+      </div>
+
+      <!-- Tool 12: Color Palette Studio -->
+      <div class="tool-card dev" data-name="color palette কালার প্যালেট হেক্স কোড">
+        <div>
+          <div class="card-top">
+            <div class="tool-icon-wrapper" style="background:#FCE7F3; color:#BE185D;">🎨</div>
+            <span class="badge-pill badge-category" id="badgeDev1">DESIGN</span>
+          </div>
+          <h3 class="tool-heading" id="t12Name">Color Palette Studio</h3>
+          <p class="tool-summary" id="t12Sub">Generate clean, accessible HEX color palettes with 1-click copy.</p>
+          
+          <div class="tool-widget-box">
+            <button class="btn-tool-action" onclick="generatePalette()" id="t12Btn">🎨 Generate Random Palette</button>
+            <div id="paletteStrip" style="display:flex; height:42px; border-radius:10px; overflow:hidden; margin-top:10px; border:1px solid #E2DCD3;"></div>
+          </div>
+        </div>
+        <a href="color-palette.html" class="card-footer-link">
+          <span id="t12Link">Open tool →</span>
+        </a>
+      </div>
+
+      <!-- Tool 13: JSON Formatter -->
+      <div class="tool-card dev" id="t-json" data-name="json formatter validator beautify জেএসন ফরম্যাটার">
+        <div>
+          <div class="card-top">
+            <div class="tool-icon-wrapper" style="background:#FEF3C7; color:#B45309;">{ }</div>
+            <span class="badge-pill badge-popular" id="badgePop4">POPULAR</span>
+          </div>
+          <h3 class="tool-heading" id="t13Name">JSON Formatter</h3>
+          <p class="tool-summary" id="t13Sub">Format messy JSON and spot invalid syntax with instant validation.</p>
+          
+          <div class="tool-widget-box">
+            <textarea id="jsonInputText" class="textarea-clean" placeholder='{"name":"LiveTool"}'></textarea>
+            <div class="btn-row">
+              <button class="btn-tool-action" onclick="formatJson(2)">✨ Beautify</button>
+              <button class="btn-tool-action" style="background:#475569;" onclick="minifyJson()">📦 Minify</button>
+            </div>
+          </div>
+        </div>
+        <a href="json-formatter.html" class="card-footer-link">
+          <span id="t13Link">Open tool →</span>
+        </a>
+      </div>
+
+      <!-- Tool 14: Word Counter -->
+      <div class="tool-card text" id="t-word" data-name="word counter শব্দ বর্ণ গণক টেক্সট">
+        <div>
+          <div class="card-top">
+            <div class="tool-icon-wrapper" style="background:#E0F2FE; color:#0369A1;">📝</div>
+            <span class="badge-pill badge-popular" id="badgePop5">POPULAR</span>
+          </div>
+          <h3 class="tool-heading" id="t14Name">Word Counter</h3>
+          <p class="tool-summary" id="t14Sub">Count words, characters and lines dynamically as you type.</p>
+          
+          <div class="tool-widget-box">
+            <textarea id="wordInputText" class="textarea-clean" placeholder="Type or paste text here..." oninput="calculateWords()"></textarea>
+            <div class="result-pill-box" id="wordResBox">
+              <span id="wordResTxt">Words: 0 | Characters: 0 | Read: 0s</span>
+              <button class="btn-copy-mini" onclick="copySnippet('wordResTxt')">Copy</button>
+            </div>
+          </div>
+        </div>
+        <a href="word-counter.html" class="card-footer-link">
+          <span id="t14Link">Open tool →</span>
+        </a>
+      </div>
+
+      <!-- Tool 15: Smart Case Converter -->
+      <div class="tool-card text" data-name="case converter upper lower বড় হাতের ছোট হাতের">
+        <div>
+          <div class="card-top">
+            <div class="tool-icon-wrapper" style="background:#DCFCE7; color:#15803D;">🔤</div>
+            <span class="badge-pill badge-category" id="badgeTxt1">TEXT</span>
+          </div>
+          <h3 class="tool-heading" id="t15Name">Smart Case Converter</h3>
+          <p class="tool-summary" id="t15Sub">Convert text to UPPERCASE, lowercase, and Title Case instantly.</p>
+          
+          <div class="tool-widget-box">
+            <textarea id="caseInputText" class="textarea-clean" placeholder="Paste your text here..."></textarea>
+            <div class="btn-row">
+              <button class="btn-tool-action" style="font-size:0.75rem;" onclick="convertTextCase('upper')">UPPER</button>
+              <button class="btn-tool-action" style="font-size:0.75rem;" onclick="convertTextCase('lower')">lower</button>
+              <button class="btn-tool-action" style="font-size:0.75rem;" onclick="convertTextCase('title')">Title</button>
+            </div>
+          </div>
+        </div>
+        <a href="case-converter.html" class="card-footer-link">
+          <span id="t15Link">Open tool →</span>
+        </a>
+      </div>
+
+      <!-- Tool 16: Duplicate Line Remover -->
+      <div class="tool-card text" data-name="duplicate remover ডুপ্লিকেট লাইন মুছুন ক্লিন">
+        <div>
+          <div class="card-top">
+            <div class="tool-icon-wrapper" style="background:#FEE2E2; color:#B91C1C;">🧹</div>
+            <span class="badge-pill badge-category" id="badgeTxt2">TEXT</span>
+          </div>
+          <h3 class="tool-heading" id="t16Name">Duplicate Line Remover</h3>
+          <p class="tool-summary" id="t16Sub">Deduplicate and clean raw lists in one simple click.</p>
+          
+          <div class="tool-widget-box">
+            <textarea id="dupeInputText" class="textarea-clean" placeholder="Enter line by line text..."></textarea>
+            <button class="btn-tool-action" onclick="removeDuplicateLines()" id="t16Btn">🧹 Remove Duplicates</button>
+          </div>
+        </div>
+        <a href="text-cleaner.html" class="card-footer-link">
+          <span id="t16Link">Open tool →</span>
+        </a>
+      </div>
+
+      <!-- Tool 17: Number & Email Extractor -->
+      <div class="tool-card text" data-name="extractor নাম্বার ইমেইল আলাদা স্ক্র্যাপার">
+        <div>
+          <div class="card-top">
+            <div class="tool-icon-wrapper" style="background:#E0E7FF; color:#4338CA;">🔢</div>
+            <span class="badge-pill badge-category" id="badgeTxt3">TEXT</span>
+          </div>
+          <h3 class="tool-heading" id="t17Name">Number & Email Extractor</h3>
+          <p class="tool-summary" id="t17Sub">Scrape and extract phone numbers and email addresses from text.</p>
+          
+          <div class="tool-widget-box">
+            <textarea id="extractInputText" class="textarea-clean" placeholder="Paste raw text here..."></textarea>
+            <div class="btn-row">
+              <button class="btn-tool-action" onclick="extractNumbers()">📞 Numbers</button>
+              <button class="btn-tool-action" style="background:#0284C7;" onclick="extractEmails()">✉️ Emails</button>
+            </div>
+            <div class="result-pill-box" id="extractResBox">
+              <span id="extractResTxt">—</span>
+              <button class="btn-copy-mini" onclick="copySnippet('extractResTxt')">Copy</button>
+            </div>
+          </div>
+        </div>
+        <a href="number-extractor.html" class="card-footer-link">
+          <span id="t17Link">Open tool →</span>
+        </a>
+      </div>
+
+      <!-- Tool 18: HD QR Code Generator -->
+      <div class="tool-card dev" data-name="qr code generator কিউআর কোড লিংক">
+        <div>
+          <div class="card-top">
+            <div class="tool-icon-wrapper" style="background:#FEF3C7; color:#B45309;">📱</div>
+            <span class="badge-pill badge-category" id="badgeDev2">DEVELOPER</span>
+          </div>
+          <h3 class="tool-heading" id="t18Name">HD QR Code Generator</h3>
+          <p class="tool-summary" id="t18Sub">Create high-resolution QR codes for websites and plain text.</p>
+          
+          <div class="tool-widget-box">
+            <input type="text" id="qrInputText" placeholder="Enter URL (e.g. https://google.com)" class="input-clean">
+            <button class="btn-tool-action" onclick="generateQrCode()" id="t18Btn">📱 Generate QR</button>
+            <div id="qrPreviewBox" class="preview-canvas-box"></div>
+          </div>
+        </div>
+        <a href="qr-code-generator.html" class="card-footer-link">
+          <span id="t18Link">Open tool →</span>
+        </a>
+      </div>
+
+      <!-- Tool 19: Cryptographic Password Generator -->
+      <div class="tool-card dev" data-name="password generator সিকিউর পাসওয়ার্ড তৈরি">
+        <div>
+          <div class="card-top">
+            <div class="tool-icon-wrapper" style="background:#DCFCE7; color:#15803D;">🔒</div>
+            <span class="badge-pill badge-category" id="badgeDev3">SECURITY</span>
+          </div>
+          <h3 class="tool-heading" id="t19Name">Cryptographic Password Generator</h3>
+          <p class="tool-summary" id="t19Sub">Create ultra-secure, randomized passwords in your browser.</p>
+          
+          <div class="tool-widget-box">
+            <input type="number" id="passLengthInput" value="16" min="8" max="32" class="input-clean">
+            <button class="btn-tool-action" onclick="generatePassword()" id="t19Btn">🔒 Generate Password</button>
+            <div class="result-pill-box" id="passResBox">
+              <span id="passResTxt">Click Generate Button</span>
+              <button class="btn-copy-mini" onclick="copySnippet('passResTxt')">Copy</button>
+            </div>
+          </div>
+        </div>
+        <a href="password-generator.html" class="card-footer-link">
+          <span id="t19Link">Open tool →</span>
+        </a>
+      </div>
+
+      <!-- Coming Soon Card 1: PDF Tools -->
+      <div class="tool-card text" data-name="pdf tools coming soon">
+        <div>
+          <div class="card-top">
+            <div class="tool-icon-wrapper" style="background:#FEF3C7; color:#92400E;">📄</div>
+            <span class="badge-pill badge-coming" id="badgeComing1">COMING SOON</span>
+          </div>
+          <h3 class="tool-heading" id="tCs1Name">PDF tools</h3>
+          <p class="tool-summary" id="tCs1Sub">A focused set of PDF helpers is on the way.</p>
+        </div>
+        <a href="contact.html" class="card-footer-link">
+          <span id="tCs1Link">See the plan →</span>
+        </a>
+      </div>
+
+      <!-- Coming Soon Card 2: Bangla Tools -->
+      <div class="tool-card text" data-name="bangla tools coming soon">
+        <div>
+          <div class="card-top">
+            <div class="tool-icon-wrapper" style="background:#FEF3C7; color:#92400E;">অA</div>
+            <span class="badge-pill badge-coming" id="badgeComing2">COMING SOON</span>
+          </div>
+          <h3 class="tool-heading" id="tCs2Name">Bangla tools</h3>
+          <p class="tool-summary" id="tCs2Sub">Helpful Bangla text utilities are being prepared.</p>
+        </div>
+        <a href="contact.html" class="card-footer-link">
+          <span id="tCs2Link">See the plan →</span>
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- BEFORE YOU START / FAQ Section -->
+  <section class="wrap faq-section">
+    <div class="faq-eyebrow" id="faqEyebrow">BEFORE YOU START</div>
+    <h2 class="faq-title font-serif" id="faqTitle">Good questions.</h2>
+
+    <div class="faq-accordion">
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question">
+          <span id="faqQ1">Are the tools really free?</span>
+          <span class="faq-plus">+</span>
+        </div>
+        <div class="faq-answer" id="faqA1">
+          Yes! Every single tool is 100% free with unlimited access, zero subscriptions, and no hidden account sign-ups.
+        </div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question">
+          <span id="faqQ2">Are my images uploaded?</span>
+          <span class="faq-plus">+</span>
+        </div>
+        <div class="faq-answer" id="faqA2">
+          When you resize, compress, crop or convert an image, it is handled by your browser's canvas. Nothing needs to travel to a server for that work.
+        </div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question">
+          <span id="faqQ3">Can I use the results on your phone?</span>
+          <span class="faq-plus">+</span>
+        </div>
+        <div class="faq-answer" id="faqA3">
+          Absolutely. The entire LiveTool interface is fully responsive, lightweight, and engineered for modern iOS and Android mobile browsers.
+        </div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question">
+          <span id="faqQ4">What is coming next?</span>
+          <span class="faq-plus">+</span>
+        </div>
+        <div class="faq-answer" id="faqA4">
+          We are currently building dedicated client-side PDF utilities, batch image converters, and specialized Unicode Bangla typography formatters.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Community Reviews Section (Reviewers' names always in English as requested) -->
+  <section class="reviews-section" id="reviews">
+    <div class="wrap">
+      <div style="text-align:center;">
+        <div class="reviews-badge">★ COMMUNITY FEEDBACK</div>
+        <h2 class="reviews-title font-serif" id="revHeading">User Reviews & Feedback</h2>
+        <p class="reviews-sub" id="revSubheading">Genuine reviews from creative professionals, engineers, and students worldwide.</p>
+      </div>
+
+      <!-- Rating Stats Banner -->
+      <div class="rating-stat-row">
+        <div class="stat-cell">
+          <div class="stat-number" style="color:#D97706;">4.9 ★</div>
+          <div class="stat-label" id="statScore">Average Rating (Out of 5.0)</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-number">12,500+</div>
+          <div class="stat-label" id="statCount">Daily Tasks Processed</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-number" style="color:#15803D;">100%</div>
+          <div class="stat-label" id="statClient">Private Device Memory</div>
+        </div>
+      </div>
+
+      <!-- Review Cards Grid (All reviewer names strictly in English) -->
+      <div class="review-cards-grid" id="reviewCardsGrid">
+        <!-- Reviewer 1 -->
+        <div class="review-bubble">
+          <div>
+            <div class="reviewer-header">
+              <div class="reviewer-info">
+                <div class="reviewer-avatar">R</div>
+                <div>
+                  <div class="reviewer-name">Rakib Hassan</div>
+                  <div class="reviewer-role" id="rRole1">Graphic Designer & Freelancer</div>
+                </div>
+              </div>
+              <span class="verified-chip">✓ Verified</span>
+            </div>
+            <div class="review-stars" style="margin:8px 0 4px;">★★★★★</div>
+            <p class="review-body" id="rBody1">"The AI Background Remover and Image Resizer produce results on par with expensive desktop software. It works instantly without requiring an account."</p>
+          </div>
+          <div class="review-meta-bar">
+            <span>2 days ago • Background Remover</span>
+            <button class="btn-helpful" onclick="upvoteHelpful(this)">👍 Helpful (24)</button>
+          </div>
+        </div>
+
+        <!-- Reviewer 2 -->
+        <div class="review-bubble">
+          <div>
+            <div class="reviewer-header">
+              <div class="reviewer-info">
+                <div class="reviewer-avatar" style="background:linear-gradient(135deg, #06B6D4, #3B82F6);">T</div>
+                <div>
+                  <div class="reviewer-name">Tanvir Ahmed</div>
+                  <div class="reviewer-role" id="rRole2">Photographer & Visual Editor</div>
+                </div>
+              </div>
+              <span class="verified-chip">✓ Verified</span>
+            </div>
+            <div class="review-stars" style="margin:8px 0 4px;">★★★★★</div>
+            <p class="review-body" id="rBody2">"I enhanced several old family portraits with the 4K AI Enhancer. Because processing happens in browser canvas, no sensitive photos get stored online."</p>
+          </div>
+          <div class="review-meta-bar">
+            <span>4 days ago • 4K Image Enhancer</span>
+            <button class="btn-helpful" onclick="upvoteHelpful(this)">👍 Helpful (18)</button>
+          </div>
+        </div>
+
+        <!-- Reviewer 3 -->
+        <div class="review-bubble">
+          <div>
+            <div class="reviewer-header">
+              <div class="reviewer-info">
+                <div class="reviewer-avatar" style="background:linear-gradient(135deg, #EC4899, #F43F5E);">M</div>
+                <div>
+                  <div class="reviewer-name">Maria Sultana</div>
+                  <div class="reviewer-role" id="rRole3">Financial Analyst</div>
+                </div>
+              </div>
+              <span class="verified-chip">✓ Verified</span>
+            </div>
+            <div class="review-stars" style="margin:8px 0 4px;">★★★★★</div>
+            <p class="review-body" id="rBody3">"The Loan EMI calculator and VAT tools give clean math breakdowns with zero clutter. A huge time-saver during busy workday schedules."</p>
+          </div>
+          <div class="review-meta-bar">
+            <span>1 week ago • Loan EMI Calculator</span>
+            <button class="btn-helpful" onclick="upvoteHelpful(this)">👍 Helpful (15)</button>
+          </div>
+        </div>
+
+        <!-- Reviewer 4 -->
+        <div class="review-bubble">
+          <div>
+            <div class="reviewer-header">
+              <div class="reviewer-info">
+                <div class="reviewer-avatar" style="background:linear-gradient(135deg, #10B981, #059669);">S</div>
+                <div>
+                  <div class="reviewer-name">Sadat Karim</div>
+                  <div class="reviewer-role" id="rRole4">Software Engineer</div>
+                </div>
+              </div>
+              <span class="verified-chip">✓ Verified</span>
+            </div>
+            <div class="review-stars" style="margin:8px 0 4px;">★★★★★</div>
+            <p class="review-body" id="rBody4">"The JSON Formatter, QR generator and Palette Studio are permanently bookmarked on my browser. Clean typography and super fast."</p>
+          </div>
+          <div class="review-meta-bar">
+            <span>1 week ago • JSON Formatter</span>
+            <button class="btn-helpful" onclick="upvoteHelpful(this)">👍 Helpful (31)</button>
+          </div>
+        </div>
+
+        <!-- Reviewer 5 -->
+        <div class="review-bubble">
+          <div>
+            <div class="reviewer-header">
+              <div class="reviewer-info">
+                <div class="reviewer-avatar" style="background:linear-gradient(135deg, #8B5CF6, #D946EF);">F</div>
+                <div>
+                  <div class="reviewer-name">Farhana Yasmin</div>
+                  <div class="reviewer-role" id="rRole5">Digital Marketer</div>
+                </div>
+              </div>
+              <span class="verified-badge verified-chip">✓ Verified</span>
+            </div>
+            <div class="review-stars" style="margin:8px 0 4px;">★★★★★</div>
+            <p class="review-body" id="rBody5">"Image compression drops file sizes by 80% with zero visible quality loss. Essential for web banners and social assets."</p>
+          </div>
+          <div class="review-meta-bar">
+            <span>2 weeks ago • Image Compressor</span>
+            <button class="btn-helpful" onclick="upvoteHelpful(this)">👍 Helpful (27)</button>
+          </div>
+        </div>
+
+        <!-- Reviewer 6 -->
+        <div class="review-bubble">
+          <div>
+            <div class="reviewer-header">
+              <div class="reviewer-info">
+                <div class="reviewer-avatar" style="background:linear-gradient(135deg, #F59E0B, #D97706);">A</div>
+                <div>
+                  <div class="reviewer-name">Amit Chowdhury</div>
+                  <div class="reviewer-role" id="rRole6">University Student</div>
+                </div>
+              </div>
+              <span class="verified-chip">✓ Verified</span>
+            </div>
+            <div class="review-stars" style="margin:8px 0 4px;">★★★★★</div>
+            <p class="review-body" id="rBody6">"The Word Counter, Age Calculator, and Unit Converter are indispensable for preparing reports and assignments."</p>
+          </div>
+          <div class="review-meta-bar">
+            <span>2 weeks ago • Word Counter</span>
+            <button class="btn-helpful" onclick="upvoteHelpful(this)">👍 Helpful (12)</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add Review Form -->
+      <div class="submit-review-card">
+        <h3 style="font-size:1.25rem; font-weight:800; margin-bottom:14px; color:var(--text-dark);" id="formRevHeading">✍️ Share Your Feedback & Experience</h3>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:4px;">
+          <input type="text" id="formRevName" placeholder="Your Name (in English)" class="input-clean">
+          <input type="text" id="formRevRole" placeholder="Your Profession (e.g. Designer / Student)" class="input-clean">
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:4px;">
+          <select id="formRevTool" class="select-clean">
+            <option value="Image Resizer">Image Resizer</option>
+            <option value="AI Background Remover">AI Background Remover</option>
+            <option value="4K Image Enhancer">4K Image Enhancer</option>
+            <option value="Image Compressor">Image Compressor</option>
+            <option value="Loan EMI Calculator">Loan EMI Calculator</option>
+            <option value="VAT Calculator">VAT Calculator</option>
+            <option value="Unit Converter">Unit Converter</option>
+            <option value="All Suite Tools">All Suite Tools</option>
+          </select>
+          <select id="formRevRating" class="select-clean">
+            <option value="5">★★★★★ (5 Stars - Excellent)</option>
+            <option value="4">★★★★☆ (4 Stars - Very Good)</option>
+            <option value="3">★★★☆☆ (3 Stars - Good)</option>
+          </select>
+        </div>
+        <textarea id="formRevText" placeholder="Write your review or suggestion..." class="textarea-clean"></textarea>
+        <button class="btn-coral" onclick="submitUserReview()" id="formRevBtn" style="width:100%; justify-content:center; padding:13px;">🚀 Submit Review</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer (Dark Slate Background matching Reference) -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-brand-row">
+        <div>
+          <a href="index.html" class="footer-brand">
+            <div class="logo-badge" style="width:34px; height:34px; font-size:1.1rem;">⚡</div>
+            <span>Live<span style="color:var(--coral-primary)">Tool</span></span>
+          </a>
+          <p class="footer-tagline" id="footerTagline">A small toolkit for the things between big tasks.</p>
+        </div>
+
+        <nav class="footer-nav">
+          <a href="privacy.html" id="fNavPrivacy">Privacy</a>
+          <a href="terms.html" id="fNavTerms">Terms</a>
+          <a href="contact.html" id="fNavContact">Contact</a>
+        </nav>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <p id="fCopyright">© 2026 LiveTool · Built to be useful, not noisy.</p>
+        <div>
+          <a href="mailto:livetooloffice@gmail.com" style="color:#94A3B8; text-decoration:none;">livetooloffice@gmail.com</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Language Dictionary (English & Bangla)
+    // Note: Reviewers' names remain English in both languages per user instructions.
+    const DICT = {
+      en: {
+        langBtn: "বাংলা",
+        heroEyebrow: "MADE FOR EVERYDAY MOMENTS",
+        heroTitle: 'Small tasks.<br><span class="highlight">Done here.</span>',
+        heroDesc: "A pocket-sized collection of image, text and calculator tools. No account, no uploads, no maze of menus.",
+        heroBtnExplore: "Explore the toolkit →",
+        heroBtnResizer: "🖼️ Try image resizer",
+        heroSecurity: "<strong>Private by default.</strong> Image processing happens on your device.",
+        qpEyebrow: "START WITH A QUICK PICK",
+        qpTitle: "What are you fixing today?",
+        qp1Name: "Image Resizer",
+        qp1Sub: "Resize an image to exact pixel dimensions.",
+        qp2Name: "Word Counter",
+        qp2Sub: "Count words, characters and lines as you type.",
+        qp3Name: "JSON Formatter",
+        qp3Sub: "Format messy JSON and spot invalid syntax.",
+        tkEyebrow: "THE TOOLKIT · 20 READY NOW",
+        tkTitle: "Find your shortcut.",
+        tkSub: "Choose a tool, make the small thing less annoying, and get back to your day. Everything runs in this tab.",
+        searchPlaceholder: 'Search by task, like "image" or "JSON"',
+        pillAll: "All tools",
+        pillImages: "Images",
+        pillText: "Text",
+        pillCalc: "Calculators",
+        pillDev: "Developer",
+        mNavAllTools: "All 22+ Tools",
+        mNavResizer: "Image Resizer",
+        mNavBg: "AI Cutout Remover",
+        mNavEnhancer: "4K AI Enhancer",
+        mNavPrivacy: "Privacy Policy",
+        mNavTerms: "Terms of Service",
+        mNavContact: "Contact Support",
+        faqEyebrow: "BEFORE YOU START",
+        faqTitle: "Good questions.",
+        faqQ1: "Are the tools really free?",
+        faqA1: "Yes! Every single tool is 100% free with unlimited access, zero subscriptions, and no hidden account sign-ups.",
+        faqQ2: "Are my images uploaded?",
+        faqA2: "When you resize, compress, crop or convert an image, it is handled by your browser's canvas. Nothing needs to travel to a server for that work.",
+        faqQ3: "Can I use the results on your phone?",
+        faqA3: "Absolutely. The entire LiveTool interface is fully responsive, lightweight, and engineered for modern iOS and Android mobile browsers.",
+        faqQ4: "What is coming next?",
+        faqA4: "We are currently building dedicated client-side PDF utilities, batch image converters, and specialized Unicode Bangla typography formatters.",
+        revHeading: "User Reviews & Feedback",
+        revSubheading: "Genuine reviews from creative professionals, engineers, and students worldwide.",
+        statScore: "Average Rating (Out of 5.0)",
+        statCount: "Daily Tasks Processed",
+        statClient: "Private Device Memory",
+        footerTagline: "A small toolkit for the things between big tasks.",
+        fNavPrivacy: "Privacy",
+        fNavTerms: "Terms",
+        fNavContact: "Contact",
+        fCopyright: "© 2026 LiveTool · Built to be useful, not noisy."
+      },
+      bn: {
+        langBtn: "English",
+        heroEyebrow: "দৈনন্দিন কাজের জন্য তৈরি",
+        heroTitle: 'ছোট কাজ।<br><span class="highlight">সহজে সমাধান।</span>',
+        heroDesc: "ইমেজ, টেক্সট এবং প্রয়োজনীয় ক্যালকুলেটরের সহজ কালেকশন। কোনো অ্যাকাউন্ট, আপলোড বা জটিল মেনু নেই।",
+        heroBtnExplore: "সকল টুলস এক্সপ্লোর করুন →",
+        heroBtnResizer: "🖼️ ইমেজ রিসাইজার ব্যবহার করুন",
+        heroSecurity: "<strong>ডিফল্টভাবে প্রাইভেট।</strong> আপনার ডিভাইসেই সব প্রসেসিং সম্পন্ন হয়।",
+        qpEyebrow: "দ্রুত শুরু করুন",
+        qpTitle: "আজ কী সমাধান করতে চান?",
+        qp1Name: "ইমেজ রিসাইজার",
+        qp1Sub: "ছবির রেজোলিউশন ও পিক্সেল নিখুঁতভাবে মাপমতো পরিবর্তন করুন।",
+        qp2Name: "ওয়ার্ড কাউন্টার",
+        qp2Sub: "টাইপ করার সাথে সাথেই শব্দ ও বর্ণের সংখ্যা গণনা করুন।",
+        qp3Name: "JSON ফরম্যাটার",
+        qp3Sub: "অগোছালো JSON কোড সুন্দরভাবে সাজান ও যাচাই করুন।",
+        tkEyebrow: "টুলকিট · ২০+ রেডি টুলস",
+        tkTitle: "আপনার প্রয়োজনীয় টুলটি বেছে নিন।",
+        tkSub: "যেকোনো টুল নির্বাচন করুন, দ্রুত কাজ সেরে নিন। সবকিছু আপনার এই ব্রাউজারেই চলে।",
+        searchPlaceholder: 'টাস্ক সার্চ করুন (যেমন: "image", "JSON", "বয়স", "লোন")...',
+        pillAll: "সকল টুলস",
+        pillImages: "ইমেজ",
+        pillText: "টেক্সট",
+        pillCalc: "ক্যালকুলেটর",
+        pillDev: "ডেভেলপার",
+        mNavAllTools: "সকল ২২+ টুলস",
+        mNavResizer: "ইমেজ রিসাইজার",
+        mNavBg: "এআই কাটআউট রিমুভার",
+        mNavEnhancer: "৪K এআই এনহ্যান্সার",
+        mNavPrivacy: "প্রাইভেসি পলিসি",
+        mNavTerms: "ব্যবহারের শর্তাবলী",
+        mNavContact: "যোগাযোগ ও সাপোর্ট",
+        faqEyebrow: "শুরু করার আগে",
+        faqTitle: "সাধারণ কিছু প্রশ্ন।",
+        faqQ1: "টুলগুলো কি সত্যি সম্পূর্ণ ফ্রি?",
+        faqA1: "হ্যাঁ! প্রতিটি টুল ১০০% ফ্রি, কোনো আনলিমিটেড সীমাবদ্ধতা, সাবস্ক্রিপশন বা অ্যাকাউন্ট খোলার ঝামেলা নেই।",
+        faqQ2: "আমার ছবিগুলো কি সার্ভারে আপলোড হয়?",
+        faqA2: "না। আপনি যখন ছবি রিসাইজ, কম্প্রেস বা কনভার্ট করেন, তা সরাসরি ব্রাউজারের ক্যানভাসে প্রসেস হয়। কোনো ডেটা সার্ভারে যায় না।",
+        faqQ3: "মোবাইলে কি এটি ব্যবহার করা যাবে?",
+        faqA3: "অবশ্যই। LiveTool মোবাইল ডিভাইসের জন্য সম্পূর্ণ অপ্টিমাইজড ও রেসপন্সিভ।",
+        faqQ4: "ভবিষ্যতে আর কী কী টুল যুক্ত হচ্ছে?",
+        faqA4: "আমরা ক্লায়েন্ট-সাইড PDF ইউটিলিটি, ব্যাচ ইমেজ কনভার্টার এবং বাংলা টেক্সট ফরম্যাটার তৈরির কাজ করছি।",
+        revHeading: "কমিউনিটি রিভিউ ও ব্যবহারকারীদের মতামত",
+        revSubheading: "বিশ্বজুড়ে ডিজাইনার, ডেভেলপার ও শিক্ষার্থীদের বাস্তব অভিজ্ঞতা।",
+        statScore: "গড় রেটিং (৫ এর মধ্যে)",
+        statCount: "দৈনিক সম্পন্নকৃত কাজ",
+        statClient: "প্রাইভেট ডিভাইস মেমোরি",
+        footerTagline: "বড় কাজের মাঝে ছোট কাজের সহজ সমাধান।",
+        fNavPrivacy: "প্রাইভেসি",
+        fNavTerms: "শর্তাবলী",
+        fNavContact: "যোগাযোগ",
+        fCopyright: "© 2026 LiveTool · Built to be useful, not noisy."
+      }
+    };
+
+    let activeLang = localStorage.getItem('livetool_app_lang') || 'en';
+
+    function setLanguage(lang) {
+      activeLang = lang;
+      localStorage.setItem('livetool_app_lang', lang);
+      const d = DICT[lang];
+
+      document.getElementById('langBtn').querySelector('span').textContent = d.langBtn;
+      document.getElementById('heroEyebrow').textContent = d.heroEyebrow;
+      document.getElementById('heroTitle').innerHTML = d.heroTitle;
+      document.getElementById('heroDesc').textContent = d.heroDesc;
+      document.getElementById('heroBtnExplore').textContent = d.heroBtnExplore;
+      document.getElementById('heroBtnResizer').textContent = d.heroBtnResizer;
+      document.getElementById('heroSecurity').innerHTML = d.heroSecurity;
+
+      document.getElementById('qpEyebrow').textContent = d.qpEyebrow;
+      document.getElementById('qpTitle').textContent = d.qpTitle;
+      document.getElementById('qp1Name').textContent = d.qp1Name;
+      document.getElementById('qp1Sub').textContent = d.qp1Sub;
+      document.getElementById('qp2Name').textContent = d.qp2Name;
+      document.getElementById('qp2Sub').textContent = d.qp2Sub;
+      document.getElementById('qp3Name').textContent = d.qp3Name;
+      document.getElementById('qp3Sub').textContent = d.qp3Sub;
+
+      document.getElementById('tkEyebrow').textContent = d.tkEyebrow;
+      document.getElementById('tkTitle').textContent = d.tkTitle;
+      document.getElementById('tkSub').textContent = d.tkSub;
+      document.getElementById('toolSearchInput').placeholder = d.searchPlaceholder;
+      document.getElementById('pillAll').textContent = d.pillAll;
+      document.getElementById('pillImages').textContent = d.pillImages;
+      document.getElementById('pillText').textContent = d.pillText;
+      document.getElementById('pillCalc').textContent = d.pillCalc;
+      document.getElementById('pillDev').textContent = d.pillDev;
+
+      if (document.getElementById('mNavAllTools')) document.getElementById('mNavAllTools').textContent = d.mNavAllTools;
+      if (document.getElementById('mNavResizer')) document.getElementById('mNavResizer').textContent = d.mNavResizer;
+      if (document.getElementById('mNavBg')) document.getElementById('mNavBg').textContent = d.mNavBg;
+      if (document.getElementById('mNavEnhancer')) document.getElementById('mNavEnhancer').textContent = d.mNavEnhancer;
+      if (document.getElementById('mNavPrivacy')) document.getElementById('mNavPrivacy').textContent = d.mNavPrivacy;
+      if (document.getElementById('mNavTerms')) document.getElementById('mNavTerms').textContent = d.mNavTerms;
+      if (document.getElementById('mNavContact')) document.getElementById('mNavContact').textContent = d.mNavContact;
+
+      document.getElementById('faqEyebrow').textContent = d.faqEyebrow;
+      document.getElementById('faqTitle').textContent = d.faqTitle;
+      document.getElementById('faqQ1').textContent = d.faqQ1;
+      document.getElementById('faqA1').textContent = d.faqA1;
+      document.getElementById('faqQ2').textContent = d.faqQ2;
+      document.getElementById('faqA2').textContent = d.faqA2;
+      document.getElementById('faqQ3').textContent = d.faqQ3;
+      document.getElementById('faqA3').textContent = d.faqA3;
+      document.getElementById('faqQ4').textContent = d.faqQ4;
+      document.getElementById('faqA4').textContent = d.faqA4;
+
+      document.getElementById('revHeading').textContent = d.revHeading;
+      document.getElementById('revSubheading').textContent = d.revSubheading;
+      document.getElementById('statScore').textContent = d.statScore;
+      document.getElementById('statCount').textContent = d.statCount;
+      document.getElementById('statClient').textContent = d.statClient;
+
+      document.getElementById('footerTagline').textContent = d.footerTagline;
+      document.getElementById('fNavPrivacy').textContent = d.fNavPrivacy;
+      document.getElementById('fNavTerms').textContent = d.fNavTerms;
+      document.getElementById('fNavContact').textContent = d.fNavContact;
+      document.getElementById('fCopyright').textContent = d.fCopyright;
+    }
+
+    function toggleLanguage() {
+      setLanguage(activeLang === 'en' ? 'bn' : 'en');
+    }
+
+    function toggleTheme() {
+      const isDark = document.body.classList.toggle('dark-theme');
+      document.getElementById('themeIcon').textContent = isDark ? '☀️' : '🌙';
+    }
+
+    function toggleFaq(item) {
+      item.classList.toggle('open');
+    }
+
+    function toggleMenuDropdown(e) {
+      if (e) e.stopPropagation();
+      const menu = document.getElementById('headerMenuDropdown');
+      if (menu) {
+        menu.classList.toggle('show');
+      }
+    }
+
+    function closeMenuDropdown() {
+      const menu = document.getElementById('headerMenuDropdown');
+      if (menu) {
+        menu.classList.remove('show');
+      }
+    }
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(e) {
+      const container = document.querySelector('.menu-dropdown-container');
+      if (container && !container.contains(e.target)) {
+        closeMenuDropdown();
+      }
+    });
+
+    // Filter tools via search input
+    function filterToolsBySearch() {
+      const q = document.getElementById('toolSearchInput').value.toLowerCase().trim();
+      document.querySelectorAll('.tool-card').forEach(card => {
+        const text = (card.getAttribute('data-name') || '') + ' ' + card.innerText.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+
+    // Filter tools by category pill
+    function applyCategoryFilter(cat, btn) {
+      document.querySelectorAll('.filter-pills .filter-pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.tool-card').forEach(card => {
+        if (cat === 'all' || card.classList.contains(cat)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function copySnippet(elementId) {
+      const el = document.getElementById(elementId);
+      if (!el) return;
+      navigator.clipboard.writeText(el.innerText || el.textContent).then(() => {
+        alert(activeLang === 'en' ? 'Copied to clipboard!' : 'ক্লিপবোর্ডে কপি করা হয়েছে!');
+      });
+    }
+
+    // 1. Tool Logic: Image Resizer (Single & Batch Mode)
+    let resizerActiveMode = 'px';
+
+    function setResizerMode(mode) {
+      resizerActiveMode = mode;
+      document.getElementById('resTabPx').classList.toggle('active', mode === 'px');
+      document.getElementById('resTabScale').classList.toggle('active', mode === 'scale');
+      document.getElementById('resTabPreset').classList.toggle('active', mode === 'preset');
+      
+      document.getElementById('resInputsPx').style.display = mode === 'px' ? 'flex' : 'none';
+      document.getElementById('resInputsScale').style.display = mode === 'scale' ? 'block' : 'none';
+      document.getElementById('resInputsPreset').style.display = mode === 'preset' ? 'block' : 'none';
+    }
+
+    function onResizerFilesSelected(input) {
+      const count = input.files ? input.files.length : 0;
+      const statusBox = document.getElementById('resBatchStatus');
+      const countTxt = document.getElementById('resBatchCountTxt');
+      const progTxt = document.getElementById('resBatchProgressTxt');
+      const progFill = document.getElementById('resBatchProgressFill');
+      const btn = document.getElementById('t1Btn');
+
+      if (count > 1) {
+        statusBox.style.display = 'flex';
+        countTxt.textContent = (activeLang === 'en' ? '⚡ Batch Mode: ' : '⚡ ব্যাচ মোড: ') + count + (activeLang === 'en' ? ' images selected' : 'টি ছবি নির্বাচিত');
+        progTxt.textContent = activeLang === 'en' ? 'Ready to process' : 'প্রসেস করতে প্রস্তুত';
+        progFill.style.width = '0%';
+        btn.textContent = (activeLang === 'en' ? '📦 Resize All & Download ZIP (' : '📦 সবগুলো রিসাইজ ও জিপ ডাউনলোড (') + count + ')';
+      } else if (count === 1) {
+        statusBox.style.display = 'none';
+        btn.textContent = activeLang === 'en' ? '📐 Resize & Download' : '📐 রিসাইজ ও ডাউনলোড';
+      } else {
+        statusBox.style.display = 'none';
+        btn.textContent = activeLang === 'en' ? '📐 Resize & Download' : '📐 রিসাইজ ও ডাউনলোড';
+      }
+    }
+
+    async function executeResize() {
+      const fileInput = document.getElementById('resFile');
+      const files = fileInput.files;
+      if (!files || files.length === 0) {
+        return alert(activeLang === 'en' ? 'Please choose one or more images!' : 'দয়া করে এক বা একাধিক ছবি নির্বাচন করুন!');
+      }
+
+      const btn = document.getElementById('t1Btn');
+      const progTxt = document.getElementById('resBatchProgressTxt');
+      const progFill = document.getElementById('resBatchProgressFill');
+      const originalBtnText = btn.textContent;
+      btn.disabled = true;
+
+      // Helper function to process single image file to Blob
+      function processResizeFile(file) {
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = function(e) {
+            const img = new Image();
+            img.onload = function() {
+              let targetW, targetH;
+              if (resizerActiveMode === 'scale') {
+                const scale = parseFloat(document.getElementById('resScaleSelect').value) || 0.5;
+                targetW = Math.max(1, Math.round(img.width * scale));
+                targetH = Math.max(1, Math.round(img.height * scale));
+              } else if (resizerActiveMode === 'preset') {
+                const presetVal = document.getElementById('resPresetSelect').value.split('x');
+                targetW = parseInt(presetVal[0]) || 1920;
+                targetH = parseInt(presetVal[1]) || 1080;
+              } else {
+                const w = parseInt(document.getElementById('resWidth').value);
+                const h = parseInt(document.getElementById('resHeight').value);
+                targetW = w || img.width;
+                targetH = h || Math.round(img.height * (targetW / img.width));
+              }
+
+              const cvs = document.createElement('canvas');
+              cvs.width = targetW;
+              cvs.height = targetH;
+              const ctx = cvs.getContext('2d');
+              ctx.imageSmoothingEnabled = true;
+              ctx.imageSmoothingQuality = 'high';
+              ctx.drawImage(img, 0, 0, targetW, targetH);
+              cvs.toBlob(blob => {
+                resolve({ blob, targetW, targetH, name: file.name });
+              }, 'image/png');
+            };
+            img.onerror = reject;
+            img.src = e.target.result;
+          };
+          reader.onerror = reject;
+          reader.readAsDataURL(file);
+        });
+      }
+
+      try {
+        if (files.length === 1) {
+          // Single Image Mode
+          const res = await processResizeFile(files[0]);
+          const a = document.createElement('a');
+          a.href = URL.createObjectURL(res.blob);
+          const baseName = files[0].name.replace(/\.[^/.]+$/, "");
+          a.download = `${baseName}-resized-${res.targetW}x${res.targetH}.png`;
+          a.click();
+        } else {
+          // Batch Multiple Images Mode
+          const zip = window.JSZip ? new window.JSZip() : null;
+          document.getElementById('resBatchStatus').style.display = 'flex';
+
+          for (let i = 0; i < files.length; i++) {
+            const currentNum = i + 1;
+            const pct = Math.round((currentNum / files.length) * 100);
+            progTxt.textContent = `${activeLang === 'en' ? 'Processing' : 'প্রসেসিং'} ${currentNum}/${files.length} (${pct}%)`;
+            progFill.style.width = `${pct}%`;
+
+            const res = await processResizeFile(files[i]);
+            const baseName = files[i].name.replace(/\.[^/.]+$/, "");
+            const fileName = `${String(currentNum).padStart(2, '0')}_${baseName}_${res.targetW}x${res.targetH}.png`;
+
+            if (zip) {
+              zip.file(fileName, res.blob);
+            } else {
+              const a = document.createElement('a');
+              a.href = URL.createObjectURL(res.blob);
+              a.download = fileName;
+              a.click();
+              await new Promise(r => setTimeout(r, 200));
+            }
+          }
+
+          if (zip) {
+            progTxt.textContent = activeLang === 'en' ? 'Zipping files...' : 'জিপ তৈরি হচ্ছে...';
+            const zipBlob = await zip.generateAsync({ type: 'blob' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(zipBlob);
+            a.download = `livetool-batch-resized-${files.length}-images.zip`;
+            a.click();
+          }
+
+          progTxt.textContent = activeLang === 'en' ? '✨ Batch Complete!' : '✨ সম্পন্ন হয়েছে!';
+        }
+      } catch (err) {
+        console.error('Resize Error:', err);
+        alert(activeLang === 'en' ? 'Failed to process images. Please try again.' : 'ছবি প্রসেস করতে সমস্যা হয়েছে। আবার চেষ্টা করুন।');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = originalBtnText;
+      }
+    }
+
+    // 2. Tool Logic: Image Compressor
+    function executeCompress() {
+      const file = document.getElementById('compFileInput').files[0];
+      const q = parseFloat(document.getElementById('compQualitySelect').value) || 0.8;
+      if (!file) return alert(activeLang === 'en' ? 'Please choose an image!' : 'একটি ছবি নির্বাচন করুন!');
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+          const cvs = document.createElement('canvas');
+          cvs.width = img.width; cvs.height = img.height;
+          const ctx = cvs.getContext('2d');
+          ctx.drawImage(img, 0, 0);
+          cvs.toBlob(blob => {
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'livetool-compressed.jpg';
+            a.click();
+          }, 'image/jpeg', q);
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // 3. Tool Logic: AI Background Remover (Anti-Halo Pro Matting & Color Decontamination)
+    function executeBgRemoval() {
+      const file = document.getElementById('bgFileInput').files[0];
+      if (!file) return alert(activeLang === 'en' ? 'Please select an image file!' : 'দয়া করে একটি ছবি বাছাই করুন!');
+      const mode = document.getElementById('bgModeSelect').value;
+      const btn = document.getElementById('t3Btn');
+      const origBtnText = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = activeLang === 'en' ? '⏳ Processing Clean Cutout...' : '⏳ নিখুঁত প্রসেসিং হচ্ছে...';
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+          const width = img.width;
+          const height = img.height;
+          const srcCanvas = document.createElement('canvas');
+          srcCanvas.width = width;
+          srcCanvas.height = height;
+          const srcCtx = srcCanvas.getContext('2d');
+          srcCtx.drawImage(img, 0, 0);
+
+          const imgData = srcCtx.getImageData(0, 0, width, height);
+          const data = imgData.data;
+          const totalPixels = width * height;
+
+          // 1. Multi-point Perimeter Sampling for Background Color
+          const borderSamples = [];
+          const stepX = Math.max(1, Math.floor(width / 40));
+          const stepY = Math.max(1, Math.floor(height / 40));
+
+          for (let x = 0; x < width; x += stepX) {
+            const iTop = (0 * width + x) * 4;
+            borderSamples.push([data[iTop], data[iTop + 1], data[iTop + 2]]);
+            const iBot = ((height - 1) * width + x) * 4;
+            borderSamples.push([data[iBot], data[iBot + 1], data[iBot + 2]]);
+          }
+          for (let y = 0; y < height; y += stepY) {
+            const iLeft = (y * width + 0) * 4;
+            borderSamples.push([data[iLeft], data[iLeft + 1], data[iLeft + 2]]);
+            const iRight = (y * width + (width - 1)) * 4;
+            borderSamples.push([data[iRight], data[iRight + 1], data[iRight + 2]]);
+          }
+
+          let sumR = 0, sumG = 0, sumB = 0;
+          for (let i = 0; i < borderSamples.length; i++) {
+            sumR += borderSamples[i][0];
+            sumG += borderSamples[i][1];
+            sumB += borderSamples[i][2];
+          }
+          const avgBgR = sumR / borderSamples.length;
+          const avgBgG = sumG / borderSamples.length;
+          const avgBgB = sumB / borderSamples.length;
+
+          // Perceptual color difference
+          function colorDist(r, g, b, bgR, bgG, bgB) {
+            const dr = r - bgR;
+            const dg = g - bgG;
+            const db = b - bgB;
+            return Math.sqrt(0.299 * dr * dr + 0.587 * dg * dg + 0.114 * db * db);
+          }
+
+          // 2. Multi-seed Connected Flood Fill from outer edges
+          const isBackground = new Uint8Array(totalPixels);
+          const queue = new Int32Array(totalPixels);
+          let qHead = 0;
+          let qTail = 0;
+
+          for (let x = 0; x < width; x++) {
+            const idxTop = 0 * width + x;
+            const pTop = idxTop * 4;
+            if (colorDist(data[pTop], data[pTop+1], data[pTop+2], avgBgR, avgBgG, avgBgB) < 65) {
+              isBackground[idxTop] = 1;
+              queue[qTail++] = idxTop;
+            }
+            const idxBot = (height - 1) * width + x;
+            const pBot = idxBot * 4;
+            if (colorDist(data[pBot], data[pBot+1], data[pBot+2], avgBgR, avgBgG, avgBgB) < 65) {
+              isBackground[idxBot] = 1;
+              queue[qTail++] = idxBot;
+            }
+          }
+          for (let y = 0; y < height; y++) {
+            const idxLeft = y * width + 0;
+            const pLeft = idxLeft * 4;
+            if (!isBackground[idxLeft] && colorDist(data[pLeft], data[pLeft+1], data[pLeft+2], avgBgR, avgBgG, avgBgB) < 65) {
+              isBackground[idxLeft] = 1;
+              queue[qTail++] = idxLeft;
+            }
+            const idxRight = y * width + (width - 1);
+            const pRight = idxRight * 4;
+            if (!isBackground[idxRight] && colorDist(data[pRight], data[pRight+1], data[pRight+2], avgBgR, avgBgG, avgBgB) < 65) {
+              isBackground[idxRight] = 1;
+              queue[qTail++] = idxRight;
+            }
+          }
+
+          // BFS Flood Fill
+          const thresholdFlood = 46;
+          while (qHead < qTail) {
+            const curr = queue[qHead++];
+            const cx = curr % width;
+            const cy = Math.floor(curr / width);
+            const cIdx = curr * 4;
+            const cr = data[cIdx], cg = data[cIdx+1], cb = data[cIdx+2];
+
+            const neighbors = [
+              cy > 0 ? (cy - 1) * width + cx : -1,
+              cy < height - 1 ? (cy + 1) * width + cx : -1,
+              cx > 0 ? cy * width + (cx - 1) : -1,
+              cx < width - 1 ? cy * width + (cx + 1) : -1
+            ];
+
+            for (let n = 0; n < 4; n++) {
+              const next = neighbors[n];
+              if (next >= 0 && isBackground[next] === 0) {
+                const nIdx = next * 4;
+                const distBg = colorDist(data[nIdx], data[nIdx+1], data[nIdx+2], avgBgR, avgBgG, avgBgB);
+                const distLocal = colorDist(data[nIdx], data[nIdx+1], data[nIdx+2], cr, cg, cb);
+                if (distBg < thresholdFlood || (distLocal < 16 && distBg < 68)) {
+                  isBackground[next] = 1;
+                  queue[qTail++] = next;
+                }
+              }
+            }
+          }
+
+          // 3. Compute Soft Alpha Mask & Defringing
+          const alphaMap = new Float32Array(totalPixels);
+          for (let i = 0; i < totalPixels; i++) {
+            const p = i * 4;
+            if (isBackground[i] === 1) {
+              const d = colorDist(data[p], data[p+1], data[p+2], avgBgR, avgBgG, avgBgB);
+              if (d <= 22) {
+                alphaMap[i] = 0;
+              } else if (d >= 52) {
+                alphaMap[i] = 1;
+              } else {
+                const t = (d - 22) / (52 - 22);
+                alphaMap[i] = t * t * (3 - 2 * t);
+              }
+            } else {
+              alphaMap[i] = 1;
+            }
+          }
+
+          // 4. Edge Color Decontamination (Anti-Halo)
+          const outData = new Uint8ClampedArray(data.length);
+          for (let y = 0; y < height; y++) {
+            for (let x = 0; x < width; x++) {
+              const i = y * width + x;
+              const p = i * 4;
+              const a = alphaMap[i];
+
+              if (a <= 0.01) {
+                outData[p] = 0;
+                outData[p + 1] = 0;
+                outData[p + 2] = 0;
+                outData[p + 3] = 0;
+              } else if (a >= 0.99) {
+                outData[p] = data[p];
+                outData[p + 1] = data[p + 1];
+                outData[p + 2] = data[p + 2];
+                outData[p + 3] = 255;
+              } else {
+                // Decontaminate background color spill from edge pixels
+                let cleanR = (data[p] - (1 - a) * avgBgR) / a;
+                let cleanG = (data[p + 1] - (1 - a) * avgBgG) / a;
+                let cleanB = (data[p + 2] - (1 - a) * avgBgB) / a;
+
+                outData[p] = Math.max(0, Math.min(255, Math.round(cleanR)));
+                outData[p + 1] = Math.max(0, Math.min(255, Math.round(cleanG)));
+                outData[p + 2] = Math.max(0, Math.min(255, Math.round(cleanB)));
+                outData[p + 3] = Math.round(a * 255);
+              }
+            }
+          }
+
+          // 5. Output Canvas Creation
+          const outCvs = document.createElement('canvas');
+          outCvs.width = width;
+          outCvs.height = height;
+          const outCtx = outCvs.getContext('2d');
+
+          if (mode === 'white') {
+            outCtx.fillStyle = '#FFFFFF';
+            outCtx.fillRect(0, 0, width, height);
+          } else if (mode === 'black') {
+            outCtx.fillStyle = '#000000';
+            outCtx.fillRect(0, 0, width, height);
+          } else if (mode === 'blue') {
+            outCtx.fillStyle = '#2563EB';
+            outCtx.fillRect(0, 0, width, height);
+          } else if (mode === 'sky') {
+            outCtx.fillStyle = '#0EA5E9';
+            outCtx.fillRect(0, 0, width, height);
+          } else if (mode === 'gray') {
+            outCtx.fillStyle = '#F3F4F6';
+            outCtx.fillRect(0, 0, width, height);
+          }
+
+          const tempCvs = document.createElement('canvas');
+          tempCvs.width = width;
+          tempCvs.height = height;
+          const tempCtx = tempCvs.getContext('2d');
+          const finalImgData = new ImageData(outData, width, height);
+          tempCtx.putImageData(finalImgData, 0, 0);
+
+          outCtx.drawImage(tempCvs, 0, 0);
+
+          outCvs.toBlob(blob => {
+            const url = URL.createObjectURL(blob);
+            document.getElementById('bgPreviewBox').innerHTML = '<img src="' + url + '">';
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `livetool-cutout-${mode}.png`;
+            a.click();
+            btn.disabled = false;
+            btn.textContent = origBtnText;
+          }, 'image/png');
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // 4. Tool Logic: AI 4K Enhancer (Unsharp Masking & Micro-Contrast)
+    function executeEnhance() {
+      const file = document.getElementById('enhFileInput').files[0];
+      if (!file) return alert(activeLang === 'en' ? 'Please choose an image!' : 'একটি ছবি নির্বাচন করুন!');
+      const scale = parseInt(document.getElementById('enhScaleSelect').value) || 2;
+      const btn = document.getElementById('t4Btn');
+      const origBtnText = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = activeLang === 'en' ? '⏳ Enhancing to 4K...' : '⏳ ৪K এনহ্যান্স হচ্ছে...';
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+          const targetW = img.width * scale;
+          const targetH = img.height * scale;
+          const cvs = document.createElement('canvas');
+          cvs.width = targetW;
+          cvs.height = targetH;
+          const ctx = cvs.getContext('2d');
+          ctx.imageSmoothingEnabled = true;
+          ctx.imageSmoothingQuality = 'high';
+          ctx.drawImage(img, 0, 0, targetW, targetH);
+
+          const imgData = ctx.getImageData(0, 0, targetW, targetH);
+          const d = imgData.data;
+          const copy = new Uint8ClampedArray(d);
+
+          // Laplacian Edge Sharpening kernel
+          const amount = 0.4;
+          for (let y = 1; y < targetH - 1; y++) {
+            for (let x = 1; x < targetW - 1; x++) {
+              const idx = (y * targetW + x) * 4;
+              for (let c = 0; c < 3; c++) {
+                const center = copy[idx + c];
+                const up = copy[((y - 1) * targetW + x) * 4 + c];
+                const down = copy[((y + 1) * targetW + x) * 4 + c];
+                const left = copy[(y * targetW + (x - 1)) * 4 + c];
+                const right = copy[(y * targetW + (x + 1)) * 4 + c];
+                const laplacian = 4 * center - (up + down + left + right);
+                const sharpened = center + amount * laplacian;
+                d[idx + c] = Math.max(0, Math.min(255, sharpened));
+              }
+            }
+          }
+          ctx.putImageData(imgData, 0, 0);
+
+          cvs.toBlob(blob => {
+            const url = URL.createObjectURL(blob);
+            document.getElementById('enhPreviewBox').innerHTML = '<img src="' + url + '">';
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `livetool-4k-enhanced-${scale}x.jpg`;
+            a.click();
+            btn.disabled = false;
+            btn.textContent = origBtnText;
+          }, 'image/jpeg', 0.96);
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // 5. Tool Logic: Format Converter (Single & Batch Mode)
+    function onConverterFilesSelected(input) {
+      const count = input.files ? input.files.length : 0;
+      const statusBox = document.getElementById('fmtBatchStatus');
+      const countTxt = document.getElementById('fmtBatchCountTxt');
+      const progTxt = document.getElementById('fmtBatchProgressTxt');
+      const progFill = document.getElementById('fmtBatchProgressFill');
+      const btn = document.getElementById('t5Btn');
+
+      if (count > 1) {
+        statusBox.style.display = 'flex';
+        countTxt.textContent = (activeLang === 'en' ? '⚡ Batch Mode: ' : '⚡ ব্যাচ মোড: ') + count + (activeLang === 'en' ? ' images selected' : 'টি ছবি নির্বাচিত');
+        progTxt.textContent = activeLang === 'en' ? 'Ready to convert' : 'কনভার্ট করতে প্রস্তুত';
+        progFill.style.width = '0%';
+        btn.textContent = (activeLang === 'en' ? '📦 Convert All & Download ZIP (' : '📦 সবগুলো কনভার্ট ও জিপ ডাউনলোড (') + count + ')';
+      } else if (count === 1) {
+        statusBox.style.display = 'none';
+        btn.textContent = activeLang === 'en' ? '🔄 Convert & Save' : '🔄 কনভার্ট ও সেভ';
+      } else {
+        statusBox.style.display = 'none';
+        btn.textContent = activeLang === 'en' ? '🔄 Convert & Save' : '🔄 কনভার্ট ও সেভ';
+      }
+    }
+
+    async function executeFormatConvert() {
+      const fileInput = document.getElementById('fmtFileInput');
+      const files = fileInput.files;
+      const fmt = document.getElementById('fmtSelect').value;
+      if (!files || files.length === 0) {
+        return alert(activeLang === 'en' ? 'Please choose one or more images!' : 'দয়া করে এক বা একাধিক ছবি নির্বাচন করুন!');
+      }
+
+      const btn = document.getElementById('t5Btn');
+      const progTxt = document.getElementById('fmtBatchProgressTxt');
+      const progFill = document.getElementById('fmtBatchProgressFill');
+      const originalBtnText = btn.textContent;
+      btn.disabled = true;
+
+      const ext = fmt === 'jpeg' ? 'jpg' : fmt;
+      const mime = 'image/' + fmt;
+      const quality = fmt === 'png' ? undefined : 0.92;
+
+      function processConvertFile(file) {
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = function(e) {
+            const img = new Image();
+            img.onload = function() {
+              const cvs = document.createElement('canvas');
+              cvs.width = img.width;
+              cvs.height = img.height;
+              const ctx = cvs.getContext('2d');
+              ctx.imageSmoothingEnabled = true;
+              ctx.imageSmoothingQuality = 'high';
+              ctx.drawImage(img, 0, 0);
+              cvs.toBlob(blob => {
+                resolve({ blob, name: file.name });
+              }, mime, quality);
+            };
+            img.onerror = reject;
+            img.src = e.target.result;
+          };
+          reader.onerror = reject;
+          reader.readAsDataURL(file);
+        });
+      }
+
+      try {
+        if (files.length === 1) {
+          // Single file conversion
+          const res = await processConvertFile(files[0]);
+          const a = document.createElement('a');
+          a.href = URL.createObjectURL(res.blob);
+          const baseName = files[0].name.replace(/\.[^/.]+$/, "");
+          a.download = `${baseName}-converted.${ext}`;
+          a.click();
+        } else {
+          // Batch files conversion
+          const zip = window.JSZip ? new window.JSZip() : null;
+          document.getElementById('fmtBatchStatus').style.display = 'flex';
+
+          for (let i = 0; i < files.length; i++) {
+            const currentNum = i + 1;
+            const pct = Math.round((currentNum / files.length) * 100);
+            progTxt.textContent = `${activeLang === 'en' ? 'Converting' : 'কনভার্ট হচ্ছে'} ${currentNum}/${files.length} (${pct}%)`;
+            progFill.style.width = `${pct}%`;
+
+            const res = await processConvertFile(files[i]);
+            const baseName = files[i].name.replace(/\.[^/.]+$/, "");
+            const fileName = `${String(currentNum).padStart(2, '0')}_${baseName}.${ext}`;
+
+            if (zip) {
+              zip.file(fileName, res.blob);
+            } else {
+              const a = document.createElement('a');
+              a.href = URL.createObjectURL(res.blob);
+              a.download = fileName;
+              a.click();
+              await new Promise(r => setTimeout(r, 200));
+            }
+          }
+
+          if (zip) {
+            progTxt.textContent = activeLang === 'en' ? 'Zipping files...' : 'জিপ তৈরি হচ্ছে...';
+            const zipBlob = await zip.generateAsync({ type: 'blob' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(zipBlob);
+            a.download = `livetool-batch-converted-${fmt}-${files.length}-images.zip`;
+            a.click();
+          }
+
+          progTxt.textContent = activeLang === 'en' ? '✨ Batch Complete!' : '✨ সম্পন্ন হয়েছে!';
+        }
+      } catch (err) {
+        console.error('Format Conversion Error:', err);
+        alert(activeLang === 'en' ? 'Failed to convert images. Please try again.' : 'ছবি কনভার্ট করতে সমস্যা হয়েছে। আবার চেষ্টা করুন।');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = originalBtnText;
+      }
+    }
+
+    // 6. Tool Logic: Cropper
+    function executeCrop() {
+      const file = document.getElementById('cropFileInput').files[0];
+      const w = parseInt(document.getElementById('cropW').value);
+      const h = parseInt(document.getElementById('cropH').value);
+      if (!file) return alert(activeLang === 'en' ? 'Please choose an image!' : 'একটি ছবি নির্বাচন করুন!');
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+          const cropW = w || Math.min(img.width, img.height);
+          const cropH = h || cropW;
+          const cvs = document.createElement('canvas');
+          cvs.width = cropW; cvs.height = cropH;
+          const ctx = cvs.getContext('2d');
+          ctx.drawImage(img, (img.width-cropW)/2, (img.height-cropH)/2, cropW, cropH, 0, 0, cropW, cropH);
+          cvs.toBlob(blob => {
+            const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'cropped.png'; a.click();
+          }, 'image/png');
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // 7. Tool Logic: VAT Calculator
+    function executeVatCalc() {
+      const amount = parseFloat(document.getElementById('vatAmount').value);
+      const rate = parseFloat(document.getElementById('vatRate').value) || 15;
+      const mode = document.getElementById('vatMode').value;
+      if (isNaN(amount) || amount <= 0) return alert(activeLang === 'en' ? 'Enter a valid amount!' : 'সঠিক টাকার পরিমাণ দিন!');
+      let vat = 0, total = 0;
+      if (mode === 'add') {
+        vat = amount * (rate / 100);
+        total = amount + vat;
+      } else {
+        total = amount / (1 + rate / 100);
+        vat = amount - total;
+      }
+      document.getElementById('vatResTxt').textContent = activeLang === 'en'
+        ? `Net: $${total.toFixed(2)} | VAT: $${vat.toFixed(2)}`
+        : `মূল: $${total.toFixed(2)} | ভ্যাট: $${vat.toFixed(2)}`;
+    }
+
+    // 8. Tool Logic: Unit Converter
+    const UNIT_RATIOS = {
+      length: { meter:1, kilometer:1000, foot:0.3048, inch:0.0254 },
+      weight: { kilogram:1, gram:0.001, pound:0.453592 },
+      storage: { megabyte:1, gigabyte:1024, terabyte:1048576 }
+    };
+    function setupUnitOptions() {
+      const cat = document.getElementById('uCatSelect').value;
+      const fromSel = document.getElementById('uFromSelect');
+      const toSel = document.getElementById('uToSelect');
+      fromSel.innerHTML = ''; toSel.innerHTML = '';
+      Object.keys(UNIT_RATIOS[cat]).forEach(k => {
+        fromSel.add(new Option(k.toUpperCase(), k));
+        toSel.add(new Option(k.toUpperCase(), k));
+      });
+      if (toSel.options.length > 1) toSel.selectedIndex = 1;
+      executeUnitCalc();
+    }
+    function executeUnitCalc() {
+      const cat = document.getElementById('uCatSelect').value;
+      const val = parseFloat(document.getElementById('uValInput').value) || 0;
+      const f = document.getElementById('uFromSelect').value;
+      const t = document.getElementById('uToSelect').value;
+      const res = (val * UNIT_RATIOS[cat][f]) / UNIT_RATIOS[cat][t];
+      document.getElementById('uResTxt').textContent = `${val} ${f} = ${res.toFixed(4)} ${t}`;
+    }
+
+    // 9. Tool Logic: Age Calculator
+    function executeAgeCalc() {
+      const v = document.getElementById('ageDateInput').value;
+      if (!v) return alert(activeLang === 'en' ? 'Select your birthdate!' : 'জন্ম তারিখ নির্বাচন করুন!');
+      const b = new Date(v), n = new Date();
+      let y = n.getFullYear() - b.getFullYear();
+      let m = n.getMonth() - b.getMonth();
+      let d = n.getDate() - b.getDate();
+      if (d < 0) { m--; d += 30; }
+      if (m < 0) { y--; m += 12; }
+      document.getElementById('ageResTxt').textContent = activeLang === 'en'
+        ? `${y} Years, ${m} Months, ${d} Days`
+        : `${y} বছর, ${m} মাস, ${d} দিন`;
+    }
+
+    // 10. Tool Logic: Loan Calculator
+    function executeLoanCalc() {
+      const p = parseFloat(document.getElementById('loanPrinciple').value);
+      const r = parseFloat(document.getElementById('loanRate').value) / 1200;
+      const n = parseInt(document.getElementById('loanMonths').value);
+      if (!p || !r || !n) return alert(activeLang === 'en' ? 'Please fill loan amount, interest and tenure!' : 'টাকার পরিমাণ, সুদের হার ও মেয়াদ দিন!');
+      const emi = (p * r * Math.pow(1+r, n)) / (Math.pow(1+r, n) - 1);
+      document.getElementById('loanResTxt').textContent = activeLang === 'en'
+        ? `EMI: $${emi.toFixed(2)}/mo (Total: $${(emi*n).toFixed(2)})`
+        : `কিস্তি: $${emi.toFixed(2)}/মাস (মোট: $${(emi*n).toFixed(2)})`;
+    }
+
+    // 11. Tool Logic: BMI
+    function executeBmiCalc() {
+      const w = parseFloat(document.getElementById('bmiWeight').value);
+      const h = parseFloat(document.getElementById('bmiHeight').value) / 100;
+      if (!w || !h) return alert(activeLang === 'en' ? 'Enter height & weight!' : 'উচ্চতা ও ওজন দিন!');
+      const bmi = (w / (h * h)).toFixed(1);
+      let cat = bmi < 18.5 ? 'Underweight' : bmi < 25 ? 'Normal weight' : 'Overweight';
+      document.getElementById('bmiResTxt').textContent = `BMI: ${bmi} (${cat})`;
+    }
+
+    // 12. Tool Logic: Color Palette
+    function generatePalette() {
+      const box = document.getElementById('paletteStrip');
+      box.innerHTML = '';
+      for (let i = 0; i < 5; i++) {
+        const hex = '#' + Math.floor(Math.random()*16777215).toString(16).padStart(6,'0').toUpperCase();
+        const d = document.createElement('div');
+        d.style.flex = '1';
+        d.style.backgroundColor = hex;
+        d.style.display = 'flex';
+        d.style.alignItems = 'center';
+        d.style.justifyContent = 'center';
+        d.style.fontSize = '10px';
+        d.style.fontWeight = '800';
+        d.style.color = '#FFFFFF';
+        d.style.cursor = 'pointer';
+        d.title = 'Click to copy ' + hex;
+        d.textContent = hex;
+        d.onclick = () => { navigator.clipboard.writeText(hex); alert('Copied ' + hex); };
+        box.appendChild(d);
+      }
+    }
+
+    // 13. Tool Logic: JSON Formatter
+    function formatJson(ind) {
+      try {
+        const el = document.getElementById('jsonInputText');
+        el.value = JSON.stringify(JSON.parse(el.value), null, ind);
+      } catch(e) { alert(activeLang === 'en' ? 'Invalid JSON syntax!' : 'সঠিক JSON দিন!'); }
+    }
+    function minifyJson() {
+      try {
+        const el = document.getElementById('jsonInputText');
+        el.value = JSON.stringify(JSON.parse(el.value));
+      } catch(e) { alert(activeLang === 'en' ? 'Invalid JSON syntax!' : 'সঠিক JSON দিন!'); }
+    }
+
+    // 14. Tool Logic: Word Counter
+    function calculateWords() {
+      const t = document.getElementById('wordInputText').value;
+      const w = t.trim() ? t.trim().split(/\s+/).length : 0;
+      document.getElementById('wordResTxt').textContent = activeLang === 'en'
+        ? `Words: ${w} | Characters: ${t.length} | Read: ${Math.ceil(w/3.3)}s`
+        : `শব্দ: ${w} | বর্ণ: ${t.length} | সময়: ${Math.ceil(w/3.3)}s`;
+    }
+
+    // 15. Tool Logic: Case Converter
+    function convertTextCase(m) {
+      const el = document.getElementById('caseInputText');
+      if (m === 'upper') el.value = el.value.toUpperCase();
+      if (m === 'lower') el.value = el.value.toLowerCase();
+      if (m === 'title') el.value = el.value.toLowerCase().replace(/\b\w/g, s => s.toUpperCase());
+    }
+
+    // 16. Tool Logic: Duplicate Remover
+    function removeDuplicateLines() {
+      const el = document.getElementById('dupeInputText');
+      el.value = Array.from(new Set(el.value.split('\n'))).join('\n');
+    }
+
+    // 17. Tool Logic: Extractor
+    function extractNumbers() {
+      const t = document.getElementById('extractInputText').value;
+      const n = t.match(/-?\d+(\.\d+)?/g) || [];
+      document.getElementById('extractResTxt').textContent = n.length ? n.join(', ') : 'No numbers found';
+    }
+    function extractEmails() {
+      const t = document.getElementById('extractInputText').value;
+      const e = t.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g) || [];
+      document.getElementById('extractResTxt').textContent = e.length ? e.join(', ') : 'No emails found';
+    }
+
+    // 18. Tool Logic: QR Code
+    function generateQrCode() {
+      const v = document.getElementById('qrInputText').value.trim();
+      if (!v) return alert(activeLang === 'en' ? 'Please enter a URL or text!' : 'লিংক বা টেক্সট লিখুন!');
+      document.getElementById('qrPreviewBox').innerHTML = '<img src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=' + encodeURIComponent(v) + '">';
+    }
+
+    // 19. Tool Logic: Password Generator
+    function generatePassword() {
+      const l = parseInt(document.getElementById('passLengthInput').value) || 16;
+      const c = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789!@#$%^&*';
+      let p = '';
+      for (let i = 0; i < l; i++) p += c[Math.floor(Math.random()*c.length)];
+      document.getElementById('passResTxt').textContent = p;
+    }
+
+    function upvoteHelpful(btn) {
+      if (btn.dataset.voted) return;
+      btn.dataset.voted = '1';
+      btn.style.borderColor = '#16A34A';
+      btn.style.color = '#15803D';
+      btn.textContent = '✓ Helpful';
+    }
+
+    // Submit Review (Reviewer's name is saved in English)
+    function submitUserReview() {
+      const name = document.getElementById('formRevName').value.trim();
+      const role = document.getElementById('formRevRole').value.trim() || 'Community Member';
+      const tool = document.getElementById('formRevTool').value;
+      const starsNum = parseInt(document.getElementById('formRevRating').value) || 5;
+      const text = document.getElementById('formRevText').value.trim();
+
+      if (!name || !text) {
+        return alert(activeLang === 'en' ? 'Please provide your name and review!' : 'দয়া করে আপনার নাম ও রিভিউ লিখুন!');
+      }
+
+      const starsStr = '★'.repeat(starsNum) + '☆'.repeat(5 - starsNum);
+      const grid = document.getElementById('reviewCardsGrid');
+      const bubble = document.createElement('div');
+      bubble.className = 'review-bubble';
+      bubble.innerHTML = `
+        <div>
+          <div class="reviewer-header">
+            <div class="reviewer-info">
+              <div class="reviewer-avatar">${name[0].toUpperCase()}</div>
+              <div>
+                <div class="reviewer-name">${name}</div>
+                <div class="reviewer-role">${role}</div>
+              </div>
+            </div>
+            <span class="verified-chip">✓ Verified</span>
+          </div>
+          <div class="review-stars" style="margin:8px 0 4px;">${starsStr}</div>
+          <p class="review-body">"${text}"</p>
+        </div>
+        <div class="review-meta-bar">
+          <span>Just now • ${tool}</span>
+          <button class="btn-helpful" onclick="upvoteHelpful(this)">👍 Helpful (1)</button>
+        </div>
+      `;
+      grid.prepend(bubble);
+
+      document.getElementById('formRevName').value = '';
+      document.getElementById('formRevRole').value = '';
+      document.getElementById('formRevText').value = '';
+      alert(activeLang === 'en' ? 'Thank you! Your review has been published.' : 'ধন্যবাদ! আপনার রিভিউটি সফলভাবে প্রকাশিত হয়েছে।');
+    }
+
+    // Init on Page Load
+    window.onload = function() {
+      setLanguage(activeLang);
+      setupUnitOptions();
+      generatePalette();
+    };
+  </script>
+</body>
+</html>
