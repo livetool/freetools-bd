@@ -145,7 +145,6 @@ npm run dev
 # 5. Build for production
 npm run build
 
-The application will be accessible locally at http://localhost:3000.
 
 
 
