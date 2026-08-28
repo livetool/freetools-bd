@@ -168,7 +168,7 @@ HTML5 Canvas & Web APIs: High-performance pixel manipulation and image processin
 
 Support Desk: contact.html or in-app Contact form
 
-Official Inquiries: Lifetooloffice@gmail.com
+Official Inquiries: Livetooloffice@gmail.com
 
 Copyright: © 2026 LiveTool. All rights reserved.
 
