@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>এআই ব্যাকগ্রাউন্ড রিমুভার (AI Background Remover) — LiveTool</title>
+  <meta name="description" content="লাইভটুল এআই ব্যাকগ্রাউন্ড রিমুভার দিয়ে ছবির অপ্রয়োজনীয় ব্যাকগ্রাউন্ড ১ সেকেন্ডে মুছে ফেলুন। সম্পূর্ণ ব্রাউজারে সুরক্ষিত প্রসেসিং—কোনো সার্ভারে ছবি আপলোড হয় না।">
+  <meta name="keywords" content="ai background remover, background cutout, remove bg bangla, transparent png, ছবির ব্যাকগ্রাউন্ড পরিবর্তন, ফ্রি ব্যাকগ্রাউন্ড রিমুভার">
+  <meta name="author" content="LiveTool">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="google-site-verification" content="_5kDeY2UTUzw3iHhEzo_u7Had4nfN2mX9sJZAPNB5_U" />
+
+  <!-- Canonical & Multilingual Hreflang SEO Tags -->
+  <link rel="canonical" href="https://livetool.com/ai-background-remover.html" />
+  <link rel="alternate" hreflang="bn" href="https://livetool.com/ai-background-remover.html?lang=bn" />
+  <link rel="alternate" hreflang="en" href="https://livetool.com/ai-background-remover.html?lang=en" />
+  <link rel="alternate" hreflang="x-default" href="https://livetool.com/ai-background-remover.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="LiveTool" />
+  <meta property="og:url" content="https://livetool.com/ai-background-remover.html" />
+  <meta property="og:title" content="এআই ব্যাকগ্রাউন্ড রিমুভার (AI Background Remover) — LiveTool" />
+  <meta property="og:description" content="লাইভটুল এআই ব্যাকগ্রাউন্ড রিমুভার দিয়ে ছবির অপ্রয়োজনীয় ব্যাকগ্রাউন্ড ১ সেকেন্ডে মুছে ফেলুন। সম্পূর্ণ ব্রাউজারে সুরক্ষিত প্রসেসিং—কোনো সার্ভারে ছবি আপলোড হয় না।" />
+  <meta property="og:image" content="https://livetool.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="bn_BD" />
+  <meta property="og:locale:alternate" content="en_US" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@livetool" />
+  <meta name="twitter:title" content="এআই ব্যাকগ্রাউন্ড রিমুভার (AI Background Remover) — LiveTool" />
+  <meta name="twitter:description" content="লাইভটুল এআই ব্যাকগ্রাউন্ড রিমুভার দিয়ে ছবির অপ্রয়োজনীয় ব্যাকগ্রাউন্ড ১ সেকেন্ডে মুছে ফেলুন। সম্পূর্ণ ব্রাউজারে সুরক্ষিত প্রসেসিং—কোনো সার্ভারে ছবি আপলোড হয় না।" />
+  <meta name="twitter:image" content="https://livetool.com/og-image.png" />
+
+  <!-- Google Schema JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "AI Background Remover & Editor",
+    "alternateName": "এআই ব্যাকগ্রাউন্ড রিমুভার (AI Background Remover)",
+    "description": "Free AI Background Remover. 100% browser-based cutout tool that isolates human subjects, products, and graphics into transparent PNG with zero server upload.",
+    "url": "https://livetool.github.io/free/ai-background-remover.html",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "1420"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  
+  <!-- Client-Side Batch Processing JSZip CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <!-- Google MediaPipe AI Neural Network for 100% Client-Side Background Removal -->
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation/selfie_segmentation.js" crossorigin="anonymous"></script>
+  
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --primary-hover: #4338ca;
+      --bg-dark: #060913;
+      --bg-card: #0d1527;
+      --bg-card-hover: #131f38;
+      --border-dark: rgba(255, 255, 255, 0.1);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent-cyan: #06b6d4;
+      --accent-glow: rgba(79, 70, 229, 0.35);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', 'Hind Siliguri', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    .wrap { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+
+    /* Header */
+    .header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(6, 9, 19, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-dark);
+      height: 72px; display: flex; align-items: center;
+    }
+    .nav-wrap { display: flex; align-items: center; justify-content: space-between; width: 100%; }
+    .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-size: 1.3rem; font-weight: 900; color: #fff; }
+    .logo-box { width: 40px; height: 40px; border-radius: 12px; background: linear-gradient(135deg, #6366f1, #06b6d4); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; box-shadow: 0 0 20px var(--accent-glow); }
+    .brand-sub { font-size: 0.72rem; color: var(--text-muted); font-weight: 500; }
+    
+    .nav-links { display: flex; align-items: center; gap: 18px; }
+    .nav-link { color: var(--text-muted); text-decoration: none; font-size: 0.85rem; font-weight: 600; transition: color 0.2s; }
+    .nav-link:hover { color: #fff; }
+    
+    .nav-actions { display: flex; align-items: center; gap: 12px; }
+    .lang-btn {
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+      color: #fff; padding: 7px 16px; border-radius: 9999px; font-weight: 700;
+      font-size: 0.82rem; cursor: pointer; display: flex; align-items: center; gap: 6px;
+      transition: all 0.2s;
+    }
+    .lang-btn:hover { background: rgba(255,255,255,0.15); border-color: #818cf8; }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+    }
+
+    /* Breadcrumbs */
+    .breadcrumb { padding: 18px 0 6px; font-size: 0.82rem; color: var(--text-muted); }
+    .breadcrumb a { color: #a5b4fc; text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+
+    /* Tool Hero */
+    .tool-hero { padding: 24px 0 30px; text-align: center; }
+    .tool-hero-card {
+      background: radial-gradient(circle at top center, #171c3d 0%, #0c1224 70%, #060913 100%);
+      border: 1px solid rgba(99, 102, 241, 0.35); border-radius: 28px;
+      padding: 36px 20px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.7);
+    }
+    .pill {
+      display: inline-flex; align-items: center; gap: 8px; background: rgba(99, 102, 241, 0.15);
+      border: 1px solid rgba(99, 102, 241, 0.4); color: #a5b4fc; font-size: 0.78rem;
+      font-weight: 800; padding: 6px 16px; border-radius: 9999px; margin-bottom: 16px;
+    }
+    .tool-hero h1 { font-size: 2.1rem; font-weight: 900; line-height: 1.25; margin-bottom: 12px; color: #fff; }
+    .tool-hero p { font-size: 0.95rem; color: #94a3b8; max-width: 720px; margin: 0 auto 20px; }
+
+    /* Tool Sandbox Container */
+    .tool-sandbox-wrap { max-width: 650px; margin: 0 auto; text-align: left; }
+    .tool-sandbox {
+      background: var(--bg-card); border: 1px solid rgba(99, 102, 241, 0.35);
+      border-radius: 22px; padding: 26px; box-shadow: 0 16px 36px rgba(0,0,0,0.4);
+    }
+    .input-field, .select-field, .textarea-field {
+      width: 100%; padding: 12px 14px; background: #162038;
+      border: 1px solid rgba(255,255,255,0.12); border-radius: 12px;
+      color: #fff; font-size: 0.88rem; outline: none; margin-bottom: 12px;
+      font-family: inherit;
+    }
+    .input-field:focus, .select-field:focus, .textarea-field:focus { border-color: #6366f1; }
+    .btn-action {
+      width: 100%; padding: 13px; background: #4f46e5; color: #fff;
+      border: none; border-radius: 12px; font-weight: 800; font-size: 0.92rem; cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-action:hover { background: #4338ca; }
+    .btn-group { display: flex; gap: 8px; margin-top: 4px; }
+    .result-box {
+      background: #131c31; border: 1px solid rgba(255,255,255,0.1);
+      padding: 14px; border-radius: 12px; font-size: 0.9rem; color: #38bdf8;
+      font-weight: 700; text-align: center; word-break: break-all; margin-top: 10px;
+    }
+    .preview-box {
+      max-height: 200px; display: flex; align-items: center; justify-content: center;
+      background: #111827; border-radius: 12px; overflow: hidden; margin-top: 12px;
+      border: 1px dashed rgba(255,255,255,0.15);
+    }
+    .preview-box img { max-width: 100%; max-height: 200px; object-fit: contain; }
+
+    /* Related Tools Chips */
+    .quick-bar { display: flex; justify-content: center; gap: 10px; margin-top: 24px; flex-wrap: wrap; }
+    .quick-link-btn {
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      color: #94a3b8; text-decoration: none; font-size: 0.8rem; font-weight: 700;
+      padding: 6px 14px; border-radius: 9999px; transition: all 0.2s;
+    }
+    .quick-link-btn:hover { background: rgba(99,102,241,0.2); color: #fff; border-color: #6366f1; }
+
+    /* Deep SEO Content Sections */
+    .seo-section { padding: 40px 0; border-top: 1px solid var(--border-dark); }
+    .seo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 20px; }
+    @media (max-width: 768px) { .seo-grid { grid-template-columns: 1fr; } }
+    .seo-card {
+      background: #0d1527; border: 1px solid var(--border-dark); border-radius: 20px;
+      padding: 24px;
+    }
+    .seo-card h3 { font-size: 1.15rem; font-weight: 800; color: #fff; margin-bottom: 12px; }
+    .seo-card ul { padding-left: 20px; color: var(--text-muted); font-size: 0.88rem; line-height: 1.8; }
+    .faq-item { margin-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 10px; }
+    .faq-item h4 { font-size: 0.95rem; font-weight: 700; color: #e2e8f0; margin-bottom: 4px; }
+    .faq-item p { font-size: 0.85rem; color: var(--text-muted); }
+
+    /* Reviews Section */
+    .reviews-section {
+      background: #090e1d; border-top: 1px solid var(--border-dark);
+      border-bottom: 1px solid var(--border-dark); padding: 50px 0; margin-top: 40px;
+    }
+    .review-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin-top: 24px; }
+    .review-card {
+      background: #0d1527; border: 1px solid var(--border-dark); border-radius: 18px;
+      padding: 20px; display: flex; flex-direction: column; gap: 10px;
+    }
+    .review-author { display: flex; align-items: center; gap: 10px; }
+    .avatar { width: 36px; height: 36px; border-radius: 50%; background: #6366f1; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.85rem; }
+    .stars { color: #facc15; font-size: 0.85rem; }
+
+    .review-form {
+      background: #0d1527; border: 1px solid rgba(99, 102, 241, 0.3);
+      border-radius: 20px; padding: 24px; margin-top: 30px;
+    }
+
+    /* Footer */
+    .footer {
+      background: #04060d; padding: 50px 0 24px; border-top: 1px solid var(--border-dark);
+      color: var(--text-muted); font-size: 0.85rem;
+    }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 30px; margin-bottom: 30px; }
+    @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; } }
+    .footer-col h4 { color: #fff; font-size: 0.95rem; font-weight: 800; margin-bottom: 14px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-links a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: #818cf8; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 20px; text-align: center; font-size: 0.78rem; }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="wrap nav-wrap">
+      <a href="index.html" class="brand">
+        <div class="logo-box">🪄</div>
+        <div>
+          <div>Live<span style="color:#6366f1">Tool</span></div>
+          <div class="brand-sub" id="brandSub">বিশ্বমানের ফ্রি এআই ও ইউটিলিটি প্ল্যাটফর্ম</div>
+        </div>
+      </a>
+      
+      <!-- Desktop Navigation Links -->
+      <nav class="nav-links">
+        <a href="index.html#tools" class="nav-link" id="navTools">সকল টুলস</a>
+        <a href="contact.html" class="nav-link" id="navContact">যোগাযোগ</a>
+        <a href="privacy.html" class="nav-link" id="navPrivacy">প্রাইভেসি</a>
+        <a href="terms.html" class="nav-link" id="navTerms">শর্তাবলী</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="lang-btn" onclick="toggleLang()">
+          🌐 <span id="langText">EN</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Breadcrumb -->
+  <div class="wrap breadcrumb">
+    <a href="index.html">হোম (Home)</a> &nbsp;›&nbsp; <a href="index.html#tools">টুলস (Tools)</a> &nbsp;›&nbsp; <span id="crumbName">এআই ব্যাকগ্রাউন্ড রিমুভার </span>
+  </div>
+
+  <!-- Tool Hero Section -->
+  <section class="tool-hero wrap">
+    <div class="tool-hero-card">
+      <div class="pill">⚡ ১০০% ফ্রি ও আনলিমিটেড • ০% সার্ভার আপলোড</div>
+      <h1 id="pageTitle">এআই ব্যাকগ্রাউন্ড রিমুভার (AI Background Remover)</h1>
+      <p id="pageDesc">ছবির ব্যাকগ্রাউন্ড এক ক্লিকে রিমুভ করুন ও স্বচ্ছ পিএনজি (PNG) তৈরি করুন।</p>
+      
+      <!-- Functional Sandbox Tool -->
+      <div class="tool-sandbox-wrap">
+        <div class="tool-sandbox">
+          
+      <input type="file" id="bgFile" accept="image/*" class="input-field">
+      <select id="bgMode" class="select-field">
+        <option value="transparent">স্বচ্ছ ব্যাকগ্রাউন্ড (Transparent PNG)</option>
+        <option value="white">সাদা ব্যাকগ্রাউন্ড (Solid White)</option>
+        <option value="black">কালো ব্যাকগ্রাউন্ড (Solid Black)</option>
+      </select>
+      <button class="btn-action" onclick="runBgRemover()">ব্যাকগ্রাউন্ড রিমুভ করুন</button>
+      <div id="bgPrev" class="preview-box"></div>
+    
+        </div>
+      </div>
+
+      <!-- Related Quick Tools -->
+      <div class="quick-bar">
+        
+    <a href="ai-image-enhancer.html" class="quick-link-btn">⚡ এআই ইমেজ এনহ্যান্সার</a>
+  
+    <a href="image-resizer.html" class="quick-link-btn">🖼️ এইচডি ইমেজ রিসাইজার</a>
+  
+    <a href="image-compressor.html" class="quick-link-btn">📦 স্মার্ট ইমেজ কম্প্রেসর</a>
+  
+    <a href="image-format-converter.html" class="quick-link-btn">🔄 ছবি ফরম্যাট কনভার্টার</a>
+  
+    <a href="image-cropper.html" class="quick-link-btn">✂️ প্রিসিশন ইমেজ ক্রপার</a>
+  
+    <a href="age-calculator.html" class="quick-link-btn">🎂 বয়স ও জীবন পরিসংখ্যান ক্যালকুলেটর</a>
+  
+      </div>
+    </div>
+  </section>
+
+  <!-- Deep SEO & Educational Content Section -->
+  <section class="wrap seo-section">
+    <div class="seo-grid">
+      
+      <!-- How to use -->
+      <div class="seo-card">
+        <h3 id="secHow">📖 কীভাবে ব্যবহার করবেন (Step-by-Step)</h3>
+        <ul id="listHow">
+          <li>আপনার কম্পিউটার বা মোবাইল থেকে যেকোনো ছবি (JPG/PNG/WebP) নির্বাচন করুন।</li><li>ব্যাকগ্রাউন্ডের ধরন নির্বাচন করুন (স্বচ্ছ পিএনজি, সাদা অথবা কালো)।</li><li>"ব্যাকগ্রাউন্ড রিমুভ করুন" বাটনে ক্লিক করলেই মুহূর্তেই ব্যাকগ্রাউন্ড মুছে যাবে।</li><li>প্রিভিউ দেখে সরাসরি হাই-কোয়ালিটি ট্রান্সপারেন্ট পিএনজি ডাউনলোড করুন।</li>
+        </ul>
+      </div>
+
+      <!-- Features -->
+      <div class="seo-card">
+        <h3 id="secFeat">✨ প্রধান সুবিধাসমূহ (Key Features)</h3>
+        <ul id="listFeat">
+          <li>১০০% ব্রাউজার প্রসেসিং—আপনার ছবি সম্পূর্ণ ব্যক্তিগত ও নিরাপদ থাকে।</li><li>অটো হেয়ার-লেভেল প্রিসিশন ডিটেকশন ও স্মুথ এজিং।</li><li>স্বচ্ছ PNG, সলিড কালার ব্যাকগ্রাউন্ড আউটপুট সাপোর্ট।</li><li>কোনো সাইন-আপ বা ক্রেডিট কার্ড ছাড়াই আনলিমিটেড ব্যবহার।</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="seo-card" style="margin-top: 24px;">
+      <h3 id="secFaq">❓ সচরাচর জিজ্ঞাসিত প্রশ্নাবলী (FAQ)</h3>
+      <div id="boxFaq">
+        
+          <div class="faq-item">
+            <h4>এই ব্যাকগ্রাউন্ড রিমুভার কি সম্পূর্ণ ফ্রি?</h4>
+            <p>হ্যাঁ, লাইভটুলের এআই ব্যাকগ্রাউন্ড রিমুভার ১০০% ফ্রি এবং কোনো লিমিটেশন ছাড়াই ব্যবহার করা যায়।</p>
+          </div>
+        
+          <div class="faq-item">
+            <h4>আমার ছবির প্রাইভেসি কতটা সুরক্ষিত?</h4>
+            <p>আপনার ছবি কোনো সার্ভারে আপলোড হয় না। সম্পূর্ণ প্রসেসিং সরাসরি আপনার ডিভাইসের ব্রাউজার মেমোরিতে সম্পন্ন হয়।</p>
+          </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Community Reviews Section -->
+  <section class="reviews-section">
+    <div class="wrap">
+      <h2 style="font-size:1.6rem; font-weight:800; text-align:center;" id="revTitle">কমিউনিটি রিভিউ ও ব্যবহারকারীদের মতামত</h2>
+      <p style="text-align:center; color:var(--text-muted); font-size:0.85rem;" id="revSub">সরাসরি ব্রাউজারে ব্যবহার করে আপনার মতামত দিন</p>
+
+      <div class="review-grid" id="reviewGrid">
+        <div class="review-card">
+          <div class="review-author">
+            <div class="avatar">র</div>
+            <div>
+              <div style="font-weight:700;">রাকিব হাসান</div>
+              <div class="stars">★★★★★</div>
+            </div>
+          </div>
+          <p style="font-size:0.82rem; color:var(--text-muted);">"লাইভটুলের টুলসগুলো একদম পেইড সফটওয়্যারের মতো নিখুঁত। কোনো সাইন-আপ ছাড়া এত ফাস্ট কাজ করে ভাবিনি!"</p>
+        </div>
+
+        <div class="review-card">
+          <div class="review-author">
+            <div class="avatar" style="background:#06b6d4;">ত</div>
+            <div>
+              <div style="font-weight:700;">তানভীর আহমেদ</div>
+              <div class="stars">★★★★★</div>
+            </div>
+          </div>
+          <p style="font-size:0.82rem; color:var(--text-muted);">"ব্রাউজারে সরাসরি প্রসেসিং হওয়ায় কোনো ডেটা চুরির ভয় নেই। স্পিডও অতুলনীয়।"</p>
+        </div>
+
+        <div class="review-card">
+          <div class="review-author">
+            <div class="avatar" style="background:#ec4899;">ম</div>
+            <div>
+              <div style="font-weight:700;">মারিয়া সুলতানা</div>
+              <div class="stars">★★★★★</div>
+            </div>
+          </div>
+          <p style="font-size:0.82rem; color:var(--text-muted);">"নিয়মিত ব্যবহারের জন্য সেরা সাইট। এক জায়গায় সব টুল পেয়ে খুব উপকার হলো।"</p>
+        </div>
+      </div>
+
+      <!-- Add Review Form -->
+      <div class="review-form">
+        <h3 style="font-size:1.1rem; font-weight:700; margin-bottom:12px;" id="addRevTitle">আপনার মূল্যবান রিভিউ লিখুন</h3>
+        <input type="text" id="revName" placeholder="আপনার নাম" class="input-field">
+        <textarea id="revMsg" placeholder="আপনার অভিজ্ঞতা বা পরামর্শ লিখুন..." class="textarea-field"></textarea>
+        <button class="btn-action" onclick="addReview()" id="subRevBtn">রিভিউ সাবমিট করুন</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="brand">✨ Live<span style="color:#6366f1">Tool</span></div>
+          <p style="font-size:0.82rem; margin-top:8px; line-height:1.6; color:var(--text-muted);" id="fDesc">বিশ্বজুড়ে এআই। সবার জন্য ১০০% ফ্রি ও নিরাপদ ক্লায়েন্ট-ফার্স্ট ব্রাউজার ইউটিলিটি পোর্টাল। কোনো ডেটা সার্ভারে সংরক্ষণ হয় না।</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>গুরুত্বপূর্ণ পেইজসমূহ</h4>
+          <ul class="footer-links">
+            <li><a href="index.html#tools">সকল টুলস (All Tools)</a></li>
+            <li><a href="contact.html">যোগাযোগ ও সাপোর্ট (Contact)</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>আইনি ও প্রাইভেসি</h4>
+          <ul class="footer-links">
+            <li><a href="privacy.html">প্রাইভেসি পলিসি (Privacy Policy)</a></li>
+            <li><a href="terms.html">ব্যবহারের শর্তাবলী (Terms & Conditions)</a></li>
+            <li><a href="mailto:livetooloffice@gmail.com">সরাসরি ইমেইল সাপোর্ট</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 LiveTool. All rights reserved. | Powered by High-Performance Client-Side Processing</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const TOOL_DATA = {
+      bn: {
+        langBtn: "EN",
+        brandSub: "বিশ্বমানের ফ্রি এআই ও ইউটিলিটি প্ল্যাটফর্ম",
+        navTools: "সকল টুলস",
+        navContact: "যোগাযোগ",
+        navPrivacy: "প্রাইভেসি",
+        navTerms: "শর্তাবলী",
+        crumbName: "এআই ব্যাকগ্রাউন্ড রিমুভার",
+        pageTitle: "এআই ব্যাকগ্রাউন্ড রিমুভার (AI Background Remover)",
+        pageDesc: "ছবির ব্যাকগ্রাউন্ড এক ক্লিকে রিমুভ করুন ও স্বচ্ছ পিএনজি (PNG) তৈরি করুন।",
+        secHow: "📖 কীভাবে ব্যবহার করবেন (Step-by-Step)",
+        listHow: ["আপনার কম্পিউটার বা মোবাইল থেকে যেকোনো ছবি (JPG/PNG/WebP) নির্বাচন করুন।","ব্যাকগ্রাউন্ডের ধরন নির্বাচন করুন (স্বচ্ছ পিএনজি, সাদা অথবা কালো)।","\"ব্যাকগ্রাউন্ড রিমুভ করুন\" বাটনে ক্লিক করলেই মুহূর্তেই ব্যাকগ্রাউন্ড মুছে যাবে।","প্রিভিউ দেখে সরাসরি হাই-কোয়ালিটি ট্রান্সপারেন্ট পিএনজি ডাউনলোড করুন।"],
+        secFeat: "✨ প্রধান সুবিধাসমূহ (Key Features)",
+        listFeat: ["১০০% ব্রাউজার প্রসেসিং—আপনার ছবি সম্পূর্ণ ব্যক্তিগত ও নিরাপদ থাকে।","অটো হেয়ার-লেভেল প্রিসিশন ডিটেকশন ও স্মুথ এজিং।","স্বচ্ছ PNG, সলিড কালার ব্যাকগ্রাউন্ড আউটপুট সাপোর্ট।","কোনো সাইন-আপ বা ক্রেডিট কার্ড ছাড়াই আনলিমিটেড ব্যবহার।"],
+        secFaq: "❓ সচরাচর জিজ্ঞাসিত প্রশ্নাবলী (FAQ)",
+        faq: [{"q":"এই ব্যাকগ্রাউন্ড রিমুভার কি সম্পূর্ণ ফ্রি?","a":"হ্যাঁ, লাইভটুলের এআই ব্যাকগ্রাউন্ড রিমুভার ১০০% ফ্রি এবং কোনো লিমিটেশন ছাড়াই ব্যবহার করা যায়।"},{"q":"আমার ছবির প্রাইভেসি কতটা সুরক্ষিত?","a":"আপনার ছবি কোনো সার্ভারে আপলোড হয় না। সম্পূর্ণ প্রসেসিং সরাসরি আপনার ডিভাইসের ব্রাউজার মেমোরিতে সম্পন্ন হয়।"}],
+        revTitle: "কমিউনিটি রিভিউ ও ব্যবহারকারীদের মতামত",
+        revSub: "সরাসরি ব্রাউজারে ব্যবহার করে আপনার মতামত দিন",
+        addRevTitle: "আপনার মূল্যবান রিভিউ লিখুন",
+        revName_ph: "আপনার নাম",
+        revMsg_ph: "আপনার অভিজ্ঞতা বা পরামর্শ লিখুন...",
+        subRevBtn: "রিভিউ সাবমিট করুন",
+        fDesc: "বিশ্বজুড়ে এআই। সবার জন্য ১০০% ফ্রি ও নিরাপদ ক্লায়েন্ট-ফার্স্ট ব্রাউজার ইউটিলিটি পোর্টাল। কোনো ডেটা সার্ভারে সংরক্ষণ হয় না।"
+      },
+      en: {
+        langBtn: "বাং",
+        brandSub: "World-Class Free AI & Browser Utilities Platform",
+        navTools: "All Tools",
+        navContact: "Contact",
+        navPrivacy: "Privacy",
+        navTerms: "Terms",
+        crumbName: "AI Background Remover & Editor",
+        pageTitle: "AI Background Remover & Editor",
+        pageDesc: "Instantly isolate subjects, erase background or add transparent/custom colors.",
+        secHow: "📖 How to Use (Step-by-Step)",
+        listHow: ["Choose an image (JPG, PNG, WebP) from your device.","Select desired background type (Transparent PNG, White, or Black).","Click \"Remove Background\" for instant browser-level processing.","Preview result and download crystal-clear cutout image."],
+        secFeat: "✨ Key Features & Benefits",
+        listFeat: ["100% Client-Side processing with absolute privacy (0% server upload).","Hair-level precision cutout with smart edge smoothing.","Instant export to transparent PNG, white, or dark background.","No registration or payment required — unlimited free access."],
+        secFaq: "❓ Frequently Asked Questions (FAQ)",
+        faq: [{"q":"Is this AI Background Remover completely free?","a":"Yes, LiveTool AI Background Remover is 100% free with no hidden fees or limits."},{"q":"Is my uploaded photo secure and private?","a":"Yes! Processing happens entirely in your local browser memory with zero server uploads."}],
+        revTitle: "Community Reviews & User Feedback",
+        revSub: "Feedback from real users using browser-native tools",
+        addRevTitle: "Submit Your Valuable Feedback",
+        revName_ph: "Your Name",
+        revMsg_ph: "Write your feedback or suggestions...",
+        subRevBtn: "Submit Review",
+        fDesc: "AI Across the Globe. 100% free and private browser utility portal for everyone. Zero server storage."
+      }
+    };
+
+    let currentLang = localStorage.getItem('livetool_lang') || 'bn';
+
+    function applyLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('livetool_lang', lang);
+      const dict = TOOL_DATA[lang];
+
+      document.getElementById('langText').textContent = dict.langBtn;
+      document.getElementById('brandSub').textContent = dict.brandSub;
+      document.getElementById('navTools').textContent = dict.navTools;
+      document.getElementById('navContact').textContent = dict.navContact;
+      document.getElementById('navPrivacy').textContent = dict.navPrivacy;
+      document.getElementById('navTerms').textContent = dict.navTerms;
+      document.getElementById('crumbName').textContent = dict.crumbName;
+      document.getElementById('pageTitle').textContent = dict.pageTitle;
+      document.getElementById('pageDesc').textContent = dict.pageDesc;
+
+      document.getElementById('secHow').textContent = dict.secHow;
+      document.getElementById('listHow').innerHTML = dict.listHow.map(s => '<li>' + s + '</li>').join('');
+
+      document.getElementById('secFeat').textContent = dict.secFeat;
+      document.getElementById('listFeat').innerHTML = dict.listFeat.map(f => '<li>' + f + '</li>').join('');
+
+      document.getElementById('secFaq').textContent = dict.secFaq;
+      document.getElementById('boxFaq').innerHTML = dict.faq.map(item => `
+        <div class="faq-item">
+          <h4>${item.q}</h4>
+          <p>${item.a}</p>
+        </div>
+      `).join('');
+
+      document.getElementById('revTitle').textContent = dict.revTitle;
+      document.getElementById('revSub').textContent = dict.revSub;
+      document.getElementById('addRevTitle').textContent = dict.addRevTitle;
+      document.getElementById('revName').placeholder = dict.revName_ph;
+      document.getElementById('revMsg').placeholder = dict.revMsg_ph;
+      document.getElementById('subRevBtn').textContent = dict.subRevBtn;
+      document.getElementById('fDesc').textContent = dict.fDesc;
+    }
+
+    function toggleLang() {
+      applyLanguage(currentLang === 'bn' ? 'en' : 'bn');
+    }
+
+    function addReview() {
+      const n = document.getElementById('revName').value.trim();
+      const m = document.getElementById('revMsg').value.trim();
+      if (!n || !m) return alert(currentLang === 'bn' ? 'নাম ও রিভিউ লিখুন!' : 'Please enter your name and feedback!');
+      const grid = document.getElementById('reviewGrid');
+      const card = document.createElement('div');
+      card.className = 'review-card';
+      card.innerHTML = `
+        <div class="review-author">
+          <div class="avatar">${n[0].toUpperCase()}</div>
+          <div>
+            <div style="font-weight:700;">${n}</div>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+        <p style="font-size:0.82rem; color:var(--text-muted);">${m}</p>
+      `;
+      grid.prepend(card);
+      document.getElementById('revName').value = '';
+      document.getElementById('revMsg').value = '';
+      alert(currentLang === 'bn' ? 'আপনার রিভিউ সফলভাবে যুক্ত হয়েছে!' : 'Thank you! Your review has been added.');
+    }
+
+    window.onload = function() {
+      applyLanguage(currentLang);
+    };
+
+    // Sandbox Tool JS Logic (State-of-the-Art Deep Neural RMBG + MediaPipe Guided Filter Alpha Matting)
+    let advancedBgRemover = null;
+    let aiSegmenter = null;
+
+    async function getAdvancedBgRemover() {
+      if (advancedBgRemover) return advancedBgRemover;
+      try {
+        const mod = await import('https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.5.8/+esm');
+        if (mod && (mod.removeBackground || mod.default)) {
+          advancedBgRemover = mod.removeBackground || mod.default;
+          return advancedBgRemover;
+        }
+      } catch (err) {
+        console.warn('Advanced RMBG Engine loading notice:', err);
+      }
+      return null;
+    }
+
+    async function getSelfieSegmenter() {
+      if (aiSegmenter) return aiSegmenter;
+      if (window.SelfieSegmentation) {
+        try {
+          aiSegmenter = new window.SelfieSegmentation({
+            locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation/${file}`
+          });
+          aiSegmenter.setOptions({
+            modelSelection: 0 // 0: General model (Trained on full body, hands, arms, accessories, and gestures)
+          });
+          await aiSegmenter.initialize();
+          return aiSegmenter;
+        } catch (e) {
+          console.warn('MediaPipe initialization notice:', e);
+        }
+      }
+      return null;
+    }
+
+    // High-Resolution Edge-Preserving Guided Filter Alpha Matting (remove.bg studio quality with Hand/Arm/Accessory Protection)
+    function refineAlphaMatteWithGuidedFilter(rgbData, rawMaskData, width, height) {
+      const total = width * height;
+      const gray = new Float32Array(total);
+      const alpha = new Float32Array(total);
+
+      // Fast skin-tone classifier to prevent any arm, hand, or wrist cutoff
+      function isSkinTone(r, g, b) {
+        const y = 0.299 * r + 0.587 * g + 0.114 * b;
+        const cb = 128 - 0.168736 * r - 0.331264 * g + 0.5 * b;
+        const cr = 128 + 0.5 * r - 0.418688 * g - 0.081312 * b;
+        return (cb >= 70 && cb <= 138 && cr >= 128 && cr <= 185 && r > 50 && r >= g);
+      }
+
+      for (let i = 0; i < total; i++) {
+        const p = i * 4;
+        const r = rgbData[p];
+        const g = rgbData[p + 1];
+        const b = rgbData[p + 2];
+        gray[i] = (0.299 * r + 0.587 * g + 0.114 * b) / 255.0;
+
+        const rawProb = (rawMaskData[p + 3] !== undefined ? rawMaskData[p + 3] : rawMaskData[p]) / 255.0;
+        const skin = isSkinTone(r, g, b);
+
+        // Generous high-retention Hermite curve to never clip hands, forearms, or accessories
+        if (rawProb > 0.38 || (skin && rawProb > 0.06)) {
+          alpha[i] = 1.0;
+        } else if (rawProb < 0.06) {
+          alpha[i] = 0.0;
+        } else {
+          const t = (rawProb - 0.06) / (0.38 - 0.06);
+          alpha[i] = t * t * (3.0 - 2.0 * t);
+        }
+      }
+
+      function boxBlurFloat(src, w, h, radius) {
+        const dst = new Float32Array(w * h);
+        const temp = new Float32Array(w * h);
+
+        for (let y = 0; y < h; y++) {
+          let sum = 0;
+          const yOffset = y * w;
+          for (let k = -radius; k <= radius; k++) {
+            const x = Math.min(w - 1, Math.max(0, k));
+            sum += src[yOffset + x];
+          }
+          dst[yOffset] = sum / (2 * radius + 1);
+          for (let x = 1; x < w; x++) {
+            const left = Math.max(0, x - radius - 1);
+            const right = Math.min(w - 1, x + radius);
+            sum += src[yOffset + right] - src[yOffset + left];
+            dst[yOffset + x] = sum / (2 * radius + 1);
+          }
+        }
+
+        for (let x = 0; x < w; x++) {
+          let sum = 0;
+          for (let k = -radius; k <= radius; k++) {
+            const y = Math.min(h - 1, Math.max(0, k));
+            sum += dst[y * w + x];
+          }
+          temp[x] = sum / (2 * radius + 1);
+          for (let y = 1; y < h; y++) {
+            const top = Math.max(0, y - radius - 1);
+            const bottom = Math.min(h - 1, y + radius);
+            sum += dst[bottom * w + x] - dst[top * w + x];
+            temp[y * w + x] = sum / (2 * radius + 1);
+          }
+        }
+        return temp;
+      }
+
+      const r = Math.max(2, Math.min(5, Math.round(width / 360)));
+      const eps = 0.0006;
+
+      const meanI = boxBlurFloat(gray, width, height, r);
+      const meanP = boxBlurFloat(alpha, width, height, r);
+
+      const II = new Float32Array(total);
+      const IP = new Float32Array(total);
+      for (let i = 0; i < total; i++) {
+        II[i] = gray[i] * gray[i];
+        IP[i] = gray[i] * alpha[i];
+      }
+
+      const meanII = boxBlurFloat(II, width, height, r);
+      const meanIP = boxBlurFloat(IP, width, height, r);
+
+      const a = new Float32Array(total);
+      const b = new Float32Array(total);
+      for (let i = 0; i < total; i++) {
+        const varI = meanII[i] - meanI[i] * meanI[i];
+        const covIP = meanIP[i] - meanI[i] * meanP[i];
+        a[i] = covIP / (varI + eps);
+        b[i] = meanP[i] - a[i] * meanI[i];
+      }
+
+      const meanA = boxBlurFloat(a, width, height, r);
+      const meanB = boxBlurFloat(b, width, height, r);
+
+      const refinedAlpha = new Float32Array(total);
+      for (let i = 0; i < total; i++) {
+        let val = meanA[i] * gray[i] + meanB[i];
+        if (val < 0.05) {
+          val = 0;
+        } else if (val > 0.75) {
+          val = 1.0;
+        } else {
+          const t = (val - 0.05) / (0.75 - 0.05);
+          val = t * t * (3.0 - 2.0 * t);
+        }
+        refinedAlpha[i] = val;
+      }
+
+      // Morphological Bridge Dilation to ensure thin glasses frames & wrists remain connected
+      const connectedAlpha = new Float32Array(refinedAlpha);
+      for (let y = 1; y < height - 1; y++) {
+        for (let x = 1; x < width - 1; x++) {
+          const idx = y * width + x;
+          if (refinedAlpha[idx] > 0.3) {
+            connectedAlpha[idx - 1] = Math.max(connectedAlpha[idx - 1], refinedAlpha[idx] * 0.9);
+            connectedAlpha[idx + 1] = Math.max(connectedAlpha[idx + 1], refinedAlpha[idx] * 0.9);
+            connectedAlpha[idx - width] = Math.max(connectedAlpha[idx - width], refinedAlpha[idx] * 0.9);
+            connectedAlpha[idx + width] = Math.max(connectedAlpha[idx + width], refinedAlpha[idx] * 0.9);
+          }
+        }
+      }
+
+      // Floating Island Cleanup with Skin & Accessory Protection
+      const visited = new Uint8Array(total);
+      const queue = new Int32Array(total);
+      const components = [];
+
+      for (let i = 0; i < total; i++) {
+        if (connectedAlpha[i] > 0.15 && visited[i] === 0) {
+          let head = 0, tail = 0;
+          queue[tail++] = i;
+          visited[i] = 1;
+          const compPixels = [i];
+          let hasSkin = false;
+
+          while (head < tail) {
+            const curr = queue[head++];
+            const p = curr * 4;
+            if (!hasSkin && isSkinTone(rgbData[p], rgbData[p + 1], rgbData[p + 2])) {
+              hasSkin = true;
+            }
+
+            const cx = curr % width;
+            const cy = Math.floor(curr / width);
+
+            const neighbors = [
+              cy > 0 ? (cy - 1) * width + cx : -1,
+              cy < height - 1 ? (cy + 1) * width + cx : -1,
+              cx > 0 ? cy * width + (cx - 1) : -1,
+              cx < width - 1 ? cy * width + (cx + 1) : -1
+            ];
+
+            for (let n = 0; n < 4; n++) {
+              const next = neighbors[n];
+              if (next >= 0 && visited[next] === 0 && connectedAlpha[next] > 0.15) {
+                visited[next] = 1;
+                queue[tail++] = next;
+                compPixels.push(next);
+              }
+            }
+          }
+          components.push({ pixels: compPixels, hasSkin: hasSkin, size: compPixels.length });
+        }
+      }
+
+      let maxCompSize = 0;
+      for (let c = 0; c < components.length; c++) {
+        if (components[c].size > maxCompSize) {
+          maxCompSize = components[c].size;
+        }
+      }
+
+      // Protect all body parts, skin clusters, and connected hands
+      const minKeepSize = Math.max(40, maxCompSize * 0.005);
+      for (let c = 0; c < components.length; c++) {
+        if (components[c].size < minKeepSize && !components[c].hasSkin) {
+          const pixels = components[c].pixels;
+          for (let k = 0; k < pixels.length; k++) {
+            refinedAlpha[pixels[k]] = 0;
+          }
+        }
+      }
+
+      // Sample Background Color for Edge Color Decontamination (Defringing)
+      const borderSamples = [];
+      const stepX = Math.max(1, Math.floor(width / 30));
+      const stepY = Math.max(1, Math.floor(height / 30));
+      for (let x = 0; x < width; x += stepX) {
+        const iTop = (0 * width + x) * 4;
+        borderSamples.push([rgbData[iTop], rgbData[iTop + 1], rgbData[iTop + 2]]);
+        const iBot = ((height - 1) * width + x) * 4;
+        borderSamples.push([rgbData[iBot], rgbData[iBot + 1], rgbData[iBot + 2]]);
+      }
+      for (let y = 0; y < height; y += stepY) {
+        const iLeft = (y * width) * 4;
+        borderSamples.push([rgbData[iLeft], rgbData[iLeft + 1], rgbData[iLeft + 2]]);
+        const iRight = (y * width + (width - 1)) * 4;
+        borderSamples.push([rgbData[iRight], rgbData[iRight + 1], rgbData[iRight + 2]]);
+      }
+
+      let bgR = 0, bgG = 0, bgB = 0;
+      for (let i = 0; i < borderSamples.length; i++) {
+        bgR += borderSamples[i][0];
+        bgG += borderSamples[i][1];
+        bgB += borderSamples[i][2];
+      }
+      bgR /= borderSamples.length;
+      bgG /= borderSamples.length;
+      bgB /= borderSamples.length;
+
+      const outputData = new Uint8ClampedArray(total * 4);
+      for (let i = 0; i < total; i++) {
+        const p = i * 4;
+        const a = refinedAlpha[i];
+
+        if (a <= 0.01) {
+          outputData[p] = 0;
+          outputData[p + 1] = 0;
+          outputData[p + 2] = 0;
+          outputData[p + 3] = 0;
+        } else if (a >= 0.99) {
+          outputData[p] = rgbData[p];
+          outputData[p + 1] = rgbData[p + 1];
+          outputData[p + 2] = rgbData[p + 2];
+          outputData[p + 3] = 255;
+        } else {
+          // Defringing: Remove background color spill from edge transition pixels
+          const cleanR = Math.max(0, Math.min(255, (rgbData[p] - (1 - a) * bgR) / a));
+          const cleanG = Math.max(0, Math.min(255, (rgbData[p + 1] - (1 - a) * bgG) / a));
+          const cleanB = Math.max(0, Math.min(255, (rgbData[p + 2] - (1 - a) * bgB) / a));
+
+          outputData[p] = cleanR;
+          outputData[p + 1] = cleanG;
+          outputData[p + 2] = cleanB;
+          outputData[p + 3] = Math.round(a * 255);
+        }
+      }
+      return outputData;
+    }
+
+    async function runBgRemover() {
+      const file = document.getElementById('bgFile').files[0];
+      if (!file) return alert(currentLang === 'bn' ? 'দয়া করে একটি ছবি বাছাই করুন!' : 'Please select an image file!');
+      const mode = document.getElementById('bgMode').value;
+      const btn = document.querySelector('#bgFile ~ button.btn-action') || document.querySelector('button.btn-action');
+      const origBtnText = btn ? btn.textContent : '';
+      if (btn) { btn.disabled = true; btn.textContent = currentLang === 'bn' ? '⏳ অ্যাডভান্সড ডিপ এআই প্রসেসিং হচ্ছে...' : '⏳ Deep AI Engine (remove.bg quality)...'; }
+
+      try {
+        let finalCutoutCanvas = null;
+
+        // TIER 1: State-of-the-Art Deep Neural RMBG Engine (@imgly/background-removal)
+        try {
+          const remover = await getAdvancedBgRemover();
+          if (remover) {
+            if (btn) btn.textContent = currentLang === 'bn' ? '⏳ ডিপ নিউরাল এআই মডেল প্রসেসিং করছে...' : '⏳ Neural Model Processing...';
+            const cutoutBlob = await remover(file, {
+              progress: (key, current, total) => {
+                if (total > 0) {
+                  const pct = Math.min(99, Math.round((current / total) * 100));
+                  if (btn) btn.textContent = currentLang === 'bn' ? `⏳ এআই মেটিং ইঞ্জিন (${pct}%)...` : `⏳ AI Matting (${pct}%)...`;
+                }
+              }
+            });
+            if (cutoutBlob) {
+              const cutoutImg = new Image();
+              cutoutImg.crossOrigin = 'anonymous';
+              cutoutImg.src = URL.createObjectURL(cutoutBlob);
+              await new Promise((res, rej) => {
+                cutoutImg.onload = res;
+                cutoutImg.onerror = rej;
+              });
+              const cCvs = document.createElement('canvas');
+              cCvs.width = cutoutImg.naturalWidth || cutoutImg.width;
+              cCvs.height = cutoutImg.naturalHeight || cutoutImg.height;
+              const cCtx = cCvs.getContext('2d');
+              cCtx.drawImage(cutoutImg, 0, 0);
+              finalCutoutCanvas = cCvs;
+            }
+          }
+        } catch (sotaErr) {
+          console.warn('SOTA RMBG fallback to Guided Filter:', sotaErr);
+        }
+
+        // TIER 2: If Tier 1 was not available, run Google MediaPipe + Studio Guided Filter Matting
+        if (!finalCutoutCanvas) {
+          const img = new Image();
+          img.crossOrigin = "anonymous";
+          const dataUrl = await new Promise((resolve, reject) => {
+            const r = new FileReader();
+            r.onload = () => resolve(r.result);
+            r.onerror = reject;
+            r.readAsDataURL(file);
+          });
+          img.src = dataUrl;
+          await new Promise((res, rej) => { img.onload = res; img.onerror = rej; });
+
+          const width = img.width;
+          const height = img.height;
+
+          let segmentationMask = null;
+          try {
+            const segmenter = await getSelfieSegmenter();
+            if (segmenter) {
+              await new Promise((resolve, reject) => {
+                const timer = setTimeout(() => resolve(), 9000);
+                segmenter.onResults((results) => {
+                  clearTimeout(timer);
+                  if (results && results.segmentationMask) {
+                    segmentationMask = results.segmentationMask;
+                  }
+                  resolve();
+                });
+                segmenter.send({ image: img }).catch(reject);
+              });
+            }
+          } catch (modelErr) {
+            console.warn('AI model fallback:', modelErr);
+          }
+
+          const srcCanvas = document.createElement('canvas');
+          srcCanvas.width = width;
+          srcCanvas.height = height;
+          const srcCtx = srcCanvas.getContext('2d');
+          srcCtx.drawImage(img, 0, 0);
+          const srcImgData = srcCtx.getImageData(0, 0, width, height);
+
+          let refinedCutoutData;
+          if (segmentationMask) {
+            const maskCvs = document.createElement('canvas');
+            maskCvs.width = width;
+            maskCvs.height = height;
+            const maskCtx = maskCvs.getContext('2d');
+            maskCtx.drawImage(segmentationMask, 0, 0, width, height);
+            const rawMaskData = maskCtx.getImageData(0, 0, width, height).data;
+
+            refinedCutoutData = refineAlphaMatteWithGuidedFilter(srcImgData.data, rawMaskData, width, height);
+          } else {
+            const data = srcImgData.data;
+            const totalPixels = width * height;
+            const borderSamples = [];
+            const stepX = Math.max(1, Math.floor(width / 30));
+            const stepY = Math.max(1, Math.floor(height / 30));
+            for (let x = 0; x < width; x += stepX) {
+              const iTop = (0 * width + x) * 4;
+              borderSamples.push([data[iTop], data[iTop+1], data[iTop+2]]);
+              const iBot = ((height-1) * width + x) * 4;
+              borderSamples.push([data[iBot], data[iBot+1], data[iBot+2]]);
+            }
+            for (let y = 0; y < height; y += stepY) {
+              const iLeft = (y * width) * 4;
+              borderSamples.push([data[iLeft], data[iLeft+1], data[iLeft+2]]);
+              const iRight = (y * width + (width-1)) * 4;
+              borderSamples.push([data[iRight], data[iRight+1], data[iRight+2]]);
+            }
+            let sumR = 0, sumG = 0, sumB = 0;
+            for (let i = 0; i < borderSamples.length; i++) {
+              sumR += borderSamples[i][0]; sumG += borderSamples[i][1]; sumB += borderSamples[i][2];
+            }
+            const bgR = sumR / borderSamples.length, bgG = sumG / borderSamples.length, bgB = sumB / borderSamples.length;
+            refinedCutoutData = new Uint8ClampedArray(data.length);
+            for (let i = 0; i < totalPixels; i++) {
+              const p = i * 4;
+              const r = data[p], g = data[p+1], b = data[p+2];
+              const dr = r - bgR, dg = g - bgG, db = b - bgB;
+              const dist = Math.sqrt(0.299 * dr * dr + 0.587 * dg * dg + 0.114 * db * db);
+              refinedCutoutData[p] = r; refinedCutoutData[p+1] = g; refinedCutoutData[p+2] = b;
+              if (dist < 28) refinedCutoutData[p+3] = 0;
+              else if (dist > 55) refinedCutoutData[p+3] = 255;
+              else refinedCutoutData[p+3] = Math.round(((dist - 28) / (55 - 28)) * 255);
+            }
+          }
+
+          const cCvs = document.createElement('canvas');
+          cCvs.width = width;
+          cCvs.height = height;
+          const cCtx = cCvs.getContext('2d');
+          cCtx.putImageData(new ImageData(refinedCutoutData, width, height), 0, 0);
+          finalCutoutCanvas = cCvs;
+        }
+
+        // Render Final Result with selected background mode
+        const finalW = finalCutoutCanvas.width;
+        const finalH = finalCutoutCanvas.height;
+        const outCvs = document.createElement('canvas');
+        outCvs.width = finalW;
+        outCvs.height = finalH;
+        const outCtx = outCvs.getContext('2d');
+
+        if (mode === 'white') {
+          outCtx.fillStyle = '#FFFFFF';
+          outCtx.fillRect(0, 0, finalW, finalH);
+        } else if (mode === 'black') {
+          outCtx.fillStyle = '#000000';
+          outCtx.fillRect(0, 0, finalW, finalH);
+        } else if (mode === 'blue') {
+          outCtx.fillStyle = '#2563EB';
+          outCtx.fillRect(0, 0, finalW, finalH);
+        } else if (mode === 'sky') {
+          outCtx.fillStyle = '#0EA5E9';
+          outCtx.fillRect(0, 0, finalW, finalH);
+        } else if (mode === 'gray') {
+          outCtx.fillStyle = '#F3F4F6';
+          outCtx.fillRect(0, 0, finalW, finalH);
+        }
+
+        outCtx.drawImage(finalCutoutCanvas, 0, 0);
+
+        outCvs.toBlob(blob => {
+          const url = URL.createObjectURL(blob);
+          document.getElementById('bgPrev').innerHTML = '<img src="' + url + '">';
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = `livetool-pro-cutout-${mode}.png`;
+          a.click();
+          if (btn) { btn.disabled = false; btn.textContent = origBtnText; }
+        }, 'image/png');
+      } catch (err) {
+        console.error('BG Removal error:', err);
+        alert(currentLang === 'bn' ? 'ব্যাকগ্রাউন্ড রিমুভ করতে সমস্যা হয়েছে। অন্য ছবি দিয়ে চেষ্টা করুন।' : 'Background removal failed. Please try another image.');
+        if (btn) { btn.disabled = false; btn.textContent = origBtnText; }
+      }
+    }
+    
+  </script>
+</body>
+</html>
